@@ -1,16 +1,24 @@
 /**
  * Bottomz Up — Contact / conversion endpoints
- * Set phone to E.164 digits when ready, e.g. "14345550100"
- * Empty phone = honest UI (no tel:+1 dead ends)
+ * Official brochure details (trifold)
  */
 window.BOTTOMZ_CONTACT = {
-  phone: '', // e.g. '14345551234' — leave empty until real
-  phoneDisplay: '', // e.g. '(434) 555-1234'
+  phone: '14345755753',
+  phoneDisplay: '(434) 575-5753',
+  website: 'https://www.bottomzupbargrill.com',
+  websiteDisplay: 'www.bottomzupbargrill.com',
   mapsUrl: 'https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592',
   mapsLabel: 'Get Directions',
   addressLine1: '2001 Seymour Dr',
   addressLine2: 'South Boston, VA 24592',
-  hoursNote: 'Call for current hours — we’re open when South Boston is hungry.',
+  delivery: 'Delivery available via Grubhub & DoorDash',
+  hoursNote:
+    'Mon–Thu 11:00 AM – 10:00 PM · Fri–Sat 11:00 AM – 12:30 PM · Sun 11:00 AM – 8:00 PM',
+  hoursLines: [
+    'Monday – Thursday: 11:00 AM – 10:00 PM',
+    'Friday – Saturday: 11:00 AM – 12:30 PM',
+    'Sunday: 11:00 AM – 8:00 PM',
+  ],
   walkIns: true,
 };
 

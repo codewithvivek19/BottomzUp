@@ -64,6 +64,33 @@
         : 'Walk-ins welcome · phone soon';
     });
 
+    // Website links
+    document.querySelectorAll('[data-contact="website"]').forEach((el) => {
+      if (!C.website) return;
+      if (el.tagName === 'A') {
+        el.href = C.website;
+        el.target = '_blank';
+        el.rel = 'noopener noreferrer';
+      }
+      if (el.dataset.contactLabel !== 'keep') {
+        el.textContent = C.websiteDisplay || C.website;
+      }
+    });
+
+    // Delivery line
+    document.querySelectorAll('[data-contact="delivery"]').forEach((el) => {
+      if (C.delivery) el.textContent = C.delivery;
+    });
+
+    // Hours (plain text or multi-line via data-hours-format)
+    document.querySelectorAll('[data-contact="hours"]').forEach((el) => {
+      if (el.dataset.hoursFormat === 'lines' && C.hoursLines && C.hoursLines.length) {
+        el.innerHTML = C.hoursLines.map((line) => escapeHtml(line)).join('<br />');
+      } else if (C.hoursNote) {
+        el.textContent = C.hoursNote;
+      }
+    });
+
     // Call CTA labels when no phone
     document.querySelectorAll('[data-contact="call-label"]').forEach((el) => {
       el.textContent = hasPhone ? 'Call to Reserve' : 'Plan your visit';
@@ -96,6 +123,14 @@
       mapsBtn.href = C.mapsUrl;
       mapsBtn.hidden = false;
     }
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
   }
 
   // Enhance SMS body on party change — hook after main.js

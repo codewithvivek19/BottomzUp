@@ -793,21 +793,29 @@
   }
 }
 
-/* ---------- House strip — useful facts, not vanity stats ---------- */
+/* ---------- House strip — dock-dark component only (page canvas stays cream) ---------- */
 .house-strip {
-  padding-block: clamp(1.25rem, 3vw, 1.75rem);
-  border-block: 1px solid rgba(46, 44, 44, 0.07);
-  background: rgba(255, 255, 255, 0.45);
+  padding-block: clamp(1.25rem, 3vw, 1.85rem);
+  /* Section shell: transparent — do NOT recolor page background */
+  background: transparent;
+  border: none;
 }
 
+/* The dock-style component card only */
 .house-strip-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: rgba(46, 44, 44, 0.08);
-  border-radius: 16px;
+  gap: 0;
+  /* Match sticky dock / CTA charcoal */
+  background: var(--color-charcoal, #2e2c2c);
+  border-radius: 20px;
   overflow: hidden;
-  border: 1px solid rgba(46, 44, 44, 0.06);
+  border: 1px solid rgba(245, 232, 183, 0.1);
+  /* Orange side strip (left edge) */
+  box-shadow:
+    inset 4px 0 0 0 var(--color-amber, #e7931e),
+    0 12px 36px rgba(26, 25, 25, 0.18);
+  position: relative;
 }
 
 @media (min-width: 800px) {
@@ -819,24 +827,41 @@
 .house-fact {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  padding: 1rem 1.1rem;
-  background: rgba(254, 253, 249, 0.95);
+  gap: 0.25rem;
+  padding: 1.1rem 1.15rem 1.15rem 1.25rem;
+  background: transparent;
   text-decoration: none;
-  color: inherit;
+  color: var(--color-cream, #f5e8b7);
   min-height: 5.5rem;
   transition: background 0.2s ease;
+  /* Soft orange dividers between cells */
+  border-right: 1px solid rgba(231, 147, 30, 0.28);
+  position: relative;
+}
+
+.house-fact:last-child {
+  border-right: none;
+}
+
+@media (max-width: 799px) {
+  .house-fact:nth-child(2n) {
+    border-right: none;
+  }
+
+  .house-fact:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(231, 147, 30, 0.28);
+  }
 }
 
 a.house-fact:hover,
 a.house-fact:focus-visible {
-  background: #fff;
+  background: rgba(231, 147, 30, 0.1);
   outline: none;
 }
 
 a.house-fact:hover .house-fact-value,
 a.house-fact:focus-visible .house-fact-value {
-  color: var(--color-amber-deep);
+  color: #fffef8;
 }
 
 .house-fact-label {
@@ -845,7 +870,8 @@ a.house-fact:focus-visible .house-fact-value {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-amber-deep);
+  /* Orange labels */
+  color: var(--color-amber, #e7931e);
 }
 
 .house-fact-value {
@@ -853,7 +879,7 @@ a.house-fact:focus-visible .house-fact-value {
   font-size: clamp(1.05rem, 2.2vw, 1.25rem);
   font-weight: 500;
   letter-spacing: -0.02em;
-  color: var(--color-charcoal);
+  color: #fffef8;
   line-height: 1.2;
   transition: color 0.2s ease;
 }
@@ -862,7 +888,7 @@ a.house-fact:focus-visible .house-fact-value {
   font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 500;
-  color: var(--text-muted);
+  color: rgba(245, 232, 183, 0.72);
   line-height: 1.3;
 }
 

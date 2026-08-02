@@ -95,11 +95,9 @@ body::after {
   z-index: 1;
 }
 
-/* House strip: light lift over cream body */
+/* House strip: section shell only — component card styled in home.css */
 .house-strip {
   position: relative;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
 }
 
 /* Burgers: warm spotlight wash */

@@ -148,12 +148,6 @@ a.house-fact:hover {
   box-shadow: 0 10px 28px rgba(46, 44, 44, 0.05);
 }
 
-/* House strip on cream — less flat white slab */
-.house-strip {
-  background: transparent !important;
-  border-block-color: rgba(46, 44, 44, 0.06) !important;
-}
-
 /* Burger cards: quieter hover lift */
 .burger-card:hover,
 .burger-card:focus-visible {

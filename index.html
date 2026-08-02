@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="./css/control-knob.css?v=2" />
   <link rel="stylesheet" href="./css/site-polish.css" />
 </head>
-<body class="no-phone">
+<body class="has-phone">
   <a class="skip-link" href="#main">Skip to content</a>
   <!-- Subtle film grain — dive-bar energy, never gimmicky -->
   <div class="grain" aria-hidden="true"></div>
@@ -654,19 +654,29 @@
           </address>
           <div class="visit-hours">
             <h4>Hours</h4>
-            <p>Call for current hours — open when South Boston is hungry.</p>
+            <p data-contact="hours" data-hours-format="lines">
+              Monday – Thursday: 11:00 AM – 10:00 PM<br />
+              Friday – Saturday: 11:00 AM – 12:30 PM<br />
+              Sunday: 11:00 AM – 8:00 PM
+            </p>
           </div>
+          <p class="body-sm">
+            <a data-contact="call" href="tel:+14345755753"><span data-contact="phone-label">(434) 575-5753</span></a>
+            ·
+            <a data-contact="website" href="https://www.bottomzupbargrill.com" target="_blank" rel="noopener noreferrer">www.bottomzupbargrill.com</a>
+          </p>
+          <p class="body-sm text-muted" data-contact="delivery">Delivery available via Grubhub &amp; DoorDash</p>
           <div class="visit-cta">
             <a href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592" target="_blank" rel="noopener" class="btn-ticket">
               <span class="btn-hover-fill" aria-hidden="true"></span>
               <span class="btn-label">Get Directions</span>
               <span class="btn-arrow" aria-hidden="true">↗</span>
             </a>
-            <button type="button" class="btn-ticket btn-ticket-light js-open-reserve">
+            <a class="btn-ticket btn-ticket-light" data-contact="call" href="tel:+14345755753">
               <span class="btn-hover-fill" aria-hidden="true"></span>
-              <span class="btn-label" data-contact="call-label">Plan your visit</span>
+              <span class="btn-label" data-contact="call-label">Call to Reserve</span>
               <span class="btn-arrow" aria-hidden="true">↗</span>
-            </button>
+            </a>
           </div>
         </div>
 
@@ -874,19 +884,29 @@
 
     <div class="reserve-hours">
       <strong>Hours</strong>
-      Call for current hours — we’re open when South Boston is hungry.
+      <span data-contact="hours" data-hours-format="lines">
+        Monday – Thursday: 11:00 AM – 10:00 PM<br />
+        Friday – Saturday: 11:00 AM – 12:30 PM<br />
+        Sunday: 11:00 AM – 8:00 PM
+      </span>
     </div>
 
-    <div class="reserve-honesty" id="reserveHonesty">
+    <div class="reserve-honesty" id="reserveHonesty" hidden>
       <p><strong>Phone number coming soon.</strong> Until it’s live here, walk-ins are welcome — or open maps and head to Seymour Drive.</p>
     </div>
 
     <p class="reserve-note" id="reserveNote">Table for 2 — walk-ins welcome; large groups should give a heads up.</p>
+    <p class="body-sm">
+      <a data-contact="call" href="tel:+14345755753"><span data-contact="phone-label">(434) 575-5753</span></a>
+      ·
+      <a data-contact="website" href="https://www.bottomzupbargrill.com" target="_blank" rel="noopener noreferrer">www.bottomzupbargrill.com</a>
+    </p>
+    <p class="body-sm text-muted" data-contact="delivery">Delivery available via Grubhub &amp; DoorDash</p>
 
     <div class="reserve-actions-stack">
-      <a class="btn-ticket btn-lg is-disabled" id="reserveCallBtn" data-contact="call" href="#reserve" aria-disabled="true">
+      <a class="btn-ticket btn-lg" id="reserveCallBtn" data-contact="call" href="tel:+14345755753">
         <span class="btn-hover-fill" aria-hidden="true"></span>
-        <span class="btn-label">Phone number coming soon</span>
+        <span class="btn-label" data-contact="call-label">Call to Reserve</span>
         <span class="btn-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="btn-ticket btn-ticket-light btn-lg" id="reserveMapsBtn" data-contact="maps" href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592">
@@ -973,7 +993,13 @@
     </div>
 
     <p class="footer-legal">
-      Consuming raw or undercooked meats may increase risk of foodborne illness. · 2001 Seymour Dr, South Boston, VA
+      <a data-contact="call" href="tel:+14345755753"><span data-contact="phone-label">(434) 575-5753</span></a>
+      ·
+      <a data-contact="website" href="https://www.bottomzupbargrill.com" target="_blank" rel="noopener noreferrer">www.bottomzupbargrill.com</a>
+      ·
+      <span data-contact="delivery">Delivery available via Grubhub &amp; DoorDash</span>
+      · 2001 Seymour Dr, South Boston, VA 24592
+      · Consuming raw or undercooked meats may increase risk of foodborne illness.
     </p>
   </footer>
 
