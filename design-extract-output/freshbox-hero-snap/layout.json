@@ -1,0 +1,185 @@
+{
+  "vh": 900,
+  "interesting": [
+    {
+      "tag": "HEADER",
+      "name": "Header",
+      "y": 0,
+      "h": 80,
+      "w": 1440,
+      "bg": "rgba(0, 0, 0, 0)",
+      "overflow": "hidden",
+      "br": "0px"
+    },
+    {
+      "tag": "NAV",
+      "name": "Main",
+      "y": 0,
+      "h": 80,
+      "w": 1080,
+      "bg": "rgb(255, 247, 232)",
+      "overflow": "visible",
+      "br": "0px 0px 30px 30px"
+    },
+    {
+      "tag": "SECTION",
+      "name": "Hero Section",
+      "y": 0,
+      "h": 861,
+      "w": 1440,
+      "bg": "rgb(255, 247, 232)",
+      "overflow": "clip",
+      "br": "0px"
+    },
+    {
+      "tag": "SECTION",
+      "name": "Categorie Section",
+      "y": 861,
+      "h": 571,
+      "w": 1440,
+      "bg": "rgb(255, 247, 232)",
+      "overflow": "clip",
+      "br": "0px"
+    },
+    {
+      "tag": "SECTION",
+      "name": "Offer Section",
+      "y": 1432,
+      "h": 1015,
+      "w": 1440,
+      "bg": "rgb(255, 247, 232)",
+      "overflow": "clip",
+      "br": "0px"
+    },
+    {
+      "tag": "SECTION",
+      "name": " Menu Section",
+      "y": 2447,
+      "h": 896,
+      "w": 1440,
+      "bg": "rgb(146, 7, 17)",
+      "overflow": "clip",
+      "br": "0px"
+    },
+    {
+      "tag": "SECTION",
+      "name": "About Section",
+      "y": 3344,
+      "h": 1761,
+      "w": 1440,
+      "bg": "rgb(255, 247, 232)",
+      "overflow": "clip",
+      "br": "0px"
+    },
+    {
+      "tag": "SECTION",
+      "name": "Choose Section",
+      "y": 5104,
+      "h": 728,
+      "w": 1440,
+      "bg": "rgb(146, 7, 17)",
+      "overflow": "clip",
+      "br": "0px"
+    },
+    {
+      "tag": "SECTION",
+      "name": "Catering Section",
+      "y": 5833,
+      "h": 821,
+      "w": 1440,
+      "bg": "rgb(255, 247, 232)",
+      "overflow": "clip",
+      "br": "0px"
+    },
+    {
+      "tag": "SECTION",
+      "name": "Testimonials Section",
+      "y": 6654,
+      "h": 629,
+      "w": 1440,
+      "bg": "rgb(146, 7, 17)",
+      "overflow": "clip",
+      "br": "0px"
+    },
+    {
+      "tag": "SECTION",
+      "name": "framer-slideshow framer-slideshow-axis-x",
+      "y": 6834,
+      "h": 389,
+      "w": 1120,
+      "bg": "rgba(0, 0, 0, 0)",
+      "overflow": "visible",
+      "br": "0px"
+    },
+    {
+      "tag": "SECTION",
+      "name": "FAQ Section",
+      "y": 7283,
+      "h": 718,
+      "w": 1440,
+      "bg": "rgb(255, 247, 232)",
+      "overflow": "clip",
+      "br": "0px"
+    },
+    {
+      "tag": "SECTION",
+      "name": "Gallery Section",
+      "y": 8001,
+      "h": 1043,
+      "w": 1440,
+      "bg": "rgb(255, 247, 232)",
+      "overflow": "clip",
+      "br": "0px"
+    },
+    {
+      "tag": "SECTION",
+      "name": "Blog Section",
+      "y": 9044,
+      "h": 999,
+      "w": 1440,
+      "bg": "rgb(255, 247, 232)",
+      "overflow": "clip",
+      "br": "0px"
+    },
+    {
+      "tag": "SECTION",
+      "name": "Footer & Cta",
+      "y": 10043,
+      "h": 808,
+      "w": 1440,
+      "bg": "rgba(0, 0, 0, 0)",
+      "overflow": "clip",
+      "br": "0px"
+    },
+    {
+      "tag": "SECTION",
+      "name": "Desktop",
+      "y": 10043,
+      "h": 371,
+      "w": 1440,
+      "bg": "rgba(0, 0, 0, 0)",
+      "overflow": "visible",
+      "br": "0px"
+    }
+  ],
+  "svgs": [
+    {
+      "y": 28,
+      "h": 24,
+      "w": 24,
+      "html": "<svg class=\"framer-hsA90 framer-a21lwz\" role=\"presentation\" viewBox=\"0 0 24 24\" style=\"--4i27ky: var(--token-836f532b-fbc3-4cb0-bcc6-05cdd4d75032, rgb(255, 255, 255)); --b8xnka: 2; --42b6oa: 0.16; tra"
+    },
+    {
+      "y": -3,
+      "h": 768,
+      "w": 1469,
+      "html": "<svg style=\"width:100%;height:100%;\" viewBox=\"0 0 1202 768\" preserveAspectRatio=\"none\" width=\"100%\" height=\"100%\"><use href=\"#svg1261632435_372\"></use></svg>"
+    },
+    {
+      "y": 900,
+      "h": 768,
+      "w": 1202,
+      "html": "<svg width=\"1202\" height=\"768\" viewBox=\"-1 -1 1202 768\" fill=\"none\" id=\"svg1261632435_372\">\n<path d=\"M0 0V513H133.087C198.114 513 258.629 546.24 293.512 601.118C350.803 691.249 471.079 716.508 559.788"
+    }
+  ]
+}

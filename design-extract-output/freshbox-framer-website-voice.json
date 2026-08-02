@@ -1,0 +1,42 @@
+{
+  "tone": "friendly",
+  "pronoun": "we→you",
+  "headingStyle": "Title Case",
+  "headingLengthClass": "tight",
+  "ctaVerbs": [
+    {
+      "value": "special",
+      "count": 2
+    },
+    {
+      "value": "read",
+      "count": 2
+    }
+  ],
+  "buttonPatterns": [
+    {
+      "value": "special discount",
+      "count": 2
+    },
+    {
+      "value": "read article\n\nbook your table",
+      "count": 2
+    }
+  ],
+  "sampleHeadings": [
+    "Crafted for Cravings Served with Perfection",
+    "Explore Our Popular Dishes",
+    "Delicious Deals You Can’t Miss",
+    "Freshly Prepared Served at Its Best",
+    "Stone-Baked Melty & Flavorful",
+    "Signature Beef Burgers Rich. Juicy. Satisfying.",
+    "Discover Flavors You’ll Love",
+    "Exceptional Experience with premium quality, rich flavors",
+    "0K",
+    "0K"
+  ],
+  "stats": {
+    "buttons": 4,
+    "headings": 25
+  }
+}

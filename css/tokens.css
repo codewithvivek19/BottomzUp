@@ -1,0 +1,100 @@
+/* ============================================
+   BOTTOMZ UP BAR & GRILL — Design Tokens
+   Cream + Amber + Charcoal · Lemon Milk + Poppins
+   ============================================ */
+
+:root {
+  /* Brand Core — strict palette */
+  --color-cream: #F5E8B7;
+  --color-cream-light: #FBF6E3;
+  --color-cream-dark: #E8D9A0;
+
+  /*
+   * COLOR FLOW LOCK
+   * Page canvas: --canvas (x32 cream). Accents: --accent-flow (x33 amber).
+   * Only exception: impact footer. Sections = transparent or glass only.
+   */
+  --bg-global-gradient: linear-gradient(0deg, rgba(246, 231, 194, 1) 0%, rgba(247, 233, 198, 1) 21.39%, rgba(249, 237, 210, 1) 42.77%, rgba(250, 239, 214, 1) 47.83%, rgba(251, 240, 218, 1) 65.87%, rgba(252, 245, 229, 1) 82.81%, rgba(255, 253, 248, 1) 99.26%, rgba(255, 253, 249, 1) 100%);
+  --theme-gradient: linear-gradient(90deg, rgba(255, 147, 30, 1) 0%, rgba(250, 149, 34, 1) 6.59%, rgba(239, 155, 44, 1) 28.65%, rgba(235, 157, 47, 1) 52.17%, rgba(239, 155, 44, 1) 57.23%, rgba(251, 149, 33, 1) 78.61%, rgba(255, 147, 30, 1) 100%);
+  --canvas: var(--bg-global-gradient);
+  --accent-flow: var(--theme-gradient);
+
+  --color-amber: #E7931E;
+  --color-amber-bright: #F19F0F;
+  --color-amber-deep: #C67A12;
+  --color-amber-soft: rgba(231, 147, 30, 0.12);
+  --color-amber-glow: rgba(241, 159, 15, 0.22);
+
+  --color-charcoal: #2E2C2C;
+  --color-charcoal-soft: #3F3C3C;
+  --color-ink: #1A1919;
+
+  --color-white: #FFFFFF;
+  --color-off-white: #FEFDF9;
+
+  /* Semantic */
+  --bg-primary: var(--canvas);
+  --bg-elevated: rgba(254, 253, 249, 0.92);
+  --bg-glass: rgba(255, 253, 249, 0.72);
+  --bg-glass-solid: rgba(255, 253, 249, 0.94);
+  --bg-dark: var(--color-charcoal);
+  --bg-mesh-hi: #ffffff;
+  --bg-mesh-mid: #fffdf9;
+  --bg-mesh-low: #f8f5ee;
+  --text-primary: var(--color-charcoal);
+  --text-on-dark: var(--color-cream);
+  --text-muted: #5C5850;
+  --accent: var(--color-amber);
+  --accent-hover: var(--color-amber-bright);
+  --glass-border: rgba(46, 44, 44, 0.08);
+  --glass-border-strong: rgba(46, 44, 44, 0.12);
+
+  /* Typography — mandatory brand fonts */
+  --font-display: "Lemon Milk", "Arial Black", Impact, system-ui, sans-serif;
+  --font-body: "Poppins", system-ui, -apple-system, sans-serif;
+  --font-mono: "SF Mono", ui-monospace, monospace;
+
+  /* Type scale helpers */
+  --tracking-display: -0.02em;
+  --tracking-tight: -0.01em;
+  --tracking-wide: 0.08em;
+  --tracking-eyebrow: 0.12em;
+
+  /* Spacing scale (8pt base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+  --space-12: 6rem;
+  --space-16: 8rem;
+
+  /* Radii — intentional, not soft-everywhere */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Motion — purposeful, never flashy */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 180ms;
+  --duration-normal: 320ms;
+  --duration-slow: 520ms;
+
+  /* Shadows — warm charcoal, restrained */
+  --shadow-sm: 0 1px 2px rgba(46, 44, 44, 0.06);
+  --shadow-md: 0 4px 16px rgba(46, 44, 44, 0.08);
+  --shadow-lg: 0 12px 40px rgba(46, 44, 44, 0.12);
+  --shadow-float: 0 10px 32px rgba(46, 44, 44, 0.1), 0 2px 8px rgba(46, 44, 44, 0.05);
+  --shadow-glow: 0 0 0 1px var(--color-amber-soft), 0 8px 24px rgba(231, 147, 30, 0.15);
+
+  /* Layout */
+  --header-height: 72px;
+  --menu-sticky-offset: 132px;
+  --container-max: 1280px;
+}

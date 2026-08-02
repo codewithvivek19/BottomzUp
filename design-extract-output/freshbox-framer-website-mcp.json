@@ -1,0 +1,583 @@
+{
+  "colors": {
+    "all": [
+      {
+        "hex": "#000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0
+        },
+        "count": 2272,
+        "contexts": [
+          "text",
+          "border",
+          "background"
+        ]
+      },
+      {
+        "hex": "#0000ee",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 238,
+          "a": 1
+        },
+        "hsl": {
+          "h": 240,
+          "s": 100,
+          "l": 47
+        },
+        "count": 372,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#ffffff",
+        "rgb": {
+          "r": 255,
+          "g": 255,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 100
+        },
+        "count": 208,
+        "contexts": [
+          "text",
+          "border",
+          "background"
+        ]
+      },
+      {
+        "hex": "#e9e9e9",
+        "rgb": {
+          "r": 233,
+          "g": 233,
+          "b": 233,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 91
+        },
+        "count": 154,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#482820",
+        "rgb": {
+          "r": 72,
+          "g": 40,
+          "b": 32,
+          "a": 1
+        },
+        "hsl": {
+          "h": 12,
+          "s": 38,
+          "l": 20
+        },
+        "count": 89,
+        "contexts": [
+          "text",
+          "border",
+          "background"
+        ]
+      },
+      {
+        "hex": "#7f675c",
+        "rgb": {
+          "r": 127,
+          "g": 103,
+          "b": 92,
+          "a": 1
+        },
+        "hsl": {
+          "h": 19,
+          "s": 16,
+          "l": 43
+        },
+        "count": 36,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#920711",
+        "rgb": {
+          "r": 146,
+          "g": 7,
+          "b": 17,
+          "a": 1
+        },
+        "hsl": {
+          "h": 356,
+          "s": 91,
+          "l": 30
+        },
+        "count": 27,
+        "contexts": [
+          "text",
+          "border",
+          "background"
+        ]
+      },
+      {
+        "hex": "#5f070d",
+        "rgb": {
+          "r": 95,
+          "g": 7,
+          "b": 13,
+          "a": 1
+        },
+        "hsl": {
+          "h": 356,
+          "s": 86,
+          "l": 20
+        },
+        "count": 19,
+        "contexts": [
+          "background",
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#fff7e8",
+        "rgb": {
+          "r": 255,
+          "g": 247,
+          "b": 232,
+          "a": 1
+        },
+        "hsl": {
+          "h": 39,
+          "s": 100,
+          "l": 95
+        },
+        "count": 12,
+        "contexts": [
+          "background"
+        ]
+      },
+      {
+        "hex": "#fc9e25",
+        "rgb": {
+          "r": 252,
+          "g": 158,
+          "b": 37,
+          "a": 1
+        },
+        "hsl": {
+          "h": 34,
+          "s": 97,
+          "l": 57
+        },
+        "count": 12,
+        "contexts": [
+          "background"
+        ]
+      }
+    ]
+  },
+  "regions": [
+    {
+      "role": "nav",
+      "tag": "header",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 80
+      },
+      "heading": null,
+      "buttonCount": 0,
+      "cardCount": 0,
+      "className": "framer-1yu60fu"
+    },
+    {
+      "role": "nav",
+      "tag": "nav",
+      "bounds": {
+        "x": 100,
+        "y": 0,
+        "w": 1080,
+        "h": 80
+      },
+      "heading": null,
+      "buttonCount": 0,
+      "cardCount": 0,
+      "className": "framer-iAn7x framer-1ynyigc framer-v-1ynyigc"
+    },
+    {
+      "role": "content",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 861
+      },
+      "heading": "Crafted for Cravings Served with Perfection",
+      "buttonCount": 0,
+      "cardCount": 0,
+      "className": "framer-7lnfkn"
+    },
+    {
+      "role": "content",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 861,
+        "w": 1280,
+        "h": 571.390625
+      },
+      "heading": "Explore Our Popular Dishes",
+      "buttonCount": 0,
+      "cardCount": 7,
+      "className": "framer-g01noz"
+    },
+    {
+      "role": "content",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 1432.390625,
+        "w": 1280,
+        "h": 1015.015625
+      },
+      "heading": "Delicious Deals You Can’t Miss",
+      "buttonCount": 2,
+      "cardCount": 0,
+      "className": "framer-lpedqy"
+    },
+    {
+      "role": "content",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 2447.40625,
+        "w": 1280,
+        "h": 896.1875
+      },
+      "heading": "Discover Flavors You’ll Love",
+      "buttonCount": 0,
+      "cardCount": 0,
+      "className": "framer-krkcps"
+    },
+    {
+      "role": "testimonials",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 3343.59375,
+        "w": 1280,
+        "h": 1760.796875
+      },
+      "heading": "Exceptional Experience with premium quality, rich flavors",
+      "buttonCount": 0,
+      "cardCount": 0,
+      "className": "framer-uejw0l"
+    },
+    {
+      "role": "content",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 5104.390625,
+        "w": 1280,
+        "h": 728.1875
+      },
+      "heading": "Loved by Food Lovers",
+      "buttonCount": 0,
+      "cardCount": 0,
+      "className": "framer-14bgcq2"
+    },
+    {
+      "role": "content",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 5832.578125,
+        "w": 1280,
+        "h": 820.984375
+      },
+      "heading": "Catering for Every Celebration",
+      "buttonCount": 0,
+      "cardCount": 0,
+      "className": "framer-1dhmtqw"
+    },
+    {
+      "role": "testimonials",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 6653.5625,
+        "w": 1280,
+        "h": 629
+      },
+      "heading": null,
+      "buttonCount": 2,
+      "cardCount": 16,
+      "className": "framer-pyznx2"
+    },
+    {
+      "role": "testimonials",
+      "tag": "section",
+      "bounds": {
+        "x": 80,
+        "y": 6833.5625,
+        "w": 1120,
+        "h": 389
+      },
+      "heading": null,
+      "buttonCount": 2,
+      "cardCount": 16,
+      "className": "framer-slideshow framer-slideshow-axis-x"
+    },
+    {
+      "role": "content",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 7282.5625,
+        "w": 1280,
+        "h": 717.984375
+      },
+      "heading": "Frequently Asked Questions",
+      "buttonCount": 0,
+      "cardCount": 0,
+      "className": "framer-6bwo2j"
+    },
+    {
+      "role": "content",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 8000.546875,
+        "w": 1280,
+        "h": 1043.390625
+      },
+      "heading": "A Feast for Your Eyes",
+      "buttonCount": 0,
+      "cardCount": 0,
+      "className": "framer-4o9j8l"
+    },
+    {
+      "role": "hero",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 9043.9375,
+        "w": 1280,
+        "h": 998.578125
+      },
+      "heading": "Insights, Trends & Food Stories",
+      "buttonCount": 2,
+      "cardCount": 0,
+      "className": "framer-1cnlmmb"
+    },
+    {
+      "role": "content",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 10042.515625,
+        "w": 1280,
+        "h": 807.8125
+      },
+      "heading": "Hungry? We’re Ready Come and Enjoy",
+      "buttonCount": 0,
+      "cardCount": 0,
+      "className": "framer-udwnp2"
+    },
+    {
+      "role": "content",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 10042.515625,
+        "w": 1280,
+        "h": 371.1875
+      },
+      "heading": "Hungry? We’re Ready Come and Enjoy",
+      "buttonCount": 0,
+      "cardCount": 0,
+      "className": "framer-pdLXz framer-ZGUX1 framer-9fT9J framer-l3hihl framer-v-l3hihl"
+    },
+    {
+      "role": "footer",
+      "tag": "footer",
+      "bounds": {
+        "x": 0,
+        "y": 10413.703125,
+        "w": 1280,
+        "h": 436.625
+      },
+      "heading": null,
+      "buttonCount": 0,
+      "cardCount": 0,
+      "className": "framer-vLGaK framer-mdqt4 framer-9fT9J framer-8jVSc framer-ANI9D framer-vx5j2x framer-v-vx5j2x"
+    }
+  ],
+  "componentClusters": [
+    {
+      "kind": "button",
+      "structuralHash": "button>div",
+      "instanceCount": 2,
+      "variants": [
+        {
+          "css": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(0, 0, 0)",
+            "padding": "4px 24px 4px 24px",
+            "borderRadius": "40px",
+            "border": "0px outset rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "fontWeight": "400"
+          },
+          "instanceCount": 1
+        },
+        {
+          "css": {
+            "background": "rgb(252, 158, 37)",
+            "color": "rgb(0, 0, 0)",
+            "padding": "4px 24px 4px 24px",
+            "borderRadius": "40px",
+            "border": "0px outset rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "fontWeight": "400"
+          },
+          "instanceCount": 1
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "structuralHash": "button>img",
+      "instanceCount": 2,
+      "variants": [
+        {
+          "css": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(0, 0, 0)",
+            "padding": "0px 0px 0px 0px",
+            "borderRadius": "0px",
+            "border": "0px none rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "fontWeight": "400"
+          },
+          "instanceCount": 2
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "structuralHash": "button>div>div>div",
+      "instanceCount": 2,
+      "variants": [
+        {
+          "css": {
+            "background": "rgb(146, 7, 17)",
+            "color": "rgb(0, 0, 0)",
+            "padding": "12px 40px 12px 40px",
+            "borderRadius": "40px",
+            "border": "0px outset rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "fontWeight": "400"
+          },
+          "instanceCount": 2
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "remediation": []
+  },
+  "cssHealth": {
+    "sheets": [
+      {
+        "url": "https://freshbox.framer.website/",
+        "totalBytes": 96,
+        "usedBytes": 96,
+        "unusedBytes": 0,
+        "unusedPercent": 0
+      },
+      {
+        "url": "https://freshbox.framer.website/",
+        "totalBytes": 192498,
+        "usedBytes": 88893,
+        "unusedBytes": 103605,
+        "unusedPercent": 54
+      },
+      {
+        "url": "https://freshbox.framer.website/",
+        "totalBytes": 21901,
+        "usedBytes": 0,
+        "unusedBytes": 21901,
+        "unusedPercent": 100
+      },
+      {
+        "url": "https://freshbox.framer.website/",
+        "totalBytes": 97,
+        "usedBytes": 97,
+        "unusedBytes": 0,
+        "unusedPercent": 0
+      },
+      {
+        "url": "https://freshbox.framer.website/",
+        "totalBytes": 447,
+        "usedBytes": 0,
+        "unusedBytes": 447,
+        "unusedPercent": 100
+      }
+    ],
+    "totalBytes": 215039,
+    "usedBytes": 89086,
+    "unusedBytes": 125953,
+    "unusedPercent": 59,
+    "importantCount": 17,
+    "duplicates": 3581,
+    "vendorPrefixes": {
+      "webkit": 68,
+      "moz": 2,
+      "ms": 0,
+      "o": 0
+    },
+    "keyframes": [],
+    "specificity": {
+      "max": [
+        1,
+        5,
+        4
+      ],
+      "average": [
+        0,
+        2.04,
+        0.43
+      ],
+      "count": 1144
+    },
+    "issues": [
+      "17 !important rules",
+      "3581 duplicate declarations",
+      "59% unused CSS"
+    ]
+  }
+}

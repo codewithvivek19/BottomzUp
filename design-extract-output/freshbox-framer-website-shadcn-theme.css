@@ -1,0 +1,19 @@
+/* shadcn/ui Theme — extracted from https://freshbox.framer.website */
+/* Paste into your globals.css */
+
+@layer base {
+  :root {
+    --background: 39 100% 95%;
+    --foreground: 0 0% 0%;
+    --primary: 356 86% 20%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 34 97% 57%;
+    --secondary-foreground: 0 0% 0%;
+    --accent: 356 91% 30%;
+    --accent-foreground: 0 0% 100%;
+    --muted: 39 100% 95%;
+    --muted-foreground: 0 0% 0%;
+    --border: 39 100% 95%;
+    --radius: 10px;
+  }
+}

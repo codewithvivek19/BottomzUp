@@ -1,0 +1,242 @@
+{
+  "$metadata": {
+    "generator": "designlang",
+    "version": "7.0.0",
+    "spec": "https://design-tokens.github.io/community-group/format/",
+    "source": "https://freshbox.framer.website",
+    "generatedAt": "2026-07-30T02:17:45.521Z"
+  },
+  "primitive": {
+    "color": {
+      "brand": {
+        "primary": {
+          "$value": "#5f070d",
+          "$type": "color"
+        },
+        "secondary": {
+          "$value": "#fc9e25",
+          "$type": "color"
+        }
+      },
+      "neutral": {
+        "n100": {
+          "$value": "#000000",
+          "$type": "color"
+        },
+        "n200": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "n300": {
+          "$value": "#e9e9e9",
+          "$type": "color"
+        },
+        "n400": {
+          "$value": "#7f675c",
+          "$type": "color"
+        },
+        "n500": {
+          "$value": "#fff7e8",
+          "$type": "color"
+        }
+      },
+      "background": {
+        "bg0": {
+          "$value": "#fff7e8",
+          "$type": "color"
+        },
+        "bg1": {
+          "$value": "#920711",
+          "$type": "color"
+        },
+        "bg2": {
+          "$value": "#ffffff",
+          "$type": "color"
+        }
+      },
+      "text": {
+        "text0": {
+          "$value": "#000000",
+          "$type": "color"
+        },
+        "text1": {
+          "$value": "#0000ee",
+          "$type": "color"
+        },
+        "text2": {
+          "$value": "#920711",
+          "$type": "color"
+        },
+        "text3": {
+          "$value": "#482820",
+          "$type": "color"
+        },
+        "text4": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "text5": {
+          "$value": "#7f675c",
+          "$type": "color"
+        },
+        "text6": {
+          "$value": "#e9e9e9",
+          "$type": "color"
+        },
+        "text7": {
+          "$value": "#5f070d",
+          "$type": "color"
+        }
+      }
+    },
+    "spacing": {
+      "s0": {
+        "$value": "1px",
+        "$type": "dimension"
+      },
+      "s1": {
+        "$value": "30px",
+        "$type": "dimension"
+      },
+      "s2": {
+        "$value": "40px",
+        "$type": "dimension"
+      },
+      "s3": {
+        "$value": "52px",
+        "$type": "dimension"
+      },
+      "s4": {
+        "$value": "60px",
+        "$type": "dimension"
+      },
+      "s5": {
+        "$value": "88px",
+        "$type": "dimension"
+      },
+      "s6": {
+        "$value": "100px",
+        "$type": "dimension"
+      },
+      "s7": {
+        "$value": "120px",
+        "$type": "dimension"
+      },
+      "s8": {
+        "$value": "130px",
+        "$type": "dimension"
+      },
+      "s9": {
+        "$value": "150px",
+        "$type": "dimension"
+      },
+      "s10": {
+        "$value": "416px",
+        "$type": "dimension"
+      },
+      "s11": {
+        "$value": "436px",
+        "$type": "dimension"
+      }
+    },
+    "radius": {
+      "r0": {
+        "$value": "10px",
+        "$type": "dimension"
+      },
+      "r1": {
+        "$value": "16px",
+        "$type": "dimension"
+      },
+      "r2": {
+        "$value": "20px",
+        "$type": "dimension"
+      },
+      "r3": {
+        "$value": "30px",
+        "$type": "dimension"
+      },
+      "r4": {
+        "$value": "40px",
+        "$type": "dimension"
+      },
+      "r5": {
+        "$value": "999px",
+        "$type": "dimension"
+      }
+    },
+    "shadow": {
+      "sh0": {
+        "$value": "rgb(0, 0, 0) 0px 0px 0px 1px inset",
+        "$type": "shadow"
+      },
+      "sh1": {
+        "$value": "rgba(0, 0, 0, 0.17) 0px 0.602187px 1.56569px -1.5px, rgba(0, 0, 0, 0.14) 0px 2.28853px 5.95019px -3px, rgba(0, 0, 0, 0.02) 0px 10px 26px -4.5px",
+        "$type": "shadow"
+      }
+    },
+    "fontFamily": {
+      "f0": {
+        "$value": "Inter Display",
+        "$type": "fontFamily"
+      },
+      "f1": {
+        "$value": "Tanker",
+        "$type": "fontFamily"
+      },
+      "f2": {
+        "$value": "Times",
+        "$type": "fontFamily"
+      }
+    }
+  },
+  "semantic": {
+    "color": {
+      "action": {
+        "primary": {
+          "$value": "{primitive.color.brand.primary}",
+          "$type": "color"
+        },
+        "secondary": {
+          "$value": "{primitive.color.brand.secondary}",
+          "$type": "color"
+        }
+      },
+      "surface": {
+        "default": {
+          "$value": "{primitive.color.background.bg0}",
+          "$type": "color"
+        }
+      },
+      "text": {
+        "body": {
+          "$value": "{primitive.color.text.text0}",
+          "$type": "color"
+        }
+      }
+    },
+    "typography": {
+      "body": {
+        "$value": {
+          "fontFamily": "Inter Display",
+          "fontSize": "80px",
+          "fontWeight": "400",
+          "lineHeight": "92px"
+        },
+        "$type": "typography"
+      }
+    },
+    "radius": {
+      "control": {
+        "$value": "{primitive.radius.r0}",
+        "$type": "dimension"
+      }
+    },
+    "shadow": {
+      "elevated": {
+        "$value": "{primitive.shadow.sh0}",
+        "$type": "shadow"
+      }
+    }
+  }
+}

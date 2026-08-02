@@ -1,0 +1,117 @@
+{
+  "library": "heroicons-solid",
+  "confidence": 0.55,
+  "alternates": [
+    {
+      "id": "material",
+      "score": 0.4
+    }
+  ],
+  "stats": {
+    "count": 15,
+    "strokeOnly": 0,
+    "fillOnly": 15,
+    "mixed": 0,
+    "avgStrokeWidth": 0,
+    "gridDistribution": {
+      "24": 15
+    },
+    "roundedCapsFraction": 0
+  },
+  "signals": [
+    "fillDominant",
+    "grid24"
+  ],
+  "icons": [
+    {
+      "class": "framer-hsA90 framer-a21lwz",
+      "grid": 24,
+      "strokeWidth": null,
+      "style": "fill"
+    },
+    {
+      "class": "framer-hsA90 framer-a21lwz",
+      "grid": 24,
+      "strokeWidth": null,
+      "style": "fill"
+    },
+    {
+      "class": "framer-hsA90 framer-a21lwz",
+      "grid": 24,
+      "strokeWidth": null,
+      "style": "fill"
+    },
+    {
+      "class": "framer-hsA90 framer-a21lwz",
+      "grid": 24,
+      "strokeWidth": null,
+      "style": "fill"
+    },
+    {
+      "class": "framer-aHJRE framer-12edgfv",
+      "grid": 24,
+      "strokeWidth": null,
+      "style": "fill"
+    },
+    {
+      "class": "framer-wNsWY framer-12edgfv",
+      "grid": 24,
+      "strokeWidth": null,
+      "style": "fill"
+    },
+    {
+      "class": "framer-wNsWY framer-12edgfv",
+      "grid": 24,
+      "strokeWidth": null,
+      "style": "fill"
+    },
+    {
+      "class": "framer-wNsWY framer-12edgfv",
+      "grid": 24,
+      "strokeWidth": null,
+      "style": "fill"
+    },
+    {
+      "class": "framer-wNsWY framer-12edgfv",
+      "grid": 24,
+      "strokeWidth": null,
+      "style": "fill"
+    },
+    {
+      "class": "framer-hsA90 framer-a21lwz",
+      "grid": 24,
+      "strokeWidth": null,
+      "style": "fill"
+    },
+    {
+      "class": "framer-hsA90 framer-1aktov3",
+      "grid": 24,
+      "strokeWidth": null,
+      "style": "fill"
+    },
+    {
+      "class": "framer-hsA90 framer-11vfjuw",
+      "grid": 24,
+      "strokeWidth": null,
+      "style": "fill"
+    },
+    {
+      "class": "framer-hsA90 framer-1aktov3",
+      "grid": 24,
+      "strokeWidth": null,
+      "style": "fill"
+    },
+    {
+      "class": "framer-hsA90 framer-11vfjuw",
+      "grid": 24,
+      "strokeWidth": null,
+      "style": "fill"
+    },
+    {
+      "class": "framer-hsA90 framer-a21lwz",
+      "grid": 24,
+      "strokeWidth": null,
+      "style": "fill"
+    }
+  ]
+}

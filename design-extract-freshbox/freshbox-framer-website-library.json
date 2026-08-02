@@ -1,0 +1,14 @@
+{
+  "library": "vuetify",
+  "confidence": 0.48,
+  "evidence": [
+    "9 v-* classes"
+  ],
+  "alternates": [],
+  "signals": {
+    "tailwindLike": 0,
+    "radixAttrCount": 0,
+    "classSampleSize": 496
+  },
+  "needsSmart": true
+}

@@ -1,0 +1,450 @@
+{
+  "pageIntent": {
+    "type": "landing",
+    "confidence": 0.29,
+    "path": "/",
+    "title": "FreshBox — Fast Food & Restaurant Framer Template",
+    "description": "FreshBox is a modern Framer template made for grocery stores, organic shops, food delivery, supermarkets, fresh produce markets, and healthy food brands.",
+    "signals": [
+      {
+        "kind": "dom",
+        "type": "blog-post",
+        "weight": 0.35,
+        "detail": "byline|min-read"
+      },
+      {
+        "kind": "dom",
+        "type": "legal",
+        "weight": 0.4
+      },
+      {
+        "kind": "url",
+        "type": "landing",
+        "weight": 0.45,
+        "detail": "root-path"
+      }
+    ],
+    "alternates": [
+      {
+        "type": "legal",
+        "score": 0.4
+      },
+      {
+        "type": "blog-post",
+        "score": 0.35
+      }
+    ],
+    "needsSmart": true
+  },
+  "sectionRoles": {
+    "sections": [
+      {
+        "index": 0,
+        "tag": "header",
+        "role": "nav",
+        "subrole": null,
+        "confidence": 0.4,
+        "heading": null,
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80
+        },
+        "buttonCount": 0,
+        "cardCount": 0,
+        "slots": {
+          "lede": "Home"
+        },
+        "needsSmart": true
+      },
+      {
+        "index": 1,
+        "tag": "nav",
+        "role": "nav",
+        "subrole": null,
+        "confidence": 0.9,
+        "heading": null,
+        "bounds": {
+          "x": 100,
+          "y": 0,
+          "w": 1080,
+          "h": 80
+        },
+        "buttonCount": 0,
+        "cardCount": 0,
+        "slots": {
+          "lede": "Home"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 2,
+        "tag": "section",
+        "role": "content",
+        "subrole": null,
+        "confidence": 0.3,
+        "heading": "Crafted for Cravings Served with Perfection",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 861
+        },
+        "buttonCount": 0,
+        "cardCount": 0,
+        "slots": {
+          "heading": "Crafted for Cravings Served with Perfection",
+          "lede": "Fresh • Fast • Flavorful"
+        },
+        "needsSmart": true
+      },
+      {
+        "index": 3,
+        "tag": "section",
+        "role": "content",
+        "subrole": null,
+        "confidence": 0.3,
+        "heading": "Explore Our Popular Dishes",
+        "bounds": {
+          "x": 0,
+          "y": 861,
+          "w": 1280,
+          "h": 571.390625
+        },
+        "buttonCount": 0,
+        "cardCount": 7,
+        "slots": {
+          "heading": "Explore Our Popular Dishes",
+          "lede": "Categories"
+        },
+        "needsSmart": true
+      },
+      {
+        "index": 4,
+        "tag": "section",
+        "role": "testimonial",
+        "subrole": null,
+        "confidence": 0.8,
+        "heading": "Delicious Deals You Can’t Miss",
+        "bounds": {
+          "x": 0,
+          "y": 1432.390625,
+          "w": 1280,
+          "h": 1015.015625
+        },
+        "buttonCount": 2,
+        "cardCount": 0,
+        "slots": {
+          "heading": "Delicious Deals You Can’t Miss",
+          "subheadings": [
+            "Freshly Prepared Served at Its Best",
+            "Stone-Baked Melty & Flavorful",
+            "Signature Beef Burgers Rich. Juicy. Satisfying."
+          ],
+          "ctaCount": 2,
+          "lede": "Special Offers"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 5,
+        "tag": "section",
+        "role": "testimonial",
+        "subrole": null,
+        "confidence": 0.8,
+        "heading": "Discover Flavors You’ll Love",
+        "bounds": {
+          "x": 0,
+          "y": 2447.40625,
+          "w": 1280,
+          "h": 896.1875
+        },
+        "buttonCount": 0,
+        "cardCount": 0,
+        "slots": {
+          "heading": "Discover Flavors You’ll Love",
+          "lede": "Our Menu"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 6,
+        "tag": "section",
+        "role": "testimonial",
+        "subrole": null,
+        "confidence": 0.8,
+        "heading": "Exceptional Experience with premium quality, rich flavors",
+        "bounds": {
+          "x": 0,
+          "y": 3343.59375,
+          "w": 1280,
+          "h": 1760.796875
+        },
+        "buttonCount": 0,
+        "cardCount": 0,
+        "slots": {
+          "heading": "Exceptional Experience with premium quality, rich flavors",
+          "subheadings": [
+            "0K",
+            "0K",
+            "0K",
+            "0K"
+          ],
+          "lede": "About Us"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 7,
+        "tag": "section",
+        "role": "content",
+        "subrole": null,
+        "confidence": 0.3,
+        "heading": "Loved by Food Lovers",
+        "bounds": {
+          "x": 0,
+          "y": 5104.390625,
+          "w": 1280,
+          "h": 728.1875
+        },
+        "buttonCount": 0,
+        "cardCount": 0,
+        "slots": {
+          "heading": "Loved by Food Lovers",
+          "lede": "Why Choose Us"
+        },
+        "needsSmart": true
+      },
+      {
+        "index": 8,
+        "tag": "section",
+        "role": "content",
+        "subrole": null,
+        "confidence": 0.3,
+        "heading": "Catering for Every Celebration",
+        "bounds": {
+          "x": 0,
+          "y": 5832.578125,
+          "w": 1280,
+          "h": 820.984375
+        },
+        "buttonCount": 0,
+        "cardCount": 0,
+        "slots": {
+          "heading": "Catering for Every Celebration",
+          "lede": "Catering"
+        },
+        "needsSmart": true
+      },
+      {
+        "index": 9,
+        "tag": "section",
+        "role": "testimonial",
+        "subrole": null,
+        "confidence": 0.8,
+        "heading": null,
+        "bounds": {
+          "x": 0,
+          "y": 6653.5625,
+          "w": 1280,
+          "h": 629
+        },
+        "buttonCount": 2,
+        "cardCount": 16,
+        "slots": {
+          "heading": "",
+          "subheadings": [
+            "",
+            "What Our Customers Say",
+            "What Our Customers Say",
+            "What Our Customers Say"
+          ],
+          "ctaCount": 2,
+          "lede": "Testimonials"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 10,
+        "tag": "section",
+        "role": "testimonial",
+        "subrole": null,
+        "confidence": 0.8,
+        "heading": null,
+        "bounds": {
+          "x": 80,
+          "y": 6833.5625,
+          "w": 1120,
+          "h": 389
+        },
+        "buttonCount": 2,
+        "cardCount": 16,
+        "slots": {
+          "heading": "",
+          "subheadings": [
+            "",
+            "What Our Customers Say",
+            "What Our Customers Say",
+            "What Our Customers Say"
+          ],
+          "ctaCount": 2,
+          "lede": "Testimonials"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 11,
+        "tag": "section",
+        "role": "faq",
+        "subrole": null,
+        "confidence": 0.85,
+        "heading": "Frequently Asked Questions",
+        "bounds": {
+          "x": 0,
+          "y": 7282.5625,
+          "w": 1280,
+          "h": 717.984375
+        },
+        "buttonCount": 0,
+        "cardCount": 0,
+        "slots": {
+          "heading": "Frequently Asked Questions",
+          "lede": "FAQ"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 12,
+        "tag": "section",
+        "role": "gallery",
+        "subrole": null,
+        "confidence": 0.7,
+        "heading": "A Feast for Your Eyes",
+        "bounds": {
+          "x": 0,
+          "y": 8000.546875,
+          "w": 1280,
+          "h": 1043.390625
+        },
+        "buttonCount": 0,
+        "cardCount": 0,
+        "slots": {
+          "heading": "A Feast for Your Eyes",
+          "lede": "Gallery"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 13,
+        "tag": "section",
+        "role": "hero",
+        "subrole": null,
+        "confidence": 0.4,
+        "heading": "Insights, Trends & Food Stories",
+        "bounds": {
+          "x": 0,
+          "y": 9043.9375,
+          "w": 1280,
+          "h": 998.578125
+        },
+        "buttonCount": 2,
+        "cardCount": 0,
+        "slots": {
+          "heading": "Insights, Trends & Food Stories",
+          "ctaCount": 2,
+          "lede": "Blog"
+        },
+        "needsSmart": true
+      },
+      {
+        "index": 14,
+        "tag": "section",
+        "role": "faq",
+        "subrole": null,
+        "confidence": 0.85,
+        "heading": "Hungry? We’re Ready Come and Enjoy",
+        "bounds": {
+          "x": 0,
+          "y": 10042.515625,
+          "w": 1280,
+          "h": 807.8125
+        },
+        "buttonCount": 0,
+        "cardCount": 0,
+        "slots": {
+          "heading": "Hungry? We’re Ready Come and Enjoy"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 15,
+        "tag": "section",
+        "role": "content",
+        "subrole": null,
+        "confidence": 0.3,
+        "heading": "Hungry? We’re Ready Come and Enjoy",
+        "bounds": {
+          "x": 0,
+          "y": 10042.515625,
+          "w": 1280,
+          "h": 371.1875
+        },
+        "buttonCount": 0,
+        "cardCount": 0,
+        "slots": {
+          "heading": "Hungry? We’re Ready Come and Enjoy"
+        },
+        "needsSmart": true
+      },
+      {
+        "index": 16,
+        "tag": "footer",
+        "role": "footer",
+        "subrole": null,
+        "confidence": 0.95,
+        "heading": null,
+        "bounds": {
+          "x": 0,
+          "y": 10413.703125,
+          "w": 1280,
+          "h": 436.625
+        },
+        "buttonCount": 0,
+        "cardCount": 0,
+        "slots": {
+          "lede": "Address"
+        },
+        "needsSmart": false
+      }
+    ],
+    "counts": {
+      "nav": 2,
+      "content": 5,
+      "testimonial": 5,
+      "faq": 2,
+      "gallery": 1,
+      "hero": 1,
+      "footer": 1
+    },
+    "readingOrder": [
+      "nav",
+      "nav",
+      "content",
+      "content",
+      "testimonial",
+      "testimonial",
+      "testimonial",
+      "content",
+      "content",
+      "testimonial",
+      "testimonial",
+      "faq",
+      "gallery",
+      "hero",
+      "faq",
+      "content",
+      "footer"
+    ]
+  }
+}

@@ -1,0 +1,328 @@
+/* ============================================
+   BOTTOMZ UP — Sizzle & Smoke Micro-Interactions
+   Burger cards: heat-haze hover + heat shimmer
+   Footer: scroll-driven headline reveal
+   ============================================ */
+
+/* ---------- Burger card: "sizzle" hover state ---------- */
+
+/* Radiant heat corona behind the featured burger */
+.burger-card--featured {
+  position: relative;
+}
+
+.burger-card--featured::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 23px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(231, 147, 30, 0) 0%,
+    rgba(241, 159, 15, 0.55) 25%,
+    rgba(196, 80, 40, 0.45) 50%,
+    rgba(231, 147, 30, 0) 75%,
+    rgba(241, 159, 15, 0.4) 100%
+  );
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: sizzleRotate 3s linear infinite;
+  animation-play-state: paused;
+}
+
+.burger-card--featured:hover::before,
+.burger-card--featured:focus-visible::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+@keyframes sizzleRotate {
+  to { transform: rotate(360deg); }
+}
+
+/* White-hot glow inner ring on the featured card image on hover */
+.burger-card--featured:hover .burger-image::before,
+.burger-card--featured:focus-visible .burger-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 40% at 50% 90%,
+    rgba(255, 200, 80, 0.28),
+    transparent 65%
+  );
+  z-index: 1;
+  pointer-events: none;
+  animation: heatPulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes heatPulse {
+  from { opacity: 0.4; }
+  to   { opacity: 1; }
+}
+
+/* Heat shimmer on the price stamp for featured card */
+.burger-card--featured:hover .price-stamp {
+  box-shadow:
+    0 0 0 2px rgba(241, 159, 15, 0.6),
+    0 0 18px rgba(241, 159, 15, 0.45),
+    0 4px 12px rgba(0,0,0,0.25);
+  animation: stampPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes stampPop {
+  0%   { transform: rotate(3deg) scale(1); }
+  60%  { transform: rotate(-1deg) scale(1.12); }
+  100% { transform: rotate(0deg) scale(1.05); }
+}
+
+/* Smoke wisps on the card badge ("Heavy hitter") — CSS-only smoke trail */
+.card-badge {
+  position: relative;
+  overflow: visible;
+}
+
+.burger-card--featured:hover .card-badge::before,
+.burger-card--featured:focus-visible .card-badge::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 16px;
+  background: linear-gradient(
+    to top,
+    rgba(245, 232, 183, 0.7),
+    transparent
+  );
+  border-radius: 4px;
+  animation: smokeRise 0.9s ease-out infinite;
+  pointer-events: none;
+}
+
+.burger-card--featured:hover .card-badge::after,
+.burger-card--featured:focus-visible .card-badge::after {
+  content: "";
+  position: absolute;
+  top: -22px;
+  left: calc(50% + 6px);
+  transform: translateX(-50%);
+  width: 3px;
+  height: 12px;
+  background: linear-gradient(
+    to top,
+    rgba(245, 232, 183, 0.5),
+    transparent
+  );
+  border-radius: 4px;
+  animation: smokeRise 1.1s ease-out 0.2s infinite;
+  pointer-events: none;
+}
+
+@keyframes smokeRise {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0) scaleX(1);
+  }
+  40% {
+    opacity: 0.9;
+    transform: translateX(-55%) translateY(-6px) scaleX(1.3);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-45%) translateY(-14px) scaleX(0.6);
+  }
+}
+
+/* All regular burger cards: subtle ember glow on hover */
+.burger-card:not(.burger-card--featured):hover .burger-image::before,
+.burger-card:not(.burger-card--featured):focus-visible .burger-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 50% 35% at 50% 95%,
+    rgba(231, 147, 30, 0.22),
+    transparent 65%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ---------- Impact Footer: Scroll-Reveal Overdrive ---------- */
+
+/* Wrapper that allows scroll-driven stagger */
+.footer-hero {
+  overflow: hidden;
+}
+
+/* "HUNGRY? GET HERE." — full punch reveal when in view */
+.footer-headline {
+  animation: footerHeadlinePunch 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Add individual line stagger to the two lines */
+.footer-headline span.footer-line {
+  display: block;
+  overflow: hidden;
+}
+
+.footer-headline span.footer-line-inner {
+  display: block;
+  transform: translateY(110%);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-headline.is-revealed span.footer-line-inner:nth-child(1) {
+  transform: translateY(0);
+  transition-delay: 0ms;
+}
+
+.footer-headline.is-revealed span.footer-line-inner:nth-child(2) {
+  transform: translateY(0);
+  transition-delay: 100ms;
+}
+
+/* Animated underline sweeps across the headline on reveal */
+.footer-headline-underline {
+  display: block;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--footer-cream, #f5e8b7) 20%,
+    rgba(241, 159, 15, 0.9) 50%,
+    var(--footer-cream, #f5e8b7) 80%,
+    transparent 100%
+  );
+  margin-top: 0.3rem;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.55s;
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+.footer-headline.is-revealed + .footer-headline-underline,
+.footer-cta-block.is-revealed .footer-headline-underline {
+  transform: scaleX(1);
+}
+
+/* Subhead stagger entrance */
+.footer-subhead {
+  transform: translateY(18px);
+  opacity: 0;
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.35s,
+    opacity 0.6s ease 0.35s;
+}
+
+.footer-cta-block.is-revealed .footer-subhead {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ORDER NOW button stagger */
+.footer-order-btn {
+  transform: translateY(20px) scale(0.96);
+  opacity: 0;
+  transition:
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.5s,
+    opacity 0.55s ease 0.5s,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.2s ease,
+    letter-spacing 0.25s ease;
+}
+
+.footer-cta-block.is-revealed .footer-order-btn {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Burger floats: staggered slide-up on reveal */
+.footer-burger--left {
+  transform: translateX(-32px) translateY(20px);
+  opacity: 0;
+  transition:
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.15s,
+    opacity 0.6s ease 0.15s;
+}
+
+.footer-hero.is-revealed .footer-burger--left {
+  transform: translateX(0) translateY(0);
+  opacity: 1;
+}
+
+.footer-burger--right {
+  transform: translateX(32px) translateY(20px);
+  opacity: 0;
+  transition:
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.25s,
+    opacity 0.6s ease 0.25s;
+}
+
+.footer-hero.is-revealed .footer-burger--right {
+  transform: translateX(0) translateY(0);
+  opacity: 1;
+}
+
+/* Keep existing hover/float animations working after reveal */
+.footer-hero.is-revealed .footer-burger--left img {
+  animation: footerBurgerFloatL 5.5s ease-in-out infinite;
+}
+
+.footer-hero.is-revealed .footer-burger--right img {
+  animation: footerBurgerFloatR 6s ease-in-out infinite;
+  animation-delay: -1.2s;
+}
+
+/* Marquee: subtle fade-in from top */
+.footer-marquee {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+}
+
+.site-footer--impact.footer-entered .footer-marquee {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Reduced motion overrides ---------- */
+@media (prefers-reduced-motion: reduce) {
+  /* Kill all sizzle smoke/spin */
+  .burger-card--featured::before,
+  .burger-card--featured:hover .card-badge::before,
+  .burger-card--featured:hover .card-badge::after {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  .burger-card--featured:hover::before {
+    opacity: 0 !important;
+  }
+
+  /* Footer: skip transitions, show immediately */
+  .footer-subhead,
+  .footer-order-btn,
+  .footer-burger--left,
+  .footer-burger--right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .footer-headline .footer-line-inner {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .footer-marquee {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://designlang.app/schemas/gradients.json",
+  "source": "https://freshbox.framer.website",
+  "generated": "2026-07-30T02:17:02.234Z",
+  "count": 1,
+  "gradients": [
+    {
+      "raw": "linear-gradient(rgba(146, 7, 17, 0) 0%, rgb(44, 2, 5) 100%)",
+      "type": "linear",
+      "direction": null,
+      "stops": [
+        {
+          "color": "rgba(146, 7, 17, 0)",
+          "position": "0%"
+        },
+        {
+          "color": "rgb(44, 2, 5)",
+          "position": "100%"
+        }
+      ],
+      "classification": "brand"
+    }
+  ]
+}

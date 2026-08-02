@@ -1,0 +1,664 @@
+/* ============================================
+   BOTTOMZ UP — Phase 4 Extras
+   Reserve panel · Tonight's pick · Heat bottle
+   ============================================ */
+
+/* ---------- Logo image in header ---------- */
+.logo-img {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+}
+
+@media (min-width: 900px) {
+  .logo-img {
+    height: 44px;
+    max-width: 180px;
+  }
+}
+
+.logo--text {
+  /* fallback wordmark still available */
+}
+
+/* ---------- Real food images ---------- */
+.burger-image {
+  background-color: #1a1510;
+  background-size: cover;
+  background-position: center;
+}
+
+.burger-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s var(--ease-out);
+}
+
+.burger-card:hover .burger-image img {
+  transform: scale(1.06);
+}
+
+.burger-image--photo {
+  background: radial-gradient(ellipse at 50% 70%, rgba(231, 147, 30, 0.15), #1a1510 70%);
+}
+
+.hero-card-photo {
+  position: relative;
+  aspect-ratio: 1;
+  margin: var(--space-3) var(--space-5) 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #1a1510;
+}
+
+.hero-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.hero-card:hover .hero-card-photo img {
+  transform: scale(1.05);
+}
+
+.hero-card-visual--legacy {
+  display: none;
+}
+
+/* ---------- Tonight's pick ---------- */
+.tonight-pick {
+  position: relative;
+  margin-block: var(--space-8) 0;
+  padding: var(--space-5) var(--space-6);
+  background: var(--color-charcoal);
+  color: var(--color-cream);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(231, 147, 30, 0.35);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  display: grid;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+@media (min-width: 700px) {
+  .tonight-pick {
+    grid-template-columns: 1fr auto;
+    gap: var(--space-6);
+  }
+}
+
+.tonight-pick::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 80% at 0% 50%, rgba(231, 147, 30, 0.18), transparent 60%);
+  pointer-events: none;
+}
+
+.tonight-pick > * {
+  position: relative;
+}
+
+.tonight-pick-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-amber);
+}
+
+.tonight-pick-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-top: 0.25rem;
+}
+
+.tonight-pick-desc {
+  font-size: 0.875rem;
+  color: rgba(245, 232, 183, 0.65);
+  max-width: 40ch;
+  margin-top: 0.35rem;
+}
+
+.tonight-pick-price {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-amber);
+  white-space: nowrap;
+}
+
+.tonight-pick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.tonight-pick .btn-secondary {
+  border-color: rgba(245, 232, 183, 0.4);
+  color: var(--text-primary);
+}
+
+.tonight-pick .btn-secondary:hover {
+  background: var(--bg-cream-gradient);
+  color: transparent;
+  border-color: var(--text-primary);
+}
+
+.tonight-pick-refresh {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(245, 232, 183, 0.55);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+
+.tonight-pick-refresh:hover {
+  color: var(--color-amber);
+}
+
+/* Menu page tonight pick variant */
+.menu-hero .tonight-pick {
+  margin-top: var(--space-6);
+  max-width: 52rem;
+}
+
+/* ---------- Reserve drawer / panel ---------- */
+.reserve-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(26, 25, 25, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--duration-normal) var(--ease-out),
+    visibility var(--duration-normal) var(--ease-out);
+}
+
+.reserve-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reserve-panel {
+  position: fixed;
+  z-index: 210;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 110%);
+  width: min(440px, calc(100% - 1.5rem));
+  max-height: min(90vh, 640px);
+  overflow-y: auto;
+  background: var(--bg-cream-gradient);
+  color: transparent;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  box-shadow: 0 -16px 48px rgba(26, 25, 25, 0.28);
+  padding: var(--space-6);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+@media (min-width: 700px) {
+  .reserve-panel {
+    top: 50%;
+    bottom: auto;
+    border-radius: var(--radius-xl);
+    transform: translate(-50%, -46%) scale(0.96);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      transform var(--duration-normal) var(--ease-out),
+      opacity var(--duration-normal) var(--ease-out),
+      visibility var(--duration-normal) var(--ease-out);
+  }
+
+  .reserve-panel.is-open {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.reserve-panel.is-open {
+  transform: translate(-50%, 0);
+}
+
+.reserve-panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.reserve-panel-head h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.reserve-panel-head .eyebrow {
+  margin-bottom: var(--space-2);
+}
+
+.reserve-close {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(46, 44, 44, 0.15);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: transparent;
+  transition: background var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
+}
+
+.reserve-close:hover {
+  background: var(--color-amber-soft);
+  border-color: var(--color-amber);
+}
+
+.reserve-panel p.lead {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-5);
+  line-height: 1.55;
+}
+
+.reserve-field {
+  margin-bottom: var(--space-5);
+}
+
+.reserve-field label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.party-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.party-chip {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid rgba(46, 44, 44, 0.15);
+  background: var(--color-off-white);
+  color: transparent;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.party-chip:hover {
+  border-color: rgba(231, 147, 30, 0.5);
+}
+
+.party-chip.is-active {
+  background: var(--color-amber);
+  border-color: var(--color-amber);
+  color: var(--color-ink);
+}
+
+.reserve-hours {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(46, 44, 44, 0.08);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-5);
+  font-size: 0.9rem;
+}
+
+.reserve-hours strong {
+  font-family: var(--font-display);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.reserve-note {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-5);
+  padding-left: var(--space-3);
+  border-left: 3px solid var(--color-amber);
+}
+
+.reserve-actions-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.reserve-actions-stack .btn {
+  width: 100%;
+}
+
+.reserve-sms {
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-amber-deep);
+  padding: 0.5rem;
+}
+
+.reserve-sms:hover {
+  color: transparent;
+}
+
+body.reserve-open {
+  overflow: hidden;
+}
+
+/* ---------- Wing heat bottle ---------- */
+.heat-bottle-wrap {
+  display: grid;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+  align-items: start;
+}
+
+@media (min-width: 700px) {
+  .heat-bottle-wrap {
+    grid-template-columns: 120px 1fr;
+    gap: var(--space-8);
+  }
+}
+
+
+.heat-bottle {
+  position: relative;
+  width: 88px;
+  height: 220px;
+  margin-inline: auto;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+}
+
+.heat-bottle-shape {
+  position: absolute;
+  inset: 0;
+  border-radius: 40px 40px 18px 18px;
+  background: linear-gradient(
+    180deg,
+    #a6ca1d 0%,
+    #cecb11 18%,
+    #e8ae0e 36%,
+    #f48315 55%,
+    #f04b22 75%,
+    #b22223 100%
+  );
+  box-shadow:
+    inset 0 0 0 3px rgba(46, 44, 44, 0.12),
+    0 8px 24px rgba(46, 44, 44, 0.15);
+  overflow: hidden;
+}
+
+.heat-bottle-neck {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 28px;
+  background: linear-gradient(180deg, #8fb516, #a6ca1d);
+  border-radius: 8px 8px 0 0;
+  box-shadow: inset 0 0 0 2px rgba(46, 44, 44, 0.1);
+}
+
+.heat-bottle-cap {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 42px;
+  height: 14px;
+  background: transparent;
+  border-radius: 4px;
+}
+
+.heat-bottle-label {
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  transform: translateX(-50%);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.heat-bottle-marker {
+  position: absolute;
+  left: -6px;
+  right: -6px;
+  height: 4px;
+  background: var(--bg-cream-gradient);
+  border-radius: 2px;
+  box-shadow: 0 0 0 2px transparent, 0 2px 8px rgba(0, 0, 0, 0.2);
+  top: 20%;
+  transition: top 0.25s var(--ease-out);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.heat-bottle-marker::after {
+  content: attr(data-label);
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: transparent;
+  background: var(--bg-cream-gradient);
+  padding: 0.2em 0.45em;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(46, 44, 44, 0.1);
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+}
+
+.heat-bottle-hint {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: var(--space-2);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* On charcoal sections reverse marker label */
+.menu-section--bar .heat-bottle-marker::after {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: rgba(245, 232, 183, 0.15);
+}
+
+/* ---------- Ambient bar hover ---------- */
+.menu-section--bar .menu-item {
+  position: relative;
+}
+
+.menu-section--bar .menu-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--color-amber);
+  opacity: 0;
+  transform: scaleY(0.4);
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
+}
+
+.menu-section--bar .menu-item:hover::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.menu-section--bar .menu-item:hover .menu-item-name {
+  color: var(--color-amber);
+}
+
+.drink-group .menu-item {
+  border-radius: var(--radius-sm);
+}
+
+/* Soft glow on featured bar items */
+.menu-item--featured {
+  background: rgba(231, 147, 30, 0.08);
+  border-radius: var(--radius-md);
+  padding-inline: var(--space-3);
+  margin-inline: calc(var(--space-3) * -1);
+  border-bottom-color: transparent !important;
+}
+
+.menu-section--bar .menu-item--featured {
+  box-shadow: inset 0 0 0 1px rgba(231, 147, 30, 0.2);
+}
+
+/* ---------- Map / visit polish with logo ---------- */
+.visit-logo {
+  width: 120px;
+  height: auto;
+  opacity: 0.9;
+  margin-bottom: var(--space-3);
+  filter: brightness(1.1);
+}
+
+/* footer-phone as button */
+button.footer-phone {
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(231, 147, 30, 0.35);
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  margin-top: var(--space-3);
+  font-weight: 600;
+  color: var(--color-amber);
+  font-size: 0.9375rem;
+  width: fit-content;
+  font-family: var(--font-body);
+}
+
+button.footer-phone:hover {
+  border-color: var(--color-amber);
+}
+
+button.menu-float-chip {
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+/* Heat bottle on charcoal homepage wings */
+.wings-beer .heat-bottle-marker::after {
+  background: var(--color-charcoal);
+  color: var(--color-cream);
+  border-color: rgba(245, 232, 183, 0.2);
+}
+
+.wings-beer .heat-bottle-hint {
+  color: rgba(245, 232, 183, 0.5);
+}
+
+.wings-beer .heat-scale .heat-chip {
+  border-color: rgba(245, 232, 183, 0.2);
+  color: rgba(245, 232, 183, 0.85);
+  background: transparent;
+}
+
+.wings-beer .heat-scale .heat-chip.is-active {
+  background: var(--color-amber);
+  border-color: var(--color-amber);
+  color: var(--color-ink);
+}
+
+.home-heat {
+  margin-top: var(--space-5);
+}
+
+/* Logo on dark footer */
+.site-footer .logo-img,
+.site-footer .nav-logo img {
+  filter: none;
+  max-width: 150px;
+  height: 36px;
+  width: auto;
+}
+
+/* Reserve panel ticket CTA */
+.reserve-panel .btn-ticket {
+  width: 100%;
+}
+
+.reserve-panel .btn-ticket.btn-lg {
+  width: 100%;
+}
+
+/* price stamp over photos */
+.burger-image--photo .price-stamp,
+.burger-image--photo .card-badge {
+  z-index: 2;
+}
+
+.burger-image--photo img {
+  position: absolute;
+  inset: 0;
+}
+
+.burger-image--photo {
+  position: relative;
+}
+
+/* Dark surfaces: lighten logo for contrast */
+.site-footer .logo-img,
+.map-placeholder .visit-logo {
+  filter: brightness(0) invert(1) sepia(0.35) saturate(2) hue-rotate(5deg);
+  opacity: 0.95;
+}
+
+.map-placeholder .visit-logo {
+  filter: brightness(0) invert(0.92) sepia(0.4) saturate(2.2) hue-rotate(5deg);
+}

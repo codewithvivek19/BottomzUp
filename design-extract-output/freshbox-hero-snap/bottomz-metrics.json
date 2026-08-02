@@ -1,0 +1,13 @@
+{
+  "vh": 900,
+  "heroH": 952,
+  "plateH": 792,
+  "plateHpct": 83,
+  "waveYfromTop": 529,
+  "wavePctHero": 56,
+  "foodTopPct": 44,
+  "foodMidPct": 69,
+  "contentBottomPct": 92,
+  "hasPath": true,
+  "pathD": "M0 0V513H133.087C198.114 513 258.629 546"
+}

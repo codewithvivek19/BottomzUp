@@ -1,0 +1,202 @@
+/* ============================================================
+   Bottomz Up — Full-site craft layer (design-taste pass)
+   Brand-locked cream/amber · no AI-purple · static HTML
+   Dials: variance 7 · motion 6 · density 4
+   ============================================================ */
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 1000;
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  background: var(--color-charcoal);
+  color: var(--color-cream);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+  outline: 2px solid var(--color-amber);
+  outline-offset: 3px;
+}
+
+/* Page rhythm — airy, not cockpit */
+main > section,
+main > .section {
+  scroll-margin-top: calc(var(--header-height) + 12px);
+}
+
+.section {
+  padding-block: clamp(3.25rem, 7vw, 5.5rem);
+}
+
+/* Display type: descender safety + less hard text-shadow */
+.display {
+  line-height: 1.08;
+  text-shadow: 1px 1px 0 rgba(46, 44, 44, 0.05);
+}
+
+.heading-xl,
+.heading-lg {
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+/* Body measure */
+.marquee-lede,
+.burgers-lede,
+.wm-desc,
+.scratch-lede,
+.menu-hero-lede {
+  max-width: 42ch;
+  line-height: 1.6;
+}
+
+/* Focus visible — sitewide */
+:where(a, button, input, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 3px;
+}
+
+/* Soft glass card utility (food surfaces) */
+.surface-card {
+  background: var(--bg-glass-solid, rgba(255, 253, 249, 0.94));
+  border: 1px solid var(--glass-border, rgba(46, 44, 44, 0.08));
+  border-radius: var(--radius-xl, 24px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Marquee head spacing */
+.marquee-head {
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.marquee-title {
+  letter-spacing: -0.02em;
+}
+
+/* House strip — glass on cream canvas */
+.house-strip {
+  padding-block: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.house-fact {
+  border-radius: 16px;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease;
+}
+
+a.house-fact:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Burgers section breathing room */
+.burgers {
+  padding-block: clamp(3.25rem, 7vw, 5.5rem);
+}
+
+.burgers-header {
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+/* Visit */
+.visit {
+  padding-block: clamp(3.25rem, 7vw, 5.5rem);
+}
+
+.visit-address {
+  font-style: normal;
+  line-height: 1.5;
+}
+
+/* Scratch — keep light, less nested gradient noise */
+.scratch-section {
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+}
+
+/* Footer credit — no emoji */
+.footer-credit {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
+/* Menu page shell breathing */
+.menu-page .menu-night {
+  padding-bottom: 2rem;
+}
+
+.menu-page .menu-hero-compact {
+  padding-bottom: 0.5rem;
+}
+
+.menu-page .menu-hero-title {
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.menu-page .menu-jump-rail {
+  padding-block: 0.85rem 0.35rem;
+}
+
+.menu-page .menu-sticky-deck {
+  box-shadow: 0 10px 28px rgba(46, 44, 44, 0.05);
+}
+
+/* House strip on cream — less flat white slab */
+.house-strip {
+  background: transparent !important;
+  border-block-color: rgba(46, 44, 44, 0.06) !important;
+}
+
+/* Burger cards: quieter hover lift */
+.burger-card:hover,
+.burger-card:focus-visible {
+  transform: translateY(-4px);
+}
+
+/* Lifestyle editorial — keep photo tiles, airy head */
+.lifestyle-head .display {
+  line-height: 1.08;
+}
+
+/* Footer marquee slightly calmer */
+.footer-marquee-group span {
+  letter-spacing: 0.18em;
+}
+
+/* Reduced motion: kill infinite marquees sitewide */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track,
+  .footer-marquee-track,
+  .reviews-rail-inner,
+  .reviews-rail--fwd .reviews-rail-inner,
+  .reviews-rail--rev .reviews-rail-inner,
+  .fbx-food,
+  .footer-burger img {
+    animation: none !important;
+  }
+
+}
+
+/* Prefer reduced transparency: solid surfaces */
+@media (prefers-reduced-transparency: reduce) {
+  .nav-panel,
+  .menu-sticky-deck,
+  .wm-card,
+  .wm-instrument-card,
+  .sticky-cta-inner {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #fffdf9 !important;
+  }
+}

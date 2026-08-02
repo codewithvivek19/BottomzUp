@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bottomz Up Bar & Grill | Burgers, Beers & Good Times — South Boston, VA</title>
+  <meta name="description" content="Bottomz Up Bar & Grill on Seymour Drive — Back Alley Burgers, bone-in wings, and a full bar in South Boston, VA. Come hungry. Leave happy." />
+  <meta property="og:title" content="Bottomz Up Bar & Grill — South Boston, VA" />
+  <meta property="og:description" content="Burgers, wings, full bar — 2001 Seymour Dr, South Boston, VA." />
+  <meta property="og:image" content="./assets/images/og-share.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#fffdf9" />
+  <link rel="icon" href="./assets/icons/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="./assets/icons/favicon-32.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png" />
+
+  <!-- Fonts: Lemon Milk (local via fonts.css) + Poppins (Google) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="./assets/fonts/lemon-milk-bold.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./assets/fonts/lemon-milk-medium.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./assets/images/float-classic.png" as="image" />
+
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/home.css" />
+  <link rel="stylesheet" href="./css/nav.css" />
+  <link rel="stylesheet" href="./css/extras.css" />
+  <link rel="stylesheet" href="./css/atmosphere.css" />
+  <link rel="stylesheet" href="./css/hero-freshbox.css" />
+  <link rel="stylesheet" href="./css/deco-freshbox.css" />
+  <link rel="stylesheet" href="./css/scratch-coupon.css" />
+  <link rel="stylesheet" href="./css/footer-impact.css" />
+  <link rel="stylesheet" href="./css/lifestyle.css" />
+  <link rel="stylesheet" href="./css/sizzle.css" />
+  <link rel="stylesheet" href="./css/wings-forge.css?v=6" />
+  <link rel="stylesheet" href="./css/control-knob.css?v=2" />
+  <link rel="stylesheet" href="./css/site-polish.css" />
+</head>
+<body class="no-phone">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Subtle film grain — dive-bar energy, never gimmicky -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ==================== NAV (Freshbox floating cream bar) ==================== -->
+  <header class="site-header" id="header">
+    <div class="nav-shell">
+      <div class="nav-panel" id="navPanel">
+        <div class="nav-bar">
+          <a href="./index.html" class="nav-logo" aria-label="Bottomz Up Bar & Grill">
+            <img src="./assets/images/logo-horizontal.png" alt="Bottomz Up Bar &amp; Grill" width="120" height="34" decoding="async" />
+          </a>
+
+          <nav class="nav-links" aria-label="Main">
+            <a href="pages/menu.html" class="nav-link">
+              Menu<span class="nav-link-line" aria-hidden="true"></span>
+            </a>
+            <a href="#burgers" class="nav-link">
+              Burgers<span class="nav-link-line" aria-hidden="true"></span>
+            </a>
+            <a href="#wings" class="nav-link">
+              Wings<span class="nav-link-line" aria-hidden="true"></span>
+            </a>
+            <a href="#visit" class="nav-link">
+              Visit<span class="nav-link-line" aria-hidden="true"></span>
+            </a>
+          </nav>
+
+          <div class="nav-actions">
+            <button type="button" class="btn-ticket btn-nav-cta js-open-reserve">
+              <span class="btn-hover-fill" aria-hidden="true"></span>
+              <span class="btn-label" data-contact="call-label">Plan your visit</span>
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+
+          <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+            <span></span><span></span>
+          </button>
+        </div>
+
+        <nav class="nav-drawer" id="navMobile" aria-hidden="true" aria-label="Mobile">
+          <div class="nav-drawer-inner">
+            <a href="pages/menu.html" class="nav-link">Menu</a>
+            <a href="#burgers" class="nav-link">Burgers</a>
+            <a href="#wings" class="nav-link">Wings &amp; Beer</a>
+            <a href="#visit" class="nav-link">Visit</a>
+            <button type="button" class="btn-ticket js-open-reserve">
+              <span class="btn-hover-fill" aria-hidden="true"></span>
+              <span class="btn-label" data-contact="call-label">Plan your visit</span>
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky conversion bar — appears after hero -->
+  <aside class="sticky-cta" id="stickyCta" aria-hidden="true">
+    <div class="container sticky-cta-inner">
+      <p class="sticky-cta-copy">
+        <span class="sticky-cta-mark">South Boston</span>
+        <span class="sticky-cta-text">Tables fill up — walk-ins welcome</span>
+      </p>
+      <div class="sticky-cta-actions">
+        <a href="pages/menu.html" class="sticky-btn-menu">Menu</a>
+        <button type="button" class="btn-ticket btn-nav-cta sticky-btn-call js-open-reserve">
+          <span class="btn-hover-fill" aria-hidden="true"></span>
+          <span class="btn-label" data-contact="call-label">Plan your visit</span>
+          <span class="btn-arrow" aria-hidden="true">↗</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <main id="main">
+    <!-- ==================== HERO — FreshBox plate wave (~60% vh) ==================== -->
+    <!-- Snapshot: design-extract-output/freshbox-hero-snap/hero-section.png
+         Cream stage · dark plate SVG · wave at ~60% · food straddles curve -->
+    <section class="hero fbx-hero" id="hero" aria-label="Bottomz Up hero">
+      <div class="fbx-hero-stage">
+        <!-- Ingredient deco (FreshBox sides) -->
+        <div class="fbx-deco fbx-deco--hero-left" aria-hidden="true">
+          <img src="./assets/images/deco-chilis.png" alt="" width="340" height="340" decoding="async" />
+        </div>
+        <div class="fbx-deco fbx-deco--hero-right" aria-hidden="true">
+          <img src="./assets/images/deco-tomatoes-chilis.png" alt="" width="380" height="380" decoding="async" />
+        </div>
+        <div class="fbx-deco fbx-deco--hero-mid" aria-hidden="true">
+          <img src="./assets/images/deco-chilis.png" alt="" width="220" height="220" decoding="async" />
+        </div>
+
+        <!-- Static type + CTA — upper plate; food sits lower so CTA stays clear -->
+        <div class="fbx-hero-content">
+          <div class="fbx-hero-title-wrap">
+            <p class="fbx-hero-tag">
+              <span class="fbx-hero-dot" aria-hidden="true"></span>
+              <span class="fbx-hero-tag-text">Burgers · Beers · Wings</span>
+            </p>
+            <h1 class="fbx-hero-title">
+              <span class="fbx-line">Come hungry.</span>
+              <span class="fbx-line">Leave happy.</span>
+            </h1>
+          </div>
+          <div class="fbx-hero-cta-wrap">
+            <a href="pages/menu.html" class="btn-ticket fbx-hero-cta">
+              <span class="btn-hover-fill" aria-hidden="true"></span>
+              <span class="btn-label">View Full Menu</span>
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Food on wave at bottom of plate — does not cover CTA -->
+        <div class="fbx-food-stage" id="fbxFoodStage" aria-roledescription="carousel" aria-label="Featured burgers">
+          <div class="fbx-food-floor" aria-hidden="true"></div>
+          <div class="fbx-food is-center" data-food="0" role="group" aria-roledescription="slide">
+            <img src="./assets/images/float-classic.png" alt="Classic House Burger" width="640" height="420" decoding="async" fetchpriority="high" />
+          </div>
+          <div class="fbx-food is-right" data-food="1" role="group" aria-roledescription="slide">
+            <img src="./assets/images/float-bacon.png" alt="Bacon Cheeseburger" width="480" height="340" decoding="async" />
+          </div>
+          <div class="fbx-food is-left" data-food="2" role="group" aria-roledescription="slide">
+            <img src="./assets/images/float-double.png" alt="Double Decker Burger" width="300" height="300" decoding="async" />
+          </div>
+          <div class="fbx-food is-far-right" data-food="3" role="group" aria-roledescription="slide">
+            <img src="./assets/images/float-buffalo.png" alt="Buffalo Chicken Burger" width="300" height="300" decoding="async" />
+          </div>
+          <div class="fbx-food-dots" id="fbxFoodDots" role="tablist" aria-label="Dishes"></div>
+          <div class="fbx-food-progress" id="fbxFoodProgress" aria-hidden="true"><span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MARQUEE — house favorites ==================== -->
+    <section class="marquee-section fbx-marquee" id="menu-preview" aria-label="Explore popular dishes">
+      <div class="fbx-deco fbx-deco--cat-left" aria-hidden="true">
+        <img src="./assets/images/deco-tomatoes-chilis.png" alt="" width="280" height="280" loading="lazy" />
+      </div>
+      <div class="fbx-deco fbx-deco--cat-right" aria-hidden="true">
+        <img src="./assets/images/deco-chilis.png" alt="" width="300" height="300" loading="lazy" />
+      </div>
+
+      <div class="container marquee-head reveal">
+        <p class="eyebrow">On the house list</p>
+        <h2 class="display heading-md marquee-title">What we’re known for</h2>
+        <p class="marquee-lede body-md text-muted">
+          Back Alley Burgers, bone-in wings, and a full pour — skim the favorites or open the full menu.
+        </p>
+      </div>
+
+      <div class="marquee" data-marquee>
+        <div class="marquee-fade marquee-fade--left" aria-hidden="true"></div>
+        <div class="marquee-fade marquee-fade--right" aria-hidden="true"></div>
+        <div class="marquee-viewport">
+          <div class="marquee-track" data-marquee-track>
+            <!-- Group A -->
+            <div class="marquee-group" data-marquee-group>
+              <a href="pages/menu.html#sec-burgers" class="dish-card">
+                <div class="dish-card-media">
+                  <img src="./assets/images/float-classic.png" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$14</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Back Alley</span>
+                  <span class="dish-card-name">Classic House</span>
+                  <span class="dish-card-meta">Beef · pickles · fries</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-burgers" class="dish-card">
+                <div class="dish-card-media dish-card-media--bacon">
+                  <img src="./assets/images/float-bacon.png" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$16</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Stacked</span>
+                  <span class="dish-card-name">Bacon Cheese</span>
+                  <span class="dish-card-meta">Cheddar · bacon · works</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-burgers" class="dish-card dish-card--featured">
+                <div class="dish-card-media dish-card-media--double">
+                  <img src="./assets/images/float-double.png" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-badge">Heavy</span>
+                  <span class="dish-card-price">$18</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Signature</span>
+                  <span class="dish-card-name">Double Decker</span>
+                  <span class="dish-card-meta">Two patties · BBQ · slaw</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-wings" class="dish-card">
+                <div class="dish-card-media dish-card-media--wings">
+                  <img src="./assets/images/float-buffalo.png" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$10+</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Heat scale</span>
+                  <span class="dish-card-name">Bone-In Wings</span>
+                  <span class="dish-card-meta">12 sauces · mild → xtra</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-burgers" class="dish-card">
+                <div class="dish-card-media dish-card-media--buffalo">
+                  <img src="./assets/images/float-buffalo.png" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$13</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Kick</span>
+                  <span class="dish-card-name">Buffalo Chicken</span>
+                  <span class="dish-card-meta">Tossed · ranch on side</span>
+                </div>
+              </a>
+              <a href="pages/menu.html" class="dish-card">
+                <div class="dish-card-media dish-card-media--bar">
+                  <img src="./assets/images/float-double.png" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">Bar</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Cold ones</span>
+                  <span class="dish-card-name">Full Bar</span>
+                  <span class="dish-card-meta">Beer · cocktails · shots</span>
+                </div>
+              </a>
+              <a href="pages/menu.html" class="dish-card dish-card--cta">
+                <div class="dish-card-media dish-card-media--menu">
+                  <span class="dish-card-menu-mark" aria-hidden="true">48+</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Everything</span>
+                  <span class="dish-card-name">Full Menu</span>
+                  <span class="dish-card-meta">See the whole house →</span>
+                </div>
+              </a>
+            </div>
+            <!-- Group B (duplicate for seamless loop) -->
+            <div class="marquee-group" data-marquee-group aria-hidden="true">
+              <a href="pages/menu.html#sec-burgers" class="dish-card" tabindex="-1">
+                <div class="dish-card-media">
+                  <img src="./assets/images/float-classic.png" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$14</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Back Alley</span>
+                  <span class="dish-card-name">Classic House</span>
+                  <span class="dish-card-meta">Beef · pickles · fries</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-burgers" class="dish-card" tabindex="-1">
+                <div class="dish-card-media dish-card-media--bacon">
+                  <img src="./assets/images/float-bacon.png" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$16</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Stacked</span>
+                  <span class="dish-card-name">Bacon Cheese</span>
+                  <span class="dish-card-meta">Cheddar · bacon · works</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-burgers" class="dish-card dish-card--featured" tabindex="-1">
+                <div class="dish-card-media dish-card-media--double">
+                  <img src="./assets/images/float-double.png" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-badge">Heavy</span>
+                  <span class="dish-card-price">$18</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Signature</span>
+                  <span class="dish-card-name">Double Decker</span>
+                  <span class="dish-card-meta">Two patties · BBQ · slaw</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-wings" class="dish-card" tabindex="-1">
+                <div class="dish-card-media dish-card-media--wings">
+                  <img src="./assets/images/float-buffalo.png" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$10+</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Heat scale</span>
+                  <span class="dish-card-name">Bone-In Wings</span>
+                  <span class="dish-card-meta">12 sauces · mild → xtra</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-burgers" class="dish-card" tabindex="-1">
+                <div class="dish-card-media dish-card-media--buffalo">
+                  <img src="./assets/images/float-buffalo.png" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$13</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Kick</span>
+                  <span class="dish-card-name">Buffalo Chicken</span>
+                  <span class="dish-card-meta">Tossed · ranch on side</span>
+                </div>
+              </a>
+              <a href="pages/menu.html" class="dish-card" tabindex="-1">
+                <div class="dish-card-media dish-card-media--bar">
+                  <img src="./assets/images/float-double.png" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">Bar</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Cold ones</span>
+                  <span class="dish-card-name">Full Bar</span>
+                  <span class="dish-card-meta">Beer · cocktails · shots</span>
+                </div>
+              </a>
+              <a href="pages/menu.html" class="dish-card dish-card--cta" tabindex="-1">
+                <div class="dish-card-media dish-card-media--menu">
+                  <span class="dish-card-menu-mark" aria-hidden="true">48+</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Everything</span>
+                  <span class="dish-card-name">Full Menu</span>
+                  <span class="dish-card-meta">See the whole house →</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container marquee-foot reveal">
+        <a href="pages/menu.html" class="btn-ticket">
+          <span class="btn-hover-fill" aria-hidden="true"></span>
+          <span class="btn-label">Browse Full Menu</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==================== HOUSE STRIP — quick facts (not vanity metrics) ==================== -->
+    <section class="house-strip" aria-label="House facts">
+      <div class="container house-strip-inner">
+        <a class="house-fact" href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592" target="_blank" rel="noopener">
+          <span class="house-fact-label">Address</span>
+          <span class="house-fact-value">2001 Seymour Dr</span>
+          <span class="house-fact-note">South Boston, VA</span>
+        </a>
+        <div class="house-fact">
+          <span class="house-fact-label">Seating</span>
+          <span class="house-fact-value">Walk-ins</span>
+          <span class="house-fact-note">Groups: give a heads up</span>
+        </div>
+        <a class="house-fact" href="pages/menu.html#sec-wings">
+          <span class="house-fact-label">Wings</span>
+          <span class="house-fact-value">12 sauces</span>
+          <span class="house-fact-note">Mild → Xtra Hot</span>
+        </a>
+        <a class="house-fact" href="pages/menu.html">
+          <span class="house-fact-label">Bar</span>
+          <span class="house-fact-value">Full pour</span>
+          <span class="house-fact-note">Beer · cocktails · wine</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURED BURGERS ==================== -->
+    <section class="section burgers" id="burgers">
+      <div class="fbx-deco fbx-deco--burgers" aria-hidden="true">
+        <img src="./assets/images/deco-tomatoes-chilis.png" alt="" width="320" height="320" loading="lazy" />
+      </div>
+      <div class="container">
+        <div class="burgers-header">
+          <div class="section-header reveal">
+            <p class="eyebrow">Back Alley Burgers</p>
+            <h2 class="display heading-lg">
+              Stacked the way<br />
+              a burger <span class="text-amber text-underline">should</span> be.
+            </h2>
+          </div>
+          <p class="burgers-lede body-md text-muted reveal" style="--reveal-delay: 80ms">
+            Hand-formed patties, fries on the side. From the house classic to the double-decker.
+          </p>
+        </div>
+
+        <!-- Mobile: horizontal snap. Desktop: grid. Whole card is the hit target. -->
+        <div class="burger-scroller" role="list">
+          <a href="pages/menu.html#sec-burgers" class="burger-card reveal" role="listitem">
+            <div class="burger-image burger-image--photo">
+              <img src="./assets/images/burger-classic.jpg" alt="Classic House Burger" width="640" height="640" loading="lazy" />
+              <span class="price-stamp">$14</span>
+            </div>
+            <div class="burger-body">
+              <h3 class="burger-name">Classic House</h3>
+              <p class="burger-desc">Lettuce, tomato, onion, pickles &amp; mayo. Cheese +$1.50</p>
+              <span class="burger-cta">On the menu <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+
+          <a href="pages/menu.html#sec-burgers" class="burger-card reveal" role="listitem" style="--reveal-delay: 60ms">
+            <div class="burger-image burger-image--photo">
+              <img src="./assets/images/burger-bacon.jpg" alt="Bacon Cheeseburger" width="640" height="640" loading="lazy" />
+              <span class="price-stamp">$16</span>
+            </div>
+            <div class="burger-body">
+              <h3 class="burger-name">Bacon Cheese</h3>
+              <p class="burger-desc">Cheddar, crumbled bacon, the works — fries on the side.</p>
+              <span class="burger-cta">On the menu <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+
+          <a href="pages/menu.html#sec-burgers" class="burger-card burger-card--featured reveal" role="listitem" style="--reveal-delay: 120ms">
+            <div class="burger-image burger-image--photo">
+              <img src="./assets/images/burger-double.jpg" alt="Double Decker Burger" width="640" height="640" loading="lazy" />
+              <span class="price-stamp">$18</span>
+              <span class="card-badge">Heavy hitter</span>
+            </div>
+            <div class="burger-body">
+              <h3 class="burger-name">Double Decker</h3>
+              <p class="burger-desc">Two patties, cheddar, pulled pork BBQ &amp; slaw mayo.</p>
+              <span class="burger-cta">On the menu <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+
+          <a href="pages/menu.html#sec-burgers" class="burger-card reveal" role="listitem" style="--reveal-delay: 180ms">
+            <div class="burger-image burger-image--photo">
+              <img src="./assets/images/burger-buffalo.jpg" alt="Buffalo Chicken Burger" width="640" height="640" loading="lazy" />
+              <span class="price-stamp">$13</span>
+            </div>
+            <div class="burger-body">
+              <h3 class="burger-name">Buffalo Chicken</h3>
+              <p class="burger-desc">Grilled or breaded, tossed buffalo. Ranch on the side.</p>
+              <span class="burger-cta">On the menu <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+        </div>
+
+        <div class="section-cta reveal">
+          <a href="pages/menu.html" class="btn-ticket btn-lg">
+            <span class="btn-hover-fill" aria-hidden="true"></span>
+            <span class="btn-label">See Full Menu</span>
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </a>
+          <p class="section-cta-note body-sm text-muted">Garbage Burger, Plantastic &amp; more on the full list</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== LIFESTYLE — grill + house energy ==================== -->
+    <section class="lifestyle" id="vibe" aria-label="The Bottomz Up experience" data-lifestyle>
+      <div class="lifestyle-shell">
+        <div class="lifestyle-head">
+          <p class="eyebrow">The house</p>
+          <h2 class="display heading-md">Flavor, fire &amp; company</h2>
+          <p class="lifestyle-lede">
+            From the grill line to the table — how South Boston shows up hungry.
+          </p>
+        </div>
+
+        <div class="lifestyle-grid">
+          <a href="pages/menu.html" class="lifestyle-badge lifestyle-badge--tl" aria-label="View full menu">
+            <span>Menu</span>
+          </a>
+
+          <!-- Tall process / grill card -->
+          <article class="lifestyle-card lifestyle-card--tall" style="--life-delay: 80ms">
+            <div class="lifestyle-card-media">
+              <!-- Placeholder — swap with real chef/grill photo -->
+              <img
+                src="./assets/images/slide-1.jpg"
+                alt="Placeholder: grill and smash cooking at Bottomz Up"
+                width="720"
+                height="960"
+                loading="lazy"
+                decoding="async"
+                data-life-img
+              />
+            </div>
+            <div class="lifestyle-card-body">
+              <h3 class="lifestyle-card-title">Grill Ritual</h3>
+              <p class="lifestyle-card-text">
+                Messy bites done right — smash, sear, stack. Juicy layers, melting cheese, no apologies.
+              </p>
+            </div>
+          </article>
+
+          <!-- Customers / main event -->
+          <article class="lifestyle-card lifestyle-card--top" style="--life-delay: 200ms">
+            <div class="lifestyle-card-media">
+              <!-- Placeholder — swap with customers eating -->
+              <img
+                src="./assets/images/slide-2.jpg"
+                alt="Placeholder: guests enjoying burgers at Bottomz Up"
+                width="800"
+                height="520"
+                loading="lazy"
+                decoding="async"
+                data-life-img
+              />
+            </div>
+            <div class="lifestyle-card-body">
+              <h3 class="lifestyle-card-title">The Main Event</h3>
+              <p class="lifestyle-card-text">
+                Our burgers take center stage with juicy smashed patties, golden buns and big flavour in every bite.
+              </p>
+            </div>
+          </article>
+
+          <!-- Friends / sharing -->
+          <article class="lifestyle-card lifestyle-card--bottom" style="--life-delay: 320ms">
+            <div class="lifestyle-card-media">
+              <!-- Placeholder — swap with friends group shot -->
+              <img
+                src="./assets/images/slide-3.jpg"
+                alt="Placeholder: friends sharing a meal at Bottomz Up"
+                width="800"
+                height="520"
+                loading="lazy"
+                decoding="async"
+                data-life-img
+              />
+            </div>
+            <div class="lifestyle-card-body">
+              <h3 class="lifestyle-card-title">Built for Sharing</h3>
+              <p class="lifestyle-card-text">
+                The best meals come with noise – good friends, big laughs and burgers worth gathering around.
+              </p>
+            </div>
+          </article>
+
+          <a href="pages/menu.html" class="lifestyle-badge lifestyle-badge--br" aria-label="View full menu">
+            <span>Menu</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+        <!-- ==================== WINGS + BEER — METER ==================== -->
+    <div id="drinks" class="anchor-alias" aria-hidden="true"></div>
+    <!-- ==================== WINGS + BEER — SVG SAUCE METER ==================== -->
+    <section class="wings-meter-section" id="wings" data-sauce-meter data-context="home" aria-label="Wing sauce meter">
+      <div class="container wm-shell">
+        <header class="wm-header reveal">
+          <p class="wm-eyebrow">Bone-in · tossed in sauce</p>
+          <h2 class="wm-title">Dial your heat.</h2>
+          <p class="wm-desc">Turn the motor or pick a sauce — mild BBQ through Xtra Hot Buffalo, with a beer that keeps up.</p>
+          <div class="wm-heat-bar" data-wm-heat-bar aria-hidden="true"></div>
+        </header>
+
+        <div class="wm-chip-rail" data-wm-chips aria-label="Sauces"></div>
+
+        <div class="wm-grid wm-grid--with-knob">
+          <div class="wm-meter-col reveal" data-meter-src="./assets/images/sauce-meter.svg"></div>
+
+          <div class="wm-knob-col reveal" style="--reveal-delay: 60ms">
+            <div class="wm-instrument-card">
+              <div class="hk-stage" data-heat-knob data-value="0" aria-label="Heat control knob"></div>
+            </div>
+          </div>
+
+          <div class="wm-details-col reveal" style="--reveal-delay: 100ms">
+            <div class="wm-card">
+              <div class="wm-card-inner" data-wm-details id="wmDetailsTarget">
+                <span class="wm-heat-badge" data-wm-heat id="wmHeatBadge">Mild</span>
+                <h3 class="wm-sauce-name" data-wm-name id="wmSauceName">BBQ</h3>
+                <p class="wm-sauce-desc" data-wm-desc id="wmSauceDesc">Sweet, sticky, and smoky. Classic BBQ depth with a touch of molasses on the finish.</p>
+                <div class="wm-pairing">
+                  <span class="wm-pairing-mark" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20h6"/><path d="M12 4c-2.5 0-4 2-4 4.5 0 1.5.5 2.5 1.2 3.5L8 20h8l-1.2-8c.7-1 1.2-2 1.2-3.5C16 6 14.5 4 12 4z"/><path d="M9 9.5h6"/></svg>
+                  </span>
+                  <div class="wm-pairing-text">
+                    <strong data-wm-beer id="wmPairingBeer">Pairs with Miller Lite</strong>
+                    <span data-wm-note id="wmPairingNote">Crisp light lager cuts the sweetness perfectly.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="wm-sizes">
+              <h4 class="wm-sizes-title">Portions</h4>
+              <div class="wm-size-grid">
+                <div class="wm-size-box" data-size="small" role="button" tabindex="0">
+                  <span class="wm-size-name">Small</span>
+                  <span class="wm-size-qty">6 pc</span>
+                  <span class="wm-size-price">$10</span>
+                </div>
+                <div class="wm-size-box is-active" data-size="medium" role="button" tabindex="0">
+                  <span class="wm-size-name">Medium</span>
+                  <span class="wm-size-qty">12 pc</span>
+                  <span class="wm-size-price">$16</span>
+                </div>
+                <div class="wm-size-box" data-size="large" role="button" tabindex="0">
+                  <span class="wm-size-name">Large</span>
+                  <span class="wm-size-qty">24 pc</span>
+                  <span class="wm-size-price">$29</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="wm-foot">
+              <a href="pages/menu.html#sec-wings" class="btn-ticket" data-wm-cta>
+                <span class="btn-hover-fill" aria-hidden="true"></span>
+                <span class="btn-label">Full wings on menu</span>
+                <span class="btn-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VISIT / LOCATION ==================== -->
+    <section class="section visit" id="visit">
+      <div class="container visit-grid">
+        <div class="visit-info reveal">
+          <p class="eyebrow">Find us</p>
+          <h2 class="display heading-lg">
+            Come hungry.<br />
+            Leave happy.
+          </h2>
+          <address class="visit-address">
+            <strong>2001 Seymour Dr</strong><br />
+            South Boston, VA 24592
+          </address>
+          <div class="visit-hours">
+            <h4>Hours</h4>
+            <p>Call for current hours — open when South Boston is hungry.</p>
+          </div>
+          <div class="visit-cta">
+            <a href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592" target="_blank" rel="noopener" class="btn-ticket">
+              <span class="btn-hover-fill" aria-hidden="true"></span>
+              <span class="btn-label">Get Directions</span>
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </a>
+            <button type="button" class="btn-ticket btn-ticket-light js-open-reserve">
+              <span class="btn-hover-fill" aria-hidden="true"></span>
+              <span class="btn-label" data-contact="call-label">Plan your visit</span>
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="visit-map reveal" style="--reveal-delay: 80ms">
+          <a class="map-card" href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592" target="_blank" rel="noopener">
+            <div class="map-card-grid" aria-hidden="true"></div>
+            <span class="map-pin" aria-hidden="true"></span>
+            <div class="map-card-copy">
+              <span class="map-card-kicker">Bottomz Up</span>
+              <span class="map-card-line">2001 Seymour Dr</span>
+              <span class="map-card-line map-card-line--soft">South Boston, VA 24592</span>
+              <span class="map-card-cta">Open in Maps →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SCRATCH COUPON — 10% off (ImageScratch-style) ==================== -->
+    <section class="scratch-section" id="promo" aria-label="Scratch for 10 percent off">
+      <div class="container">
+        <div class="scratch-head reveal">
+          <p class="eyebrow">House deal</p>
+          <h2 class="display heading-md">Scratch. Save 10%.</h2>
+          <p class="scratch-lede">
+            Dig through the foil for a one-time code — show it when you order.
+          </p>
+        </div>
+
+        <div class="scratch-card reveal" data-scratch style="--reveal-delay: 80ms">
+          <div class="scratch-prize">
+            <span class="scratch-prize-kicker">In-house only</span>
+            <p class="scratch-prize-off"><em>10%</em> OFF</p>
+            <div class="scratch-code-row">
+              <code class="scratch-code" data-scratch-code>ZUP10</code>
+              <button type="button" class="scratch-copy" data-scratch-copy>Copy</button>
+            </div>
+            <p class="scratch-prize-note">Valid on food. Not stackable with other offers. Ask your server.</p>
+          </div>
+          <canvas class="scratch-foil" aria-label="Scratch layer — drag to reveal coupon"></canvas>
+          <p class="scratch-hint">Scratch here</p>
+        </div>
+
+        <p class="scratch-foot reveal" style="--reveal-delay: 120ms">
+          Code <strong>ZUP10</strong> — Bottomz Up, South Boston. Staff may ask to see the screen.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== RESTAURANT STORY — photo + testimonial marquee ==================== -->
+    <section class="reviews-marquee story-marquee" id="story" aria-label="Restaurant story and guest notes">
+      <div class="reviews-marquee-head container">
+        <p class="eyebrow">The Bottomz story</p>
+        <h2 class="display heading-lg">Tables, plates &amp; regulars.</h2>
+        <p class="story-marquee-lede">
+          Burgers off the grill, wings tossed to order, a full bar on Seymour Drive — here’s the house in motion.
+        </p>
+      </div>
+
+      <div class="reviews-rail-wrap" aria-hidden="false">
+        <!-- Row 1 → scrolls left -->
+        <div class="reviews-rail reviews-rail--fwd">
+          <div class="reviews-rail-inner">
+            <article class="rev-card">
+              <p class="rev-name">Mike <span class="rev-dot">·</span> South Boston</p>
+              <blockquote>&ldquo;Double Decker after a long shift — fries still hot, bar already pouring. That&rsquo;s the move.&rdquo;</blockquote>
+              <span class="rev-tag">Regular</span>
+            </article>
+            <div class="rev-card rev-card--photo">
+              <img src="./assets/images/slide-1.jpg" alt="Bottomz Up house vibe" width="360" height="220" loading="lazy" decoding="async" />
+            </div>
+            <article class="rev-card">
+              <p class="rev-name">Tasha <span class="rev-dot">·</span> Halifax Co.</p>
+              <blockquote>&ldquo;Brought the crew for wings. Medium heat was perfect — next time we&rsquo;re going Xtra.&rdquo;</blockquote>
+              <span class="rev-tag">Wings night</span>
+            </article>
+            <div class="rev-card rev-card--photo">
+              <img src="./assets/images/slide-2.jpg" alt="Grill and plates at Bottomz Up" width="360" height="220" loading="lazy" decoding="async" />
+            </div>
+            <article class="rev-card">
+              <p class="rev-name">Jordan <span class="rev-dot">·</span> SoBo</p>
+              <blockquote>&ldquo;Walk-in on a Friday, table in no time. Classic House burger tastes like the print menu promised.&rdquo;</blockquote>
+              <span class="rev-tag">Walk-in</span>
+            </article>
+            <div class="rev-card rev-card--photo">
+              <img src="./assets/images/slide-3.jpg" alt="Burgers and house energy" width="360" height="220" loading="lazy" decoding="async" />
+            </div>
+            <!-- duplicate set for seamless loop -->
+            <article class="rev-card" aria-hidden="true">
+              <p class="rev-name">Mike <span class="rev-dot">·</span> South Boston</p>
+              <blockquote>&ldquo;Double Decker after a long shift — fries still hot, bar already pouring. That&rsquo;s the move.&rdquo;</blockquote>
+              <span class="rev-tag">Regular</span>
+            </article>
+            <div class="rev-card rev-card--photo" aria-hidden="true">
+              <img src="./assets/images/slide-1.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" />
+            </div>
+            <article class="rev-card" aria-hidden="true">
+              <p class="rev-name">Tasha <span class="rev-dot">·</span> Halifax Co.</p>
+              <blockquote>&ldquo;Brought the crew for wings. Medium heat was perfect — next time we&rsquo;re going Xtra.&rdquo;</blockquote>
+              <span class="rev-tag">Wings night</span>
+            </article>
+            <div class="rev-card rev-card--photo" aria-hidden="true">
+              <img src="./assets/images/slide-2.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" />
+            </div>
+            <article class="rev-card" aria-hidden="true">
+              <p class="rev-name">Jordan <span class="rev-dot">·</span> SoBo</p>
+              <blockquote>&ldquo;Walk-in on a Friday, table in no time. Classic House burger tastes like the print menu promised.&rdquo;</blockquote>
+              <span class="rev-tag">Walk-in</span>
+            </article>
+            <div class="rev-card rev-card--photo" aria-hidden="true">
+              <img src="./assets/images/slide-3.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2 → scrolls right -->
+        <div class="reviews-rail reviews-rail--rev">
+          <div class="reviews-rail-inner">
+            <div class="rev-card rev-card--photo">
+              <img src="./assets/images/slide-4.jpg" alt="Bottomz Up plates" width="360" height="220" loading="lazy" decoding="async" />
+            </div>
+            <article class="rev-card">
+              <p class="rev-name">Alex <span class="rev-dot">·</span> Danville</p>
+              <blockquote>&ldquo;Full bar, no attitude. Trash Can cocktail + nachos — group night sorted.&rdquo;</blockquote>
+              <span class="rev-tag">Bar &amp; bites</span>
+            </article>
+            <div class="rev-card rev-card--photo">
+              <img src="./assets/images/burger-classic.jpg" alt="Classic House burger" width="360" height="220" loading="lazy" decoding="async" />
+            </div>
+            <article class="rev-card">
+              <p class="rev-name">Sam <span class="rev-dot">·</span> South Boston</p>
+              <blockquote>&ldquo;Kids menu kept the little ones happy while we hit the double smash. Easy win.&rdquo;</blockquote>
+              <span class="rev-tag">Family table</span>
+            </article>
+            <div class="rev-card rev-card--photo">
+              <img src="./assets/images/burger-bacon.jpg" alt="Bacon cheese burger" width="360" height="220" loading="lazy" decoding="async" />
+            </div>
+            <article class="rev-card">
+              <p class="rev-name">Riley <span class="rev-dot">·</span> SoBo</p>
+              <blockquote>&ldquo;Came for the wings, stayed for the pour. Seymour Drive always feels like home base.&rdquo;</blockquote>
+              <span class="rev-tag">Local</span>
+            </article>
+            <!-- duplicate set -->
+            <div class="rev-card rev-card--photo" aria-hidden="true">
+              <img src="./assets/images/slide-4.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" />
+            </div>
+            <article class="rev-card" aria-hidden="true">
+              <p class="rev-name">Alex <span class="rev-dot">·</span> Danville</p>
+              <blockquote>&ldquo;Full bar, no attitude. Trash Can cocktail + nachos — group night sorted.&rdquo;</blockquote>
+              <span class="rev-tag">Bar &amp; bites</span>
+            </article>
+            <div class="rev-card rev-card--photo" aria-hidden="true">
+              <img src="./assets/images/burger-classic.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" />
+            </div>
+            <article class="rev-card" aria-hidden="true">
+              <p class="rev-name">Sam <span class="rev-dot">·</span> South Boston</p>
+              <blockquote>&ldquo;Kids menu kept the little ones happy while we hit the double smash. Easy win.&rdquo;</blockquote>
+              <span class="rev-tag">Family table</span>
+            </article>
+            <div class="rev-card rev-card--photo" aria-hidden="true">
+              <img src="./assets/images/burger-bacon.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" />
+            </div>
+            <article class="rev-card" aria-hidden="true">
+              <p class="rev-name">Riley <span class="rev-dot">·</span> SoBo</p>
+              <blockquote>&ldquo;Came for the wings, stayed for the pour. Seymour Drive always feels like home base.&rdquo;</blockquote>
+              <span class="rev-tag">Local</span>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-marquee-foot container">
+        <p class="story-marquee-note">Walk-ins welcome · large groups, give a heads up.</p>
+        <a href="pages/menu.html" class="btn-ticket">
+          <span class="btn-hover-fill" aria-hidden="true"></span>
+          <span class="btn-label">See the menu</span>
+          <span class="btn-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Reserve panel -->
+  <div class="reserve-backdrop" id="reserveBackdrop" hidden></div>
+  <aside class="reserve-panel" id="reservePanel" role="dialog" aria-modal="true" aria-labelledby="reserveTitle" hidden>
+    <div class="reserve-panel-head">
+      <div>
+        <p class="eyebrow">Bottomz Up</p>
+        <h2 id="reserveTitle">Plan your visit</h2>
+      </div>
+      <button type="button" class="reserve-close" id="reserveClose" aria-label="Close">×</button>
+    </div>
+    <p class="lead">Walk-ins welcome. Large group? Give us a heads up — we’ll hold a table when we can.</p>
+
+    <div class="reserve-field">
+      <label id="partyLabel">Party size</label>
+      <div class="party-chips" role="group" aria-labelledby="partyLabel">
+        <button type="button" class="party-chip is-active" data-size="2">2</button>
+        <button type="button" class="party-chip" data-size="4">4</button>
+        <button type="button" class="party-chip" data-size="6">6</button>
+        <button type="button" class="party-chip" data-size="8">8+</button>
+        <button type="button" class="party-chip" data-size="group">Large group</button>
+      </div>
+    </div>
+
+    <div class="reserve-hours">
+      <strong>Hours</strong>
+      Call for current hours — we’re open when South Boston is hungry.
+    </div>
+
+    <div class="reserve-honesty" id="reserveHonesty">
+      <p><strong>Phone number coming soon.</strong> Until it’s live here, walk-ins are welcome — or open maps and head to Seymour Drive.</p>
+    </div>
+
+    <p class="reserve-note" id="reserveNote">Table for 2 — walk-ins welcome; large groups should give a heads up.</p>
+
+    <div class="reserve-actions-stack">
+      <a class="btn-ticket btn-lg is-disabled" id="reserveCallBtn" data-contact="call" href="#reserve" aria-disabled="true">
+        <span class="btn-hover-fill" aria-hidden="true"></span>
+        <span class="btn-label">Phone number coming soon</span>
+        <span class="btn-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="btn-ticket btn-ticket-light btn-lg" id="reserveMapsBtn" data-contact="maps" href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592">
+        <span class="btn-hover-fill" aria-hidden="true"></span>
+        <span class="btn-label">Get Directions</span>
+        <span class="btn-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="#" class="reserve-sms" id="reserveSmsBtn" data-contact="sms" hidden>Prefer text? Send a quick SMS →</a>
+    </div>
+  </aside>
+
+  <!-- ==================== FOOTER — conversion impact ==================== -->
+  <footer class="site-footer site-footer--impact">
+    <!-- Continuous marquee -->
+    <div class="footer-marquee" aria-hidden="true">
+      <div class="footer-marquee-track">
+        <div class="footer-marquee-group">
+          <span>ORDER NOW · SMASHED FRESH DAILY · ORDER NOW · SMASHED FRESH DAILY · ORDER NOW · SMASHED FRESH DAILY · ORDER NOW · SMASHED FRESH DAILY ·</span>
+        </div>
+        <div class="footer-marquee-group" aria-hidden="true">
+          <span>ORDER NOW · SMASHED FRESH DAILY · ORDER NOW · SMASHED FRESH DAILY · ORDER NOW · SMASHED FRESH DAILY · ORDER NOW · SMASHED FRESH DAILY ·</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Burgers + headline + ORDER NOW -->
+    <div class="footer-hero">
+      <div class="footer-burger footer-burger--left">
+        <img
+          src="./assets/images/float-classic.png"
+          alt=""
+          width="400"
+          height="400"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+
+      <div class="footer-cta-block" id="footerCtaBlock">
+        <h2 class="footer-headline" id="footerHeadline">
+          <span class="footer-line"><span class="footer-line-inner">Hungry?</span></span>
+          <span class="footer-line"><span class="footer-line-inner">Get here.</span></span>
+        </h2>
+        <div class="footer-headline-underline" aria-hidden="true"></div>
+        <p class="footer-subhead">Smashed fresh · full bar · right now</p>
+        <a href="pages/menu.html" class="footer-order-btn">Order now</a>
+      </div>
+
+      <div class="footer-burger footer-burger--right">
+        <img
+          src="./assets/images/float-bacon.png"
+          alt=""
+          width="400"
+          height="400"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+
+    <!-- Utility: social · brand · copyright -->
+    <div class="footer-utility">
+      <nav class="footer-social" aria-label="Social">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.5 1 .4.4.7.9 1 1.5.2.4.4 1.1.4 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-1 1.5-.4.4-.9.7-1.5 1-.4.2-1.1.4-2.3.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.5-1-.4-.4-.7-.9-1-1.5-.2-.4-.4-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.3.2-.6.5-1 1-1.5.4-.4.9-.7 1.5-1 .4-.2 1.1-.4 2.3-.4C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3 0 7 0 5.7.1 4.8.3 4 .6c-.9.3-1.6.8-2.3 1.5C1 2.8.5 3.5.2 4.4.1 5.2 0 6.1 0 7.4 0 8.7 0 9.1 0 12s0 3.3.1 4.6c.1 1.3.3 2.2.6 3 .3.9.8 1.6 1.5 2.3.7.7 1.4 1.2 2.3 1.5.8.3 1.7.5 3 .6 1.3.1 1.7.1 4.6.1s3.3 0 4.6-.1c1.3-.1 2.2-.3 3-.6.9-.3 1.6-.8 2.3-1.5.7-.7 1.2-1.4 1.5-2.3.3-.8.5-1.7.6-3 .1-1.3.1-1.7.1-4.6s0-3.3-.1-4.6c-.1-1.3-.3-2.2-.6-3-.3-.9-.8-1.6-1.5-2.3C20.5.8 19.8.3 18.9.1 18.1 0 17.2 0 15.9 0 14.6 0 14.2 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-10.5a1.4 1.4 0 1 1-2.9 0 1.4 1.4 0 0 1 2.9 0z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 6.2a5.5 5.5 0 0 1-3.2-1.1v7.2a6.3 6.3 0 1 1-5.4-6.2v3.1a3.2 3.2 0 1 0 2.3 3.1V1.5h3a5.5 5.5 0 0 0 3.3 4.7z"/></svg>
+        </a>
+        <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.2 2H21l-6.5 7.4L22 22h-6.2l-4.3-5.6L6 22H3.2l7-8L2 2h6.3l3.9 5.2L18.2 2zm-1.1 18h1.7L7 3.9H5.2L17.1 20z"/></svg>
+        </a>
+        <a href="https://www.threads.net/" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.3 11.3c-.1-2.4-1.4-3.8-3.9-3.9-1.4 0-2.6.5-3.3 1.4l1.3 1c.5-.6 1.2-.9 2-.9 1.4 0 2.2.7 2.3 2.1-1-.2-2.1-.2-3.2.1-1.8.4-3 1.6-2.9 3.4.1 1.6 1.3 2.7 3 2.7 1.3 0 2.3-.5 2.9-1.5.3.6.6 1.1 1 1.5l1.3-1.1c-.4-.5-.8-1.1-1-1.8.3-.6.5-1.3.5-2zm-3.7 3.3c-.8 0-1.4-.4-1.4-1.1 0-.9.7-1.4 2.1-1.6.6-.1 1.2-.1 1.8 0 0 1.5-.9 2.7-2.5 2.7zM12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18.2A8.2 8.2 0 1 1 12 3.8a8.2 8.2 0 0 1 0 16.4z"/></svg>
+        </a>
+      </nav>
+
+      <a href="./index.html" class="footer-brand-mark">Bottomz Up</a>
+
+      <div class="footer-utility-end">
+        <span class="footer-copy-pill">2026 Copyright</span>
+        <span class="footer-credit">South Boston, VA</span>
+      </div>
+    </div>
+
+    <p class="footer-legal">
+      Consuming raw or undercooked meats may increase risk of foodborne illness. · 2001 Seymour Dr, South Boston, VA
+    </p>
+  </footer>
+
+  <script src="./js/contact.js"></script>
+  <script src="./js/main.js"></script>
+  <script src="./js/contact-ui.js"></script>
+  <script src="./js/hero-carousel.js"></script>
+  <script src="./js/control-knob.js"></script>
+  <script src="./js/wings-forge.js"></script>
+  <script src="./js/scratch-coupon.js"></script>
+</body>
+</html>
