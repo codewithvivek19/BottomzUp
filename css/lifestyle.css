@@ -5,13 +5,15 @@
 
 .lifestyle {
   position: relative;
-  padding-block: clamp(2rem, 4.5vw, 3.25rem);
-  /* Soft orbs only — page canvas stays on x32 cream */
-  background:
-    radial-gradient(ellipse 60% 40% at 10% 20%, rgba(241, 159, 15, 0.04), transparent 55%),
-    radial-gradient(ellipse 50% 45% at 90% 80%, rgba(196, 90, 42, 0.03), transparent 50%),
-    transparent;
+  padding-block: clamp(1.5rem, 3.5vw, 2.5rem);
+  padding-top: clamp(1.25rem, 3vw, 2rem);
+  background: #ffffff;
   overflow: hidden;
+}
+
+.lifestyle.lifestyle--bento {
+  padding-top: clamp(1.25rem, 3vw, 2rem);
+  background: #ffffff;
 }
 
 .lifestyle-shell {

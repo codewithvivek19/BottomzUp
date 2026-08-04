@@ -100,10 +100,10 @@ body::after {
   position: relative;
 }
 
-/* Burgers: warm spotlight wash */
+/* Burgers: white section, no cream wash */
 .burgers {
   position: relative;
-  background: transparent;
+  background: #ffffff;
 }
 
 /* Lifestyle: smooth photo mosaic section */
@@ -126,35 +126,11 @@ body::after {
 }
 
 
-.burgers::before {
-  content: "";
-  position: absolute;
-  top: -15%;
-  right: -12%;
-  width: 55%;
-  height: 70%;
-  background: radial-gradient(
-    circle,
-    rgba(241, 159, 15, 0.14) 0%,
-    rgba(245, 232, 183, 0.05) 45%,
-    transparent 70%
-  );
-  pointer-events: none;
-}
-
+.burgers::before,
 .burgers::after {
-  content: "";
-  position: absolute;
-  bottom: 5%;
-  left: -8%;
-  width: 40%;
-  height: 45%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 249, 232, 0.7) 0%,
-    transparent 65%
-  );
-  pointer-events: none;
+  display: none !important;
+  content: none !important;
+  background: none !important;
 }
 
 /* Legacy wings-beer: transparent so x32 cream canvas shows through */
@@ -381,11 +357,17 @@ body::after {
 }
 
 /* Cards sit on glass so elevated surfaces read clearly */
-.card,
-.burger-card {
+.card {
   background: rgba(254, 253, 249, 0.88);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+}
+
+/* Burger cards: white text plate only — image area stays transparent */
+.burger-card {
+  background: #ffffff;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .proof-item {

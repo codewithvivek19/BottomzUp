@@ -442,9 +442,7 @@
   position: relative;
   padding-block: clamp(1.75rem, 4vw, 2.75rem) clamp(1.85rem, 4vw, 3rem);
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(251, 246, 227, 0.9), transparent 60%),
-    transparent;
+  background: #ffffff;
 }
 
 .marquee-head {
@@ -921,19 +919,13 @@ a.house-fact:focus-visible .house-fact-value {
   position: relative;
   overflow: hidden;
   padding-block: clamp(2rem, 4.5vw, 3.25rem);
+  background: #ffffff;
 }
 
-/* Smooth top fade into section from above */
+/* Remove cream fade overlay on burgers section */
 .burgers::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(to bottom, #fffdf9, transparent);
-  pointer-events: none;
-  z-index: 1;
+  display: none;
+  content: none;
 }
 
 .burgers::after {
@@ -1071,36 +1063,52 @@ a.house-fact:focus-visible .house-fact-value {
   color: inherit;
 }
 
-/* Image container: transparent — only the PNG shows */
+/* Image frame — fully transparent; cutout PNGs only */
+.burgers .burger-image,
 .burger-image {
   position: relative;
   aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background: transparent !important;
-  isolation: isolate;
+  overflow: visible;
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  isolation: auto;
 }
 
+.burgers .burger-image::before,
+.burgers .burger-image::after,
 .burger-image::before,
 .burger-image::after {
   display: none !important;
   content: none !important;
   background: none !important;
+  box-shadow: none !important;
 }
 
 @media (min-width: 700px) {
+  .burgers .burger-image,
   .burger-image {
     aspect-ratio: 1 / 1;
   }
 }
 
+.burgers .burger-image--photo,
+.burgers .burger-image--house,
+.burgers .burger-image--bacon,
+.burgers .burger-image--double,
+.burgers .burger-image--buffalo,
 .burger-image--photo,
 .burger-image--house,
 .burger-image--bacon,
 .burger-image--double,
 .burger-image--buffalo {
-  background: transparent !important;
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
+.burgers .burger-image img,
 .burger-image img {
   position: relative;
   z-index: 2;
@@ -1109,13 +1117,24 @@ a.house-fact:focus-visible .house-fact-value {
   display: block;
   object-fit: contain;
   object-position: center center;
-  padding: 4% 4% 6%;
-  filter: drop-shadow(0 10px 18px rgba(46, 44, 44, 0.16));
+  padding: 2% 2% 4%;
+  background: transparent !important;
+  filter: drop-shadow(0 8px 14px rgba(46, 44, 44, 0.14));
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .burger-card:hover .burger-image img {
   transform: scale(1.04) translateY(-2px);
+}
+
+/* Card chrome only on text block */
+.burgers .burger-card {
+  background: #ffffff;
+  border: 1px solid rgba(46, 44, 44, 0.08);
+}
+
+.burgers .burger-body {
+  background: #ffffff;
 }
 
 .price-stamp {
@@ -1779,21 +1798,15 @@ a.house-fact:focus-visible .house-fact-value {
    ================================================================ */
 
 .reviews-marquee {
-  /* Stay on global x32 cream canvas — soft amber orbs only */
-  background: transparent;
+  background: #ffffff;
   padding-block: clamp(2rem, 4.5vw, 3.5rem);
   overflow: hidden;
   position: relative;
 }
 
 .reviews-marquee::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 45% at 20% 0%, rgba(231, 147, 30, 0.07), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(231, 147, 30, 0.05), transparent 55%);
-  pointer-events: none;
+  display: none;
+  content: none;
 }
 
 .reviews-marquee-head {

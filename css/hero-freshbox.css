@@ -38,7 +38,7 @@
   --fbx-content-top: calc(var(--header-height, 78px) + clamp(48px, 8vh, 80px));
 }
 
-/* ---------- Shell: white fallback + bg_header_new.svg ---------- */
+/* ---------- Shell: white + BG_Final wave plate (viewBox cropped to banner) ---------- */
 .fbx-hero.hero {
   position: relative;
   min-height: 100svh;
@@ -50,16 +50,17 @@
   isolation: isolate;
   z-index: 0;
   background-color: #ffffff;
-  background-image: url('../assets/bg_header_new.svg');
-  background-size: cover;
+  background-image: url('../assets/BG_Final.svg');
+  /* Banner is ~2.84:1 — width-fill keeps wave near mid-hero on desktop */
+  background-size: 100% auto;
   background-position: center top;
   background-repeat: no-repeat;
 }
 
 .fbx-hero.fbx-hero--clean.hero {
   background-color: #ffffff;
-  background-image: url('../assets/bg_header_new.svg');
-  background-size: cover;
+  background-image: url('../assets/BG_Final.svg');
+  background-size: 100% auto;
   background-position: center top;
   background-repeat: no-repeat;
 }
@@ -559,6 +560,13 @@
     --fbx-center-w: min(88vw, 360px);
     --fbx-center-h: min(66vw, 270px);
     --fbx-content-gap: 10px;
+  }
+
+  /* Tall phone: scale plate by height so wave sits near food stage (~60%) */
+  .fbx-hero.hero,
+  .fbx-hero.fbx-hero--clean.hero {
+    background-size: auto 68%;
+    background-position: center top;
   }
 
   .fbx-hero-content {
