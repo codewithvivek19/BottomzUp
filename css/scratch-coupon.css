@@ -7,9 +7,7 @@
   position: relative;
   padding-block: clamp(3rem, 7vw, 5rem);
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(241, 159, 15, 0.1), transparent 55%),
-    transparent;
+  background: #ffffff;
 }
 
 .scratch-section .container {
@@ -29,17 +27,23 @@
 
 .scratch-head .eyebrow {
   margin-bottom: 0.5rem;
+  color: #b86a0e !important;
+  font-weight: 700;
 }
 
-.scratch-head .display {
+.scratch-head .display,
+.scratch-head h2 {
   margin: 0 0 0.5rem;
+  color: #1a1919 !important;
+  text-shadow: none !important;
 }
 
 .scratch-lede {
   margin: 0;
-  color: var(--text-muted);
+  color: #3a3630 !important;
   font-size: 0.95rem;
   line-height: 1.5;
+  font-weight: 500;
 }
 
 /* Card shell */

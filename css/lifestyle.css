@@ -11,8 +11,10 @@
   overflow: hidden;
 }
 
+/* Bento: tight bottom so gap into wings isn’t a dead band */
 .lifestyle.lifestyle--bento {
   padding-top: clamp(1.25rem, 3vw, 2rem);
+  padding-bottom: clamp(0.5rem, 1.5vw, 1rem);
   background: #ffffff;
 }
 
@@ -72,15 +74,17 @@
   transform: scale(1.05);
 }
 
+/* Deep scrim so cream/white type stays readable on bright plates (e.g. light wood) */
 .lifestyle-bento-media::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(26, 25, 25, 0.92) 0%,
-    rgba(26, 25, 25, 0.45) 45%,
-    rgba(26, 25, 25, 0.15) 100%
+    rgba(18, 16, 14, 0.96) 0%,
+    rgba(18, 16, 14, 0.82) 28%,
+    rgba(26, 25, 25, 0.45) 55%,
+    rgba(26, 25, 25, 0.12) 100%
   );
   pointer-events: none;
 }
@@ -92,16 +96,25 @@
   padding: clamp(1.25rem, 2.5vw, 1.75rem);
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.4rem;
+  /* Extra panel behind type for contrast on light photos */
+  background: linear-gradient(
+    to top,
+    rgba(18, 16, 14, 0.55) 0%,
+    rgba(18, 16, 14, 0.2) 70%,
+    transparent 100%
+  );
 }
 
 .lifestyle-bento-kicker {
   margin: 0;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-amber, #e7931e);
+  /* Bright amber on dark scrim — not washed cream */
+  color: #f5b942;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
 }
 
 .lifestyle-bento-title {
@@ -111,28 +124,44 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  color: #fffef8;
+  color: #ffffff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
 }
 
 .lifestyle-bento-text {
-  margin: 0.25rem 0 0.5rem;
+  margin: 0.15rem 0 0.35rem;
   font-size: 0.92rem;
   line-height: 1.5;
-  color: rgba(255, 254, 248, 0.78);
-  max-width: 28ch;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 30ch;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
 }
 
 .lifestyle-bento-cta {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #fffef8;
-  opacity: 0.9;
-  margin-top: 0.35rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: fit-content;
+  margin-top: 0.25rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #1a1510;
+  background: var(--theme-gradient, linear-gradient(90deg, #ff931e, #eb9d2f, #ff931e));
+  box-shadow: 0 4px 14px rgba(231, 147, 30, 0.35);
+  opacity: 1;
+}
+
+.lifestyle-bento-card:hover .lifestyle-bento-cta,
+.lifestyle-bento-card:focus-visible .lifestyle-bento-cta {
+  filter: brightness(1.05);
 }
 
 /* Bar card — differentiated charcoal + amber rim */
 .lifestyle-bento-card--bar {
-  border: 1.5px solid rgba(231, 147, 30, 0.45);
+  border: 1.5px solid rgba(231, 147, 30, 0.55);
   box-shadow:
     0 8px 28px rgba(46, 44, 44, 0.12),
     inset 0 0 0 1px rgba(231, 147, 30, 0.12);
@@ -141,14 +170,15 @@
 .lifestyle-bento-card--bar .lifestyle-bento-media::after {
   background: linear-gradient(
     to top,
-    rgba(18, 16, 14, 0.94) 0%,
-    rgba(46, 30, 12, 0.55) 50%,
-    rgba(26, 25, 25, 0.2) 100%
+    rgba(12, 10, 8, 0.96) 0%,
+    rgba(28, 18, 8, 0.78) 32%,
+    rgba(46, 30, 12, 0.4) 60%,
+    rgba(26, 25, 25, 0.15) 100%
   );
 }
 
 .lifestyle-bento-card--bar .lifestyle-bento-kicker {
-  color: var(--color-amber-bright, #f19f0f);
+  color: #ffc857;
 }
 
 @media (max-width: 900px) {
@@ -168,21 +198,38 @@
   text-align: center;
 }
 
+/*
+ * Section head on white — high contrast only
+ * (cream / soft amber disappears on #fff)
+ */
+.lifestyle .lifestyle-head .eyebrow,
 .lifestyle-head .eyebrow {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.55rem;
+  color: #b86a0e !important;
+  font-weight: 700;
+  letter-spacing: 0.14em;
 }
 
-.lifestyle-head .display {
-  margin: 0 0 0.5rem;
+.lifestyle .lifestyle-head .display,
+.lifestyle .lifestyle-head h2,
+.lifestyle-head .display,
+.lifestyle-head h2 {
+  margin: 0 0 0.55rem;
   letter-spacing: -0.02em;
+  color: #1a1919 !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #1a1919;
 }
 
+.lifestyle .lifestyle-head .lifestyle-lede,
 .lifestyle-lede {
   margin: 0 auto;
-  max-width: 40ch;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.55;
+  max-width: 42ch;
+  color: #3a3630 !important;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-text-fill-color: #3a3630;
 }
 
 /* Asymmetric grid: tall left · two stacked right */
@@ -444,18 +491,36 @@
   transform: scale(1.06) rotate(14deg);
 }
 
-/* Head also staggers in */
+/*
+ * Head type must stay visible — never gate critical eyebrow/h2/lede on is-inview.
+ * (Previous opacity:0 + missing data-lifestyle left the head invisible.)
+ */
 .lifestyle-head {
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+  transform: none;
 }
 
-.lifestyle.is-inview .lifestyle-head {
-  opacity: 1;
-  transform: translateY(0);
+/* Optional soft settle when inview (cards still animate) */
+.lifestyle.lifestyle--bento .lifestyle-head {
+  opacity: 1 !important;
+  transform: none !important;
+  color: #1a1919;
+}
+
+.lifestyle.lifestyle--bento .lifestyle-head .eyebrow {
+  color: #b86a0e !important;
+}
+
+.lifestyle.lifestyle--bento .lifestyle-head .display,
+.lifestyle.lifestyle--bento .lifestyle-head h2 {
+  color: #1a1919 !important;
+  -webkit-text-fill-color: #1a1919 !important;
+  text-shadow: none !important;
+}
+
+.lifestyle.lifestyle--bento .lifestyle-head .lifestyle-lede {
+  color: #3a3630 !important;
+  -webkit-text-fill-color: #3a3630 !important;
 }
 
 /* ---------- Tablet ---------- */
@@ -498,7 +563,12 @@
 /* ---------- Mobile ---------- */
 @media (max-width: 640px) {
   .lifestyle {
-    padding-block: clamp(2.5rem, 8vw, 3.5rem);
+    padding-block: clamp(1.5rem, 5vw, 2.25rem);
+  }
+
+  .lifestyle.lifestyle--bento {
+    padding-top: clamp(1.15rem, 4vw, 1.75rem);
+    padding-bottom: clamp(0.35rem, 2vw, 0.75rem);
   }
 
   .lifestyle-grid {

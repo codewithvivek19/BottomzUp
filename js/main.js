@@ -11,7 +11,10 @@
 
   // ---------- Lifestyle section: inview stagger + image parallax ----------
   (function lifestyleMotion() {
-    const section = document.querySelector('[data-lifestyle]');
+    // Prefer data attr; fall back to .lifestyle (bento section was missing data-lifestyle)
+    const section =
+      document.querySelector('[data-lifestyle]') ||
+      document.querySelector('section.lifestyle');
     if (!section) return;
 
     const imgs = section.querySelectorAll('[data-life-img]');
@@ -27,12 +30,20 @@
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               section.classList.add('is-inview');
+              io.unobserve(entry.target);
             }
           });
         },
-        { threshold: 0.18, rootMargin: '0px 0px -8% 0px' }
+        { threshold: 0.08, rootMargin: '0px 0px -4% 0px' }
       );
       io.observe(section);
+      // If already on screen at load (short pages / deep link), reveal immediately
+      requestAnimationFrame(() => {
+        const r = section.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.92 && r.bottom > 0) {
+          section.classList.add('is-inview');
+        }
+      });
     } else {
       section.classList.add('is-inview');
     }
@@ -163,11 +174,17 @@
       header.classList.toggle('is-scrolled', y > 20);
     }
 
-    if (stickyCta && hero) {
-      const heroBottom = hero.offsetTop + hero.offsetHeight;
-      const pastHero = y > heroBottom - 120;
-      let nearReserve = false;
+    if (stickyCta) {
+      // Home: show after hero. Menu (no hero): show after light scroll.
+      let pastHero = true;
+      if (hero) {
+        const heroBottom = hero.offsetTop + hero.offsetHeight;
+        pastHero = y > heroBottom - 120;
+      } else if (document.body.classList.contains('menu-page')) {
+        pastHero = y > 48;
+      }
 
+      let nearReserve = false;
       if (reserve) {
         const reserveTop = reserve.getBoundingClientRect().top;
         nearReserve = reserveTop < window.innerHeight * 0.85;
@@ -360,11 +377,11 @@
   let lastFocus = null;
 
   const partyCopy = {
-    '2': 'Table for 2 — walk-ins welcome; large groups should give a heads up.',
-    '4': 'Table for 4 — great for a weeknight hang.',
-    '6': 'Table for 6 — worth a heads up when you can.',
-    '8': 'Party of 8+ — definitely give us a heads up.',
-    group: 'Large group — tell us headcount when you reach out. We’ll make it work.',
+    '2': 'Table for 2 — walk-ins welcome anytime. Call if you want a booth held.',
+    '4': 'Table for 4 — weeknight classic. A quick call helps on busy nights.',
+    '6': 'Table for 6 — give us a heads up so we can set you up right.',
+    '8': 'Party of 8+ — please call ahead. We’ll do our best to hold space.',
+    group: 'Large group (10+) — call with headcount & time. We’ll make it work when we can.',
   };
 
   function focusableIn(el) {
@@ -412,14 +429,19 @@
 
   function updateParty(size) {
     partySize = size;
-    document.querySelectorAll('.party-chip').forEach((chip) => {
-      chip.classList.toggle('is-active', chip.dataset.size === size);
-    });
+    const chips = document.querySelectorAll('.party-chip');
+    if (chips.length) {
+      chips.forEach((chip) => {
+        const on = chip.dataset.size === size;
+        chip.classList.toggle('is-active', on);
+        chip.setAttribute('aria-pressed', String(on));
+      });
+    }
     if (noteEl) noteEl.textContent = partyCopy[size] || partyCopy['2'];
 
     const C = window.BOTTOMZ_CONTACT;
     const label =
-      size === 'group' ? 'a large group' : size === '8' ? '8+' : size;
+      size === 'group' ? 'a large group (10+)' : size === '8' ? '8+' : size;
     const body =
       typeof window.__bottomzSmsBody === 'function'
         ? window.__bottomzSmsBody(label)
@@ -427,9 +449,11 @@
 
     if (smsBtn && C && C.hasPhone()) {
       smsBtn.hidden = false;
+      smsBtn.removeAttribute('aria-hidden');
       smsBtn.href = C.smsHref(body);
     } else if (smsBtn) {
       smsBtn.hidden = true;
+      smsBtn.setAttribute('aria-hidden', 'true');
     }
 
     if (callBtn && C && C.hasPhone()) {

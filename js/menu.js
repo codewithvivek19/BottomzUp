@@ -280,18 +280,19 @@
         <span><i class="menu-legend-dot menu-legend-dot--star"></i> * may be undercooked</span>
       </p>`;
 
+    // Visible conversion band (no .reveal — was stuck opacity:0 without is-visible)
     const barCta = `
-      <div class="bar-conversion reveal" id="barConversion">
+      <div class="bar-conversion" id="barConversion">
         <div class="bar-conversion-inner">
           <div>
             <p class="eyebrow">The bar is open</p>
             <h3 class="display heading-md">Ready for a round?</h3>
-            <p class="body-md bar-conversion-copy">Walk-ins welcome. Large crew? Give us a heads up.</p>
+            <p class="body-md bar-conversion-copy">Walk-ins welcome. Large crew? Give us a heads up — or order delivery via DoorDash &amp; Grubhub.</p>
           </div>
           <div class="bar-conversion-actions">
             <button type="button" class="btn-ticket js-open-reserve">
               <span class="btn-hover-fill" aria-hidden="true"></span>
-              <span class="btn-label" data-contact="call-label">Plan your visit</span>
+              <span class="btn-label" data-contact="call-label">Call to Reserve</span>
               <span class="btn-arrow" aria-hidden="true">↗</span>
             </button>
             <a class="btn-ticket btn-ticket-light" data-contact="maps" href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592">
@@ -317,8 +318,7 @@
         </button>
       </div>
       <p class="menu-disclaimer">
-        Disclosure / Consumer Advisory: Consumption of undercooked meat, poultry, eggs, or seafood may increase the risk of foodborne illness.
-        Inform your server of any dietary restrictions. * These items may be served undercooked.
+        Disclosure / Consumer Advisory: Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions. Please advise your server of any allergies. * These items may be served undercooked.
       </p>
     `;
 
@@ -683,7 +683,6 @@
       'scroll',
       () => {
         if (ticking || query.trim() || activeCat !== 'all') {
-          updateFloatChip();
           return;
         }
         ticking = true;
@@ -701,31 +700,11 @@
               btn.classList.toggle('is-spy', btn.dataset.cat === mega);
             });
           }
-          updateFloatChip();
           ticking = false;
         });
       },
       { passive: true }
     );
-  }
-
-  // Quiet food / loud bar: float chip only near bar or after deep scroll
-  function updateFloatChip() {
-    const chip = document.getElementById('menuFloat');
-    if (!chip) return;
-    const bar = document.getElementById('sec-drinks');
-    const y = window.scrollY;
-    let nearBar = false;
-    if (bar) {
-      const r = bar.getBoundingClientRect();
-      nearBar = r.top < window.innerHeight * 0.85 && r.bottom > 80;
-    }
-    const deep = y > 280;
-    // Always available after short scroll; bar zone gets louder treatment
-    const show = deep || nearBar || activeCat === 'drinks';
-    chip.classList.toggle('is-visible', show);
-    chip.classList.toggle('is-bar-loud', nearBar || activeCat === 'drinks');
-    chip.setAttribute('aria-hidden', String(!show));
   }
 
   function escapeHTML(str) {
@@ -762,7 +741,6 @@
   bindScrollSpy();
   applyFilters();
   updateSearchClear();
-  updateFloatChip();
   applyDeepLink();
   if (typeof window.__bottomzApplyContact === 'function') {
     window.__bottomzApplyContact();

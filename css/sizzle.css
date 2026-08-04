@@ -4,151 +4,29 @@
    Footer: scroll-driven headline reveal
    ============================================ */
 
-/* ---------- Burger card: "sizzle" hover state ---------- */
-
-/* Radiant heat corona behind the featured burger */
+/* ---------- Burger cards: equal treatment (no featured special effects) ---------- */
 .burger-card--featured {
   position: relative;
+  transform: none;
+  z-index: auto;
 }
 
 .burger-card--featured::before {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: 23px;
-  background: conic-gradient(
-    from 0deg,
-    rgba(231, 147, 30, 0) 0%,
-    rgba(241, 159, 15, 0.55) 25%,
-    rgba(196, 80, 40, 0.45) 50%,
-    rgba(231, 147, 30, 0) 75%,
-    rgba(241, 159, 15, 0.4) 100%
-  );
-  opacity: 0;
-  z-index: 0;
-  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  animation: sizzleRotate 3s linear infinite;
-  animation-play-state: paused;
+  display: none !important;
+  content: none !important;
 }
 
-.burger-card--featured:hover::before,
-.burger-card--featured:focus-visible::before {
-  opacity: 1;
-  animation-play-state: running;
-}
-
-@keyframes sizzleRotate {
-  to { transform: rotate(360deg); }
-}
-
-/* White-hot glow inner ring on the featured card image on hover */
-.burger-card--featured:hover .burger-image::before,
-.burger-card--featured:focus-visible .burger-image::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 60% 40% at 50% 90%,
-    rgba(255, 200, 80, 0.28),
-    transparent 65%
-  );
-  z-index: 1;
-  pointer-events: none;
-  animation: heatPulse 1.2s ease-in-out infinite alternate;
-}
-
-@keyframes heatPulse {
-  from { opacity: 0.4; }
-  to   { opacity: 1; }
-}
-
-/* Heat shimmer on the price stamp for featured card */
-.burger-card--featured:hover .price-stamp {
-  box-shadow:
-    0 0 0 2px rgba(241, 159, 15, 0.6),
-    0 0 18px rgba(241, 159, 15, 0.45),
-    0 4px 12px rgba(0,0,0,0.25);
-  animation: stampPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes stampPop {
-  0%   { transform: rotate(3deg) scale(1); }
-  60%  { transform: rotate(-1deg) scale(1.12); }
-  100% { transform: rotate(0deg) scale(1.05); }
-}
-
-/* Smoke wisps on the card badge ("Heavy hitter") — CSS-only smoke trail */
+/* Badge stays static — no smoke / heat hover gimmicks */
 .card-badge {
-  position: relative;
+  position: absolute;
   overflow: visible;
 }
 
-.burger-card--featured:hover .card-badge::before,
-.burger-card--featured:focus-visible .card-badge::before {
-  content: "";
-  position: absolute;
-  top: -18px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 16px;
-  background: linear-gradient(
-    to top,
-    rgba(245, 232, 183, 0.7),
-    transparent
-  );
-  border-radius: 4px;
-  animation: smokeRise 0.9s ease-out infinite;
-  pointer-events: none;
-}
-
-.burger-card--featured:hover .card-badge::after,
-.burger-card--featured:focus-visible .card-badge::after {
-  content: "";
-  position: absolute;
-  top: -22px;
-  left: calc(50% + 6px);
-  transform: translateX(-50%);
-  width: 3px;
-  height: 12px;
-  background: linear-gradient(
-    to top,
-    rgba(245, 232, 183, 0.5),
-    transparent
-  );
-  border-radius: 4px;
-  animation: smokeRise 1.1s ease-out 0.2s infinite;
-  pointer-events: none;
-}
-
-@keyframes smokeRise {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(0) scaleX(1);
-  }
-  40% {
-    opacity: 0.9;
-    transform: translateX(-55%) translateY(-6px) scaleX(1.3);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-45%) translateY(-14px) scaleX(0.6);
-  }
-}
-
-/* All regular burger cards: subtle ember glow on hover */
-.burger-card:not(.burger-card--featured):hover .burger-image::before,
-.burger-card:not(.burger-card--featured):focus-visible .burger-image::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 50% 35% at 50% 95%,
-    rgba(231, 147, 30, 0.22),
-    transparent 65%
-  );
-  z-index: 1;
-  pointer-events: none;
+/* Light shared hover only (same as other cards) — no special featured anim */
+.burger-card:hover .burger-image::before,
+.burger-card:focus-visible .burger-image::before {
+  content: none;
+  display: none;
 }
 
 /* ---------- Impact Footer: Scroll-Reveal Overdrive ---------- */
@@ -269,26 +147,24 @@
   opacity: 1;
 }
 
-/* Keep existing hover/float animations working after reveal */
-.footer-hero.is-revealed .footer-burger--left img {
-  animation: footerBurgerFloatL 5.5s ease-in-out infinite;
+/* No continuous float / hover motion on footer burgers */
+.footer-hero.is-revealed .footer-burger--left img,
+.footer-hero.is-revealed .footer-burger--right img,
+.footer-burger--left img,
+.footer-burger--right img {
+  animation: none !important;
 }
 
-.footer-hero.is-revealed .footer-burger--right img {
-  animation: footerBurgerFloatR 6s ease-in-out infinite;
-  animation-delay: -1.2s;
-}
-
-/* Marquee: subtle fade-in from top */
+/* Marquee always visible — deep orange handled in footer-impact.css */
 .footer-marquee {
-  opacity: 0;
-  transform: translateY(-8px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
 }
 
 .site-footer--impact.footer-entered .footer-marquee {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 /* ---------- Reduced motion overrides ---------- */

@@ -31,6 +31,20 @@ main > .section {
   scroll-margin-top: calc(var(--header-height) + 12px);
 }
 
+/* Home main must hug last section — no phantom bottom band before footer */
+main#main {
+  display: block;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  min-height: 0;
+  overflow-x: clip;
+}
+
+main#main > section:last-child {
+  margin-bottom: 0;
+  padding-bottom: clamp(1.1rem, 2.5vw, 1.75rem);
+}
+
 .section {
   padding-block: clamp(2rem, 4.5vw, 3.25rem);
 }
@@ -92,6 +106,7 @@ main > .section {
 /* Visit */
 .visit {
   padding-block: clamp(2rem, 4.5vw, 3.25rem);
+  background: #ffffff;
 }
 
 .visit-address {
@@ -111,9 +126,18 @@ main > .section {
   opacity: 0.85;
 }
 
-/* Menu page shell breathing */
+/* Menu page shell — keep tight into footer */
 .menu-page .menu-night {
-  padding-bottom: 2rem;
+  padding-bottom: 0;
+}
+
+.menu-page .menu-main-wrap {
+  padding-bottom: 0.25rem;
+}
+
+.menu-page .bar-conversion {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .menu-page .menu-hero-compact {
@@ -135,9 +159,38 @@ main > .section {
 
 
 
-/* Lifestyle editorial — keep photo tiles, airy head */
-.lifestyle-head .display {
+/* Lifestyle editorial — charcoal on white; head always visible */
+.lifestyle-head {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.lifestyle-head .display,
+.lifestyle-head h2 {
   line-height: 1.08;
+  color: #1a1919 !important;
+  -webkit-text-fill-color: #1a1919 !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+.lifestyle-head .eyebrow {
+  color: #b86a0e !important;
+  -webkit-text-fill-color: #b86a0e !important;
+  opacity: 1 !important;
+}
+
+.lifestyle-lede {
+  color: #3a3630 !important;
+  -webkit-text-fill-color: #3a3630 !important;
+  opacity: 1 !important;
+}
+
+/* Sauce meter + scratch — solid white sections */
+.wings-meter-section,
+.wings-meter-section--viewport,
+.scratch-section {
+  background: #ffffff;
 }
 
 /* Footer marquee slightly calmer */

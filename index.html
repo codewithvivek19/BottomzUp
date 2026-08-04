@@ -20,22 +20,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="preload" href="./assets/fonts/lemon-milk-bold.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="./assets/fonts/lemon-milk-medium.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="./assets/images/float-classic.png" as="image" />
+  <link rel="preload" href="./assets/images/float-bacon.png" as="image" />
 
   <link rel="stylesheet" href="./css/base.css" />
-  <link rel="stylesheet" href="./css/home.css?v=7" />
+  <link rel="stylesheet" href="./css/home.css?v=11" />
   <link rel="stylesheet" href="./css/nav.css?v=2" />
-  <link rel="stylesheet" href="./css/extras.css?v=2" />
-  <link rel="stylesheet" href="./css/atmosphere.css?v=2" />
+  <link rel="stylesheet" href="./css/extras.css?v=4" />
+  <link rel="stylesheet" href="./css/atmosphere.css?v=3" />
   <link rel="stylesheet" href="./css/hero-freshbox.css?v=6" />
   <link rel="stylesheet" href="./css/deco-freshbox.css" />
-  <link rel="stylesheet" href="./css/scratch-coupon.css" />
-  <link rel="stylesheet" href="./css/footer-impact.css?v=3" />
-  <link rel="stylesheet" href="./css/lifestyle.css?v=2" />
-  <link rel="stylesheet" href="./css/sizzle.css" />
-  <link rel="stylesheet" href="./css/wings-forge.css?v=10" />
+  <link rel="stylesheet" href="./css/scratch-coupon.css?v=2" />
+  <link rel="stylesheet" href="./css/footer-impact.css?v=6" />
+  <link rel="stylesheet" href="./css/lifestyle.css?v=6" />
+  <link rel="stylesheet" href="./css/sizzle.css?v=2" />
+  <link rel="stylesheet" href="./css/wings-forge.css?v=12" />
   <link rel="stylesheet" href="./css/control-knob.css?v=2" />
-  <link rel="stylesheet" href="./css/site-polish.css?v=2" />
+  <link rel="stylesheet" href="./css/site-polish.css?v=8" />
 </head>
 <body class="has-phone">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -137,19 +137,22 @@
           </div>
         </div>
 
-        <div class="fbx-food-stage" id="fbxFoodStage" aria-roledescription="carousel" aria-label="Featured burgers">
+        <div class="fbx-food-stage" id="fbxFoodStage" aria-roledescription="carousel" aria-label="Featured dishes">
           <div class="fbx-food-floor" aria-hidden="true"></div>
           <div class="fbx-food is-center" data-food="0" role="group" aria-roledescription="slide">
-            <img src="./assets/images/float-classic.png" alt="Classic House Burger" width="640" height="420" decoding="async" fetchpriority="high" />
+            <img src="./assets/images/float-bacon.png" alt="Bacon Cheese Burger" width="640" height="640" decoding="async" fetchpriority="high" />
           </div>
           <div class="fbx-food is-right" data-food="1" role="group" aria-roledescription="slide">
-            <img src="./assets/images/float-bacon.png" alt="Bacon Cheeseburger" width="480" height="340" decoding="async" />
+            <img src="./assets/images/float-philly.png" alt="Philly Cheesesteak" width="480" height="480" decoding="async" />
           </div>
           <div class="fbx-food is-left" data-food="2" role="group" aria-roledescription="slide">
-            <img src="./assets/images/float-double.png" alt="Double Decker Burger" width="300" height="300" decoding="async" />
+            <img src="./assets/images/burger-straight.png" alt="Bone-in Wings" width="300" height="300" decoding="async" />
           </div>
           <div class="fbx-food is-far-right" data-food="3" role="group" aria-roledescription="slide">
-            <img src="./assets/images/float-buffalo.png" alt="Buffalo Chicken Burger" width="300" height="300" decoding="async" />
+            <img src="./assets/images/float-ribeye.png" alt="Ribeye Steak" width="300" height="300" decoding="async" />
+          </div>
+          <div class="fbx-food is-far-left" data-food="4" role="group" aria-roledescription="slide">
+            <img src="./assets/images/float-drink.png" alt="Bottomz Up Drink" width="300" height="300" decoding="async" />
           </div>
           <div class="fbx-food-dots" id="fbxFoodDots" role="tablist" aria-label="Dishes"></div>
           <div class="fbx-food-progress" id="fbxFoodProgress" aria-hidden="true"><span></span></div>
@@ -478,7 +481,7 @@
             </div>
           </a>
 
-          <a href="pages/menu.html#sec-burgers" class="burger-card burger-card--featured reveal" role="listitem" style="--reveal-delay: 120ms">
+          <a href="pages/menu.html#sec-burgers" class="burger-card reveal" role="listitem" style="--reveal-delay: 120ms">
             <div class="burger-image burger-image--photo">
               <img src="./assets/images/burger-double.png" alt="Double Decker Burger" width="640" height="640" loading="lazy" />
               <span class="price-stamp">$18</span>
@@ -516,7 +519,7 @@
     </section>
 
     <!-- ==================== LIFESTYLE — bento: Burgers · Kitchen · Bar ==================== -->
-    <section class="lifestyle lifestyle--bento" id="vibe" aria-label="Burgers, Kitchen, and Bar">
+    <section class="lifestyle lifestyle--bento" id="vibe" data-lifestyle aria-label="Burgers, Kitchen, and Bar">
       <div class="lifestyle-shell">
         <div class="lifestyle-head">
           <p class="eyebrow">The house</p>
@@ -818,68 +821,118 @@
     </section>
   </main>
 
-  <!-- Reserve panel -->
+  <!-- Reserve panel — simple call / visit (booking via phone · delivery partners) -->
   <div class="reserve-backdrop" id="reserveBackdrop" hidden></div>
-  <aside class="reserve-panel" id="reservePanel" role="dialog" aria-modal="true" aria-labelledby="reserveTitle" hidden>
-    <div class="reserve-panel-head">
-      <div>
-        <p class="eyebrow">Bottomz Up</p>
-        <h2 id="reserveTitle">Plan your visit</h2>
+  <aside
+    class="reserve-panel"
+    id="reservePanel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="reserveTitle"
+    aria-describedby="reserveLead"
+    hidden
+  >
+    <div class="reserve-sheet">
+      <div class="reserve-grab" aria-hidden="true"><span></span></div>
+
+      <header class="reserve-panel-head">
+        <div class="reserve-head-text">
+          <p class="reserve-kicker">Bottomz Up · South Boston</p>
+          <h2 id="reserveTitle">Call to reserve</h2>
+          <p class="reserve-lead" id="reserveLead">
+            Walk-ins welcome. Call to hold a table when you can — online booking may be handled by our partners. For takeout &amp; delivery, use DoorDash or Grubhub.
+          </p>
+        </div>
+        <button type="button" class="reserve-close" id="reserveClose" aria-label="Close reserve panel">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+        </button>
+      </header>
+
+      <div class="reserve-body">
+        <div class="reserve-info-grid">
+          <div class="reserve-info-card">
+            <span class="reserve-info-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7" />
+                <path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+              </svg>
+            </span>
+            <div class="reserve-info-body">
+              <strong>Hours</strong>
+              <span data-contact="hours" data-hours-format="lines">
+                Monday – Thursday: 11:00 AM – 10:00 PM<br />
+                Friday – Saturday: 11:00 AM – 12:30 PM<br />
+                Sunday: 11:00 AM – 8:00 PM
+              </span>
+            </div>
+          </div>
+
+          <div class="reserve-info-card">
+            <span class="reserve-info-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" />
+                <circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.7" />
+              </svg>
+            </span>
+            <div class="reserve-info-body">
+              <strong>Address</strong>
+              <span>
+                2001 Seymour Dr<br />
+                South Boston, VA 24592
+              </span>
+            </div>
+          </div>
+
+          <div class="reserve-info-card reserve-info-card--accent">
+            <span class="reserve-info-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M6.5 4.5h3.2l1.1 4.2-2 1.2a12.5 12.5 0 0 0 5.3 5.3l1.2-2 4.2 1.1v3.2c0 .9-.7 1.7-1.6 1.7C9.8 19.2 4.8 14.2 4.8 8.1c0-.9.8-1.6 1.7-1.6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <div class="reserve-info-body">
+              <strong>Phone</strong>
+              <a class="reserve-phone-link" data-contact="call" href="tel:+14345755753">
+                <span data-contact="phone-label">(434) 575-5753</span>
+              </a>
+              <span class="reserve-info-hint">Best way to hold a table</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reserve-honesty" id="reserveHonesty" hidden>
+          <p><strong>Phone number coming soon.</strong> Walk-ins are welcome — or open maps and head to Seymour Drive.</p>
+        </div>
+
+        <div class="reserve-partners" aria-label="Order delivery">
+          <p class="reserve-partners-label">Order delivery</p>
+          <div class="reserve-partners-row">
+            <a class="reserve-partner-btn" href="https://www.grubhub.com" target="_blank" rel="noopener noreferrer">Grubhub</a>
+            <a class="reserve-partner-btn" href="https://www.doordash.com" target="_blank" rel="noopener noreferrer">DoorDash</a>
+          </div>
+        </div>
       </div>
-      <button type="button" class="reserve-close" id="reserveClose" aria-label="Close">×</button>
-    </div>
-    <p class="lead">Walk-ins welcome. Large group? Give us a heads up — we’ll hold a table when we can.</p>
 
-    <div class="reserve-field">
-      <label id="partyLabel">Party size</label>
-      <div class="party-chips" role="group" aria-labelledby="partyLabel">
-        <button type="button" class="party-chip is-active" data-size="2">2</button>
-        <button type="button" class="party-chip" data-size="4">4</button>
-        <button type="button" class="party-chip" data-size="6">6</button>
-        <button type="button" class="party-chip" data-size="8">8+</button>
-        <button type="button" class="party-chip" data-size="group">Large group</button>
-      </div>
-    </div>
-
-    <div class="reserve-hours">
-      <strong>Hours</strong>
-      <span data-contact="hours" data-hours-format="lines">
-        Monday – Thursday: 11:00 AM – 10:00 PM<br />
-        Friday – Saturday: 11:00 AM – 12:30 PM<br />
-        Sunday: 11:00 AM – 8:00 PM
-      </span>
-    </div>
-
-    <div class="reserve-honesty" id="reserveHonesty" hidden>
-      <p><strong>Phone number coming soon.</strong> Until it’s live here, walk-ins are welcome — or open maps and head to Seymour Drive.</p>
-    </div>
-
-    <p class="reserve-note" id="reserveNote">Table for 2 — walk-ins welcome; large groups should give a heads up.</p>
-    <p class="body-sm">
-      <a data-contact="call" href="tel:+14345755753"><span data-contact="phone-label">(434) 575-5753</span></a>
-      ·
-      <a data-contact="website" href="https://www.bottomzupbargrill.com" target="_blank" rel="noopener noreferrer">www.bottomzupbargrill.com</a>
-    </p>
-    <p class="body-sm text-muted" data-contact="delivery">Delivery available via Grubhub &amp; DoorDash</p>
-
-    <div class="reserve-actions-stack">
-      <a class="btn-ticket btn-lg" id="reserveCallBtn" data-contact="call" href="tel:+14345755753">
-        <span class="btn-hover-fill" aria-hidden="true"></span>
-        <span class="btn-label" data-contact="call-label">Call to Reserve</span>
-        <span class="btn-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="btn-ticket btn-ticket-light btn-lg" id="reserveMapsBtn" data-contact="maps" href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592">
-        <span class="btn-hover-fill" aria-hidden="true"></span>
-        <span class="btn-label">Get Directions</span>
-        <span class="btn-arrow" aria-hidden="true">→</span>
-      </a>
-      <a href="#" class="reserve-sms" id="reserveSmsBtn" data-contact="sms" hidden>Prefer text? Send a quick SMS →</a>
+      <footer class="reserve-actions">
+        <a class="btn-ticket btn-lg reserve-cta-primary" id="reserveCallBtn" data-contact="call" href="tel:+14345755753">
+          <span class="btn-hover-fill" aria-hidden="true"></span>
+          <span class="btn-label" data-contact="call-label">Call to Reserve</span>
+          <span class="btn-arrow" aria-hidden="true">↗</span>
+        </a>
+        <div class="reserve-actions-row">
+          <a class="btn-ticket btn-ticket-light reserve-cta-maps" id="reserveMapsBtn" data-contact="maps" href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592">
+            <span class="btn-hover-fill" aria-hidden="true"></span>
+            <span class="btn-label">Get Directions</span>
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="#" class="reserve-sms" id="reserveSmsBtn" data-contact="sms" hidden>Text us instead →</a>
+        </div>
+      </footer>
     </div>
   </aside>
 
-  <!-- ==================== FOOTER — conversion impact ==================== -->
   <footer class="site-footer site-footer--impact">
-    <!-- Continuous marquee -->
     <div class="footer-marquee" aria-hidden="true">
       <div class="footer-marquee-track">
         <div class="footer-marquee-group">
@@ -891,17 +944,9 @@
       </div>
     </div>
 
-    <!-- Burgers + headline + ORDER NOW -->
     <div class="footer-hero">
       <div class="footer-burger footer-burger--left">
-        <img
-          src="./assets/images/float-classic.png"
-          alt=""
-          width="400"
-          height="400"
-          loading="lazy"
-          decoding="async"
-        />
+        <img src="./assets/images/float-bacon.png" alt="" width="400" height="400" loading="lazy" decoding="async" />
       </div>
 
       <div class="footer-cta-block" id="footerCtaBlock">
@@ -915,18 +960,10 @@
       </div>
 
       <div class="footer-burger footer-burger--right">
-        <img
-          src="./assets/images/float-bacon.png"
-          alt=""
-          width="400"
-          height="400"
-          loading="lazy"
-          decoding="async"
-        />
+        <img src="./assets/images/burger-straight.png" alt="" width="400" height="400" loading="lazy" decoding="async" />
       </div>
     </div>
 
-    <!-- Contact + delivery partners -->
     <div class="footer-contact-bar">
       <a class="footer-phone" data-contact="call" href="tel:+14345755753">
         <span class="footer-phone-label">Call</span>
@@ -947,7 +984,6 @@
       </div>
     </div>
 
-    <!-- Utility: social · brand · copyright -->
     <div class="footer-utility">
       <nav class="footer-social" aria-label="Social">
         <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -959,13 +995,8 @@
         <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.2 2H21l-6.5 7.4L22 22h-6.2l-4.3-5.6L6 22H3.2l7-8L2 2h6.3l3.9 5.2L18.2 2zm-1.1 18h1.7L7 3.9H5.2L17.1 20z"/></svg>
         </a>
-        <a href="https://www.threads.net/" target="_blank" rel="noopener noreferrer" aria-label="Threads">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.3 11.3c-.1-2.4-1.4-3.8-3.9-3.9-1.4 0-2.6.5-3.3 1.4l1.3 1c.5-.6 1.2-.9 2-.9 1.4 0 2.2.7 2.3 2.1-1-.2-2.1-.2-3.2.1-1.8.4-3 1.6-2.9 3.4.1 1.6 1.3 2.7 3 2.7 1.3 0 2.3-.5 2.9-1.5.3.6.6 1.1 1 1.5l1.3-1.1c-.4-.5-.8-1.1-1-1.8.3-.6.5-1.3.5-2zm-3.7 3.3c-.8 0-1.4-.4-1.4-1.1 0-.9.7-1.4 2.1-1.6.6-.1 1.2-.1 1.8 0 0 1.5-.9 2.7-2.5 2.7zM12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18.2A8.2 8.2 0 1 1 12 3.8a8.2 8.2 0 0 1 0 16.4z"/></svg>
-        </a>
       </nav>
-
       <a href="./index.html" class="footer-brand-mark">Bottomz Up</a>
-
       <div class="footer-utility-end">
         <span class="footer-copy-pill">2026 Copyright</span>
         <span class="footer-credit">South Boston, VA</span>
@@ -973,13 +1004,7 @@
     </div>
 
     <p class="footer-legal">
-      <a data-contact="call" href="tel:+14345755753"><span data-contact="phone-label">(434) 575-5753</span></a>
-      ·
-      <a data-contact="website" href="https://www.bottomzupbargrill.com" target="_blank" rel="noopener noreferrer">www.bottomzupbargrill.com</a>
-      ·
-      <span data-contact="delivery">Delivery available via Grubhub &amp; DoorDash</span>
-      · 2001 Seymour Dr, South Boston, VA 24592
-      · Consuming raw or undercooked meats may increase risk of foodborne illness.
+      Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions. Please advise your server of any allergies.
     </p>
   </footer>
 

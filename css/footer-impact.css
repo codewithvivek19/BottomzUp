@@ -58,14 +58,20 @@ body .site-footer.site-footer--impact {
   color: var(--color-ink, #1a1510);
 }
 
+/* Deep orange marquee strip · white type */
 .site-footer.site-footer--impact .footer-marquee {
-  background: rgba(46, 44, 44, 0.06);
-  border-bottom-color: rgba(46, 44, 44, 0.1);
+  background: #c45f0a;
+  border-bottom: 1px solid rgba(26, 20, 10, 0.18);
 }
 
 .site-footer.site-footer--impact .footer-marquee-group span {
-  color: var(--color-charcoal, #2e2c2c);
-  opacity: 0.75;
+  color: #fffef8;
+  opacity: 0.96;
+  background-image: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: #fffef8;
+  text-shadow: none;
 }
 
 .site-footer.site-footer--impact .footer-contact-bar,
@@ -124,21 +130,27 @@ body .site-footer.site-footer--impact {
   color: #fffef8;
 }
 
-/* ---------- Top marquee — D: faster ---------- */
+/* ---------- Top marquee — deep orange · white type · no hover gimmicks ---------- */
 .footer-marquee {
   position: relative;
   z-index: 2;
   overflow: hidden;
-  border-bottom: 1px solid rgba(245, 232, 183, 0.22);
-  background: rgba(26, 25, 25, 0.14);
-  padding-block: 0.75rem;
+  border-bottom: 1px solid rgba(26, 20, 10, 0.15);
+  background: #c45f0a;
+  padding-block: 0.7rem;
+}
+
+.footer-marquee:hover,
+.footer-marquee:hover .footer-marquee-track {
+  /* no pause / scale on hover */
+  animation-play-state: running;
 }
 
 .footer-marquee-track {
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: footerMarquee 16s linear infinite; /* was 32s — D faster */
+  animation: footerMarquee 18s linear infinite;
 }
 
 .footer-marquee-group {
@@ -152,11 +164,11 @@ body .site-footer.site-footer--impact {
   font-family: var(--font-body);
   font-size: clamp(0.7rem, 1.15vw, 0.82rem);
   font-weight: 700;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--footer-cream-soft);
+  color: #fffef8;
   padding-inline: 0.4em;
-  text-shadow: 0 1px 0 rgba(26, 25, 25, 0.15);
+  text-shadow: none;
 }
 
 @keyframes footerMarquee {
@@ -211,14 +223,14 @@ body .site-footer.site-footer--impact {
   transform-origin: center center;
 }
 
-/* C: hover float + D: idle float */
+/* Static burger floats — no idle / hover animation */
 .footer-burger--left {
   justify-content: flex-end;
 }
 
 .footer-burger--left img {
-  transform: rotate(-7deg) translateY(6px) scale(1);
-  animation: footerBurgerFloatL 5.5s ease-in-out infinite;
+  transform: rotate(-6deg) translateY(4px);
+  animation: none !important;
 }
 
 .footer-burger--right {
@@ -226,34 +238,15 @@ body .site-footer.site-footer--impact {
 }
 
 .footer-burger--right img {
-  transform: rotate(8deg) translateY(10px) scale(1);
-  animation: footerBurgerFloatR 6s ease-in-out infinite;
-  animation-delay: -1.2s;
+  transform: rotate(7deg) translateY(6px);
+  animation: none !important;
 }
 
-@keyframes footerBurgerFloatL {
-  0%, 100% { transform: rotate(-7deg) translateY(6px) scale(1); }
-  50% { transform: rotate(-5deg) translateY(-10px) scale(1.03); }
-}
-
-@keyframes footerBurgerFloatR {
-  0%, 100% { transform: rotate(8deg) translateY(10px) scale(1); }
-  50% { transform: rotate(6deg) translateY(-8px) scale(1.04); }
-}
-
-.footer-burger:hover img {
-  animation-play-state: paused;
-  filter:
-    drop-shadow(0 36px 52px rgba(26, 25, 25, 0.45))
-    drop-shadow(0 0 28px rgba(241, 159, 15, 0.35));
-}
-
-.footer-burger--left:hover img {
-  transform: rotate(-3deg) translateY(-14px) scale(1.08);
-}
-
+/* No hover motion on footer food art */
+.footer-burger:hover img,
+.footer-burger--left:hover img,
 .footer-burger--right:hover img {
-  transform: rotate(3deg) translateY(-12px) scale(1.09);
+  animation: none !important;
 }
 
 .footer-cta-block {
@@ -547,8 +540,9 @@ body .site-footer.site-footer--impact {
 }
 
 @media (max-width: 699px) {
+  /* Room for sticky dock without huge dead space */
   .site-footer.site-footer--impact {
-    padding-bottom: 72px;
+    padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
   }
 }
 
@@ -684,6 +678,15 @@ body .site-footer.site-footer--impact {
   max-width: 52rem;
 }
 
+/* Plain footer legal / advisory line (no separate logo strip) */
+.site-footer.site-footer--impact .footer-legal {
+  color: #5c5850;
+  font-size: 0.72rem;
+  line-height: 1.55;
+  max-width: 54ch;
+  padding: 0.65rem clamp(1rem, 4vw, 2rem) 0.85rem;
+}
+
 /* ---------- Tablet ---------- */
 @media (max-width: 960px) {
   .footer-hero {
@@ -746,9 +749,11 @@ body .site-footer.site-footer--impact {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 1rem;
-    padding-bottom: calc(1rem + 72px + env(safe-area-inset-bottom, 0px));
+    gap: 0.85rem;
+    padding-bottom: 0.85rem;
   }
+
+
 
   .footer-utility-end { justify-content: center; }
   .footer-brand-mark { order: -1; }

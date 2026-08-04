@@ -114,10 +114,7 @@ body::after {
 /* Visit: soft warm lift with smooth entry */
 .visit {
   position: relative;
-  background:
-    radial-gradient(ellipse 50% 70% at 85% 30%, rgba(241, 159, 15, 0.06), transparent 55%),
-    radial-gradient(ellipse 40% 50% at 10% 80%, rgba(255, 249, 232, 0.35), transparent 50%),
-    transparent;
+  background: #ffffff;
 }
 
 /* Scratch / promo: smooth neutral */
@@ -182,10 +179,7 @@ body::after {
 /* Visit: soft cream lift */
 .visit {
   position: relative;
-  background:
-    radial-gradient(ellipse 50% 70% at 85% 30%, rgba(241, 159, 15, 0.1), transparent 55%),
-    radial-gradient(ellipse 40% 50% at 10% 80%, rgba(255, 249, 232, 0.65), transparent 50%),
-    transparent;
+  background: #ffffff;
 }
 
 /* Reserve: richer amber mesh (already gradient — deepen) */
