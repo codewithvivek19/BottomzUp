@@ -5,7 +5,7 @@
 
 .lifestyle {
   position: relative;
-  padding-block: clamp(3.25rem, 8vw, 6rem);
+  padding-block: clamp(2rem, 4.5vw, 3.25rem);
   /* Soft orbs only — page canvas stays on x32 cream */
   background:
     radial-gradient(ellipse 60% 40% at 10% 20%, rgba(241, 159, 15, 0.04), transparent 55%),
@@ -19,6 +19,145 @@
   max-width: var(--container-max, 1280px);
   margin-inline: auto;
   padding-inline: clamp(1.15rem, 4vw, 2rem);
+}
+
+/* ---------- 3-column bento: Burgers · Kitchen · Bar ---------- */
+.lifestyle-bento {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.85rem, 2vw, 1.25rem);
+  align-items: stretch;
+}
+
+.lifestyle-bento-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(380px, 48vw, 520px);
+  border-radius: 24px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fffef8;
+  background: var(--color-charcoal, #2e2c2c);
+  box-shadow: var(--shadow-md, 0 8px 28px rgba(46, 44, 44, 0.1));
+  border: 1px solid rgba(46, 44, 44, 0.08);
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease;
+}
+
+.lifestyle-bento-card:hover,
+.lifestyle-bento-card:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 44px rgba(46, 44, 44, 0.16);
+  outline: none;
+}
+
+.lifestyle-bento-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.lifestyle-bento-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lifestyle-bento-card:hover .lifestyle-bento-media img {
+  transform: scale(1.05);
+}
+
+.lifestyle-bento-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26, 25, 25, 0.92) 0%,
+    rgba(26, 25, 25, 0.45) 45%,
+    rgba(26, 25, 25, 0.15) 100%
+  );
+  pointer-events: none;
+}
+
+.lifestyle-bento-body {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.lifestyle-bento-kicker {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-amber, #e7931e);
+}
+
+.lifestyle-bento-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #fffef8;
+}
+
+.lifestyle-bento-text {
+  margin: 0.25rem 0 0.5rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: rgba(255, 254, 248, 0.78);
+  max-width: 28ch;
+}
+
+.lifestyle-bento-cta {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fffef8;
+  opacity: 0.9;
+  margin-top: 0.35rem;
+}
+
+/* Bar card — differentiated charcoal + amber rim */
+.lifestyle-bento-card--bar {
+  border: 1.5px solid rgba(231, 147, 30, 0.45);
+  box-shadow:
+    0 8px 28px rgba(46, 44, 44, 0.12),
+    inset 0 0 0 1px rgba(231, 147, 30, 0.12);
+}
+
+.lifestyle-bento-card--bar .lifestyle-bento-media::after {
+  background: linear-gradient(
+    to top,
+    rgba(18, 16, 14, 0.94) 0%,
+    rgba(46, 30, 12, 0.55) 50%,
+    rgba(26, 25, 25, 0.2) 100%
+  );
+}
+
+.lifestyle-bento-card--bar .lifestyle-bento-kicker {
+  color: var(--color-amber-bright, #f19f0f);
+}
+
+@media (max-width: 900px) {
+  .lifestyle-bento {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .lifestyle-bento-card {
+    min-height: 320px;
+  }
 }
 
 .lifestyle-head {

@@ -440,7 +440,7 @@
 .fbx-marquee,
 .marquee-section {
   position: relative;
-  padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2.75rem, 6vw, 4.75rem);
+  padding-block: clamp(1.75rem, 4vw, 2.75rem) clamp(1.85rem, 4vw, 3rem);
   overflow: hidden;
   background:
     radial-gradient(ellipse 70% 50% at 50% 0%, rgba(251, 246, 227, 0.9), transparent 60%),
@@ -793,6 +793,11 @@
   }
 }
 
+/* Marquee photo dishes (category/stock images) */
+.dish-card-media img {
+  object-fit: cover;
+}
+
 /* ---------- House strip — dock-dark component only (page canvas stays cream) ---------- */
 .house-strip {
   padding-block: clamp(1.25rem, 3vw, 1.85rem);
@@ -915,7 +920,7 @@ a.house-fact:focus-visible .house-fact-value {
 .burgers {
   position: relative;
   overflow: hidden;
-  padding-block: clamp(3rem, 7vw, 5.5rem);
+  padding-block: clamp(2rem, 4.5vw, 3.25rem);
 }
 
 /* Smooth top fade into section from above */
@@ -1035,22 +1040,23 @@ a.house-fact:focus-visible .house-fact-value {
   }
 }
 
+/* Burger cards — image only, no fill behind cutouts */
 .burger-card {
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid rgba(46, 44, 44, 0.06);
+  background: transparent;
+  border-radius: 22px;
+  border: 1px solid rgba(46, 44, 44, 0.08);
   box-shadow:
     0 1px 2px rgba(46, 44, 44, 0.04),
-    0 10px 28px -10px rgba(46, 44, 44, 0.12);
+    0 12px 28px -10px rgba(46, 44, 44, 0.12);
   overflow: hidden;
   text-decoration: none;
   color: inherit;
   scroll-snap-align: start;
   transition:
-    transform 0.3s var(--ease-out),
-    box-shadow 0.3s var(--ease-out),
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease,
     border-color 0.25s ease;
 }
 
@@ -1065,12 +1071,20 @@ a.house-fact:focus-visible .house-fact-value {
   color: inherit;
 }
 
+/* Image container: transparent — only the PNG shows */
 .burger-image {
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: #ffffff;
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.1);
+  background: transparent !important;
+  isolation: isolate;
+}
+
+.burger-image::before,
+.burger-image::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
 }
 
 @media (min-width: 700px) {
@@ -1079,47 +1093,29 @@ a.house-fact:focus-visible .house-fact-value {
   }
 }
 
-.burger-image--photo {
-  background: #ffffff;
+.burger-image--photo,
+.burger-image--house,
+.burger-image--bacon,
+.burger-image--double,
+.burger-image--buffalo {
+  background: transparent !important;
 }
 
 .burger-image img {
+  position: relative;
+  z-index: 2;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   display: block;
-  transition: transform 0.5s var(--ease-out);
+  object-fit: contain;
+  object-position: center center;
+  padding: 4% 4% 6%;
+  filter: drop-shadow(0 10px 18px rgba(46, 44, 44, 0.16));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .burger-card:hover .burger-image img {
-  transform: scale(1.04);
-}
-
-.burger-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, transparent 40%, rgba(20, 16, 14, 0.2) 100%);
-  pointer-events: none;
-}
-
-
-
-/* Appetizing gradient plates — unique per burger */
-.burger-image--house {
-  background: #ffffff;
-}
-
-.burger-image--bacon {
-  background: #ffffff;
-}
-
-.burger-image--double {
-  background: #ffffff;
-}
-
-.burger-image--buffalo {
-  background: #ffffff;
+  transform: scale(1.04) translateY(-2px);
 }
 
 .price-stamp {
@@ -1136,7 +1132,7 @@ a.house-fact:focus-visible .house-fact-value {
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
   transform: rotate(3deg);
-  z-index: 1;
+  z-index: 3;
   transition: transform var(--duration-normal) var(--ease-out);
 }
 
@@ -1157,7 +1153,7 @@ a.house-fact:focus-visible .house-fact-value {
   color: var(--color-charcoal);
   padding: 0.35em 0.65em;
   border-radius: var(--radius-full);
-  z-index: 1;
+  z-index: 3;
 }
 
 .burger-body {
@@ -1166,7 +1162,8 @@ a.house-fact:focus-visible .house-fact-value {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  background: #fff;
+  background: #ffffff;
+  border-top: 1px solid rgba(46, 44, 44, 0.06);
 }
 
 .burger-name {
@@ -1525,7 +1522,20 @@ a.house-fact:focus-visible .house-fact-value {
 
 /* ---------- Visit ---------- */
 .visit {
-  padding-block: clamp(3rem, 7vw, 5.5rem);
+  padding-block: clamp(2rem, 4.5vw, 3.25rem);
+  padding-bottom: clamp(2.5rem, 5.5vw, 4rem);
+}
+
+.visit .visit-cta {
+  margin-bottom: 0.25rem;
+}
+
+.visit .visit-info > .body-sm {
+  margin-bottom: 0.35rem;
+}
+
+.visit .visit-info > .body-sm[data-contact="delivery"] {
+  margin-bottom: 1rem;
 }
 
 .visit-grid {
@@ -1771,7 +1781,7 @@ a.house-fact:focus-visible .house-fact-value {
 .reviews-marquee {
   /* Stay on global x32 cream canvas — soft amber orbs only */
   background: transparent;
-  padding-block: clamp(3.5rem, 8vw, 6.5rem);
+  padding-block: clamp(2rem, 4.5vw, 3.5rem);
   overflow: hidden;
   position: relative;
 }

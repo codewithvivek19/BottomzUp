@@ -18,39 +18,110 @@
 
 .site-footer.site-footer--impact {
   position: relative;
-  background: var(--footer-orange);
-  color: var(--footer-cream);
+  /* Main site cream gradient (x32) — not terracotta orange */
+  background: var(--bg-global-gradient, var(--canvas, #f6e7c2));
+  color: var(--color-charcoal, #2e2c2c);
   padding: 0;
   overflow: hidden;
   isolation: isolate;
 }
 
-/* A+B: terracotta base + brand amber blooms */
 body .site-footer.site-footer--impact {
   background:
-    radial-gradient(ellipse 90% 70% at 50% -10%, rgba(241, 159, 15, 0.45), transparent 50%),
-    radial-gradient(ellipse 70% 55% at 8% 90%, rgba(198, 122, 18, 0.4), transparent 55%),
-    radial-gradient(ellipse 60% 50% at 95% 30%, rgba(231, 147, 30, 0.35), transparent 50%),
-    radial-gradient(ellipse 80% 60% at 20% 80%, rgba(168, 60, 20, 0.5), transparent 55%),
-    linear-gradient(
-      155deg,
-      var(--footer-amber) 0%,
-      var(--footer-orange-hot) 28%,
-      var(--footer-orange) 55%,
-      var(--footer-orange-deep) 82%,
-      var(--footer-amber-deep) 100%
-    );
+    radial-gradient(ellipse 70% 50% at 15% 0%, rgba(231, 147, 30, 0.12), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 90% 100%, rgba(241, 159, 15, 0.1), transparent 50%),
+    var(--bg-global-gradient, linear-gradient(0deg, #f6e7c2 0%, #fffdf9 100%));
   background-size: 100% 100%;
-  animation: footerBgPulse 14s ease-in-out infinite alternate;
+  animation: none;
+  filter: none;
 }
 
-@keyframes footerBgPulse {
-  0% {
-    filter: saturate(1) brightness(1);
-  }
-  100% {
-    filter: saturate(1.08) brightness(1.04);
-  }
+/* Footer text on cream — invert cream-on-orange tokens */
+.site-footer.site-footer--impact .footer-headline,
+.site-footer.site-footer--impact .footer-subhead,
+.site-footer.site-footer--impact .footer-brand-mark,
+.site-footer.site-footer--impact .footer-legal,
+.site-footer.site-footer--impact .footer-credit,
+.site-footer.site-footer--impact .footer-phone-num,
+.site-footer.site-footer--impact .footer-partner-name {
+  color: var(--color-ink, #1a1510);
+}
+
+.site-footer.site-footer--impact .footer-subhead,
+.site-footer.site-footer--impact .footer-phone-label,
+.site-footer.site-footer--impact .footer-delivery-label,
+.site-footer.site-footer--impact .footer-legal {
+  color: var(--text-muted, #5c5850);
+}
+
+.site-footer.site-footer--impact .footer-phone-num {
+  color: var(--color-ink, #1a1510);
+}
+
+.site-footer.site-footer--impact .footer-marquee {
+  background: rgba(46, 44, 44, 0.06);
+  border-bottom-color: rgba(46, 44, 44, 0.1);
+}
+
+.site-footer.site-footer--impact .footer-marquee-group span {
+  color: var(--color-charcoal, #2e2c2c);
+  opacity: 0.75;
+}
+
+.site-footer.site-footer--impact .footer-contact-bar,
+.site-footer.site-footer--impact .footer-utility {
+  background: rgba(255, 253, 249, 0.55);
+  border-top-color: rgba(46, 44, 44, 0.1);
+}
+
+.site-footer.site-footer--impact .footer-phone,
+.site-footer.site-footer--impact .footer-partner {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(46, 44, 44, 0.12);
+  color: var(--color-ink, #1a1510);
+}
+
+.site-footer.site-footer--impact .footer-social a {
+  color: var(--color-charcoal, #2e2c2c);
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(46, 44, 44, 0.12);
+}
+
+.site-footer.site-footer--impact .footer-order-btn {
+  background: var(--color-charcoal, #2e2c2c);
+  color: #fffef8;
+}
+
+.site-footer.site-footer--impact .footer-order-btn:hover {
+  background: #000;
+  color: #fffef8;
+}
+
+.site-footer.site-footer--impact .footer-headline {
+  color: var(--color-ink, #1a1510);
+  text-shadow: 0 2px 0 rgba(255, 253, 249, 0.5);
+}
+
+.site-footer.site-footer--impact .footer-legal a,
+.site-footer.site-footer--impact .footer-phone,
+.site-footer.site-footer--impact .footer-brand-mark:hover {
+  color: var(--color-amber-deep, #c67a12);
+}
+
+.site-footer.site-footer--impact .footer-headline-underline {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-amber, #e7931e) 20%,
+    var(--color-amber-bright, #f19f0f) 50%,
+    var(--color-amber, #e7931e) 80%,
+    transparent
+  );
+}
+
+.site-footer.site-footer--impact .footer-copy-pill {
+  background: var(--color-charcoal, #2e2c2c);
+  color: #fffef8;
 }
 
 /* ---------- Top marquee — D: faster ---------- */

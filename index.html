@@ -23,19 +23,19 @@
   <link rel="preload" href="./assets/images/float-classic.png" as="image" />
 
   <link rel="stylesheet" href="./css/base.css" />
-  <link rel="stylesheet" href="./css/home.css" />
-  <link rel="stylesheet" href="./css/nav.css" />
+  <link rel="stylesheet" href="./css/home.css?v=5" />
+  <link rel="stylesheet" href="./css/nav.css?v=2" />
   <link rel="stylesheet" href="./css/extras.css" />
   <link rel="stylesheet" href="./css/atmosphere.css" />
-  <link rel="stylesheet" href="./css/hero-freshbox.css" />
+  <link rel="stylesheet" href="./css/hero-freshbox.css?v=4" />
   <link rel="stylesheet" href="./css/deco-freshbox.css" />
   <link rel="stylesheet" href="./css/scratch-coupon.css" />
-  <link rel="stylesheet" href="./css/footer-impact.css" />
+  <link rel="stylesheet" href="./css/footer-impact.css?v=3" />
   <link rel="stylesheet" href="./css/lifestyle.css" />
   <link rel="stylesheet" href="./css/sizzle.css" />
-  <link rel="stylesheet" href="./css/wings-forge.css?v=7" />
+  <link rel="stylesheet" href="./css/wings-forge.css?v=10" />
   <link rel="stylesheet" href="./css/control-knob.css?v=2" />
-  <link rel="stylesheet" href="./css/site-polish.css" />
+  <link rel="stylesheet" href="./css/site-polish.css?v=2" />
 </head>
 <body class="has-phone">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -118,27 +118,12 @@
     <!-- ==================== HERO — FreshBox plate wave (~60% vh) ==================== -->
     <!-- Snapshot: design-extract-output/freshbox-hero-snap/hero-section.png
          Cream stage · dark plate SVG · wave at ~60% · food straddles curve -->
-    <section class="hero fbx-hero" id="hero" aria-label="Bottomz Up hero">
+    <section class="hero fbx-hero fbx-hero--clean" id="hero" aria-label="Bottomz Up hero">
       <div class="fbx-hero-stage">
-        <!-- Ingredient deco (FreshBox sides) -->
-        <div class="fbx-deco fbx-deco--hero-left" aria-hidden="true">
-          <img src="./assets/images/deco-chilis.png" alt="" width="340" height="340" decoding="async" />
-        </div>
-        <div class="fbx-deco fbx-deco--hero-right" aria-hidden="true">
-          <img src="./assets/images/deco-tomatoes-chilis.png" alt="" width="380" height="380" decoding="async" />
-        </div>
-        <div class="fbx-deco fbx-deco--hero-mid" aria-hidden="true">
-          <img src="./assets/images/deco-chilis.png" alt="" width="220" height="220" decoding="async" />
-        </div>
-
-        <!-- Static type + CTA — upper plate; food sits lower so CTA stays clear -->
+        <!-- White fallback + bg_header_new.svg · title only (no chip) · bold type -->
         <div class="fbx-hero-content">
           <div class="fbx-hero-title-wrap">
-            <p class="fbx-hero-tag">
-              <span class="fbx-hero-dot" aria-hidden="true"></span>
-              <span class="fbx-hero-tag-text">Burgers · Beers · Wings</span>
-            </p>
-            <h1 class="fbx-hero-title">
+            <h1 class="fbx-hero-title fbx-hero-title--bold">
               <span class="fbx-line">Come hungry.</span>
               <span class="fbx-line">Leave happy.</span>
             </h1>
@@ -152,7 +137,6 @@
           </div>
         </div>
 
-        <!-- Food on wave at bottom of plate — does not cover CTA -->
         <div class="fbx-food-stage" id="fbxFoodStage" aria-roledescription="carousel" aria-label="Featured burgers">
           <div class="fbx-food-floor" aria-hidden="true"></div>
           <div class="fbx-food is-center" data-food="0" role="group" aria-roledescription="slide">
@@ -173,20 +157,13 @@
       </div>
     </section>
 
-    <!-- ==================== MARQUEE — house favorites ==================== -->
-    <section class="marquee-section fbx-marquee" id="menu-preview" aria-label="Explore popular dishes">
-      <div class="fbx-deco fbx-deco--cat-left" aria-hidden="true">
-        <img src="./assets/images/deco-tomatoes-chilis.png" alt="" width="280" height="280" loading="lazy" />
-      </div>
-      <div class="fbx-deco fbx-deco--cat-right" aria-hidden="true">
-        <img src="./assets/images/deco-chilis.png" alt="" width="300" height="300" loading="lazy" />
-      </div>
-
+    <!-- ==================== MARQUEE — best of the house ==================== -->
+    <section class="marquee-section fbx-marquee" id="menu-preview" aria-label="Best dishes">
       <div class="container marquee-head reveal">
-        <p class="eyebrow">On the house list</p>
+        <p class="eyebrow">Best of the house</p>
         <h2 class="display heading-md marquee-title">What we’re known for</h2>
         <p class="marquee-lede body-md text-muted">
-          Back Alley Burgers, bone-in wings, and a full pour — skim the favorites or open the full menu.
+          The plates guests come back for — straight from the house list.
         </p>
       </div>
 
@@ -195,88 +172,186 @@
         <div class="marquee-fade marquee-fade--right" aria-hidden="true"></div>
         <div class="marquee-viewport">
           <div class="marquee-track" data-marquee-track>
-            <!-- Group A -->
             <div class="marquee-group" data-marquee-group>
-              <a href="pages/menu.html#sec-burgers" class="dish-card">
-                <div class="dish-card-media">
-                  <img src="./assets/images/float-classic.png" alt="" width="200" height="200" loading="lazy" />
-                  <span class="dish-card-price">$14</span>
-                </div>
-                <div class="dish-card-body">
-                  <span class="dish-card-kicker">Back Alley</span>
-                  <span class="dish-card-name">Classic House</span>
-                  <span class="dish-card-meta">Beef · pickles · fries</span>
-                </div>
-              </a>
-              <a href="pages/menu.html#sec-burgers" class="dish-card">
-                <div class="dish-card-media dish-card-media--bacon">
-                  <img src="./assets/images/float-bacon.png" alt="" width="200" height="200" loading="lazy" />
-                  <span class="dish-card-price">$16</span>
-                </div>
-                <div class="dish-card-body">
-                  <span class="dish-card-kicker">Stacked</span>
-                  <span class="dish-card-name">Bacon Cheese</span>
-                  <span class="dish-card-meta">Cheddar · bacon · works</span>
-                </div>
-              </a>
-              <a href="pages/menu.html#sec-burgers" class="dish-card dish-card--featured">
-                <div class="dish-card-media dish-card-media--double">
-                  <img src="./assets/images/float-double.png" alt="" width="200" height="200" loading="lazy" />
-                  <span class="dish-card-badge">Heavy</span>
-                  <span class="dish-card-price">$18</span>
-                </div>
-                <div class="dish-card-body">
-                  <span class="dish-card-kicker">Signature</span>
-                  <span class="dish-card-name">Double Decker</span>
-                  <span class="dish-card-meta">Two patties · BBQ · slaw</span>
-                </div>
-              </a>
               <a href="pages/menu.html#sec-wings" class="dish-card">
                 <div class="dish-card-media dish-card-media--wings">
                   <img src="./assets/images/float-buffalo.png" alt="" width="200" height="200" loading="lazy" />
                   <span class="dish-card-price">$10+</span>
                 </div>
                 <div class="dish-card-body">
-                  <span class="dish-card-kicker">Heat scale</span>
-                  <span class="dish-card-name">Bone-In Wings</span>
-                  <span class="dish-card-meta">12 sauces · mild → xtra</span>
+                  <span class="dish-card-kicker">Heat</span>
+                  <span class="dish-card-name">Wings</span>
+                  <span class="dish-card-meta">Bone-in · 10 sauces</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-starters" class="dish-card">
+                <div class="dish-card-media">
+                  <img src="./assets/images/cat_starters.jpg" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$12</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Starter</span>
+                  <span class="dish-card-name">Pickle Poppers</span>
+                  <span class="dish-card-meta">Cream cheese · ranch</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-starters" class="dish-card">
+                <div class="dish-card-media">
+                  <img src="./assets/images/cat_starters.jpg" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$12</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Starter</span>
+                  <span class="dish-card-name">Jalapeño Poppers</span>
+                  <span class="dish-card-meta">Six · crispy · ranch</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-starters" class="dish-card">
+                <div class="dish-card-media">
+                  <img src="./assets/images/cat_sides.jpg" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">Ask</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Starter</span>
+                  <span class="dish-card-name">Street Corn Ribs</span>
+                  <span class="dish-card-meta">Elote-style · shareable</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-kitchen" class="dish-card">
+                <div class="dish-card-media">
+                  <img src="./assets/images/cat_kitchen.jpg" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">Kitchen</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Plate</span>
+                  <span class="dish-card-name">Ribs</span>
+                  <span class="dish-card-meta">House kitchen favorites</span>
                 </div>
               </a>
               <a href="pages/menu.html#sec-burgers" class="dish-card">
-                <div class="dish-card-media dish-card-media--buffalo">
-                  <img src="./assets/images/float-buffalo.png" alt="" width="200" height="200" loading="lazy" />
-                  <span class="dish-card-price">$13</span>
+                <div class="dish-card-media">
+                  <img src="./assets/images/float-classic.png" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$14</span>
                 </div>
                 <div class="dish-card-body">
-                  <span class="dish-card-kicker">Kick</span>
-                  <span class="dish-card-name">Buffalo Chicken</span>
-                  <span class="dish-card-meta">Tossed · ranch on side</span>
+                  <span class="dish-card-kicker">Back Alley</span>
+                  <span class="dish-card-name">Beef Burger</span>
+                  <span class="dish-card-meta">Classic House</span>
                 </div>
               </a>
-              <a href="pages/menu.html" class="dish-card">
-                <div class="dish-card-media dish-card-media--bar">
+              <a href="pages/menu.html#sec-burgers" class="dish-card dish-card--featured">
+                <div class="dish-card-media dish-card-media--double">
                   <img src="./assets/images/float-double.png" alt="" width="200" height="200" loading="lazy" />
-                  <span class="dish-card-price">Bar</span>
+                  <span class="dish-card-badge">Sig</span>
+                  <span class="dish-card-price">House</span>
                 </div>
                 <div class="dish-card-body">
-                  <span class="dish-card-kicker">Cold ones</span>
-                  <span class="dish-card-name">Full Bar</span>
-                  <span class="dish-card-meta">Beer · cocktails · shots</span>
+                  <span class="dish-card-kicker">Signature</span>
+                  <span class="dish-card-name">Garbage Burger</span>
+                  <span class="dish-card-meta">Loaded · no regrets</span>
                 </div>
               </a>
-              <a href="pages/menu.html" class="dish-card dish-card--cta">
-                <div class="dish-card-media dish-card-media--menu">
-                  <span class="dish-card-menu-mark" aria-hidden="true">48+</span>
+              <a href="pages/menu.html#sec-kitchen" class="dish-card">
+                <div class="dish-card-media">
+                  <img src="./assets/images/cat_kitchen.jpg" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$30</span>
                 </div>
                 <div class="dish-card-body">
-                  <span class="dish-card-kicker">Everything</span>
-                  <span class="dish-card-name">Full Menu</span>
-                  <span class="dish-card-meta">See the whole house →</span>
+                  <span class="dish-card-kicker">Steak</span>
+                  <span class="dish-card-name">Ribeye Steak</span>
+                  <span class="dish-card-meta">Hand-cut · mash · salad</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-kitchen" class="dish-card">
+                <div class="dish-card-media">
+                  <img src="./assets/images/cat_sides.jpg" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$17</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Plate</span>
+                  <span class="dish-card-name">Fish &amp; Chips</span>
+                  <span class="dish-card-meta">Flounder · tartar</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-starters" class="dish-card">
+                <div class="dish-card-media">
+                  <img src="./assets/images/cat_starters.jpg" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">Share</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Starters</span>
+                  <span class="dish-card-name">Appetizers</span>
+                  <span class="dish-card-meta">Nachos · dip · more</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-kitchen" class="dish-card">
+                <div class="dish-card-media">
+                  <img src="./assets/images/float-buffalo.png" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">Kitchen</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Handheld</span>
+                  <span class="dish-card-name">Chicken Wrap</span>
+                  <span class="dish-card-meta">Grilled · house wrap</span>
                 </div>
               </a>
             </div>
-            <!-- Group B (duplicate for seamless loop) -->
             <div class="marquee-group" data-marquee-group aria-hidden="true">
+              <a href="pages/menu.html#sec-wings" class="dish-card" tabindex="-1">
+                <div class="dish-card-media dish-card-media--wings">
+                  <img src="./assets/images/float-buffalo.png" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$10+</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Heat</span>
+                  <span class="dish-card-name">Wings</span>
+                  <span class="dish-card-meta">Bone-in · 10 sauces</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-starters" class="dish-card" tabindex="-1">
+                <div class="dish-card-media">
+                  <img src="./assets/images/cat_starters.jpg" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$12</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Starter</span>
+                  <span class="dish-card-name">Pickle Poppers</span>
+                  <span class="dish-card-meta">Cream cheese · ranch</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-starters" class="dish-card" tabindex="-1">
+                <div class="dish-card-media">
+                  <img src="./assets/images/cat_starters.jpg" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$12</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Starter</span>
+                  <span class="dish-card-name">Jalapeño Poppers</span>
+                  <span class="dish-card-meta">Six · crispy · ranch</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-starters" class="dish-card" tabindex="-1">
+                <div class="dish-card-media">
+                  <img src="./assets/images/cat_sides.jpg" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">Ask</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Starter</span>
+                  <span class="dish-card-name">Street Corn Ribs</span>
+                  <span class="dish-card-meta">Elote-style · shareable</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-kitchen" class="dish-card" tabindex="-1">
+                <div class="dish-card-media">
+                  <img src="./assets/images/cat_kitchen.jpg" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">Kitchen</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Plate</span>
+                  <span class="dish-card-name">Ribs</span>
+                  <span class="dish-card-meta">House kitchen favorites</span>
+                </div>
+              </a>
               <a href="pages/menu.html#sec-burgers" class="dish-card" tabindex="-1">
                 <div class="dish-card-media">
                   <img src="./assets/images/float-classic.png" alt="" width="200" height="200" loading="lazy" />
@@ -284,74 +359,64 @@
                 </div>
                 <div class="dish-card-body">
                   <span class="dish-card-kicker">Back Alley</span>
-                  <span class="dish-card-name">Classic House</span>
-                  <span class="dish-card-meta">Beef · pickles · fries</span>
-                </div>
-              </a>
-              <a href="pages/menu.html#sec-burgers" class="dish-card" tabindex="-1">
-                <div class="dish-card-media dish-card-media--bacon">
-                  <img src="./assets/images/float-bacon.png" alt="" width="200" height="200" loading="lazy" />
-                  <span class="dish-card-price">$16</span>
-                </div>
-                <div class="dish-card-body">
-                  <span class="dish-card-kicker">Stacked</span>
-                  <span class="dish-card-name">Bacon Cheese</span>
-                  <span class="dish-card-meta">Cheddar · bacon · works</span>
+                  <span class="dish-card-name">Beef Burger</span>
+                  <span class="dish-card-meta">Classic House</span>
                 </div>
               </a>
               <a href="pages/menu.html#sec-burgers" class="dish-card dish-card--featured" tabindex="-1">
                 <div class="dish-card-media dish-card-media--double">
                   <img src="./assets/images/float-double.png" alt="" width="200" height="200" loading="lazy" />
-                  <span class="dish-card-badge">Heavy</span>
-                  <span class="dish-card-price">$18</span>
+                  <span class="dish-card-badge">Sig</span>
+                  <span class="dish-card-price">House</span>
                 </div>
                 <div class="dish-card-body">
                   <span class="dish-card-kicker">Signature</span>
-                  <span class="dish-card-name">Double Decker</span>
-                  <span class="dish-card-meta">Two patties · BBQ · slaw</span>
+                  <span class="dish-card-name">Garbage Burger</span>
+                  <span class="dish-card-meta">Loaded · no regrets</span>
                 </div>
               </a>
-              <a href="pages/menu.html#sec-wings" class="dish-card" tabindex="-1">
-                <div class="dish-card-media dish-card-media--wings">
+              <a href="pages/menu.html#sec-kitchen" class="dish-card" tabindex="-1">
+                <div class="dish-card-media">
+                  <img src="./assets/images/cat_kitchen.jpg" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$30</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Steak</span>
+                  <span class="dish-card-name">Ribeye Steak</span>
+                  <span class="dish-card-meta">Hand-cut · mash · salad</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-kitchen" class="dish-card" tabindex="-1">
+                <div class="dish-card-media">
+                  <img src="./assets/images/cat_sides.jpg" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">$17</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Plate</span>
+                  <span class="dish-card-name">Fish &amp; Chips</span>
+                  <span class="dish-card-meta">Flounder · tartar</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-starters" class="dish-card" tabindex="-1">
+                <div class="dish-card-media">
+                  <img src="./assets/images/cat_starters.jpg" alt="" width="200" height="200" loading="lazy" />
+                  <span class="dish-card-price">Share</span>
+                </div>
+                <div class="dish-card-body">
+                  <span class="dish-card-kicker">Starters</span>
+                  <span class="dish-card-name">Appetizers</span>
+                  <span class="dish-card-meta">Nachos · dip · more</span>
+                </div>
+              </a>
+              <a href="pages/menu.html#sec-kitchen" class="dish-card" tabindex="-1">
+                <div class="dish-card-media">
                   <img src="./assets/images/float-buffalo.png" alt="" width="200" height="200" loading="lazy" />
-                  <span class="dish-card-price">$10+</span>
+                  <span class="dish-card-price">Kitchen</span>
                 </div>
                 <div class="dish-card-body">
-                  <span class="dish-card-kicker">Heat scale</span>
-                  <span class="dish-card-name">Bone-In Wings</span>
-                  <span class="dish-card-meta">12 sauces · mild → xtra</span>
-                </div>
-              </a>
-              <a href="pages/menu.html#sec-burgers" class="dish-card" tabindex="-1">
-                <div class="dish-card-media dish-card-media--buffalo">
-                  <img src="./assets/images/float-buffalo.png" alt="" width="200" height="200" loading="lazy" />
-                  <span class="dish-card-price">$13</span>
-                </div>
-                <div class="dish-card-body">
-                  <span class="dish-card-kicker">Kick</span>
-                  <span class="dish-card-name">Buffalo Chicken</span>
-                  <span class="dish-card-meta">Tossed · ranch on side</span>
-                </div>
-              </a>
-              <a href="pages/menu.html" class="dish-card" tabindex="-1">
-                <div class="dish-card-media dish-card-media--bar">
-                  <img src="./assets/images/float-double.png" alt="" width="200" height="200" loading="lazy" />
-                  <span class="dish-card-price">Bar</span>
-                </div>
-                <div class="dish-card-body">
-                  <span class="dish-card-kicker">Cold ones</span>
-                  <span class="dish-card-name">Full Bar</span>
-                  <span class="dish-card-meta">Beer · cocktails · shots</span>
-                </div>
-              </a>
-              <a href="pages/menu.html" class="dish-card dish-card--cta" tabindex="-1">
-                <div class="dish-card-media dish-card-media--menu">
-                  <span class="dish-card-menu-mark" aria-hidden="true">48+</span>
-                </div>
-                <div class="dish-card-body">
-                  <span class="dish-card-kicker">Everything</span>
-                  <span class="dish-card-name">Full Menu</span>
-                  <span class="dish-card-meta">See the whole house →</span>
+                  <span class="dish-card-kicker">Handheld</span>
+                  <span class="dish-card-name">Chicken Wrap</span>
+                  <span class="dish-card-meta">Grilled · house wrap</span>
                 </div>
               </a>
             </div>
@@ -364,32 +429,6 @@
           <span class="btn-hover-fill" aria-hidden="true"></span>
           <span class="btn-label">Browse Full Menu</span>
           <span class="btn-arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- ==================== HOUSE STRIP — quick facts (not vanity metrics) ==================== -->
-    <section class="house-strip" aria-label="House facts">
-      <div class="container house-strip-inner">
-        <a class="house-fact" href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592" target="_blank" rel="noopener">
-          <span class="house-fact-label">Address</span>
-          <span class="house-fact-value">2001 Seymour Dr</span>
-          <span class="house-fact-note">South Boston, VA</span>
-        </a>
-        <div class="house-fact">
-          <span class="house-fact-label">Seating</span>
-          <span class="house-fact-value">Walk-ins</span>
-          <span class="house-fact-note">Groups: give a heads up</span>
-        </div>
-        <a class="house-fact" href="pages/menu.html#sec-wings">
-          <span class="house-fact-label">Wings</span>
-          <span class="house-fact-value">12 sauces</span>
-          <span class="house-fact-note">Mild → Xtra Hot</span>
-        </a>
-        <a class="house-fact" href="pages/menu.html">
-          <span class="house-fact-label">Bar</span>
-          <span class="house-fact-value">Full pour</span>
-          <span class="house-fact-note">Beer · cocktails · wine</span>
         </a>
       </div>
     </section>
@@ -476,168 +515,86 @@
       </div>
     </section>
 
-    <!-- ==================== LIFESTYLE — grill + house energy ==================== -->
-    <section class="lifestyle" id="vibe" aria-label="The Bottomz Up experience" data-lifestyle>
+    <!-- ==================== LIFESTYLE — bento: Burgers · Kitchen · Bar ==================== -->
+    <section class="lifestyle lifestyle--bento" id="vibe" aria-label="Burgers, Kitchen, and Bar">
       <div class="lifestyle-shell">
         <div class="lifestyle-head">
           <p class="eyebrow">The house</p>
           <h2 class="display heading-md">Flavor, fire &amp; company</h2>
           <p class="lifestyle-lede">
-            From the grill line to the table — how South Boston shows up hungry.
+            Three ways to eat at Bottomz — smash, plate, or pour.
           </p>
         </div>
 
-        <div class="lifestyle-grid">
-          <a href="pages/menu.html" class="lifestyle-badge lifestyle-badge--tl" aria-label="View full menu">
-            <span>Menu</span>
+        <div class="lifestyle-bento">
+          <a href="pages/menu.html#sec-burgers" class="lifestyle-bento-card reveal" style="--reveal-delay: 0ms">
+            <div class="lifestyle-bento-media">
+              <img src="./assets/images/cat_burgers.jpg" alt="Back Alley Burgers" width="640" height="800" loading="lazy" decoding="async" data-life-img />
+            </div>
+            <div class="lifestyle-bento-body">
+              <p class="lifestyle-bento-kicker">Back Alley</p>
+              <h3 class="lifestyle-bento-title">Burgers</h3>
+              <p class="lifestyle-bento-text">Hand-formed patties, stacked the way a burger should be — classic to Garbage.</p>
+              <span class="lifestyle-bento-cta">View burgers <span aria-hidden="true">→</span></span>
+            </div>
           </a>
 
-          <!-- Tall process / grill card -->
-          <article class="lifestyle-card lifestyle-card--tall" style="--life-delay: 80ms">
-            <div class="lifestyle-card-media">
-              <!-- Placeholder — swap with real chef/grill photo -->
-              <img
-                src="./assets/images/slide-1.jpg"
-                alt="Placeholder: grill and smash cooking at Bottomz Up"
-                width="720"
-                height="960"
-                loading="lazy"
-                decoding="async"
-                data-life-img
-              />
+          <a href="pages/menu.html#sec-kitchen" class="lifestyle-bento-card reveal" style="--reveal-delay: 80ms">
+            <div class="lifestyle-bento-media">
+              <img src="./assets/images/cat_kitchen.jpg" alt="Kitchen plates" width="640" height="800" loading="lazy" decoding="async" data-life-img />
             </div>
-            <div class="lifestyle-card-body">
-              <h3 class="lifestyle-card-title">Grill Ritual</h3>
-              <p class="lifestyle-card-text">
-                Messy bites done right — smash, sear, stack. Juicy layers, melting cheese, no apologies.
-              </p>
+            <div class="lifestyle-bento-body">
+              <p class="lifestyle-bento-kicker">From the line</p>
+              <h3 class="lifestyle-bento-title">Kitchen</h3>
+              <p class="lifestyle-bento-text">Ribeye, wraps, fish &amp; chips, and the plates that fill the table.</p>
+              <span class="lifestyle-bento-cta">View kitchen <span aria-hidden="true">→</span></span>
             </div>
-          </article>
+          </a>
 
-          <!-- Customers / main event -->
-          <article class="lifestyle-card lifestyle-card--top" style="--life-delay: 200ms">
-            <div class="lifestyle-card-media">
-              <!-- Placeholder — swap with customers eating -->
-              <img
-                src="./assets/images/slide-2.jpg"
-                alt="Placeholder: guests enjoying burgers at Bottomz Up"
-                width="800"
-                height="520"
-                loading="lazy"
-                decoding="async"
-                data-life-img
-              />
+          <a href="pages/menu.html#sec-drinks" class="lifestyle-bento-card lifestyle-bento-card--bar reveal" style="--reveal-delay: 160ms">
+            <div class="lifestyle-bento-media">
+              <img src="./assets/images/cat_drinks.jpg" alt="Full bar" width="640" height="800" loading="lazy" decoding="async" data-life-img />
             </div>
-            <div class="lifestyle-card-body">
-              <h3 class="lifestyle-card-title">The Main Event</h3>
-              <p class="lifestyle-card-text">
-                Our burgers take center stage with juicy smashed patties, golden buns and big flavour in every bite.
-              </p>
+            <div class="lifestyle-bento-body">
+              <p class="lifestyle-bento-kicker">Full pour</p>
+              <h3 class="lifestyle-bento-title">The Bar</h3>
+              <p class="lifestyle-bento-text">Cocktails, shots, beer &amp; wine — open when South Boston is thirsty.</p>
+              <span class="lifestyle-bento-cta">View the bar <span aria-hidden="true">→</span></span>
             </div>
-          </article>
-
-          <!-- Friends / sharing -->
-          <article class="lifestyle-card lifestyle-card--bottom" style="--life-delay: 320ms">
-            <div class="lifestyle-card-media">
-              <!-- Placeholder — swap with friends group shot -->
-              <img
-                src="./assets/images/slide-3.jpg"
-                alt="Placeholder: friends sharing a meal at Bottomz Up"
-                width="800"
-                height="520"
-                loading="lazy"
-                decoding="async"
-                data-life-img
-              />
-            </div>
-            <div class="lifestyle-card-body">
-              <h3 class="lifestyle-card-title">Built for Sharing</h3>
-              <p class="lifestyle-card-text">
-                The best meals come with noise – good friends, big laughs and burgers worth gathering around.
-              </p>
-            </div>
-          </article>
-
-          <a href="pages/menu.html" class="lifestyle-badge lifestyle-badge--br" aria-label="View full menu">
-            <span>Menu</span>
           </a>
         </div>
       </div>
     </section>
 
     <div id="drinks" class="anchor-alias" aria-hidden="true"></div>
-    <!-- ==================== WINGS — minimal heat dial (senior UX) ==================== -->
-    <section class="wings-meter-section wings-meter-section--minimal" id="wings" data-sauce-meter data-context="home" aria-label="Wing sauces and heat">
-      <div class="container wm-shell">
-        <header class="wm-header wm-header--minimal reveal">
+    <!-- ==================== WINGS — single-viewport sauce lab ==================== -->
+    <section class="wings-meter-section wings-meter-section--viewport" id="wings" data-sauce-meter data-context="home" aria-label="Wing sauces and heat">
+      <div class="container wm-shell wm-shell--viewport">
+        <header class="wm-vp-head">
           <p class="wm-eyebrow">Bone-in wings</p>
           <h2 class="wm-title">Dial your heat.</h2>
-          <p class="wm-desc">One control. Ten sauces. Pick a size when you’re ready.</p>
         </header>
 
-        <div class="wm-minimal-grid">
-          <!-- Primary control -->
-          <div class="wm-knob-col reveal">
-            <div class="wm-instrument-card">
-              <div class="hk-stage" data-heat-knob data-value="0" aria-label="Heat control knob"></div>
-            </div>
-          </div>
-
-          <!-- Result panel -->
-          <div class="wm-details-col reveal" style="--reveal-delay: 80ms">
-            <div class="wm-card wm-card--minimal">
-              <div class="wm-card-inner" data-wm-details id="wmDetailsTarget">
-                <span class="wm-heat-badge" data-wm-heat id="wmHeatBadge">Mild</span>
-                <h3 class="wm-sauce-name" data-wm-name id="wmSauceName">BBQ</h3>
-                <p class="wm-sauce-desc" data-wm-desc id="wmSauceDesc">Sweet, sticky, and smoky.</p>
-                <div class="wm-pairing">
-                  <span class="wm-pairing-mark" aria-hidden="true">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20h6"/><path d="M12 4c-2.5 0-4 2-4 4.5 0 1.5.5 2.5 1.2 3.5L8 20h8l-1.2-8c.7-1 1.2-2 1.2-3.5C16 6 14.5 4 12 4z"/><path d="M9 9.5h6"/></svg>
-                  </span>
-                  <div class="wm-pairing-text">
-                    <strong data-wm-beer id="wmPairingBeer">Pairs with Miller Lite</strong>
-                    <span data-wm-note id="wmPairingNote">Crisp light lager cuts the sweetness.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="wm-sizes wm-sizes--inline">
-              <h4 class="wm-sizes-title">Size</h4>
-              <div class="wm-size-grid">
-                <div class="wm-size-box" data-size="small" role="button" tabindex="0">
-                  <span class="wm-size-name">Small</span>
-                  <span class="wm-size-qty">6 pc</span>
-                  <span class="wm-size-price">$10</span>
-                </div>
-                <div class="wm-size-box is-active" data-size="medium" role="button" tabindex="0">
-                  <span class="wm-size-name">Medium</span>
-                  <span class="wm-size-qty">12 pc</span>
-                  <span class="wm-size-price">$16</span>
-                </div>
-                <div class="wm-size-box" data-size="large" role="button" tabindex="0">
-                  <span class="wm-size-name">Large</span>
-                  <span class="wm-size-qty">24 pc</span>
-                  <span class="wm-size-price">$29</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="wm-foot">
-              <a href="pages/menu.html#sec-wings" class="btn-ticket" data-wm-cta>
-                <span class="btn-hover-fill" aria-hidden="true"></span>
-                <span class="btn-label">See all wings</span>
-                <span class="btn-arrow" aria-hidden="true">↗</span>
-              </a>
-            </div>
+        <!-- One screen: SVG + knob side by side -->
+        <div class="wm-vp-stage">
+          <div class="wm-vp-meter" data-meter-src="./assets/images/sauce-meter.svg" aria-label="Sauce heat meter"></div>
+          <div class="wm-vp-knob">
+            <div class="hk-stage" data-heat-knob data-value="0" aria-label="Heat control knob"></div>
           </div>
         </div>
 
-        <!-- Secondary: sauce list (scroll chips only) -->
-        <div class="wm-chip-block reveal" style="--reveal-delay: 100ms">
-          <p class="wm-chip-label">Or pick a sauce</p>
-          <div class="wm-chip-rail" data-wm-chips aria-label="Sauces"></div>
+        <!-- Compact live selection (no long copy / beer cards) -->
+        <div class="wm-vp-readout" data-wm-details id="wmDetailsTarget">
+          <span class="wm-heat-badge" data-wm-heat id="wmHeatBadge">Mild</span>
+          <span class="wm-vp-name" data-wm-name id="wmSauceName">BBQ</span>
+          <!-- hooks kept for JS; visually hidden -->
+          <span class="visually-hidden" data-wm-desc id="wmSauceDesc"></span>
+          <span class="visually-hidden" data-wm-beer id="wmPairingBeer"></span>
+          <span class="visually-hidden" data-wm-note id="wmPairingNote"></span>
+          <a class="wm-vp-link" href="pages/menu.html#sec-wings" data-wm-cta>Full wings menu →</a>
         </div>
+
+        <div class="wm-vp-chips" data-wm-chips aria-label="Sauces"></div>
       </div>
     </section>
 

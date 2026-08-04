@@ -39,34 +39,43 @@
   pointer-events: none;
 }
 
-/* Continuous unit: bar + drawer */
+/* Continuous unit: bar + drawer
+   At rest: fully transparent over hero white.
+   On scroll: sticky white glass (existing dock feel). */
 .nav-panel {
   pointer-events: auto;
   width: 100%;
-  background: var(--bg-glass, rgba(255, 253, 249, 0.72));
-  backdrop-filter: blur(18px) saturate(1.2);
-  -webkit-backdrop-filter: blur(18px) saturate(1.2);
-  border-bottom: 1px solid var(--glass-border, rgba(46, 44, 44, 0.08));
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
   border-radius: 0 0 22px 22px;
-  box-shadow: 0 4px 24px rgba(46, 44, 44, 0.04);
+  box-shadow: none;
   transition:
-    background 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    backdrop-filter 0.35s ease;
   overflow: hidden;
 }
 
 .site-header.is-scrolled .nav-panel {
-  background: var(--bg-glass-solid, rgba(255, 253, 249, 0.94));
-  border-bottom-color: rgba(231, 147, 30, 0.18);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  border-bottom-color: rgba(46, 44, 44, 0.08);
   box-shadow:
-    0 10px 36px rgba(46, 44, 44, 0.08),
-    0 1px 0 rgba(255, 147, 30, 0.12);
+    0 10px 36px rgba(46, 44, 44, 0.07),
+    0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .site-header.nav-open .nav-panel,
 body.nav-open .nav-panel {
-  background: #fffdf9;
+  background: #ffffff;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: rgba(46, 44, 44, 0.08);
+  box-shadow: 0 8px 28px rgba(46, 44, 44, 0.08);
 }
 
 .nav-bar {
@@ -108,10 +117,10 @@ body.nav-open .nav-panel {
 .nav-logo img,
 .nav-logo .logo-img {
   display: block;
-  width: 104px;
+  width: 128px;
   height: auto;
-  max-width: 104px;
-  max-height: 34px;
+  max-width: 128px;
+  max-height: 42px;
   object-fit: contain;
   object-position: left center;
 }
@@ -119,9 +128,9 @@ body.nav-open .nav-panel {
 @media (min-width: 900px) {
   .nav-logo img,
   .nav-logo .logo-img {
-    width: 120px;
-    max-width: 120px;
-    max-height: 36px;
+    width: 152px;
+    max-width: 152px;
+    max-height: 48px;
   }
 }
 

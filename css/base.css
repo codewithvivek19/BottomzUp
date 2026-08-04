@@ -147,7 +147,7 @@ button {
 }
 
 .section {
-  padding-block: clamp(3.25rem, 7vw, 5.5rem);
+  padding-block: clamp(2rem, 4.5vw, 3.25rem);
 }
 
 

@@ -173,9 +173,17 @@
         nearReserve = reserveTop < window.innerHeight * 0.85;
       }
 
+      // Hide floating dock when footer is in (or near) the viewport
+      let nearFooter = false;
+      const footer = document.querySelector('.site-footer');
+      if (footer) {
+        const fr = footer.getBoundingClientRect();
+        nearFooter = fr.top < window.innerHeight * 0.92;
+      }
+
       // Hide sticky when reserve panel open
       const panelOpen = document.body.classList.contains('reserve-open');
-      const show = pastHero && !nearReserve && !panelOpen;
+      const show = pastHero && !nearReserve && !nearFooter && !panelOpen;
       stickyCta.classList.toggle('is-visible', show);
       stickyCta.setAttribute('aria-hidden', String(!show));
     }

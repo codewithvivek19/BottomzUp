@@ -32,7 +32,7 @@ main > .section {
 }
 
 .section {
-  padding-block: clamp(3.25rem, 7vw, 5.5rem);
+  padding-block: clamp(2rem, 4.5vw, 3.25rem);
 }
 
 /* Display type: descender safety + less hard text-shadow */
@@ -80,33 +80,18 @@ main > .section {
   letter-spacing: -0.02em;
 }
 
-/* House strip — glass on cream canvas */
-.house-strip {
-  padding-block: clamp(1.25rem, 3vw, 1.75rem);
-}
-
-.house-fact {
-  border-radius: 16px;
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease;
-}
-
-a.house-fact:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
 /* Burgers section breathing room */
 .burgers {
-  padding-block: clamp(3.25rem, 7vw, 5.5rem);
+  padding-block: clamp(2rem, 4.5vw, 3.25rem);
 }
 
 .burgers-header {
-  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
 }
 
 /* Visit */
 .visit {
-  padding-block: clamp(3.25rem, 7vw, 5.5rem);
+  padding-block: clamp(2rem, 4.5vw, 3.25rem);
 }
 
 .visit-address {
@@ -116,7 +101,7 @@ a.house-fact:hover {
 
 /* Scratch — keep light, less nested gradient noise */
 .scratch-section {
-  padding-block: clamp(3rem, 6vw, 4.5rem);
+  padding-block: clamp(2rem, 4.5vw, 3.25rem);
 }
 
 /* Footer credit — no emoji */
@@ -148,11 +133,7 @@ a.house-fact:hover {
   box-shadow: 0 10px 28px rgba(46, 44, 44, 0.05);
 }
 
-/* Burger cards: quieter hover lift */
-.burger-card:hover,
-.burger-card:focus-visible {
-  transform: translateY(-4px);
-}
+
 
 /* Lifestyle editorial — keep photo tiles, airy head */
 .lifestyle-head .display {

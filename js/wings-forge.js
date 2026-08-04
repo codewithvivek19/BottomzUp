@@ -155,7 +155,6 @@
     host.innerHTML = ORDER.map((id, i) => {
       const s = SAUCES[id];
       return `<button type="button" class="wm-chip" role="option" data-sauce="${id}" data-index="${i}" style="--chip-color:${s.color}">
-        <span class="wm-chip-dot" aria-hidden="true"></span>
         <span class="wm-chip-label">${s.name}</span>
         <span class="wm-chip-heat">${s.heatLabel}</span>
       </button>`;
@@ -167,7 +166,9 @@
     section.dataset.meterMounted = '1';
 
     const isMenu = section.dataset.context === 'menu';
-    const meterCol = section.querySelector('.wm-meter-col');
+    const meterCol =
+      section.querySelector('.wm-meter-col') ||
+      section.querySelector('[data-meter-src]');
     const chipHost = section.querySelector('[data-wm-chips]');
     const detailsTarget = section.querySelector('[data-wm-details]') || section.querySelector('#wmDetailsTarget');
     const heatBadge = section.querySelector('[data-wm-heat]') || section.querySelector('#wmHeatBadge');
