@@ -62,12 +62,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 0.65rem;
+  padding: 0.65rem 0.75rem;
   border-radius: 20px;
   background: rgba(255, 253, 249, 0.9);
   border: 1px solid rgba(46, 44, 44, 0.08);
   box-shadow: 0 8px 24px rgba(46, 44, 44, 0.06);
-  overflow: hidden;
+  overflow: visible; /* labels/ticks must not clip */
 }
 
 .wm-vp-meter .sauce-meter-svg,
@@ -78,6 +78,7 @@
   max-height: min(40vh, 320px);
   display: block;
   margin: 0 auto;
+  overflow: visible;
 }
 
 .wm-vp-knob {
@@ -253,32 +254,82 @@
 }
 
 @media (max-width: 720px) {
-  .wm-vp-stage {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
+  .wings-meter-section--viewport {
+    padding-block: 1rem 1.35rem;
+    overflow: visible;
   }
 
+  .wm-shell--viewport {
+    gap: 0.65rem;
+    padding-inline: 0.15rem;
+  }
+
+  .wm-vp-stage {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  /* Meter first, full width, no harsh clip */
   .wm-vp-meter {
-    max-height: min(36vh, 280px);
-    order: 2;
+    order: 1;
+    max-height: none;
+    min-height: 0;
+    width: 100%;
+    padding: 0.35rem 0.15rem 0.5rem;
+    overflow: visible;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .wm-vp-meter .sauce-meter-svg,
+  .wm-vp-meter > svg {
+    width: min(100%, 340px);
+    max-width: 100%;
+    max-height: min(46vw, 260px);
+    height: auto;
+    margin-inline: auto;
+    overflow: visible;
   }
 
   .wm-vp-knob {
-    order: 1;
+    order: 2;
+    width: 100%;
+    max-width: 220px;
+    margin-inline: auto;
+    padding: 0.25rem;
+    background: transparent;
+    border: none;
+    box-shadow: none;
   }
 
   .wm-vp-knob .hk-wrap {
-    width: min(100%, 160px);
+    width: min(100%, 150px);
+    margin-inline: auto;
+  }
+
+  .wm-vp-knob .hk-stage {
+    padding-bottom: 1.25rem;
   }
 
   .wm-vp-readout {
-    justify-content: flex-start;
+    order: 3;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 0.45rem;
   }
 
   .wm-vp-link {
     margin-left: 0;
     width: 100%;
-    text-align: right;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .wm-vp-chips {
+    order: 4;
+    padding-inline: 0.1rem;
   }
 }
 

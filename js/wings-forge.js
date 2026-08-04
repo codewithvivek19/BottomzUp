@@ -271,11 +271,14 @@
       if (cta) {
         if (isMenu) {
           cta.href = '#wing-sizes';
-          cta.textContent = `${data.heatLabel} · pick a size ↑`;
+          cta.textContent = `${data.heatLabel} · pick a size ↓`;
+          cta.classList.add('wm-vp-link');
+          cta.classList.remove('btn-ticket');
         } else {
           cta.href = `pages/menu.html?heat=${data.heat}&sauce=${data.id}#sec-wings`;
-          cta.innerHTML = `<span class="btn-hover-fill" aria-hidden="true"></span><span class="btn-label">See ${data.name} on menu</span><span class="btn-arrow" aria-hidden="true">↗</span>`;
-          cta.classList.add('btn-ticket');
+          cta.textContent = `See ${data.name} on menu →`;
+          cta.classList.add('wm-vp-link');
+          cta.classList.remove('btn-ticket');
         }
       }
 

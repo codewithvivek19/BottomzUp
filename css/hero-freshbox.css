@@ -435,68 +435,16 @@
   pointer-events: none;
 }
 
-/* Dots — amber / cream chrome (above CTA slightly) */
-.fbx-food-dots {
-  position: absolute;
-  left: 50%;
-  bottom: -8px;
-  transform: translateX(-50%);
-  z-index: 8;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: rgba(198, 122, 18, 0.45);
-  border: 1px solid rgba(251, 246, 227, 0.35);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 8px 24px rgba(198, 122, 18, 0.22);
-}
-
+/* Hero carousel chrome removed — autoplay only, no dots / progress / taps */
+.fbx-food-dots,
+.fbx-food-progress,
 .fbx-food-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  border: none;
-  padding: 0;
-  background: rgba(251, 246, 227, 0.45);
-  cursor: pointer;
-  transition: width 0.3s var(--fbx-ease), background 0.2s ease;
+  display: none !important;
 }
 
-.fbx-food-dot.is-active {
-  width: 22px;
-  background: var(--bg-cream-gradient);
-  box-shadow: 0 0 10px rgba(251, 246, 227, 0.5);
-}
-
-.fbx-food-progress {
-  position: absolute;
-  left: 18%;
-  right: 18%;
-  bottom: -20px;
-  height: 2px;
-  z-index: 8;
-  background: rgba(198, 122, 18, 0.18);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.fbx-food-progress > span {
-  display: block;
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, var(--fbx-amber-deep), var(--fbx-amber-bright), #fffdf9);
-}
-
-.fbx-food-progress > span.is-run {
-  animation: fbxProg var(--fbx-ms, 4200ms) linear forwards;
-}
-
-@keyframes fbxProg {
-  from { width: 0; }
-  to { width: 100%; }
+.fbx-food-stage .fbx-food {
+  pointer-events: none !important;
+  cursor: default !important;
 }
 
 /* ---------- Breakpoints ---------- */

@@ -1069,6 +1069,32 @@
   margin-bottom: var(--space-5);
 }
 
+/* Sauce meter on menu = same home viewport lab (break out of glass card) */
+.menu-section .wings-meter-section--viewport.wings-meter-section--in-menu {
+  background: #ffffff;
+  margin: 0.5rem calc(50% - 50vw) 1rem;
+  width: 100vw;
+  max-width: 100vw;
+  padding-block: clamp(0.75rem, 2vh, 1.35rem) clamp(1rem, 2.5vh, 1.75rem);
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  position: relative;
+  left: 0;
+  overflow: visible;
+}
+
+.menu-section .wings-meter-section--in-menu .wm-shell--viewport {
+  max-width: 980px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 1.5rem);
+}
+
+.menu-section .wings-meter-section--in-menu .wm-vp-link {
+  /* keep compact pill from home styles */
+  color: #ffffff !important;
+}
+
 /* Disclaimer — plain text only, no padded “section” */
 .menu-disclaimer {
   margin: 0.35rem auto 0.15rem;

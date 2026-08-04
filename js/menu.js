@@ -127,45 +127,37 @@
       })
       .join('');
 
-    // SVG Sauce Meter + light heat motor knob + hidden flavor grid for search
+    // Same single-viewport sauce lab as homepage (all viewports)
     const meterSrc = '../assets/images/sauce-meter.svg';
     return `
-      <div class="wings-sizes" id="wing-sizes">${sizes}</div>
-      <section class="wings-meter-section wings-meter-section--menu" data-sauce-meter data-context="menu" id="menuSauceMeter" aria-label="Wing sauce meter">
-        <div class="wm-header">
-          <p class="wm-eyebrow">The Sauce Meter</p>
-          <h3 class="wm-title">Dial your heat.</h3>
-          <p class="wm-desc">Turn the heat motor or tap a sauce — meter, pairing, and filters stay in sync.</p>
-          <div class="wm-heat-bar" data-wm-heat-bar aria-hidden="true"></div>
-        </div>
-        <div class="wm-chip-rail" data-wm-chips aria-label="Sauces"></div>
-        <div class="wm-grid wm-grid--with-knob">
-          <div class="wm-meter-col" data-meter-src="${meterSrc}"></div>
-          <div class="wm-knob-col">
-            <div class="wm-instrument-card">
+      <section class="wings-meter-section wings-meter-section--viewport wings-meter-section--in-menu" data-sauce-meter data-context="menu" id="menuSauceMeter" aria-label="Wing sauces and heat">
+        <div class="wm-shell wm-shell--viewport">
+          <header class="wm-vp-head">
+            <p class="wm-eyebrow">Bone-in wings</p>
+            <h2 class="wm-title">Dial your heat.</h2>
+          </header>
+
+          <div class="wm-vp-stage">
+            <div class="wm-vp-meter" data-meter-src="${meterSrc}" aria-label="Sauce heat meter"></div>
+            <div class="wm-vp-knob">
               <div class="hk-stage" data-heat-knob data-value="0" aria-label="Heat control knob"></div>
             </div>
           </div>
-          <div class="wm-details-col">
-            <div class="wm-card">
-              <div class="wm-card-inner" data-wm-details>
-                <span class="wm-heat-badge" data-wm-heat>Select a Sauce</span>
-                <h3 class="wm-sauce-name" data-wm-name>Sauce Meter</h3>
-                <p class="wm-sauce-desc" data-wm-desc>Dial heat or pick a sauce for pairings.</p>
-                <div class="wm-pairing">
-                  <span class="wm-pairing-mark" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20h6"/><path d="M12 4c-2.5 0-4 2-4 4.5 0 1.5.5 2.5 1.2 3.5L8 20h8l-1.2-8c.7-1 1.2-2 1.2-3.5C16 6 14.5 4 12 4z"/><path d="M9 9.5h6"/></svg>
-                  </span>
-                  <div class="wm-pairing-text">
-                    <strong data-wm-beer>Perfect Pairing</strong>
-                    <span data-wm-note>Select a sauce for a beer match.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+          <div class="wm-vp-readout" data-wm-details id="wmDetailsTarget">
+            <span class="wm-heat-badge" data-wm-heat id="wmHeatBadge">Mild</span>
+            <span class="wm-vp-name" data-wm-name id="wmSauceName">BBQ</span>
+            <span class="visually-hidden" data-wm-desc id="wmSauceDesc"></span>
+            <span class="visually-hidden" data-wm-beer id="wmPairingBeer"></span>
+            <span class="visually-hidden" data-wm-note id="wmPairingNote"></span>
+            <a class="wm-vp-link" href="#wing-sizes" data-wm-cta>Pick a size ↓</a>
           </div>
+
+          <div class="wm-vp-chips" data-wm-chips aria-label="Sauces"></div>
         </div>
       </section>
+
+      <div class="wings-sizes" id="wing-sizes">${sizes}</div>
       <div class="flavor-grid is-sr-mirror" id="flavorGrid" hidden aria-hidden="true">${flavors}</div>
       <div class="heat-filter" id="heatFilter" hidden aria-hidden="true">
         <button type="button" class="heat-chip is-active" data-heat="all">All</button>
@@ -341,11 +333,20 @@
     bindDrinkToggles();
     bindHeatFilter();
     bindMenuHeatBottle();
-    // Mount SVG sauce meter after wings DOM exists
+    // Remount sauce meter + heat knobs after wings DOM is rebuilt
+    document.querySelectorAll('[data-sauce-meter]').forEach((el) => {
+      delete el.dataset.meterMounted;
+    });
+    document.querySelectorAll('[data-heat-knob]').forEach((el) => {
+      delete el.dataset.hkMounted;
+    });
     if (typeof window.__initSauceMeters === 'function') {
       window.__initSauceMeters();
-    } else if (typeof window.__initSauceLabs === 'function') {
-      window.__initSauceLabs();
+    } else if (typeof window.__initHeatKnobs === 'function') {
+      window.__initHeatKnobs();
+    }
+    if (typeof window.__initHeatKnobs === 'function') {
+      window.__initHeatKnobs();
     }
   }
 

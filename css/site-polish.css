@@ -193,6 +193,24 @@ main#main > section:last-child {
   background: #ffffff;
 }
 
+/* Footer contact row always centered */
+.site-footer.site-footer--impact .footer-contact-bar {
+  justify-content: center;
+  text-align: center;
+}
+
+.site-footer.site-footer--impact .footer-phone,
+.site-footer.site-footer--impact .footer-delivery-block {
+  align-items: center;
+  text-align: center;
+}
+
+/* Hero: no carousel chrome */
+.fbx-food-dots,
+.fbx-food-progress {
+  display: none !important;
+}
+
 /* Footer marquee slightly calmer */
 .footer-marquee-group span {
   letter-spacing: 0.18em;
