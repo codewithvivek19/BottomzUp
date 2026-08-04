@@ -315,6 +315,147 @@ body .site-footer.site-footer--impact {
   outline-offset: 4px;
 }
 
+/* ---------- Contact + delivery partners ---------- */
+.footer-contact-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem 1.75rem;
+  padding: 1.15rem clamp(1.15rem, 4vw, 2.5rem);
+  border-top: 1px solid rgba(245, 232, 183, 0.22);
+  background: rgba(26, 25, 25, 0.16);
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+.footer-phone {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  text-decoration: none;
+  color: #fffef8;
+  padding: 0.55rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(245, 232, 183, 0.28);
+  background: rgba(26, 25, 25, 0.22);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 10.5rem;
+}
+
+.footer-phone:hover,
+.footer-phone:focus-visible {
+  border-color: rgba(241, 159, 15, 0.55);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(26, 25, 25, 0.25);
+  outline: none;
+  color: #fffef8;
+}
+
+.footer-phone-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 232, 183, 0.75);
+}
+
+.footer-phone-num {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fffef8;
+}
+
+.footer-delivery-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 0.85rem;
+}
+
+.footer-delivery-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 232, 183, 0.75);
+  width: 100%;
+}
+
+@media (min-width: 560px) {
+  .footer-delivery-label {
+    width: auto;
+  }
+}
+
+.footer-partners {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.footer-partner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.85rem 0.5rem 0.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: #fffef8;
+  border: 1px solid rgba(245, 232, 183, 0.28);
+  background: rgba(26, 25, 25, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-partner:hover,
+.footer-partner:focus-visible {
+  transform: translateY(-2px);
+  outline: none;
+  box-shadow: 0 8px 18px rgba(26, 25, 25, 0.28);
+}
+
+.footer-partner-logo {
+  display: grid;
+  place-items: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.footer-partner--grubhub .footer-partner-logo {
+  background: #ff8000;
+}
+
+.footer-partner--doordash .footer-partner-logo {
+  background: #ff3008;
+}
+
+.footer-partner--grubhub:hover {
+  border-color: rgba(255, 128, 0, 0.65);
+}
+
+.footer-partner--doordash:hover {
+  border-color: rgba(255, 48, 8, 0.65);
+}
+
+.footer-partner-name {
+  color: #fffef8;
+}
+
 /* ---------- Utility row ---------- */
 .footer-utility {
   position: relative;

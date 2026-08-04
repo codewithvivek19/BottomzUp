@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="./css/footer-impact.css" />
   <link rel="stylesheet" href="./css/lifestyle.css" />
   <link rel="stylesheet" href="./css/sizzle.css" />
-  <link rel="stylesheet" href="./css/wings-forge.css?v=6" />
+  <link rel="stylesheet" href="./css/wings-forge.css?v=7" />
   <link rel="stylesheet" href="./css/control-knob.css?v=2" />
   <link rel="stylesheet" href="./css/site-polish.css" />
 </head>
@@ -565,49 +565,45 @@
       </div>
     </section>
 
-        <!-- ==================== WINGS + BEER — METER ==================== -->
     <div id="drinks" class="anchor-alias" aria-hidden="true"></div>
-    <!-- ==================== WINGS + BEER — SVG SAUCE METER ==================== -->
-    <section class="wings-meter-section" id="wings" data-sauce-meter data-context="home" aria-label="Wing sauce meter">
+    <!-- ==================== WINGS — minimal heat dial (senior UX) ==================== -->
+    <section class="wings-meter-section wings-meter-section--minimal" id="wings" data-sauce-meter data-context="home" aria-label="Wing sauces and heat">
       <div class="container wm-shell">
-        <header class="wm-header reveal">
-          <p class="wm-eyebrow">Bone-in · tossed in sauce</p>
+        <header class="wm-header wm-header--minimal reveal">
+          <p class="wm-eyebrow">Bone-in wings</p>
           <h2 class="wm-title">Dial your heat.</h2>
-          <p class="wm-desc">Turn the motor or pick a sauce — mild BBQ through Xtra Hot Buffalo, with a beer that keeps up.</p>
-          <div class="wm-heat-bar" data-wm-heat-bar aria-hidden="true"></div>
+          <p class="wm-desc">One control. Ten sauces. Pick a size when you’re ready.</p>
         </header>
 
-        <div class="wm-chip-rail" data-wm-chips aria-label="Sauces"></div>
-
-        <div class="wm-grid wm-grid--with-knob">
-          <div class="wm-meter-col reveal" data-meter-src="./assets/images/sauce-meter.svg"></div>
-
-          <div class="wm-knob-col reveal" style="--reveal-delay: 60ms">
+        <div class="wm-minimal-grid">
+          <!-- Primary control -->
+          <div class="wm-knob-col reveal">
             <div class="wm-instrument-card">
               <div class="hk-stage" data-heat-knob data-value="0" aria-label="Heat control knob"></div>
             </div>
           </div>
 
-          <div class="wm-details-col reveal" style="--reveal-delay: 100ms">
-            <div class="wm-card">
+          <!-- Result panel -->
+          <div class="wm-details-col reveal" style="--reveal-delay: 80ms">
+            <div class="wm-card wm-card--minimal">
               <div class="wm-card-inner" data-wm-details id="wmDetailsTarget">
                 <span class="wm-heat-badge" data-wm-heat id="wmHeatBadge">Mild</span>
                 <h3 class="wm-sauce-name" data-wm-name id="wmSauceName">BBQ</h3>
-                <p class="wm-sauce-desc" data-wm-desc id="wmSauceDesc">Sweet, sticky, and smoky. Classic BBQ depth with a touch of molasses on the finish.</p>
+                <p class="wm-sauce-desc" data-wm-desc id="wmSauceDesc">Sweet, sticky, and smoky.</p>
                 <div class="wm-pairing">
                   <span class="wm-pairing-mark" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20h6"/><path d="M12 4c-2.5 0-4 2-4 4.5 0 1.5.5 2.5 1.2 3.5L8 20h8l-1.2-8c.7-1 1.2-2 1.2-3.5C16 6 14.5 4 12 4z"/><path d="M9 9.5h6"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20h6"/><path d="M12 4c-2.5 0-4 2-4 4.5 0 1.5.5 2.5 1.2 3.5L8 20h8l-1.2-8c.7-1 1.2-2 1.2-3.5C16 6 14.5 4 12 4z"/><path d="M9 9.5h6"/></svg>
                   </span>
                   <div class="wm-pairing-text">
                     <strong data-wm-beer id="wmPairingBeer">Pairs with Miller Lite</strong>
-                    <span data-wm-note id="wmPairingNote">Crisp light lager cuts the sweetness perfectly.</span>
+                    <span data-wm-note id="wmPairingNote">Crisp light lager cuts the sweetness.</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="wm-sizes">
-              <h4 class="wm-sizes-title">Portions</h4>
+            <div class="wm-sizes wm-sizes--inline">
+              <h4 class="wm-sizes-title">Size</h4>
               <div class="wm-size-grid">
                 <div class="wm-size-box" data-size="small" role="button" tabindex="0">
                   <span class="wm-size-name">Small</span>
@@ -630,11 +626,17 @@
             <div class="wm-foot">
               <a href="pages/menu.html#sec-wings" class="btn-ticket" data-wm-cta>
                 <span class="btn-hover-fill" aria-hidden="true"></span>
-                <span class="btn-label">Full wings on menu</span>
+                <span class="btn-label">See all wings</span>
                 <span class="btn-arrow" aria-hidden="true">↗</span>
               </a>
             </div>
           </div>
+        </div>
+
+        <!-- Secondary: sauce list (scroll chips only) -->
+        <div class="wm-chip-block reveal" style="--reveal-delay: 100ms">
+          <p class="wm-chip-label">Or pick a sauce</p>
+          <div class="wm-chip-rail" data-wm-chips aria-label="Sauces"></div>
         </div>
       </div>
     </section>
@@ -964,6 +966,27 @@
           loading="lazy"
           decoding="async"
         />
+      </div>
+    </div>
+
+    <!-- Contact + delivery partners -->
+    <div class="footer-contact-bar">
+      <a class="footer-phone" data-contact="call" href="tel:+14345755753">
+        <span class="footer-phone-label">Call</span>
+        <span class="footer-phone-num" data-contact="phone-label">(434) 575-5753</span>
+      </a>
+      <div class="footer-delivery-block">
+        <span class="footer-delivery-label">Delivery</span>
+        <div class="footer-partners" aria-label="Delivery partners">
+          <a class="footer-partner footer-partner--grubhub" href="https://www.grubhub.com" target="_blank" rel="noopener noreferrer" aria-label="Order on Grubhub">
+            <span class="footer-partner-logo" aria-hidden="true">GH</span>
+            <span class="footer-partner-name">Grubhub</span>
+          </a>
+          <a class="footer-partner footer-partner--doordash" href="https://www.doordash.com" target="_blank" rel="noopener noreferrer" aria-label="Order on DoorDash">
+            <span class="footer-partner-logo" aria-hidden="true">DD</span>
+            <span class="footer-partner-name">DoorDash</span>
+          </a>
+        </div>
       </div>
     </div>
 

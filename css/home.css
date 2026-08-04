@@ -803,8 +803,8 @@
 
 /* The dock-style component card only */
 .house-strip-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 0;
   /* Match sticky dock / CTA charcoal */
   background: var(--color-charcoal, #2e2c2c);
@@ -818,12 +818,6 @@
   position: relative;
 }
 
-@media (min-width: 800px) {
-  .house-strip-inner {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
 .house-fact {
   display: flex;
   flex-direction: column;
@@ -835,21 +829,46 @@
   min-height: 5.5rem;
   transition: background 0.2s ease;
   /* Soft orange dividers between cells */
-  border-right: 1px solid rgba(231, 147, 30, 0.28);
+  border-bottom: 1px solid rgba(231, 147, 30, 0.28);
   position: relative;
 }
 
 .house-fact:last-child {
-  border-right: none;
+  border-bottom: none;
 }
 
-@media (max-width: 799px) {
+@media (min-width: 550px) {
+  .house-strip-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .house-fact {
+    border-bottom: none;
+    border-right: 1px solid rgba(231, 147, 30, 0.28);
+  }
+  
   .house-fact:nth-child(2n) {
     border-right: none;
   }
-
+  
   .house-fact:nth-child(-n + 2) {
     border-bottom: 1px solid rgba(231, 147, 30, 0.28);
+  }
+}
+
+@media (min-width: 800px) {
+  .house-strip-inner {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .house-fact {
+    border-bottom: none !important;
+    border-right: 1px solid rgba(231, 147, 30, 0.28) !important;
+  }
+
+  .house-fact:last-child {
+    border-right: none !important;
   }
 }
 

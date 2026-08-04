@@ -13,6 +13,112 @@
   --wm-color: #4a8d43;
 }
 
+/* Minimal home layout — one dial, one result, chips secondary */
+.wings-meter-section--minimal {
+  padding-block: clamp(2.75rem, 6vw, 5rem);
+}
+
+.wings-meter-section--minimal .wm-header--minimal {
+  margin-bottom: clamp(1.5rem, 3.5vw, 2.25rem);
+}
+
+.wings-meter-section--minimal .wm-title {
+  font-size: clamp(2rem, 5vw, 3.15rem);
+}
+
+.wings-meter-section--minimal .wm-desc {
+  max-width: 34ch;
+}
+
+.wm-minimal-grid {
+  display: grid;
+  grid-template-columns: minmax(200px, 280px) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 2.75rem);
+  align-items: start;
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.wings-meter-section--minimal .wm-knob-col {
+  padding-top: 0;
+}
+
+.wings-meter-section--minimal .wm-instrument-card {
+  max-width: 280px;
+  padding: 1rem 0.75rem 0.25rem;
+}
+
+.wm-card--minimal {
+  min-height: 0;
+  padding: clamp(1.15rem, 2.5vw, 1.65rem);
+}
+
+.wm-card--minimal .wm-sauce-name {
+  font-size: clamp(1.65rem, 3.5vw, 2.35rem);
+  margin-bottom: 0.5rem;
+}
+
+.wm-card--minimal .wm-sauce-desc {
+  margin-bottom: 1.1rem;
+  font-size: 0.95rem;
+  max-width: 32ch;
+}
+
+.wm-sizes--inline {
+  margin-top: 0.15rem;
+}
+
+.wm-sizes--inline .wm-sizes-title {
+  margin-bottom: 0.55rem;
+}
+
+.wm-chip-block {
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.wm-chip-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 0.55rem;
+  text-align: center;
+}
+
+.wings-meter-section--minimal .wm-chip-rail {
+  justify-content: flex-start;
+  margin-bottom: 0;
+  padding-bottom: 0.35rem;
+}
+
+.wings-meter-section--minimal .wm-foot {
+  margin-top: 0.35rem;
+}
+
+@media (max-width: 720px) {
+  .wm-minimal-grid {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+    justify-items: center;
+  }
+
+  .wings-meter-section--minimal .wm-details-col {
+    width: 100%;
+  }
+
+  .wings-meter-section--minimal .wm-foot {
+    justify-content: center;
+  }
+
+  .wm-chip-label {
+    text-align: left;
+  }
+}
+
 .wings-meter-section::before {
   content: "";
   position: absolute;
