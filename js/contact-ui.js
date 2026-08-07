@@ -82,6 +82,16 @@
       if (C.delivery) el.textContent = C.delivery;
     });
 
+    // Order online CTAs
+    document.querySelectorAll('[data-contact="order"]').forEach((el) => {
+      if (!C.orderOnline || el.tagName !== 'A') return;
+      el.href = C.orderOnline;
+      el.target = '_blank';
+      el.rel = 'noopener noreferrer';
+      const label = el.querySelector('.btn-label');
+      if (label && C.orderOnlineLabel) label.textContent = C.orderOnlineLabel;
+    });
+
     // Hours (plain text or multi-line via data-hours-format)
     document.querySelectorAll('[data-contact="hours"]').forEach((el) => {
       if (el.dataset.hoursFormat === 'lines' && C.hoursLines && C.hoursLines.length) {
@@ -93,7 +103,7 @@
 
     // Call CTA labels when no phone
     document.querySelectorAll('[data-contact="call-label"]').forEach((el) => {
-      el.textContent = hasPhone ? 'Call to Reserve' : 'Plan your visit';
+      el.textContent = 'Call for delivery';
     });
 
     // Reserve panel honesty block
@@ -107,7 +117,7 @@
         callBtn.href = C.telHref();
         callBtn.classList.remove('is-disabled');
         const label = callBtn.querySelector('.btn-label, [data-contact="call-label"]');
-        if (label) label.textContent = 'Call to Reserve';
+        if (label) label.textContent = 'Call for delivery';
       } else {
         callBtn.removeAttribute('href');
         callBtn.classList.add('is-disabled');

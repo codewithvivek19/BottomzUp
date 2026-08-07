@@ -23,11 +23,11 @@
   <link rel="preload" href="./assets/images/float-bacon.png" as="image" />
 
   <link rel="stylesheet" href="./css/base.css" />
-  <link rel="stylesheet" href="./css/home.css?v=11" />
-  <link rel="stylesheet" href="./css/nav.css?v=2" />
+  <link rel="stylesheet" href="./css/home.css?v=12" />
+  <link rel="stylesheet" href="./css/nav.css?v=3" />
   <link rel="stylesheet" href="./css/extras.css?v=5" />
   <link rel="stylesheet" href="./css/atmosphere.css?v=3" />
-  <link rel="stylesheet" href="./css/hero-freshbox.css?v=7" />
+  <link rel="stylesheet" href="./css/hero-freshbox.css?v=8" />
   <link rel="stylesheet" href="./css/deco-freshbox.css" />
   <link rel="stylesheet" href="./css/scratch-coupon.css?v=2" />
   <link rel="stylesheet" href="./css/footer-impact.css?v=7" />
@@ -55,21 +55,21 @@
             <a href="pages/menu.html" class="nav-link">
               Menu<span class="nav-link-line" aria-hidden="true"></span>
             </a>
-            <a href="#burgers" class="nav-link">
-              Burgers<span class="nav-link-line" aria-hidden="true"></span>
+            <a href="pages/catering.html" class="nav-link">
+              Catering<span class="nav-link-line" aria-hidden="true"></span>
             </a>
-            <a href="#wings" class="nav-link">
-              Wings<span class="nav-link-line" aria-hidden="true"></span>
+            <a href="#story" class="nav-link">
+              About Us<span class="nav-link-line" aria-hidden="true"></span>
             </a>
-            <a href="#visit" class="nav-link">
-              Visit<span class="nav-link-line" aria-hidden="true"></span>
+            <a href="pages/contact.html" class="nav-link">
+              Contact Us<span class="nav-link-line" aria-hidden="true"></span>
             </a>
           </nav>
 
           <div class="nav-actions">
             <button type="button" class="btn-ticket btn-nav-cta js-open-reserve">
               <span class="btn-hover-fill" aria-hidden="true"></span>
-              <span class="btn-label" data-contact="call-label">Plan your visit</span>
+              <span class="btn-label" data-contact="call-label">Call for delivery</span>
               <span class="btn-arrow" aria-hidden="true">↗</span>
             </button>
           </div>
@@ -82,12 +82,12 @@
         <nav class="nav-drawer" id="navMobile" aria-hidden="true" aria-label="Mobile">
           <div class="nav-drawer-inner">
             <a href="pages/menu.html" class="nav-link">Menu</a>
-            <a href="#burgers" class="nav-link">Burgers</a>
-            <a href="#wings" class="nav-link">Wings &amp; Beer</a>
-            <a href="#visit" class="nav-link">Visit</a>
+            <a href="pages/catering.html" class="nav-link">Catering</a>
+            <a href="#story" class="nav-link">About Us</a>
+            <a href="pages/contact.html" class="nav-link">Contact Us</a>
             <button type="button" class="btn-ticket js-open-reserve">
               <span class="btn-hover-fill" aria-hidden="true"></span>
-              <span class="btn-label" data-contact="call-label">Plan your visit</span>
+              <span class="btn-label" data-contact="call-label">Call for delivery</span>
               <span class="btn-arrow" aria-hidden="true">↗</span>
             </button>
           </div>
@@ -107,7 +107,7 @@
         <a href="pages/menu.html" class="sticky-btn-menu">Menu</a>
         <button type="button" class="btn-ticket btn-nav-cta sticky-btn-call js-open-reserve">
           <span class="btn-hover-fill" aria-hidden="true"></span>
-          <span class="btn-label" data-contact="call-label">Plan your visit</span>
+          <span class="btn-label" data-contact="call-label">Call for delivery</span>
           <span class="btn-arrow" aria-hidden="true">↗</span>
         </button>
       </div>
@@ -128,10 +128,21 @@
               <span class="fbx-line">Leave happy.</span>
             </h1>
           </div>
-          <div class="fbx-hero-cta-wrap">
+          <div class="fbx-hero-cta-wrap cta-pair">
             <a href="pages/menu.html" class="btn-ticket fbx-hero-cta">
               <span class="btn-hover-fill" aria-hidden="true"></span>
               <span class="btn-label">View Full Menu</span>
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a
+              href="https://www.doordash.com"
+              class="btn-ticket btn-ticket-light fbx-hero-cta fbx-hero-cta--secondary"
+              data-contact="order"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="btn-hover-fill" aria-hidden="true"></span>
+              <span class="btn-label">Order Online</span>
               <span class="btn-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
@@ -426,20 +437,28 @@
         </div>
       </div>
 
-      <div class="container marquee-foot reveal">
+      <div class="container marquee-foot reveal cta-pair">
         <a href="pages/menu.html" class="btn-ticket">
           <span class="btn-hover-fill" aria-hidden="true"></span>
           <span class="btn-label">Browse Full Menu</span>
           <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+        <a
+          href="https://www.doordash.com"
+          class="btn-ticket btn-ticket-light"
+          data-contact="order"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="btn-hover-fill" aria-hidden="true"></span>
+          <span class="btn-label">Order Online</span>
+          <span class="btn-arrow" aria-hidden="true">↗</span>
         </a>
       </div>
     </section>
 
     <!-- ==================== FEATURED BURGERS ==================== -->
     <section class="section burgers" id="burgers">
-      <div class="fbx-deco fbx-deco--burgers" aria-hidden="true">
-        <img src="./assets/images/deco-tomatoes-chilis.png" alt="" width="320" height="320" loading="lazy" />
-      </div>
       <div class="container">
         <div class="burgers-header">
           <div class="section-header reveal">
@@ -507,11 +526,24 @@
         </div>
 
         <div class="section-cta reveal">
-          <a href="pages/menu.html" class="btn-ticket btn-lg">
-            <span class="btn-hover-fill" aria-hidden="true"></span>
-            <span class="btn-label">See Full Menu</span>
-            <span class="btn-arrow" aria-hidden="true">→</span>
-          </a>
+          <div class="cta-pair">
+            <a href="pages/menu.html" class="btn-ticket btn-lg">
+              <span class="btn-hover-fill" aria-hidden="true"></span>
+              <span class="btn-label">See Full Menu</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+            <a
+              href="https://www.doordash.com"
+              class="btn-ticket btn-ticket-light btn-lg"
+              data-contact="order"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="btn-hover-fill" aria-hidden="true"></span>
+              <span class="btn-label">Order Online</span>
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
           <p class="section-cta-note body-sm text-muted">Garbage Burger, Plantastic &amp; more on the full list</p>
         </div>
       </div>
@@ -600,7 +632,9 @@
       </div>
     </section>
 
-    <!-- ==================== VISIT / LOCATION ==================== -->
+    <!-- ==================== VISIT / LOCATION (+ catering / contact anchors) ==================== -->
+    <div id="catering" class="anchor-alias" aria-hidden="true"></div>
+    <div id="contact" class="anchor-alias" aria-hidden="true"></div>
     <section class="section visit" id="visit">
       <div class="container visit-grid">
         <div class="visit-info reveal">
@@ -635,7 +669,7 @@
             </a>
             <a class="btn-ticket btn-ticket-light" data-contact="call" href="tel:+14345755753">
               <span class="btn-hover-fill" aria-hidden="true"></span>
-              <span class="btn-label" data-contact="call-label">Call to Reserve</span>
+              <span class="btn-label" data-contact="call-label">Call for delivery</span>
               <span class="btn-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
@@ -811,11 +845,24 @@
 
       <div class="story-marquee-foot container">
         <p class="story-marquee-note">Walk-ins welcome · large groups, give a heads up.</p>
-        <a href="pages/menu.html" class="btn-ticket">
-          <span class="btn-hover-fill" aria-hidden="true"></span>
-          <span class="btn-label">See the menu</span>
-          <span class="btn-arrow" aria-hidden="true">↗</span>
-        </a>
+        <div class="cta-pair">
+          <a href="pages/menu.html" class="btn-ticket">
+            <span class="btn-hover-fill" aria-hidden="true"></span>
+            <span class="btn-label">See the menu</span>
+            <span class="btn-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a
+            href="https://www.doordash.com"
+            class="btn-ticket btn-ticket-light"
+            data-contact="order"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="btn-hover-fill" aria-hidden="true"></span>
+            <span class="btn-label">Order Online</span>
+            <span class="btn-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -837,7 +884,7 @@
       <header class="reserve-panel-head">
         <div class="reserve-head-text">
           <p class="reserve-kicker">Bottomz Up</p>
-          <h2 id="reserveTitle">Call to reserve</h2>
+          <h2 id="reserveTitle">Call for delivery</h2>
           <p class="reserve-lead" id="reserveLead">
             Walk-ins welcome. Call for a table — or order delivery.
           </p>
@@ -886,7 +933,7 @@
       <footer class="reserve-actions">
         <a class="btn-ticket btn-lg reserve-cta-primary" id="reserveCallBtn" data-contact="call" href="tel:+14345755753">
           <span class="btn-hover-fill" aria-hidden="true"></span>
-          <span class="btn-label" data-contact="call-label">Call to Reserve</span>
+          <span class="btn-label" data-contact="call-label">Call for delivery</span>
           <span class="btn-arrow" aria-hidden="true">↗</span>
         </a>
         <a class="btn-ticket btn-ticket-light reserve-cta-maps" id="reserveMapsBtn" data-contact="maps" href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592">

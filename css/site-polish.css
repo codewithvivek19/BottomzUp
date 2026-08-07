@@ -31,6 +31,21 @@ main > .section {
   scroll-margin-top: calc(var(--header-height) + 12px);
 }
 
+/* Hash targets without layout */
+.anchor-alias {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  scroll-margin-top: calc(var(--header-height, 78px) + 12px);
+}
+
+#visit,
+#story,
+#catering,
+#contact {
+  scroll-margin-top: calc(var(--header-height, 78px) + 12px);
+}
+
 /* Home main must hug last section — no phantom bottom band before footer */
 main#main {
   display: block;

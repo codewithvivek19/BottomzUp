@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Full Menu | Bottomz Up Bar & Grill — South Boston, VA</title>
-  <meta name="description" content="Complete Bottomz Up menu — starters, salads, burgers, kitchen creations, wings, kids, desserts, sides, cocktails, shots, martinis, wine & beer. South Boston, VA." />
-  <meta property="og:title" content="Menu | Bottomz Up Bar & Grill" />
-  <meta property="og:description" content="Every plate and pour — burgers, wings, and a full bar in South Boston, VA." />
+  <title>Contact Us | Bottomz Up Bar & Grill — South Boston, VA</title>
+  <meta name="description" content="Contact Bottomz Up Bar & Grill in South Boston, VA — questions, large groups, catering, or a table. Call, write, or send a message." />
+  <meta property="og:title" content="Contact Us | Bottomz Up Bar & Grill" />
+  <meta property="og:description" content="Reach Bottomz Up on Seymour Drive — walk-ins welcome, large groups give a heads up." />
   <meta property="og:image" content="../assets/images/og-share.jpg" />
   <meta name="theme-color" content="#fffdf9" />
   <link rel="icon" href="../assets/icons/favicon.ico" sizes="any" />
@@ -20,18 +20,16 @@
   <link rel="preload" href="../assets/fonts/lemon-milk-medium.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="../css/base.css" />
-  <link rel="stylesheet" href="../css/home.css?v=10" />
-  <link rel="stylesheet" href="../css/nav.css" />
-  <link rel="stylesheet" href="../css/menu.css?v=5" />
+  <link rel="stylesheet" href="../css/home.css?v=12" />
+  <link rel="stylesheet" href="../css/nav.css?v=3" />
   <link rel="stylesheet" href="../css/extras.css?v=5" />
-  <link rel="stylesheet" href="../css/wings-forge.css?v=14" />
-  <link rel="stylesheet" href="../css/control-knob.css" />
-  <link rel="stylesheet" href="../css/atmosphere.css" />
+  <link rel="stylesheet" href="../css/atmosphere.css?v=3" />
   <link rel="stylesheet" href="../css/footer-impact.css?v=7" />
   <link rel="stylesheet" href="../css/sizzle.css?v=2" />
+  <link rel="stylesheet" href="../css/forms-lead.css?v=1" />
   <link rel="stylesheet" href="../css/site-polish.css?v=8" />
 </head>
-<body class="menu-page has-phone">
+<body class="has-phone lead-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="grain" aria-hidden="true"></div>
 
@@ -44,7 +42,7 @@
           </a>
 
           <nav class="nav-links" aria-label="Main">
-            <a href="menu.html" class="nav-link" aria-current="page">
+            <a href="menu.html" class="nav-link">
               Menu<span class="nav-link-line" aria-hidden="true"></span>
             </a>
             <a href="catering.html" class="nav-link">
@@ -53,7 +51,7 @@
             <a href="../index.html#story" class="nav-link">
               About Us<span class="nav-link-line" aria-hidden="true"></span>
             </a>
-            <a href="contact.html" class="nav-link">
+            <a href="contact.html" class="nav-link" aria-current="page">
               Contact Us<span class="nav-link-line" aria-hidden="true"></span>
             </a>
           </nav>
@@ -73,15 +71,10 @@
 
         <nav class="nav-drawer" id="navMobile" aria-hidden="true" aria-label="Mobile">
           <div class="nav-drawer-inner">
-            <a href="menu.html" class="nav-link" aria-current="page">Menu</a>
+            <a href="menu.html" class="nav-link">Menu</a>
             <a href="catering.html" class="nav-link">Catering</a>
             <a href="../index.html#story" class="nav-link">About Us</a>
-            <a href="contact.html" class="nav-link">Contact Us</a>
-            <a class="btn-ticket" data-contact="maps" href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592">
-              <span class="btn-hover-fill" aria-hidden="true"></span>
-              <span class="btn-label">Get Directions</span>
-              <span class="btn-arrow" aria-hidden="true">→</span>
-            </a>
+            <a href="contact.html" class="nav-link" aria-current="page">Contact Us</a>
             <button type="button" class="btn-ticket js-open-reserve">
               <span class="btn-hover-fill" aria-hidden="true"></span>
               <span class="btn-label" data-contact="call-label">Call for delivery</span>
@@ -93,120 +86,179 @@
     </div>
   </header>
 
-  <main class="menu-night" id="main">
-    <!-- Compact hero -->
-    <header class="menu-hero-compact container">
-      <p class="eyebrow">Bottomz Up · South Boston</p>
-      <h1 class="display menu-hero-title">Tonight’s menu</h1>
-      <p class="menu-hero-lede body-md text-muted">
-        Back Alley Burgers, bone-in wings, kitchen plates &amp; the bar — scroll, filter, or search.
+  <main id="main" class="page-lead">
+    <header class="page-lead-hero">
+      <p class="eyebrow">South Boston · Seymour Drive</p>
+      <h1 class="display">Let’s talk.</h1>
+      <p class="lede">
+        Tables, large groups, catering, or a quick question — send a note and we’ll get back to you.
       </p>
-      <a
-        class="menu-address-chip"
-        data-contact="maps"
-        href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592"
-      >
-        <span class="menu-address-dot" aria-hidden="true"></span>
-        2001 Seymour Dr
-      </a>
     </header>
 
-    <!-- Featured jump rail (visual, not a drill-in wall) -->
-    <div class="menu-jump-rail container" id="menuJumpRail" aria-label="Jump to popular sections">
-      <a href="#sec-burgers" class="menu-jump-card" data-jump="burgers">
-        <img src="../assets/images/cat_burgers.jpg" alt="" width="120" height="120" loading="lazy" decoding="async" />
-        <span>Burgers</span>
-      </a>
-      <a href="#sec-wings" class="menu-jump-card" data-jump="wings">
-        <img src="../assets/images/cat_wings.jpg" alt="" width="120" height="120" loading="lazy" decoding="async" />
-        <span>Wings</span>
-      </a>
-      <a href="#sec-kitchen" class="menu-jump-card" data-jump="food">
-        <img src="../assets/images/cat_kitchen.jpg" alt="" width="120" height="120" loading="lazy" decoding="async" />
-        <span>Kitchen</span>
-      </a>
-      <a href="#sec-drinks" class="menu-jump-card" data-jump="drinks">
-        <img src="../assets/images/cat_drinks.jpg" alt="" width="120" height="120" loading="lazy" decoding="async" />
-        <span>The Bar</span>
-      </a>
-    </div>
+    <div class="lead-layout">
+      <div class="lead-card">
+        <div class="lead-card-body">
+          <div class="lead-card-head">
+            <h2>Send a message</h2>
+            <span class="step-pill">Lead form</span>
+          </div>
 
-    <!-- Sticky control deck: chips + search -->
-    <div class="menu-sticky-deck" id="menuStickyDeck">
-      <div class="menu-sticky-inner container">
-        <div class="menu-cats" id="menuCats" role="toolbar" aria-label="Menu categories">
-          <!-- Rendered by menu.js -->
-        </div>
-        <div class="menu-search-wrap">
-          <label class="visually-hidden" for="menuSearch">Search menu</label>
-          <input
-            type="search"
-            id="menuSearch"
-            class="menu-search"
-            placeholder="Search BBQ, burger, beer…"
-            autocomplete="off"
-            enterkeyhint="search"
-          />
-          <button type="button" class="menu-search-clear" id="menuSearchClear" aria-label="Clear search" hidden>×</button>
-        </div>
-        <p class="menu-results-meta" id="menuResultsMeta" aria-live="polite">Full menu · food &amp; bar</p>
-      </div>
-    </div>
+          <div class="lead-progress" aria-hidden="true">
+            <span class="is-on"></span>
+            <span class="is-on"></span>
+            <span></span>
+          </div>
 
-    <!-- Continuous menu body -->
-    <div class="menu-main-wrap container">
-      <div class="menu-main" id="menuMain">
-        <p class="body-md text-muted menu-loading">Loading menu…</p>
-        <noscript>
-          <p class="body-md">JavaScript is required for the interactive menu. Visit us at 2001 Seymour Dr for the full list.</p>
-        </noscript>
+          <form class="lead-form" id="contactLeadForm" novalidate>
+            <div class="lead-row">
+              <div class="lead-field">
+                <label for="cName">Name <span class="req">*</span></label>
+                <input id="cName" name="name" type="text" autocomplete="name" placeholder="Your name" data-required />
+                <span class="field-error">Name is required</span>
+              </div>
+              <div class="lead-field">
+                <label for="cPhone">Phone <span class="req">*</span></label>
+                <input id="cPhone" name="phone" type="tel" autocomplete="tel" placeholder="(434) 555-0100" data-required />
+                <span class="field-error">Phone is required</span>
+              </div>
+            </div>
+
+            <div class="lead-field">
+              <label for="cEmail">Email <span class="req">*</span></label>
+              <input id="cEmail" name="email" type="email" autocomplete="email" placeholder="you@email.com" data-required />
+              <span class="field-error">Valid email is required</span>
+            </div>
+
+            <div class="lead-field">
+              <label>Topic</label>
+              <div class="lead-chips" role="group" aria-label="Topic">
+                <label class="lead-chip is-on">
+                  <input type="radio" name="topic" value="General" checked />
+                  <span class="lead-chip-text">General</span>
+                </label>
+                <label class="lead-chip">
+                  <input type="radio" name="topic" value="Large group" />
+                  <span class="lead-chip-text">Large group</span>
+                </label>
+                <label class="lead-chip">
+                  <input type="radio" name="topic" value="Catering" />
+                  <span class="lead-chip-text">Catering</span>
+                </label>
+                <label class="lead-chip">
+                  <input type="radio" name="topic" value="Private event" />
+                  <span class="lead-chip-text">Private event</span>
+                </label>
+                <label class="lead-chip">
+                  <input type="radio" name="topic" value="Feedback" />
+                  <span class="lead-chip-text">Feedback</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="lead-field">
+              <label>Preferred contact</label>
+              <div class="lead-chips" role="group" aria-label="Preferred contact">
+                <label class="lead-chip is-on">
+                  <input type="radio" name="preferred" value="Phone" checked />
+                  <span class="lead-chip-text">Phone</span>
+                </label>
+                <label class="lead-chip">
+                  <input type="radio" name="preferred" value="Text" />
+                  <span class="lead-chip-text">Text</span>
+                </label>
+                <label class="lead-chip">
+                  <input type="radio" name="preferred" value="Email" />
+                  <span class="lead-chip-text">Email</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="lead-field">
+              <label for="cMessage">Message <span class="req">*</span></label>
+              <textarea id="cMessage" name="message" placeholder="How can we help? Party size, date, or just say hi." data-required></textarea>
+              <span class="field-error">Tell us a little more</span>
+            </div>
+
+            <div class="lead-actions">
+              <button type="submit" class="btn-ticket btn-lg">
+                <span class="btn-hover-fill" aria-hidden="true"></span>
+                <span class="btn-label">Send message</span>
+                <span class="btn-arrow" aria-hidden="true">↗</span>
+              </button>
+              <p class="lead-submit-note">We’ll open your email app with the message ready — or call us anytime.</p>
+            </div>
+          </form>
+
+          <div class="lead-success" id="contactLeadSuccess">
+            <div class="lead-success-icon" aria-hidden="true">✓</div>
+            <h3>Message ready</h3>
+            <p>Thanks — your details are saved. Finish sending in your mail app, or call the house directly.</p>
+            <button type="button" class="btn-ticket" id="contactLeadReset">
+              <span class="btn-hover-fill" aria-hidden="true"></span>
+              <span class="btn-label">Send another</span>
+            </button>
+          </div>
+        </div>
       </div>
+
+      <aside class="lead-aside">
+        <div class="lead-info-card">
+          <h3>House details</h3>
+          <ul class="lead-info-list">
+            <li>
+              <span class="k">Phone</span>
+              <a class="v" data-contact="call" href="tel:+14345755753"><span data-contact="phone-label">(434) 575-5753</span></a>
+            </li>
+            <li>
+              <span class="k">Address</span>
+              <span class="v">2001 Seymour Dr<br />South Boston, VA 24592</span>
+            </li>
+            <li>
+              <span class="k">Hours</span>
+              <span class="v" data-contact="hours" data-hours-format="lines">
+                Monday – Thursday: 11:00 AM – 10:00 PM<br />
+                Friday – Saturday: 11:00 AM – 12:30 PM<br />
+                Sunday: 11:00 AM – 8:00 PM
+              </span>
+            </li>
+            <li>
+              <span class="k">Delivery</span>
+              <span class="v" data-contact="delivery">Delivery available via Grubhub &amp; DoorDash</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="lead-aside-cta">
+          <button type="button" class="btn-ticket js-open-reserve">
+            <span class="btn-hover-fill" aria-hidden="true"></span>
+            <span class="btn-label" data-contact="call-label">Call for delivery</span>
+            <span class="btn-arrow" aria-hidden="true">↗</span>
+          </button>
+          <a class="btn-ticket btn-ticket-light" data-contact="maps" href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592">
+            <span class="btn-hover-fill" aria-hidden="true"></span>
+            <span class="btn-label">Get Directions</span>
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="btn-ticket btn-ticket-light" href="catering.html">
+            <span class="btn-hover-fill" aria-hidden="true"></span>
+            <span class="btn-label">Catering orders</span>
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </aside>
     </div>
   </main>
 
-  <!-- Sticky dock — same pattern as home (hide when footer enters) -->
-  <aside class="sticky-cta" id="stickyCta" aria-hidden="true">
-    <div class="container sticky-cta-inner">
-      <p class="sticky-cta-copy">
-        <span class="sticky-cta-mark">South Boston</span>
-        <span class="sticky-cta-text">Tables fill up — walk-ins welcome</span>
-      </p>
-      <div class="sticky-cta-actions">
-        <a
-          class="sticky-btn-menu"
-          data-contact="maps"
-          href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592"
-        >Directions</a>
-        <button type="button" class="btn-ticket btn-nav-cta sticky-btn-call js-open-reserve">
-          <span class="btn-hover-fill" aria-hidden="true"></span>
-          <span class="btn-label" data-contact="call-label">Call for delivery</span>
-          <span class="btn-arrow" aria-hidden="true">↗</span>
-        </button>
-      </div>
-    </div>
-  </aside>
-
   <!-- Reserve — minimal sheet -->
   <div class="reserve-backdrop" id="reserveBackdrop" hidden></div>
-  <aside
-    class="reserve-panel"
-    id="reservePanel"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="reserveTitle"
-    aria-describedby="reserveLead"
-    hidden
-  >
+  <aside class="reserve-panel" id="reservePanel" role="dialog" aria-modal="true" aria-labelledby="reserveTitle" aria-describedby="reserveLead" hidden>
     <div class="reserve-sheet">
       <div class="reserve-grab" aria-hidden="true"><span></span></div>
-
       <header class="reserve-panel-head">
         <div class="reserve-head-text">
           <p class="reserve-kicker">Bottomz Up</p>
           <h2 id="reserveTitle">Call for delivery</h2>
-          <p class="reserve-lead" id="reserveLead">
-            Walk-ins welcome. Call for a table — or order delivery.
-          </p>
+          <p class="reserve-lead" id="reserveLead">Walk-ins welcome. Call for a table — or order delivery.</p>
         </div>
         <button type="button" class="reserve-close" id="reserveClose" aria-label="Close">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -214,32 +266,24 @@
           </svg>
         </button>
       </header>
-
       <div class="reserve-body">
         <a class="reserve-phone-block" data-contact="call" href="tel:+14345755753">
           <span class="reserve-phone-label">Phone</span>
           <span class="reserve-phone-num" data-contact="phone-label">(434) 575-5753</span>
         </a>
-
         <dl class="reserve-facts">
           <div>
             <dt>Hours</dt>
-            <dd data-contact="hours" data-hours-format="lines">
-              Mon–Thu 11am–10pm<br />
-              Fri–Sat 11am–12:30am<br />
-              Sun 11am–8pm
-            </dd>
+            <dd data-contact="hours" data-hours-format="lines">Mon–Thu 11am–10pm<br />Fri–Sat 11am–12:30am<br />Sun 11am–8pm</dd>
           </div>
           <div>
             <dt>Address</dt>
             <dd>2001 Seymour Dr<br />South Boston, VA 24592</dd>
           </div>
         </dl>
-
         <div class="reserve-honesty" id="reserveHonesty" hidden>
           <p><strong>Phone coming soon.</strong> Walk-ins welcome — or open maps.</p>
         </div>
-
         <div class="reserve-partners" aria-label="Order delivery">
           <span class="reserve-partners-label">Delivery</span>
           <div class="reserve-partners-row">
@@ -248,7 +292,6 @@
           </div>
         </div>
       </div>
-
       <footer class="reserve-actions">
         <a class="btn-ticket btn-lg reserve-cta-primary" id="reserveCallBtn" data-contact="call" href="tel:+14345755753">
           <span class="btn-hover-fill" aria-hidden="true"></span>
@@ -265,7 +308,6 @@
     </div>
   </aside>
 
-
   <footer class="site-footer site-footer--impact">
     <div class="footer-marquee" aria-hidden="true">
       <div class="footer-marquee-track">
@@ -277,12 +319,10 @@
         </div>
       </div>
     </div>
-
     <div class="footer-hero">
       <div class="footer-burger footer-burger--left">
         <img src="../assets/images/float-bacon.png" alt="" width="400" height="400" loading="lazy" decoding="async" />
       </div>
-
       <div class="footer-cta-block" id="footerCtaBlock">
         <h2 class="footer-headline" id="footerHeadline">
           <span class="footer-line"><span class="footer-line-inner">Hungry?</span></span>
@@ -290,14 +330,12 @@
         </h2>
         <div class="footer-headline-underline" aria-hidden="true"></div>
         <p class="footer-subhead">Smashed fresh · full bar · right now</p>
-        <a href="#main" class="footer-order-btn">Order now</a>
+        <a href="menu.html" class="footer-order-btn">Order now</a>
       </div>
-
       <div class="footer-burger footer-burger--right">
         <img src="../assets/images/burger-straight.png" alt="" width="400" height="400" loading="lazy" decoding="async" />
       </div>
     </div>
-
     <div class="footer-contact-bar">
       <a class="footer-phone" data-contact="call" href="tel:+14345755753">
         <span class="footer-phone-label">Call</span>
@@ -317,7 +355,6 @@
         </div>
       </div>
     </div>
-
     <div class="footer-utility">
       <nav class="footer-social" aria-label="Social">
         <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -336,7 +373,6 @@
         <span class="footer-credit">South Boston, VA</span>
       </div>
     </div>
-
     <p class="footer-legal">
       Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions. Please advise your server of any allergies.
     </p>
@@ -345,9 +381,6 @@
   <script src="../js/contact.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/contact-ui.js"></script>
-  <script src="../js/menu-data.js"></script>
-  <script src="../js/menu.js"></script>
-  <script src="../js/control-knob.js"></script>
-  <script src="../js/wings-forge.js"></script>
+  <script src="../js/forms-lead.js"></script>
 </body>
 </html>

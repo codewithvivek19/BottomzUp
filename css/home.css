@@ -1250,6 +1250,29 @@ a.house-fact:focus-visible .house-fact-value {
   opacity: 0.85;
 }
 
+/* Menu + Order Online side by side */
+.cta-pair {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem 0.75rem;
+}
+
+.marquee-foot.cta-pair {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem 0.75rem;
+}
+
+.story-marquee-foot .cta-pair {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem 0.65rem;
+}
+
 /* ---------- Wings + Beer ---------- */
 .wings-beer {
   position: relative;

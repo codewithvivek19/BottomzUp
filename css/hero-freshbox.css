@@ -253,6 +253,26 @@
   z-index: 4; /* above plate, food may sit lower */
 }
 
+.fbx-hero-cta-wrap.cta-pair {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem 0.75rem;
+}
+
+.fbx-hero-cta--secondary {
+  background: #ffffff !important;
+  color: #1a1510 !important;
+  border: 1.5px solid rgba(46, 44, 44, 0.12) !important;
+  box-shadow: 0 6px 18px rgba(46, 44, 44, 0.08) !important;
+}
+
+.fbx-hero-cta--secondary:hover {
+  border-color: rgba(231, 147, 30, 0.45) !important;
+  background: #fffdf9 !important;
+}
+
 .fbx-hero.is-ready .fbx-hero-cta-wrap {
   opacity: 1;
   transform: translateY(0);

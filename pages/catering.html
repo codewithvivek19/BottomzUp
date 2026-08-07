@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catering | Bottomz Up Bar & Grill — South Boston, VA</title>
+  <meta name="description" content="Bottomz Up catering — wings trays, salads, sides, burger bundles, wrap lunches, and VIP ribeye packages for groups in South Boston, VA." />
+  <meta property="og:title" content="Catering | Bottomz Up Bar & Grill" />
+  <meta property="og:description" content="Feed the crew — wings, trays, burger bundles, and VIP lunches. Request a catering quote." />
+  <meta property="og:image" content="../assets/images/og-share.jpg" />
+  <meta name="theme-color" content="#fffdf9" />
+  <link rel="icon" href="../assets/icons/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="../assets/icons/favicon-32.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="../assets/fonts/lemon-milk-bold.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../assets/fonts/lemon-milk-medium.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/home.css?v=12" />
+  <link rel="stylesheet" href="../css/nav.css?v=3" />
+  <link rel="stylesheet" href="../css/extras.css?v=5" />
+  <link rel="stylesheet" href="../css/atmosphere.css?v=3" />
+  <link rel="stylesheet" href="../css/footer-impact.css?v=7" />
+  <link rel="stylesheet" href="../css/sizzle.css?v=2" />
+  <link rel="stylesheet" href="../css/forms-lead.css?v=1" />
+  <link rel="stylesheet" href="../css/site-polish.css?v=8" />
+</head>
+<body class="has-phone lead-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header" id="header">
+    <div class="nav-shell">
+      <div class="nav-panel" id="navPanel">
+        <div class="nav-bar">
+          <a href="../index.html" class="nav-logo" aria-label="Bottomz Up Bar & Grill">
+            <img src="../assets/images/logo-horizontal.png" alt="Bottomz Up Bar &amp; Grill" width="120" height="34" decoding="async" />
+          </a>
+
+          <nav class="nav-links" aria-label="Main">
+            <a href="menu.html" class="nav-link">
+              Menu<span class="nav-link-line" aria-hidden="true"></span>
+            </a>
+            <a href="catering.html" class="nav-link" aria-current="page">
+              Catering<span class="nav-link-line" aria-hidden="true"></span>
+            </a>
+            <a href="../index.html#story" class="nav-link">
+              About Us<span class="nav-link-line" aria-hidden="true"></span>
+            </a>
+            <a href="contact.html" class="nav-link">
+              Contact Us<span class="nav-link-line" aria-hidden="true"></span>
+            </a>
+          </nav>
+
+          <div class="nav-actions">
+            <button type="button" class="btn-ticket btn-nav-cta js-open-reserve">
+              <span class="btn-hover-fill" aria-hidden="true"></span>
+              <span class="btn-label" data-contact="call-label">Call for delivery</span>
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+
+          <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+            <span></span><span></span>
+          </button>
+        </div>
+
+        <nav class="nav-drawer" id="navMobile" aria-hidden="true" aria-label="Mobile">
+          <div class="nav-drawer-inner">
+            <a href="menu.html" class="nav-link">Menu</a>
+            <a href="catering.html" class="nav-link" aria-current="page">Catering</a>
+            <a href="../index.html#story" class="nav-link">About Us</a>
+            <a href="contact.html" class="nav-link">Contact Us</a>
+            <button type="button" class="btn-ticket js-open-reserve">
+              <span class="btn-hover-fill" aria-hidden="true"></span>
+              <span class="btn-label" data-contact="call-label">Call for delivery</span>
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page-lead">
+    <header class="page-lead-hero">
+      <p class="eyebrow">Catering · South Boston</p>
+      <h1 class="display">Feed the whole crew.</h1>
+      <p class="lede">
+        Wings, trays, burger bundles, wrap lunches, and VIP plates — tap what you need, then send a request.
+      </p>
+    </header>
+
+    <!-- À la carte menu -->
+    <section class="cat-section" aria-labelledby="catMenuTitle">
+      <div class="cat-section-head">
+        <p class="eyebrow">Catering menu</p>
+        <h2 id="catMenuTitle">Build your tray list</h2>
+        <p>Select items for your quote. Pricing confirmed when we follow up.</p>
+      </div>
+
+      <form id="cateringLeadForm" class="lead-form" novalidate>
+        <div class="cat-group">
+          <h3 class="cat-group-title">Wings</h3>
+          <div class="cat-grid">
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="30 wings" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">30 wings</span>
+              <span class="cat-item-meta">Bone-in · pick your sauce</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="60 wings" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">60 wings</span>
+              <span class="cat-item-meta">Bone-in · pick your sauce</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="90 wings" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">90 wings</span>
+              <span class="cat-item-meta">Bone-in · pick your sauce</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="cat-group">
+          <h3 class="cat-group-title">Salads</h3>
+          <div class="cat-grid">
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Full tray salad (up to 12)" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Full tray salad</span>
+              <span class="cat-item-meta">Serves up to 12</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="House salad with chicken" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">House salad with chicken</span>
+              <span class="cat-item-meta">Full flavor, protein on top</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Caesar salad with chicken" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Caesar salad with chicken</span>
+              <span class="cat-item-meta">Classic Caesar · grilled chicken</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Half tray salad (up to 7)" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Half tray salad</span>
+              <span class="cat-item-meta">Serves up to 7</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="cat-group">
+          <h3 class="cat-group-title">Trays &amp; sides</h3>
+          <div class="cat-grid">
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Half tray mac and cheese" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Half tray mac &amp; cheese</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Full tray mac and cheese" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Full tray mac &amp; cheese</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Half tray corn ribs" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Half tray corn ribs</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Full tray corn ribs" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Full tray corn ribs</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Half tray nacho grande" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Half tray nacho grande</span>
+              <span class="cat-item-tag">TBD</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Full tray nacho grande" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Full tray nacho grande</span>
+              <span class="cat-item-tag">TBD</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Half tray fries" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Half tray fries</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Full tray fries" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Full tray fries</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Half tray churros" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Half tray churros</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Full tray churros" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Full tray churros</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Half tray beignets" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Half tray beignets</span>
+              <span class="cat-item-tag">TBD</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Full tray beignets" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Full tray beignets</span>
+              <span class="cat-item-tag">TBD</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="cat-group">
+          <h3 class="cat-group-title">Drinks</h3>
+          <div class="cat-grid">
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Gallon sweet tea" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Gallon sweet tea</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="Gallon unsweet tea" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">Gallon unsweet tea</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="12-pack Pepsi" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">12-pack Pepsi</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="12-pack Diet Pepsi" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">12-pack Diet Pepsi</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="12-pack Mountain Dew" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">12-pack Mountain Dew</span>
+            </label>
+            <label class="cat-item">
+              <input type="checkbox" name="items" value="12-pack Sierra Mist" />
+              <span class="cat-item-check" aria-hidden="true">✓</span>
+              <span class="cat-item-name">12-pack Sierra Mist</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Bundles -->
+        <section class="cat-section" style="padding-inline: 0; padding-top: 0.5rem" aria-labelledby="bundleTitle">
+          <div class="cat-section-head">
+            <p class="eyebrow">Bundles</p>
+            <h2 id="bundleTitle">Feed a crowd, fixed packages</h2>
+            <p>Tap a bundle to include it in your request. Add-ons can be noted below.</p>
+          </div>
+
+          <div class="bundle-grid">
+            <label class="bundle-card">
+              <input type="radio" name="bundle" value="Burger bundle for 20" />
+              <div class="bundle-card-top">
+                <h3>Burger bundle · 20 people</h3>
+                <span class="bundle-pill">20 ppl</span>
+              </div>
+              <ul>
+                <li><strong>20 burgers</strong></li>
+                <li>Salad full tray</li>
+                <li>Full tray fries</li>
+                <li>Burger toppings given on the side</li>
+              </ul>
+            </label>
+
+            <label class="bundle-card">
+              <input type="radio" name="bundle" value="Burger bundle for 10" />
+              <div class="bundle-card-top">
+                <h3>Burger bundle · 10 people</h3>
+                <span class="bundle-pill">10 ppl</span>
+              </div>
+              <ul>
+                <li><strong>10 burgers</strong></li>
+                <li>Salad half tray</li>
+                <li>Half tray fries</li>
+              </ul>
+              <p class="bundle-note">Add bacon · extra charge · Double hamburger · extra charge</p>
+            </label>
+
+            <label class="bundle-card">
+              <input type="radio" name="bundle" value="Burger box lunch for 10 individual" />
+              <div class="bundle-card-top">
+                <h3>Burger box lunch · 10</h3>
+                <span class="bundle-pill">Individual</span>
+              </div>
+              <ul>
+                <li>Burger + fries individual pack</li>
+                <li>10 individual boxes</li>
+              </ul>
+            </label>
+
+            <label class="bundle-card">
+              <input type="radio" name="bundle" value="Burger box lunch for 20 individual" />
+              <div class="bundle-card-top">
+                <h3>Burger box lunch · 20</h3>
+                <span class="bundle-pill">Individual</span>
+              </div>
+              <ul>
+                <li>Burger + fries individual pack</li>
+                <li>20 individual boxes</li>
+              </ul>
+            </label>
+
+            <label class="bundle-card">
+              <input type="radio" name="bundle" value="Wrap box lunch for 10" />
+              <div class="bundle-card-top">
+                <h3>Wrap box lunch · 10</h3>
+                <span class="bundle-pill">10 ppl</span>
+              </div>
+              <ul>
+                <li>Individual wrap lunch boxes</li>
+              </ul>
+            </label>
+
+            <label class="bundle-card">
+              <input type="radio" name="bundle" value="Wrap box lunch for 20" />
+              <div class="bundle-card-top">
+                <h3>Wrap box lunch · 20</h3>
+                <span class="bundle-pill">20 ppl</span>
+              </div>
+              <ul>
+                <li>Individual wrap lunch boxes</li>
+              </ul>
+            </label>
+
+            <label class="bundle-card bundle-card--vip">
+              <input type="radio" name="bundle" value="Ribeye VIP lunch for 10" />
+              <div class="bundle-card-top">
+                <h3>Ribeye VIP lunch · 10</h3>
+                <span class="bundle-pill">VIP</span>
+              </div>
+              <ul>
+                <li><strong>Ribeye steak</strong></li>
+                <li>Mac &amp; cheese</li>
+                <li>Mashed potato</li>
+                <li>Half tray churros</li>
+              </ul>
+            </label>
+
+            <label class="bundle-card bundle-card--vip">
+              <input type="radio" name="bundle" value="Ribeye VIP lunch for 20" />
+              <div class="bundle-card-top">
+                <h3>Ribeye VIP lunch · 20</h3>
+                <span class="bundle-pill">VIP</span>
+              </div>
+              <ul>
+                <li><strong>Ribeye steak</strong></li>
+                <li>Mac &amp; cheese · mashed potato</li>
+                <li>Dessert tray included</li>
+              </ul>
+            </label>
+
+            <label class="bundle-card bundle-card--vip">
+              <input type="radio" name="bundle" value="Hamburger steak VIP lunch for 10" />
+              <div class="bundle-card-top">
+                <h3>Hamburger steak VIP · 10</h3>
+                <span class="bundle-pill">VIP</span>
+              </div>
+              <ul>
+                <li>Hamburger steak plates for 10</li>
+              </ul>
+            </label>
+
+            <label class="bundle-card bundle-card--vip">
+              <input type="radio" name="bundle" value="Hamburger steak VIP lunch for 20" />
+              <div class="bundle-card-top">
+                <h3>Hamburger steak VIP · 20</h3>
+                <span class="bundle-pill">VIP</span>
+              </div>
+              <ul>
+                <li>Hamburger steak plates for 20</li>
+              </ul>
+            </label>
+          </div>
+
+          <p class="lead-submit-note" style="margin-top: 1rem">
+            Select one bundle max, plus any à la carte trays above.
+          </p>
+        </section>
+
+        <!-- Order form -->
+        <div class="cat-order-wrap">
+          <div class="lead-layout">
+            <div class="lead-card">
+              <div class="lead-card-body">
+                <div class="lead-card-head">
+                  <h2>Request catering</h2>
+                  <span class="step-pill">Quote form</span>
+                </div>
+
+                <div class="lead-progress" aria-hidden="true">
+                  <span class="is-on"></span>
+                  <span class="is-on"></span>
+                  <span class="is-on"></span>
+                </div>
+
+                <p id="cateringSelectHint" class="cat-select-hint" hidden>
+                  Select at least one menu item or bundle.
+                </p>
+
+                <div class="lead-summary" id="cateringSummary" aria-live="polite"></div>
+
+                <div class="lead-row">
+                  <div class="lead-field">
+                    <label for="catName">Name <span class="req">*</span></label>
+                    <input id="catName" name="name" type="text" autocomplete="name" placeholder="Your name" data-required />
+                    <span class="field-error">Name is required</span>
+                  </div>
+                  <div class="lead-field">
+                    <label for="catPhone">Phone <span class="req">*</span></label>
+                    <input id="catPhone" name="phone" type="tel" autocomplete="tel" placeholder="(434) 555-0100" data-required />
+                    <span class="field-error">Phone is required</span>
+                  </div>
+                </div>
+
+                <div class="lead-field">
+                  <label for="catEmail">Email <span class="req">*</span></label>
+                  <input id="catEmail" name="email" type="email" autocomplete="email" placeholder="you@email.com" data-required />
+                  <span class="field-error">Valid email is required</span>
+                </div>
+
+                <div class="lead-row">
+                  <div class="lead-field">
+                    <label for="catDate">Event date <span class="req">*</span></label>
+                    <input id="catDate" name="eventDate" type="date" data-required />
+                    <span class="field-error">Date is required</span>
+                  </div>
+                  <div class="lead-field">
+                    <label for="catGuests">Guest count <span class="req">*</span></label>
+                    <input id="catGuests" name="guests" type="number" min="1" max="500" placeholder="e.g. 20" data-required />
+                    <span class="field-error">Guest count is required</span>
+                  </div>
+                </div>
+
+                <div class="lead-field">
+                  <label>Event type</label>
+                  <div class="lead-chips" role="group" aria-label="Event type">
+                    <label class="lead-chip is-on">
+                      <input type="radio" name="eventType" value="Office / workplace" checked />
+                      <span class="lead-chip-text">Office</span>
+                    </label>
+                    <label class="lead-chip">
+                      <input type="radio" name="eventType" value="Party / celebration" />
+                      <span class="lead-chip-text">Party</span>
+                    </label>
+                    <label class="lead-chip">
+                      <input type="radio" name="eventType" value="Sports / team" />
+                      <span class="lead-chip-text">Sports</span>
+                    </label>
+                    <label class="lead-chip">
+                      <input type="radio" name="eventType" value="School / church" />
+                      <span class="lead-chip-text">School</span>
+                    </label>
+                    <label class="lead-chip">
+                      <input type="radio" name="eventType" value="Other" />
+                      <span class="lead-chip-text">Other</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="lead-field">
+                  <label for="catNotes">Notes</label>
+                  <textarea id="catNotes" name="notes" placeholder="Sauce heat, dietary needs, drop-off time, bacon or double add-ons…"></textarea>
+                  <span class="field-hint">Tell us heat levels, allergies, or extra charges (bacon / double patties).</span>
+                </div>
+
+                <div class="lead-actions">
+                  <button type="submit" class="btn-ticket btn-lg">
+                    <span class="btn-hover-fill" aria-hidden="true"></span>
+                    <span class="btn-label">Request catering quote</span>
+                    <span class="btn-arrow" aria-hidden="true">↗</span>
+                  </button>
+                  <p class="lead-submit-note">We’ll open your email with the full order list — or call the house to lock it in.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <aside class="lead-aside">
+              <div class="lead-info-card">
+                <h3>How catering works</h3>
+                <ul class="lead-info-list">
+                  <li>
+                    <span class="k">1 · Select</span>
+                    <span class="v">Tap trays, drinks, and a bundle if you want one.</span>
+                  </li>
+                  <li>
+                    <span class="k">2 · Details</span>
+                    <span class="v">Date, headcount, and how to reach you.</span>
+                  </li>
+                  <li>
+                    <span class="k">3 · Confirm</span>
+                    <span class="v">We confirm pricing, sauces, and pickup/drop-off.</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="lead-info-card">
+                <h3>Talk to the house</h3>
+                <ul class="lead-info-list">
+                  <li>
+                    <span class="k">Phone</span>
+                    <a class="v" data-contact="call" href="tel:+14345755753"><span data-contact="phone-label">(434) 575-5753</span></a>
+                  </li>
+                  <li>
+                    <span class="k">Address</span>
+                    <span class="v">2001 Seymour Dr · South Boston, VA</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="lead-aside-cta">
+                <a class="btn-ticket" data-contact="call" href="tel:+14345755753">
+                  <span class="btn-hover-fill" aria-hidden="true"></span>
+                  <span class="btn-label">Call about catering</span>
+                  <span class="btn-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="btn-ticket btn-ticket-light" href="menu.html">
+                  <span class="btn-hover-fill" aria-hidden="true"></span>
+                  <span class="btn-label">View full dine-in menu</span>
+                  <span class="btn-arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+      <div class="cat-order-wrap" id="cateringSuccessWrap" hidden>
+        <div class="lead-card">
+          <div class="lead-success is-visible" id="cateringLeadSuccess">
+            <div class="lead-success-icon" aria-hidden="true">✓</div>
+            <h3>Request ready</h3>
+            <p>Your catering list is saved. Finish in your mail app, or call us to confirm timing and pricing.</p>
+            <button type="button" class="btn-ticket" id="cateringLeadReset">
+              <span class="btn-hover-fill" aria-hidden="true"></span>
+              <span class="btn-label">Build another order</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Reserve — minimal sheet -->
+  <div class="reserve-backdrop" id="reserveBackdrop" hidden></div>
+  <aside class="reserve-panel" id="reservePanel" role="dialog" aria-modal="true" aria-labelledby="reserveTitle" aria-describedby="reserveLead" hidden>
+    <div class="reserve-sheet">
+      <div class="reserve-grab" aria-hidden="true"><span></span></div>
+      <header class="reserve-panel-head">
+        <div class="reserve-head-text">
+          <p class="reserve-kicker">Bottomz Up</p>
+          <h2 id="reserveTitle">Call for delivery</h2>
+          <p class="reserve-lead" id="reserveLead">Walk-ins welcome. Call for a table — or order delivery.</p>
+        </div>
+        <button type="button" class="reserve-close" id="reserveClose" aria-label="Close">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+        </button>
+      </header>
+      <div class="reserve-body">
+        <a class="reserve-phone-block" data-contact="call" href="tel:+14345755753">
+          <span class="reserve-phone-label">Phone</span>
+          <span class="reserve-phone-num" data-contact="phone-label">(434) 575-5753</span>
+        </a>
+        <dl class="reserve-facts">
+          <div>
+            <dt>Hours</dt>
+            <dd data-contact="hours" data-hours-format="lines">Mon–Thu 11am–10pm<br />Fri–Sat 11am–12:30am<br />Sun 11am–8pm</dd>
+          </div>
+          <div>
+            <dt>Address</dt>
+            <dd>2001 Seymour Dr<br />South Boston, VA 24592</dd>
+          </div>
+        </dl>
+        <div class="reserve-honesty" id="reserveHonesty" hidden>
+          <p><strong>Phone coming soon.</strong> Walk-ins welcome — or open maps.</p>
+        </div>
+        <div class="reserve-partners" aria-label="Order delivery">
+          <span class="reserve-partners-label">Delivery</span>
+          <div class="reserve-partners-row">
+            <a class="reserve-partner-btn" href="https://www.grubhub.com" target="_blank" rel="noopener noreferrer">Grubhub</a>
+            <a class="reserve-partner-btn" href="https://www.doordash.com" target="_blank" rel="noopener noreferrer">DoorDash</a>
+          </div>
+        </div>
+      </div>
+      <footer class="reserve-actions">
+        <a class="btn-ticket btn-lg reserve-cta-primary" id="reserveCallBtn" data-contact="call" href="tel:+14345755753">
+          <span class="btn-hover-fill" aria-hidden="true"></span>
+          <span class="btn-label" data-contact="call-label">Call for delivery</span>
+          <span class="btn-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="btn-ticket btn-ticket-light reserve-cta-maps" id="reserveMapsBtn" data-contact="maps" href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592">
+          <span class="btn-hover-fill" aria-hidden="true"></span>
+          <span class="btn-label">Get Directions</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#" class="reserve-sms" id="reserveSmsBtn" data-contact="sms" hidden>Text us instead →</a>
+      </footer>
+    </div>
+  </aside>
+
+  <footer class="site-footer site-footer--impact">
+    <div class="footer-marquee" aria-hidden="true">
+      <div class="footer-marquee-track">
+        <div class="footer-marquee-group">
+          <span>ORDER NOW · SMASHED FRESH DAILY · ORDER NOW · SMASHED FRESH DAILY · ORDER NOW · SMASHED FRESH DAILY · ORDER NOW · SMASHED FRESH DAILY ·</span>
+        </div>
+        <div class="footer-marquee-group" aria-hidden="true">
+          <span>ORDER NOW · SMASHED FRESH DAILY · ORDER NOW · SMASHED FRESH DAILY · ORDER NOW · SMASHED FRESH DAILY · ORDER NOW · SMASHED FRESH DAILY ·</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-hero">
+      <div class="footer-burger footer-burger--left">
+        <img src="../assets/images/float-bacon.png" alt="" width="400" height="400" loading="lazy" decoding="async" />
+      </div>
+      <div class="footer-cta-block" id="footerCtaBlock">
+        <h2 class="footer-headline" id="footerHeadline">
+          <span class="footer-line"><span class="footer-line-inner">Hungry?</span></span>
+          <span class="footer-line"><span class="footer-line-inner">Get here.</span></span>
+        </h2>
+        <div class="footer-headline-underline" aria-hidden="true"></div>
+        <p class="footer-subhead">Smashed fresh · full bar · right now</p>
+        <a href="menu.html" class="footer-order-btn">Order now</a>
+      </div>
+      <div class="footer-burger footer-burger--right">
+        <img src="../assets/images/burger-straight.png" alt="" width="400" height="400" loading="lazy" decoding="async" />
+      </div>
+    </div>
+    <div class="footer-contact-bar">
+      <a class="footer-phone" data-contact="call" href="tel:+14345755753">
+        <span class="footer-phone-label">Call</span>
+        <span class="footer-phone-num" data-contact="phone-label">(434) 575-5753</span>
+      </a>
+      <div class="footer-delivery-block">
+        <span class="footer-delivery-label">Delivery</span>
+        <div class="footer-partners" aria-label="Delivery partners">
+          <a class="footer-partner footer-partner--grubhub" href="https://www.grubhub.com" target="_blank" rel="noopener noreferrer" aria-label="Order on Grubhub">
+            <span class="footer-partner-logo" aria-hidden="true">GH</span>
+            <span class="footer-partner-name">Grubhub</span>
+          </a>
+          <a class="footer-partner footer-partner--doordash" href="https://www.doordash.com" target="_blank" rel="noopener noreferrer" aria-label="Order on DoorDash">
+            <span class="footer-partner-logo" aria-hidden="true">DD</span>
+            <span class="footer-partner-name">DoorDash</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-utility">
+      <nav class="footer-social" aria-label="Social">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.5 1 .4.4.7.9 1 1.5.2.4.4 1.1.4 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-1 1.5-.4.4-.9.7-1.5 1-.4.2-1.1.4-2.3.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.5-1-.4-.4-.7-.9-1-1.5-.2-.4-.4-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.3.2-.6.5-1 1-1.5.4-.4.9-.7 1.5-1 .4-.2 1.1-.4 2.3-.4C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3 0 7 0 5.7.1 4.8.3 4 .6c-.9.3-1.6.8-2.3 1.5C1 2.8.5 3.5.2 4.4.1 5.2 0 6.1 0 7.4 0 8.7 0 9.1 0 12s0 3.3.1 4.6c.1 1.3.3 2.2.6 3 .3.9.8 1.6 1.5 2.3.7.7 1.4 1.2 2.3 1.5.8.3 1.7.5 3 .6 1.3.1 1.7.1 4.6.1s3.3 0 4.6-.1c1.3-.1 2.2-.3 3-.6.9-.3 1.6-.8 2.3-1.5.7-.7 1.2-1.4 1.5-2.3.3-.8.5-1.7.6-3 .1-1.3.1-1.7.1-4.6s0-3.3-.1-4.6c-.1-1.3-.3-2.2-.6-3-.3-.9-.8-1.6-1.5-2.3C20.5.8 19.8.3 18.9.1 18.1 0 17.2 0 15.9 0 14.6 0 14.2 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-10.5a1.4 1.4 0 1 1-2.9 0 1.4 1.4 0 0 1 2.9 0z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 6.2a5.5 5.5 0 0 1-3.2-1.1v7.2a6.3 6.3 0 1 1-5.4-6.2v3.1a3.2 3.2 0 1 0 2.3 3.1V1.5h3a5.5 5.5 0 0 0 3.3 4.7z"/></svg>
+        </a>
+        <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.2 2H21l-6.5 7.4L22 22h-6.2l-4.3-5.6L6 22H3.2l7-8L2 2h6.3l3.9 5.2L18.2 2zm-1.1 18h1.7L7 3.9H5.2L17.1 20z"/></svg>
+        </a>
+      </nav>
+      <a href="../index.html" class="footer-brand-mark">Bottomz Up</a>
+      <div class="footer-utility-end">
+        <span class="footer-copy-pill">2026 Copyright</span>
+        <span class="footer-credit">South Boston, VA</span>
+      </div>
+    </div>
+    <p class="footer-legal">
+      Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions. Please advise your server of any allergies.
+    </p>
+  </footer>
+
+  <script src="../js/contact.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/contact-ui.js"></script>
+  <script src="../js/forms-lead.js"></script>
+</body>
+</html>

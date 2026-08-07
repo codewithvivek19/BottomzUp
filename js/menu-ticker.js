@@ -196,7 +196,7 @@
       '<div class="bar-conversion-actions">' +
       '<button type="button" class="btn-ticket js-open-reserve">' +
       '<span class="btn-hover-fill" aria-hidden="true"></span>' +
-      '<span class="btn-label" data-contact="call-label">Plan your visit</span>' +
+      '<span class="btn-label" data-contact="call-label">Call for delivery</span>' +
       '<span class="btn-arrow" aria-hidden="true">↗</span>' +
       '</button>' +
       '</div>' +
