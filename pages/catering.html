@@ -26,10 +26,11 @@
   <link rel="stylesheet" href="../css/atmosphere.css?v=3" />
   <link rel="stylesheet" href="../css/footer-impact.css?v=7" />
   <link rel="stylesheet" href="../css/sizzle.css?v=2" />
-  <link rel="stylesheet" href="../css/forms-lead.css?v=1" />
+  <link rel="stylesheet" href="../css/forms-lead.css?v=4" />
+  <link rel="stylesheet" href="../css/catering.css?v=1" />
   <link rel="stylesheet" href="../css/site-polish.css?v=8" />
 </head>
-<body class="has-phone lead-page">
+<body class="has-phone lead-page cat-page-body">
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="grain" aria-hidden="true"></div>
 
@@ -48,7 +49,7 @@
             <a href="catering.html" class="nav-link" aria-current="page">
               Catering<span class="nav-link-line" aria-hidden="true"></span>
             </a>
-            <a href="../index.html#story" class="nav-link">
+            <a href="about.html" class="nav-link">
               About Us<span class="nav-link-line" aria-hidden="true"></span>
             </a>
             <a href="contact.html" class="nav-link">
@@ -73,7 +74,7 @@
           <div class="nav-drawer-inner">
             <a href="menu.html" class="nav-link">Menu</a>
             <a href="catering.html" class="nav-link" aria-current="page">Catering</a>
-            <a href="../index.html#story" class="nav-link">About Us</a>
+            <a href="about.html" class="nav-link">About Us</a>
             <a href="contact.html" class="nav-link">Contact Us</a>
             <button type="button" class="btn-ticket js-open-reserve">
               <span class="btn-hover-fill" aria-hidden="true"></span>
@@ -86,466 +87,537 @@
     </div>
   </header>
 
-  <main id="main" class="page-lead">
-    <header class="page-lead-hero">
-      <p class="eyebrow">Catering · South Boston</p>
-      <h1 class="display">Feed the whole crew.</h1>
-      <p class="lede">
-        Wings, trays, burger bundles, wrap lunches, and VIP plates — tap what you need, then send a request.
-      </p>
-    </header>
+  <main id="main" class="cat-page">
 
-    <!-- À la carte menu -->
-    <section class="cat-section" aria-labelledby="catMenuTitle">
-      <div class="cat-section-head">
-        <p class="eyebrow">Catering menu</p>
-        <h2 id="catMenuTitle">Build your tray list</h2>
-        <p>Select items for your quote. Pricing confirmed when we follow up.</p>
+    <!-- Hero -->
+    <section class="cat-hero">
+      <div class="cat-hero-inner">
+        <div class="cat-hero-copy">
+          <p class="cat-kicker">Catering · South Boston</p>
+          <h1 class="cat-hero-title">Feed the whole crew.</h1>
+          <p class="cat-hero-lede">
+            Real menu food in trays and boxes - wings, burgers, salads, VIP plates. Tap what you need, send a quote request.
+          </p>
+          <div class="cat-hero-actions">
+            <a href="#cat-menu" class="btn-ticket">
+              <span class="btn-hover-fill" aria-hidden="true"></span>
+              <span class="btn-label">Browse catering menu</span>
+              <span class="btn-arrow" aria-hidden="true">↓</span>
+            </a>
+            <a href="#cat-quote" class="btn-ticket btn-ticket-light">
+              <span class="btn-hover-fill" aria-hidden="true"></span>
+              <span class="btn-label">Request a quote</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+          <ul class="cat-hero-facts">
+            <li>48-hour notice preferred</li>
+            <li>Pickup or drop-off</li>
+            <li>Heat levels on every wing order</li>
+          </ul>
+        </div>
+        <div class="cat-hero-visual" aria-hidden="false">
+          <figure class="cat-hero-shot cat-hero-shot--main">
+            <img src="../assets/images/catering/box-burger.jpg" alt="Bottomz Up burger catering box" width="800" height="800" decoding="async" />
+          </figure>
+          <figure class="cat-hero-shot cat-hero-shot--stack">
+            <img src="../assets/images/catering/box-wings.jpg" alt="Bottomz Up wings catering box" width="640" height="640" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="cat-hero-shot cat-hero-shot--vip">
+            <img src="../assets/images/catering/box-vip.jpg" alt="Bottomz Up VIP ribeye catering box" width="640" height="640" loading="lazy" decoding="async" />
+          </figure>
+        </div>
       </div>
+    </section>
 
-      <form id="cateringLeadForm" class="lead-form" novalidate>
+    <form id="cateringLeadForm" class="lead-form cat-form" novalidate>
+
+      <!-- Featured packages - Apple product cards -->
+      <section class="cat-block" id="cat-packages" aria-labelledby="pkgTitle">
+        <div class="cat-block-head">
+          <h2 id="pkgTitle">Popular packages</h2>
+          <p>Tap a package to add it to your quote. One package max - add trays below if you need more.</p>
+        </div>
+        <div class="p-card-grid p-card-grid--feature">
+          <label class="p-card p-card--lg bundle-card">
+            <input type="radio" name="bundle" value="Burger bundle for 20" />
+            <div class="p-card-media">
+              <img src="../assets/images/menu-food/burger-classic.png" alt="" width="640" height="640" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-card-body">
+              <span class="p-card-badge">20 people</span>
+              <h3 class="p-card-name cat-item-name">Burger bundle</h3>
+              <p class="p-card-meta">20 burgers · full salad tray · full fries · toppings on the side</p>
+            </div>
+            <span class="p-card-check" aria-hidden="true"></span>
+          </label>
+
+          <label class="p-card p-card--lg bundle-card">
+            <input type="radio" name="bundle" value="Burger box lunch for 10 individual" />
+            <div class="p-card-media">
+              <img src="../assets/images/catering/box-burger.jpg" alt="" width="640" height="640" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-card-body">
+              <span class="p-card-badge">Individual</span>
+              <h3 class="p-card-name cat-item-name">Burger box lunch · 10</h3>
+              <p class="p-card-meta">10 boxed lunches - burger + fries each</p>
+            </div>
+            <span class="p-card-check" aria-hidden="true"></span>
+          </label>
+
+          <label class="p-card p-card--lg bundle-card">
+            <input type="radio" name="bundle" value="Wrap box lunch for 10" />
+            <div class="p-card-media">
+              <img src="../assets/images/menu-food/philly.png" alt="" width="640" height="640" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-card-body">
+              <span class="p-card-badge">10 people</span>
+              <h3 class="p-card-name cat-item-name">Wrap box lunch · 10</h3>
+              <p class="p-card-meta">Individual wrap boxes from the kitchen menu</p>
+            </div>
+            <span class="p-card-check" aria-hidden="true"></span>
+          </label>
+
+          <label class="p-card p-card--lg bundle-card bundle-card--vip">
+            <input type="radio" name="bundle" value="Ribeye VIP lunch for 10" />
+            <div class="p-card-media">
+              <img src="../assets/images/menu-food/ribeye.png" alt="" width="640" height="640" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-card-body">
+              <span class="p-card-badge p-card-badge--vip">VIP</span>
+              <h3 class="p-card-name cat-item-name">Ribeye VIP lunch · 10</h3>
+              <p class="p-card-meta">Ribeye · mac &amp; cheese · mashed potato · half tray churros</p>
+            </div>
+            <span class="p-card-check" aria-hidden="true"></span>
+          </label>
+
+          <label class="p-card p-card--lg bundle-card">
+            <input type="radio" name="bundle" value="Burger bundle for 10" />
+            <div class="p-card-media">
+              <img src="../assets/images/menu-food/burger-bacon.png" alt="" width="640" height="640" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-card-body">
+              <span class="p-card-badge">10 people</span>
+              <h3 class="p-card-name cat-item-name">Burger bundle · 10</h3>
+              <p class="p-card-meta">10 burgers · half salad · half fries · bacon/double add-on available</p>
+            </div>
+            <span class="p-card-check" aria-hidden="true"></span>
+          </label>
+
+          <label class="p-card p-card--lg bundle-card bundle-card--vip">
+            <input type="radio" name="bundle" value="Hamburger steak VIP lunch for 10" />
+            <div class="p-card-media">
+              <img src="../assets/images/menu-food/burger-double.png" alt="" width="640" height="640" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-card-body">
+              <span class="p-card-badge p-card-badge--vip">VIP</span>
+              <h3 class="p-card-name cat-item-name">Hamburger steak VIP · 10</h3>
+              <p class="p-card-meta">Hamburger steak plates for 10 from the kitchen menu</p>
+            </div>
+            <span class="p-card-check" aria-hidden="true"></span>
+          </label>
+        </div>
+        <p class="cat-clear-line">
+          <button type="button" class="cat-clear-bundle" id="clearBundle">Clear package selection</button>
+        </p>
+      </section>
+
+      <!-- A la carte -->
+      <section class="cat-block" id="cat-menu" aria-labelledby="catMenuTitle">
+        <div class="cat-block-head">
+          <h2 id="catMenuTitle">Build your tray list</h2>
+          <p>Same kitchen as the dine-in menu. Select as many trays as you need.</p>
+        </div>
+
         <div class="cat-group">
           <h3 class="cat-group-title">Wings</h3>
-          <div class="cat-grid">
-            <label class="cat-item">
+          <p class="cat-group-note">Bone-in · tossed to order · 10 house sauces</p>
+          <div class="p-card-grid">
+            <label class="p-card cat-item">
               <input type="checkbox" name="items" value="30 wings" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">30 wings</span>
-              <span class="cat-item-meta">Bone-in · pick your sauce</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/wings.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">30 wings</h3>
+                <p class="p-card-meta">Pick your sauce heat</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item">
               <input type="checkbox" name="items" value="60 wings" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">60 wings</span>
-              <span class="cat-item-meta">Bone-in · pick your sauce</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/wings.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">60 wings</h3>
+                <p class="p-card-meta">Crowd favorite size</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item">
               <input type="checkbox" name="items" value="90 wings" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">90 wings</span>
-              <span class="cat-item-meta">Bone-in · pick your sauce</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/wings.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">90 wings</h3>
+                <p class="p-card-meta">Big party tray</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
           </div>
         </div>
 
         <div class="cat-group">
           <h3 class="cat-group-title">Salads</h3>
-          <div class="cat-grid">
-            <label class="cat-item">
+          <p class="cat-group-note">House · Caesar · chicken add-on</p>
+          <div class="p-card-grid">
+            <label class="p-card cat-item">
               <input type="checkbox" name="items" value="Full tray salad (up to 12)" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Full tray salad</span>
-              <span class="cat-item-meta">Serves up to 12</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/salad.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">Full tray salad</h3>
+                <p class="p-card-meta">Serves up to 12</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
-              <input type="checkbox" name="items" value="House salad with chicken" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">House salad with chicken</span>
-              <span class="cat-item-meta">Full flavor, protein on top</span>
-            </label>
-            <label class="cat-item">
-              <input type="checkbox" name="items" value="Caesar salad with chicken" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Caesar salad with chicken</span>
-              <span class="cat-item-meta">Classic Caesar · grilled chicken</span>
-            </label>
-            <label class="cat-item">
+            <label class="p-card cat-item">
               <input type="checkbox" name="items" value="Half tray salad (up to 7)" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Half tray salad</span>
-              <span class="cat-item-meta">Serves up to 7</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/salad.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">Half tray salad</h3>
+                <p class="p-card-meta">Serves up to 7</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
+            </label>
+            <label class="p-card cat-item">
+              <input type="checkbox" name="items" value="House salad with chicken" />
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/chicken.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">House salad w/ chicken</h3>
+                <p class="p-card-meta">Menu house salad + grilled chicken</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
+            </label>
+            <label class="p-card cat-item">
+              <input type="checkbox" name="items" value="Caesar salad with chicken" />
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/chicken.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">Caesar w/ chicken</h3>
+                <p class="p-card-meta">Romaine · parmesan · grilled chicken</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
           </div>
         </div>
 
         <div class="cat-group">
           <h3 class="cat-group-title">Trays &amp; sides</h3>
-          <div class="cat-grid">
-            <label class="cat-item">
+          <p class="cat-group-note">From the sides and starters menu</p>
+          <div class="p-card-grid">
+            <label class="p-card cat-item">
               <input type="checkbox" name="items" value="Half tray mac and cheese" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Half tray mac &amp; cheese</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/sides.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">Half tray mac &amp; cheese</h3>
+                <p class="p-card-meta">Creamy house mac</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item">
               <input type="checkbox" name="items" value="Full tray mac and cheese" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Full tray mac &amp; cheese</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/sides.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">Full tray mac &amp; cheese</h3>
+                <p class="p-card-meta">Feeds a full table</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item">
               <input type="checkbox" name="items" value="Half tray corn ribs" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Half tray corn ribs</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/corn-ribs.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">Half tray corn ribs</h3>
+                <p class="p-card-meta">Seasoned street corn ribs</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item">
               <input type="checkbox" name="items" value="Full tray corn ribs" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Full tray corn ribs</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/corn-ribs.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">Full tray corn ribs</h3>
+                <p class="p-card-meta">Seasoned street corn ribs</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item">
               <input type="checkbox" name="items" value="Half tray nacho grande" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Half tray nacho grande</span>
-              <span class="cat-item-tag">TBD</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/nachos.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">Half tray nacho grande</h3>
+                <p class="p-card-meta">Menu nachos grande · tray size</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item">
               <input type="checkbox" name="items" value="Full tray nacho grande" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Full tray nacho grande</span>
-              <span class="cat-item-tag">TBD</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/nachos.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">Full tray nacho grande</h3>
+                <p class="p-card-meta">Menu nachos grande · tray size</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item">
               <input type="checkbox" name="items" value="Half tray fries" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Half tray fries</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/sides.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">Half tray fries</h3>
+                <p class="p-card-meta">Crispy house fries</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item">
               <input type="checkbox" name="items" value="Full tray fries" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Full tray fries</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/sides.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">Full tray fries</h3>
+                <p class="p-card-meta">Crispy house fries</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item">
               <input type="checkbox" name="items" value="Half tray churros" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Half tray churros</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/dessert.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">Half tray churros</h3>
+                <p class="p-card-meta">Dessert tray</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item">
               <input type="checkbox" name="items" value="Full tray churros" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Full tray churros</span>
-            </label>
-            <label class="cat-item">
-              <input type="checkbox" name="items" value="Half tray beignets" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Half tray beignets</span>
-              <span class="cat-item-tag">TBD</span>
-            </label>
-            <label class="cat-item">
-              <input type="checkbox" name="items" value="Full tray beignets" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Full tray beignets</span>
-              <span class="cat-item-tag">TBD</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/dessert.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">Full tray churros</h3>
+                <p class="p-card-meta">Dessert tray</p>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
           </div>
         </div>
 
         <div class="cat-group">
           <h3 class="cat-group-title">Drinks</h3>
-          <div class="cat-grid">
-            <label class="cat-item">
+          <div class="p-card-grid p-card-grid--compact">
+            <label class="p-card cat-item p-card--compact">
               <input type="checkbox" name="items" value="Gallon sweet tea" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Gallon sweet tea</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/drink.png" alt="" width="320" height="320" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">Gallon sweet tea</h3>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item p-card--compact">
               <input type="checkbox" name="items" value="Gallon unsweet tea" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">Gallon unsweet tea</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/drink.png" alt="" width="320" height="320" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">Gallon unsweet tea</h3>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item p-card--compact">
               <input type="checkbox" name="items" value="12-pack Pepsi" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">12-pack Pepsi</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/drinks-tray.png" alt="" width="320" height="320" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">12-pack Pepsi</h3>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item p-card--compact">
               <input type="checkbox" name="items" value="12-pack Diet Pepsi" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">12-pack Diet Pepsi</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/drinks-tray.png" alt="" width="320" height="320" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">12-pack Diet Pepsi</h3>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item p-card--compact">
               <input type="checkbox" name="items" value="12-pack Mountain Dew" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">12-pack Mountain Dew</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/drinks-tray.png" alt="" width="320" height="320" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">12-pack Mountain Dew</h3>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
-            <label class="cat-item">
+            <label class="p-card cat-item p-card--compact">
               <input type="checkbox" name="items" value="12-pack Sierra Mist" />
-              <span class="cat-item-check" aria-hidden="true">✓</span>
-              <span class="cat-item-name">12-pack Sierra Mist</span>
+              <div class="p-card-media p-card-media--food">
+                <img src="../assets/images/menu-food/drinks-tray.png" alt="" width="320" height="320" loading="lazy" decoding="async" />
+              </div>
+              <div class="p-card-body">
+                <h3 class="p-card-name cat-item-name">12-pack Sierra Mist</h3>
+              </div>
+              <span class="p-card-check" aria-hidden="true"></span>
             </label>
           </div>
         </div>
+      </section>
 
-        <!-- Bundles -->
-        <section class="cat-section" style="padding-inline: 0; padding-top: 0.5rem" aria-labelledby="bundleTitle">
-          <div class="cat-section-head">
-            <p class="eyebrow">Bundles</p>
-            <h2 id="bundleTitle">Feed a crowd, fixed packages</h2>
-            <p>Tap a bundle to include it in your request. Add-ons can be noted below.</p>
-          </div>
+      <!-- Quote form -->
+      <section class="cat-block cat-quote" id="cat-quote" aria-labelledby="quoteTitle">
+        <div class="cat-block-head">
+          <h2 id="quoteTitle">Request a quote</h2>
+          <p>We confirm pricing, sauces, and pickup or drop-off after your request.</p>
+        </div>
 
-          <div class="bundle-grid">
-            <label class="bundle-card">
-              <input type="radio" name="bundle" value="Burger bundle for 20" />
-              <div class="bundle-card-top">
-                <h3>Burger bundle · 20 people</h3>
-                <span class="bundle-pill">20 ppl</span>
-              </div>
-              <ul>
-                <li><strong>20 burgers</strong></li>
-                <li>Salad full tray</li>
-                <li>Full tray fries</li>
-                <li>Burger toppings given on the side</li>
-              </ul>
-            </label>
+        <div class="cat-quote-layout">
+          <div class="lead-card cat-quote-card">
+            <div class="lead-card-body">
+              <p id="cateringSelectHint" class="cat-select-hint" hidden>
+                Select at least one menu item or package.
+              </p>
+              <div class="lead-summary" id="cateringSummary" aria-live="polite"></div>
 
-            <label class="bundle-card">
-              <input type="radio" name="bundle" value="Burger bundle for 10" />
-              <div class="bundle-card-top">
-                <h3>Burger bundle · 10 people</h3>
-                <span class="bundle-pill">10 ppl</span>
-              </div>
-              <ul>
-                <li><strong>10 burgers</strong></li>
-                <li>Salad half tray</li>
-                <li>Half tray fries</li>
-              </ul>
-              <p class="bundle-note">Add bacon · extra charge · Double hamburger · extra charge</p>
-            </label>
-
-            <label class="bundle-card">
-              <input type="radio" name="bundle" value="Burger box lunch for 10 individual" />
-              <div class="bundle-card-top">
-                <h3>Burger box lunch · 10</h3>
-                <span class="bundle-pill">Individual</span>
-              </div>
-              <ul>
-                <li>Burger + fries individual pack</li>
-                <li>10 individual boxes</li>
-              </ul>
-            </label>
-
-            <label class="bundle-card">
-              <input type="radio" name="bundle" value="Burger box lunch for 20 individual" />
-              <div class="bundle-card-top">
-                <h3>Burger box lunch · 20</h3>
-                <span class="bundle-pill">Individual</span>
-              </div>
-              <ul>
-                <li>Burger + fries individual pack</li>
-                <li>20 individual boxes</li>
-              </ul>
-            </label>
-
-            <label class="bundle-card">
-              <input type="radio" name="bundle" value="Wrap box lunch for 10" />
-              <div class="bundle-card-top">
-                <h3>Wrap box lunch · 10</h3>
-                <span class="bundle-pill">10 ppl</span>
-              </div>
-              <ul>
-                <li>Individual wrap lunch boxes</li>
-              </ul>
-            </label>
-
-            <label class="bundle-card">
-              <input type="radio" name="bundle" value="Wrap box lunch for 20" />
-              <div class="bundle-card-top">
-                <h3>Wrap box lunch · 20</h3>
-                <span class="bundle-pill">20 ppl</span>
-              </div>
-              <ul>
-                <li>Individual wrap lunch boxes</li>
-              </ul>
-            </label>
-
-            <label class="bundle-card bundle-card--vip">
-              <input type="radio" name="bundle" value="Ribeye VIP lunch for 10" />
-              <div class="bundle-card-top">
-                <h3>Ribeye VIP lunch · 10</h3>
-                <span class="bundle-pill">VIP</span>
-              </div>
-              <ul>
-                <li><strong>Ribeye steak</strong></li>
-                <li>Mac &amp; cheese</li>
-                <li>Mashed potato</li>
-                <li>Half tray churros</li>
-              </ul>
-            </label>
-
-            <label class="bundle-card bundle-card--vip">
-              <input type="radio" name="bundle" value="Ribeye VIP lunch for 20" />
-              <div class="bundle-card-top">
-                <h3>Ribeye VIP lunch · 20</h3>
-                <span class="bundle-pill">VIP</span>
-              </div>
-              <ul>
-                <li><strong>Ribeye steak</strong></li>
-                <li>Mac &amp; cheese · mashed potato</li>
-                <li>Dessert tray included</li>
-              </ul>
-            </label>
-
-            <label class="bundle-card bundle-card--vip">
-              <input type="radio" name="bundle" value="Hamburger steak VIP lunch for 10" />
-              <div class="bundle-card-top">
-                <h3>Hamburger steak VIP · 10</h3>
-                <span class="bundle-pill">VIP</span>
-              </div>
-              <ul>
-                <li>Hamburger steak plates for 10</li>
-              </ul>
-            </label>
-
-            <label class="bundle-card bundle-card--vip">
-              <input type="radio" name="bundle" value="Hamburger steak VIP lunch for 20" />
-              <div class="bundle-card-top">
-                <h3>Hamburger steak VIP · 20</h3>
-                <span class="bundle-pill">VIP</span>
-              </div>
-              <ul>
-                <li>Hamburger steak plates for 20</li>
-              </ul>
-            </label>
-          </div>
-
-          <p class="lead-submit-note" style="margin-top: 1rem">
-            Select one bundle max, plus any à la carte trays above.
-          </p>
-        </section>
-
-        <!-- Order form -->
-        <div class="cat-order-wrap">
-          <div class="lead-layout">
-            <div class="lead-card">
-              <div class="lead-card-body">
-                <div class="lead-card-head">
-                  <h2>Request catering</h2>
-                  <span class="step-pill">Quote form</span>
-                </div>
-
-                <div class="lead-progress" aria-hidden="true">
-                  <span class="is-on"></span>
-                  <span class="is-on"></span>
-                  <span class="is-on"></span>
-                </div>
-
-                <p id="cateringSelectHint" class="cat-select-hint" hidden>
-                  Select at least one menu item or bundle.
-                </p>
-
-                <div class="lead-summary" id="cateringSummary" aria-live="polite"></div>
-
-                <div class="lead-row">
-                  <div class="lead-field">
-                    <label for="catName">Name <span class="req">*</span></label>
-                    <input id="catName" name="name" type="text" autocomplete="name" placeholder="Your name" data-required />
-                    <span class="field-error">Name is required</span>
-                  </div>
-                  <div class="lead-field">
-                    <label for="catPhone">Phone <span class="req">*</span></label>
-                    <input id="catPhone" name="phone" type="tel" autocomplete="tel" placeholder="(434) 555-0100" data-required />
-                    <span class="field-error">Phone is required</span>
-                  </div>
-                </div>
-
+              <div class="lead-row">
                 <div class="lead-field">
-                  <label for="catEmail">Email <span class="req">*</span></label>
-                  <input id="catEmail" name="email" type="email" autocomplete="email" placeholder="you@email.com" data-required />
-                  <span class="field-error">Valid email is required</span>
+                  <label for="catName">Name <span class="req">*</span></label>
+                  <input id="catName" name="name" type="text" autocomplete="name" placeholder="Your name" data-required />
+                  <span class="field-error">Name is required</span>
                 </div>
-
-                <div class="lead-row">
-                  <div class="lead-field">
-                    <label for="catDate">Event date <span class="req">*</span></label>
-                    <input id="catDate" name="eventDate" type="date" data-required />
-                    <span class="field-error">Date is required</span>
-                  </div>
-                  <div class="lead-field">
-                    <label for="catGuests">Guest count <span class="req">*</span></label>
-                    <input id="catGuests" name="guests" type="number" min="1" max="500" placeholder="e.g. 20" data-required />
-                    <span class="field-error">Guest count is required</span>
-                  </div>
-                </div>
-
                 <div class="lead-field">
-                  <label>Event type</label>
-                  <div class="lead-chips" role="group" aria-label="Event type">
-                    <label class="lead-chip is-on">
-                      <input type="radio" name="eventType" value="Office / workplace" checked />
-                      <span class="lead-chip-text">Office</span>
-                    </label>
-                    <label class="lead-chip">
-                      <input type="radio" name="eventType" value="Party / celebration" />
-                      <span class="lead-chip-text">Party</span>
-                    </label>
-                    <label class="lead-chip">
-                      <input type="radio" name="eventType" value="Sports / team" />
-                      <span class="lead-chip-text">Sports</span>
-                    </label>
-                    <label class="lead-chip">
-                      <input type="radio" name="eventType" value="School / church" />
-                      <span class="lead-chip-text">School</span>
-                    </label>
-                    <label class="lead-chip">
-                      <input type="radio" name="eventType" value="Other" />
-                      <span class="lead-chip-text">Other</span>
-                    </label>
-                  </div>
+                  <label for="catPhone">Phone <span class="req">*</span></label>
+                  <input id="catPhone" name="phone" type="tel" autocomplete="tel" placeholder="(434) 555-0100" data-required />
+                  <span class="field-error">Phone is required</span>
                 </div>
+              </div>
 
+              <div class="lead-field">
+                <label for="catEmail">Email <span class="req">*</span></label>
+                <input id="catEmail" name="email" type="email" autocomplete="email" placeholder="you@email.com" data-required />
+                <span class="field-error">Valid email is required</span>
+              </div>
+
+              <div class="lead-row">
                 <div class="lead-field">
-                  <label for="catNotes">Notes</label>
-                  <textarea id="catNotes" name="notes" placeholder="Sauce heat, dietary needs, drop-off time, bacon or double add-ons…"></textarea>
-                  <span class="field-hint">Tell us heat levels, allergies, or extra charges (bacon / double patties).</span>
+                  <label for="catDate">Event date <span class="req">*</span></label>
+                  <input id="catDate" name="eventDate" type="date" data-required />
+                  <span class="field-error">Date is required</span>
                 </div>
-
-                <div class="lead-actions">
-                  <button type="submit" class="btn-ticket btn-lg">
-                    <span class="btn-hover-fill" aria-hidden="true"></span>
-                    <span class="btn-label">Request catering quote</span>
-                    <span class="btn-arrow" aria-hidden="true">↗</span>
-                  </button>
-                  <p class="lead-submit-note">We’ll open your email with the full order list — or call the house to lock it in.</p>
+                <div class="lead-field">
+                  <label for="catGuests">Guest count <span class="req">*</span></label>
+                  <input id="catGuests" name="guests" type="number" min="1" max="500" placeholder="e.g. 20" data-required />
+                  <span class="field-error">Guest count is required</span>
                 </div>
               </div>
 
-            </div>
+              <div class="lead-field">
+                <label>Event type</label>
+                <div class="lead-chips" role="group" aria-label="Event type">
+                  <label class="lead-chip is-on">
+                    <input type="radio" name="eventType" value="Office / workplace" checked />
+                    <span class="lead-chip-text">Office</span>
+                  </label>
+                  <label class="lead-chip">
+                    <input type="radio" name="eventType" value="Party / celebration" />
+                    <span class="lead-chip-text">Party</span>
+                  </label>
+                  <label class="lead-chip">
+                    <input type="radio" name="eventType" value="Sports / team" />
+                    <span class="lead-chip-text">Sports</span>
+                  </label>
+                  <label class="lead-chip">
+                    <input type="radio" name="eventType" value="School / church" />
+                    <span class="lead-chip-text">School</span>
+                  </label>
+                  <label class="lead-chip">
+                    <input type="radio" name="eventType" value="Other" />
+                    <span class="lead-chip-text">Other</span>
+                  </label>
+                </div>
+              </div>
 
-            <aside class="lead-aside">
-              <div class="lead-info-card">
-                <h3>How catering works</h3>
-                <ul class="lead-info-list">
-                  <li>
-                    <span class="k">1 · Select</span>
-                    <span class="v">Tap trays, drinks, and a bundle if you want one.</span>
-                  </li>
-                  <li>
-                    <span class="k">2 · Details</span>
-                    <span class="v">Date, headcount, and how to reach you.</span>
-                  </li>
-                  <li>
-                    <span class="k">3 · Confirm</span>
-                    <span class="v">We confirm pricing, sauces, and pickup/drop-off.</span>
-                  </li>
-                </ul>
+              <div class="lead-field">
+                <label for="catNotes">Notes</label>
+                <textarea id="catNotes" name="notes" placeholder="Sauce heat, dietary needs, drop-off time, bacon or double add-ons..."></textarea>
+                <span class="field-hint">Heat levels, allergies, bacon or double-patty extras.</span>
               </div>
-              <div class="lead-info-card">
-                <h3>Talk to the house</h3>
-                <ul class="lead-info-list">
-                  <li>
-                    <span class="k">Phone</span>
-                    <a class="v" data-contact="call" href="tel:+14345755753"><span data-contact="phone-label">(434) 575-5753</span></a>
-                  </li>
-                  <li>
-                    <span class="k">Address</span>
-                    <span class="v">2001 Seymour Dr · South Boston, VA</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="lead-aside-cta">
-                <a class="btn-ticket" data-contact="call" href="tel:+14345755753">
+
+              <div class="lead-actions">
+                <button type="submit" class="btn-ticket btn-lg">
                   <span class="btn-hover-fill" aria-hidden="true"></span>
-                  <span class="btn-label">Call about catering</span>
+                  <span class="btn-label">Request catering quote</span>
                   <span class="btn-arrow" aria-hidden="true">↗</span>
-                </a>
-                <a class="btn-ticket btn-ticket-light" href="menu.html">
-                  <span class="btn-hover-fill" aria-hidden="true"></span>
-                  <span class="btn-label">View full dine-in menu</span>
-                  <span class="btn-arrow" aria-hidden="true">→</span>
-                </a>
+                </button>
+                <p class="lead-submit-note">Opens your email with the full list - or call the house to lock it in.</p>
               </div>
-            </aside>
+            </div>
           </div>
+
+          <aside class="cat-quote-aside">
+            <div class="cat-aside-card">
+              <h3>How it works</h3>
+              <ol class="cat-steps">
+                <li><strong>Select</strong> packages and trays from the real menu.</li>
+                <li><strong>Details</strong> - date, headcount, how to reach you.</li>
+                <li><strong>Confirm</strong> - we lock pricing, sauces, pickup or drop-off.</li>
+              </ol>
+            </div>
+            <div class="cat-aside-card">
+              <h3>Talk to the house</h3>
+              <a class="cat-aside-phone" data-contact="call" href="tel:+14345755753">
+                <span data-contact="phone-label">(434) 575-5753</span>
+              </a>
+              <p class="cat-aside-addr">2001 Seymour Dr<br />South Boston, VA 24592</p>
+              <a class="btn-ticket btn-ticket-light" href="menu.html">
+                <span class="btn-hover-fill" aria-hidden="true"></span>
+                <span class="btn-label">Full dine-in menu</span>
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </aside>
         </div>
+      </section>
 
       <div class="cat-order-wrap" id="cateringSuccessWrap" hidden>
         <div class="lead-card">
@@ -560,8 +632,24 @@
           </div>
         </div>
       </div>
-      </form>
-    </section>
+    </form>
+
+    <!-- Sticky selection bar -->
+    <div class="cat-sticky" id="catSticky" hidden>
+      <div class="cat-sticky-inner">
+        <div class="cat-sticky-count">
+          <strong id="catStickyCount">0</strong>
+          <span>selected</span>
+        </div>
+        <p class="cat-sticky-sum" id="catStickySum">Nothing selected yet</p>
+        <a href="#cat-quote" class="btn-ticket cat-sticky-cta">
+          <span class="btn-hover-fill" aria-hidden="true"></span>
+          <span class="btn-label">Continue to quote</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
   </main>
 
   <!-- Reserve — minimal sheet -->

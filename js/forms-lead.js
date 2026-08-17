@@ -165,9 +165,9 @@
   /* ---------- Catering form ---------- */
   function selectedLabels(form, name) {
     return $all('input[name="' + name + '"]:checked', form).map((el) => {
-      const card = el.closest('.cat-item, .bundle-card, .lead-chip');
+      const card = el.closest('.cat-item, .bundle-card, .p-card, .lead-chip');
       if (card) {
-        const n = card.querySelector('.cat-item-name, h3, .lead-chip-text');
+        const n = card.querySelector('.cat-item-name, .p-card-name, h3, .lead-chip-text');
         if (n) return n.textContent.trim();
       }
       return el.value;
@@ -176,26 +176,41 @@
 
   function updateCateringSummary(form) {
     const box = $('#cateringSummary');
-    if (!box) return;
     const items = selectedLabels(form, 'items');
     const bundles = selectedLabels(form, 'bundle');
     const guests = String(form.guests?.value || '').trim();
     const parts = [];
-    if (bundles.length) parts.push('<strong>Bundle:</strong> ' + bundles.join(', '));
-    if (items.length) parts.push('<strong>À la carte:</strong> ' + items.length + ' item' + (items.length === 1 ? '' : 's'));
+    if (bundles.length) parts.push('<strong>Package:</strong> ' + bundles.join(', '));
+    if (items.length) parts.push('<strong>Trays:</strong> ' + items.length + ' item' + (items.length === 1 ? '' : 's'));
     if (guests) parts.push('<strong>Guests:</strong> ' + guests);
-    box.innerHTML = parts.length ? parts.join(' · ') : '';
+    if (box) box.innerHTML = parts.length ? parts.join(' · ') : '';
+
+    const total = items.length + bundles.length;
+    const sticky = $('#catSticky');
+    const countEl = $('#catStickyCount');
+    const sumEl = $('#catStickySum');
+    if (sticky) sticky.hidden = total === 0;
+    if (countEl) countEl.textContent = String(total);
+    if (sumEl) {
+      if (!total) sumEl.textContent = 'Nothing selected yet';
+      else {
+        const bits = [];
+        if (bundles.length) bits.push(bundles[0]);
+        if (items.length) bits.push(items.length + ' tray' + (items.length === 1 ? '' : 's'));
+        sumEl.textContent = bits.join(' · ');
+      }
+    }
   }
 
   function wireSelectableCards(form) {
-    $all('.cat-item, .bundle-card', form).forEach((card) => {
+    $all('.cat-item, .bundle-card, .p-card', form).forEach((card) => {
       const input = card.querySelector('input');
       if (!input) return;
 
       const sync = () => {
         if (input.type === 'radio' && input.name) {
           $all('input[name="' + input.name + '"]', form).forEach((inp) => {
-            const c = inp.closest('.cat-item, .bundle-card');
+            const c = inp.closest('.cat-item, .bundle-card, .p-card');
             if (c) c.classList.toggle('is-selected', inp.checked);
           });
         } else {
@@ -220,6 +235,18 @@
     });
 
     form.addEventListener('input', () => updateCateringSummary(form));
+
+    const clearBtn = $('#clearBundle');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        $all('input[name="bundle"]', form).forEach((inp) => {
+          inp.checked = false;
+          const c = inp.closest('.bundle-card, .p-card');
+          if (c) c.classList.remove('is-selected');
+        });
+        updateCateringSummary(form);
+      });
+    }
   }
 
   function initCateringForm() {

@@ -16,10 +16,10 @@ window.BOTTOMZ_CONTACT = {
   orderOnline: 'https://www.doordash.com',
   orderOnlineLabel: 'Order Online',
   hoursNote:
-    'Mon–Thu 11:00 AM – 10:00 PM · Fri–Sat 11:00 AM – 12:30 PM · Sun 11:00 AM – 8:00 PM',
+    'Mon–Thu 11:00 AM – 10:00 PM · Fri–Sat 11:00 AM – 12:30 AM · Sun 11:00 AM – 8:00 PM',
   hoursLines: [
     'Monday – Thursday: 11:00 AM – 10:00 PM',
-    'Friday – Saturday: 11:00 AM – 12:30 PM',
+    'Friday – Saturday: 11:00 AM – 12:30 AM',
     'Sunday: 11:00 AM – 8:00 PM',
   ],
   walkIns: true,

@@ -23,7 +23,7 @@
   <link rel="preload" href="./assets/images/float-bacon.png" as="image" />
 
   <link rel="stylesheet" href="./css/base.css" />
-  <link rel="stylesheet" href="./css/home.css?v=12" />
+  <link rel="stylesheet" href="./css/home.css?v=14" />
   <link rel="stylesheet" href="./css/nav.css?v=3" />
   <link rel="stylesheet" href="./css/extras.css?v=5" />
   <link rel="stylesheet" href="./css/atmosphere.css?v=3" />
@@ -58,7 +58,7 @@
             <a href="pages/catering.html" class="nav-link">
               Catering<span class="nav-link-line" aria-hidden="true"></span>
             </a>
-            <a href="#story" class="nav-link">
+            <a href="pages/about.html" class="nav-link">
               About Us<span class="nav-link-line" aria-hidden="true"></span>
             </a>
             <a href="pages/contact.html" class="nav-link">
@@ -83,7 +83,7 @@
           <div class="nav-drawer-inner">
             <a href="pages/menu.html" class="nav-link">Menu</a>
             <a href="pages/catering.html" class="nav-link">Catering</a>
-            <a href="#story" class="nav-link">About Us</a>
+            <a href="pages/about.html" class="nav-link">About Us</a>
             <a href="pages/contact.html" class="nav-link">Contact Us</a>
             <button type="button" class="btn-ticket js-open-reserve">
               <span class="btn-hover-fill" aria-hidden="true"></span>
@@ -651,7 +651,7 @@
             <h4>Hours</h4>
             <p data-contact="hours" data-hours-format="lines">
               Monday – Thursday: 11:00 AM – 10:00 PM<br />
-              Friday – Saturday: 11:00 AM – 12:30 PM<br />
+              Friday – Saturday: 11:00 AM – 12:30 AM<br />
               Sunday: 11:00 AM – 8:00 PM
             </p>
           </div>
@@ -676,8 +676,8 @@
         </div>
 
         <div class="visit-map reveal" style="--reveal-delay: 80ms">
-          <a class="map-card" href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592" target="_blank" rel="noopener">
-            <div class="map-card-grid" aria-hidden="true"></div>
+          <a class="map-card map-card--photo" href="https://maps.google.com/?q=2001+Seymour+Dr,+South+Boston,+VA+24592" target="_blank" rel="noopener">
+            <img class="map-card-photo" src="./assets/images/venue/venue-7.jpg" alt="Bottomz Up patio seating on Seymour Drive" width="800" height="600" loading="lazy" decoding="async" style="object-position: center 45%" />
             <span class="map-pin" aria-hidden="true"></span>
             <div class="map-card-copy">
               <span class="map-card-kicker">Bottomz Up</span>
@@ -741,7 +741,7 @@
               <span class="rev-tag">Regular</span>
             </article>
             <div class="rev-card rev-card--photo">
-              <img src="./assets/images/slide-1.jpg" alt="Bottomz Up house vibe" width="360" height="220" loading="lazy" decoding="async" />
+              <img src="./assets/images/marquee/m-1.jpg" alt="Dining room and bar at Bottomz Up" width="360" height="220" loading="lazy" decoding="async" style="object-position: center 40%" />
             </div>
             <article class="rev-card">
               <p class="rev-name">Tasha <span class="rev-dot">·</span> Halifax Co.</p>
@@ -749,7 +749,7 @@
               <span class="rev-tag">Wings night</span>
             </article>
             <div class="rev-card rev-card--photo">
-              <img src="./assets/images/slide-2.jpg" alt="Grill and plates at Bottomz Up" width="360" height="220" loading="lazy" decoding="async" />
+              <img src="./assets/images/marquee/m-2.jpg" alt="Full bar at Bottomz Up" width="360" height="220" loading="lazy" decoding="async" style="object-position: center 40%" />
             </div>
             <article class="rev-card">
               <p class="rev-name">Jordan <span class="rev-dot">·</span> SoBo</p>
@@ -757,7 +757,7 @@
               <span class="rev-tag">Walk-in</span>
             </article>
             <div class="rev-card rev-card--photo">
-              <img src="./assets/images/slide-3.jpg" alt="Burgers and house energy" width="360" height="220" loading="lazy" decoding="async" />
+              <img src="./assets/images/marquee/m-3.jpg" alt="Patio seating at Bottomz Up" width="360" height="220" loading="lazy" decoding="async" style="object-position: center 40%" />
             </div>
             <!-- duplicate set for seamless loop -->
             <article class="rev-card" aria-hidden="true">
@@ -766,7 +766,7 @@
               <span class="rev-tag">Regular</span>
             </article>
             <div class="rev-card rev-card--photo" aria-hidden="true">
-              <img src="./assets/images/slide-1.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" />
+              <img src="./assets/images/marquee/m-4.jpg" alt="Bottomz Up dining floor" width="360" height="220" loading="lazy" decoding="async" style="object-position: center 40%" />
             </div>
             <article class="rev-card" aria-hidden="true">
               <p class="rev-name">Tasha <span class="rev-dot">·</span> Halifax Co.</p>
@@ -774,7 +774,7 @@
               <span class="rev-tag">Wings night</span>
             </article>
             <div class="rev-card rev-card--photo" aria-hidden="true">
-              <img src="./assets/images/slide-2.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" />
+              <img src="./assets/images/marquee/m-5.jpg" alt="Pool tables at Bottomz Up" width="360" height="220" loading="lazy" decoding="async" style="object-position: center 40%" />
             </div>
             <article class="rev-card" aria-hidden="true">
               <p class="rev-name">Jordan <span class="rev-dot">·</span> SoBo</p>
@@ -782,7 +782,7 @@
               <span class="rev-tag">Walk-in</span>
             </article>
             <div class="rev-card rev-card--photo" aria-hidden="true">
-              <img src="./assets/images/slide-3.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" />
+              <img src="./assets/images/marquee/m-6.jpg" alt="Inside Bottomz Up" width="360" height="220" loading="lazy" decoding="async" style="object-position: center 40%" />
             </div>
           </div>
         </div>
@@ -791,7 +791,7 @@
         <div class="reviews-rail reviews-rail--rev">
           <div class="reviews-rail-inner">
             <div class="rev-card rev-card--photo">
-              <img src="./assets/images/slide-4.jpg" alt="Bottomz Up plates" width="360" height="220" loading="lazy" decoding="async" />
+              <img src="./assets/images/marquee/m-1.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" style="object-position: center 40%" />
             </div>
             <article class="rev-card">
               <p class="rev-name">Alex <span class="rev-dot">·</span> Danville</p>
@@ -799,7 +799,7 @@
               <span class="rev-tag">Bar &amp; bites</span>
             </article>
             <div class="rev-card rev-card--photo">
-              <img src="./assets/images/burger-classic.jpg" alt="Classic House burger" width="360" height="220" loading="lazy" decoding="async" />
+              <img src="./assets/images/marquee/m-2.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" style="object-position: center 40%" />
             </div>
             <article class="rev-card">
               <p class="rev-name">Sam <span class="rev-dot">·</span> South Boston</p>
@@ -807,7 +807,7 @@
               <span class="rev-tag">Family table</span>
             </article>
             <div class="rev-card rev-card--photo">
-              <img src="./assets/images/burger-bacon.jpg" alt="Bacon cheese burger" width="360" height="220" loading="lazy" decoding="async" />
+              <img src="./assets/images/marquee/m-3.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" style="object-position: center 40%" />
             </div>
             <article class="rev-card">
               <p class="rev-name">Riley <span class="rev-dot">·</span> SoBo</p>
@@ -816,7 +816,7 @@
             </article>
             <!-- duplicate set -->
             <div class="rev-card rev-card--photo" aria-hidden="true">
-              <img src="./assets/images/slide-4.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" />
+              <img src="./assets/images/marquee/m-4.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" style="object-position: center 40%" />
             </div>
             <article class="rev-card" aria-hidden="true">
               <p class="rev-name">Alex <span class="rev-dot">·</span> Danville</p>
@@ -824,7 +824,7 @@
               <span class="rev-tag">Bar &amp; bites</span>
             </article>
             <div class="rev-card rev-card--photo" aria-hidden="true">
-              <img src="./assets/images/burger-classic.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" />
+              <img src="./assets/images/marquee/m-5.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" style="object-position: center 40%" />
             </div>
             <article class="rev-card" aria-hidden="true">
               <p class="rev-name">Sam <span class="rev-dot">·</span> South Boston</p>
@@ -832,7 +832,7 @@
               <span class="rev-tag">Family table</span>
             </article>
             <div class="rev-card rev-card--photo" aria-hidden="true">
-              <img src="./assets/images/burger-bacon.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" />
+              <img src="./assets/images/marquee/m-6.jpg" alt="" width="360" height="220" loading="lazy" decoding="async" style="object-position: center 40%" />
             </div>
             <article class="rev-card" aria-hidden="true">
               <p class="rev-name">Riley <span class="rev-dot">·</span> SoBo</p>
