@@ -65,6 +65,51 @@
   background-repeat: no-repeat;
 }
 
+/*
+  Header BG set (HEader BG SVGs) — desktop keeps BG_Final.
+  Artboards: iPad landscape 2224×1668, iPad portrait 1668×2224,
+  mobile landscape 1792×828, mobile portrait 828×1792.
+*/
+/* Phone landscape (short viewport) — before wider iPad landscape rule */
+@media (orientation: landscape) and (max-height: 520px) {
+  .fbx-hero.hero,
+  .fbx-hero.fbx-hero--clean.hero {
+    background-image: url('../assets/images/hero-bg/mobile-landscape.svg') !important;
+    background-size: cover !important;
+    background-position: center top !important;
+  }
+}
+
+/* iPad / tablet landscape */
+@media (min-width: 768px) and (max-width: 1180px) and (orientation: landscape) and (min-height: 521px) {
+  .fbx-hero.hero,
+  .fbx-hero.fbx-hero--clean.hero {
+    background-image: url('../assets/images/hero-bg/ipad-landscape.svg');
+    background-size: cover;
+    background-position: center top;
+  }
+}
+
+/* iPad / tablet portrait */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .fbx-hero.hero,
+  .fbx-hero.fbx-hero--clean.hero {
+    background-image: url('../assets/images/hero-bg/ipad-portrait.svg');
+    background-size: cover;
+    background-position: center top;
+  }
+}
+
+/* Phone portrait */
+@media (max-width: 767px) and (orientation: portrait) {
+  .fbx-hero.hero,
+  .fbx-hero.fbx-hero--clean.hero {
+    background-image: url('../assets/images/hero-bg/mobile-portrait.svg') !important;
+    background-size: cover !important;
+    background-position: center top !important;
+  }
+}
+
 .fbx-hero-stage {
   position: relative;
   width: 100%;
@@ -413,18 +458,46 @@
   margin-left: calc(var(--fbx-side-w) / -2);
   bottom: 14%;
   transform: translate3d(clamp(-48vw, -40vw, -340px), 6%, 0) scale(0.92);
-  opacity: 0.96;
+  opacity: 0.72;
+  visibility: visible;
   z-index: 3;
 }
 
+/* Incoming side — fade back in only here (after parked stages) */
 .fbx-food.is-right {
   width: var(--fbx-right-w);
   height: var(--fbx-right-h);
   margin-left: calc(var(--fbx-right-w) / -2);
   bottom: 0;
   transform: translate3d(clamp(280px, 36vw, 44vw), 4%, 0) scale(0.94);
-  opacity: 0.96;
+  opacity: 0.78;
+  visibility: visible;
   z-index: 3;
+}
+
+/*
+  Stage 3+ (far / parked): fully invisible.
+  Stay at opacity 0 through far-left → hidden → far-right so the
+  recycle path never shows a ghost burger rotating back into view.
+*/
+.fbx-food.is-far-left,
+.fbx-food.is-far-right,
+.fbx-food.is-hidden {
+  opacity: 0 !important;
+  visibility: hidden;
+  pointer-events: none;
+  filter: none;
+  z-index: 0;
+  /* Fade out quickly when leaving stage 2; stay invisible while repositioning */
+  transition:
+    opacity 0.35s var(--fbx-ease),
+    visibility 0s linear 0.35s,
+    width 0.9s var(--fbx-ease),
+    height 0.9s var(--fbx-ease),
+    bottom 0.9s var(--fbx-ease),
+    top 0.9s var(--fbx-ease),
+    margin-left 0.9s var(--fbx-ease),
+    transform 0.9s var(--fbx-ease);
 }
 
 .fbx-food.is-far-left {
@@ -434,8 +507,6 @@
   bottom: auto;
   top: -4%;
   transform: translate3d(clamp(-54vw, -48vw, -400px), 0, 0) scale(0.85);
-  opacity: 0.5;
-  z-index: 2;
 }
 
 .fbx-food.is-far-right {
@@ -443,16 +514,31 @@
   height: var(--fbx-side-h);
   margin-left: calc(var(--fbx-side-w) / -2);
   bottom: 8%;
+  top: auto;
   transform: translate3d(clamp(400px, 56vw, 64vw), 0, 0) scale(0.8);
-  opacity: 0.42;
-  z-index: 1;
 }
 
 .fbx-food.is-hidden {
-  opacity: 0;
-  transform: translate3d(0, 80px, 0) scale(0.75);
-  z-index: 0;
-  pointer-events: none;
+  top: auto;
+  bottom: 0;
+  transform: translate3d(72vw, 80px, 0) scale(0.7);
+}
+
+/* Visible stages: restore visibility immediately so fade-in works */
+.fbx-food.is-center,
+.fbx-food.is-left,
+.fbx-food.is-right {
+  visibility: visible;
+  transition:
+    transform 0.9s var(--fbx-ease),
+    width 0.9s var(--fbx-ease),
+    height 0.9s var(--fbx-ease),
+    bottom 0.9s var(--fbx-ease),
+    top 0.9s var(--fbx-ease),
+    margin-left 0.9s var(--fbx-ease),
+    opacity 0.55s var(--fbx-ease),
+    visibility 0s linear 0s,
+    filter 0.55s var(--fbx-ease);
 }
 
 /* Hero carousel chrome removed — autoplay only, no dots / progress / taps */
@@ -530,12 +616,7 @@
     --fbx-content-gap: 10px;
   }
 
-  /* Tall phone: scale plate by height so wave sits near food stage (~60%) */
-  .fbx-hero.hero,
-  .fbx-hero.fbx-hero--clean.hero {
-    background-size: auto 68%;
-    background-position: center top;
-  }
+  /* Tall phone hero BG comes from mobile-portrait media query (cover) */
 
   .fbx-hero-content {
     /* On mobile, tighten the top margin — nav is same height but less breathing room */

@@ -171,7 +171,14 @@
   function updateChrome() {
     const y = window.scrollY;
     if (header) {
-      header.classList.toggle('is-scrolled', y > 20);
+      // Pages without the home hero keep a solid nav dock at all times
+      const needsSolidNav =
+        !document.getElementById('hero') ||
+        document.body.classList.contains('about-page') ||
+        document.body.classList.contains('lead-page') ||
+        document.body.classList.contains('menu-page') ||
+        document.body.classList.contains('cat-page-body');
+      header.classList.toggle('is-scrolled', needsSolidNav || y > 20);
     }
 
     if (stickyCta) {

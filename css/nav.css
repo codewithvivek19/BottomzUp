@@ -69,6 +69,23 @@
     0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
+/*
+  Inner pages (About, Catering, Contact, Menu) have no full-bleed dark/white hero.
+  Always show the solid frosted dock so the header never looks missing.
+*/
+.about-page .site-header .nav-panel,
+.lead-page .site-header .nav-panel,
+.menu-page .site-header .nav-panel,
+.cat-page-body .site-header .nav-panel {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  border-bottom-color: rgba(46, 44, 44, 0.08);
+  box-shadow:
+    0 10px 36px rgba(46, 44, 44, 0.07),
+    0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
 .site-header.nav-open .nav-panel,
 body.nav-open .nav-panel {
   background: #ffffff;

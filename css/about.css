@@ -492,10 +492,23 @@
 
 .about-team-avatar {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  background: var(--color-amber-soft);
-  display: grid;
-  place-items: center;
+  aspect-ratio: 4 / 3;
+  background: #1a1919;
+  overflow: hidden;
+  position: relative;
+}
+
+.about-team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-team-card:hover .about-team-avatar img {
+  transform: scale(1.04);
 }
 
 .about-team-avatar-initials {
@@ -819,5 +832,60 @@
   .about-quote-card,
   .about-map-card {
     transition: none;
+  }
+}
+
+/* ---- Impeccable polish pass ---- */
+.about-page .site-header .nav-panel {
+  /* solid nav ensured in nav.css */
+}
+
+.about-hero {
+  padding-top: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+.about-hero-title {
+  max-width: 14ch;
+  margin-inline: auto;
+  letter-spacing: -0.03em;
+}
+
+.about-hero-lede {
+  max-width: 46ch;
+}
+
+/* Drop decorative eyebrow density — keep hero only; hide later eyebrows */
+.about-pillars-header .eyebrow,
+.about-gallery-header .eyebrow,
+.about-team-header .eyebrow,
+.about-quotes-header .eyebrow,
+.about-visit-text .eyebrow {
+  display: none;
+}
+
+.about-story-img-wrap img {
+  height: clamp(360px, 52vw, 520px);
+  object-position: center 40%;
+}
+
+.about-gallery-item-label {
+  font-size: 0.7rem;
+}
+
+.about-pillar-card {
+  border-radius: 16px;
+}
+
+.about-team-card {
+  border-radius: 16px;
+}
+
+.about-quote-card {
+  border-radius: 16px;
+}
+
+@media (max-width: 768px) {
+  .about-hero-title {
+    max-width: none;
   }
 }

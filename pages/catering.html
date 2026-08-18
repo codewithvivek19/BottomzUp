@@ -20,14 +20,14 @@
   <link rel="preload" href="../assets/fonts/lemon-milk-medium.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="../css/base.css" />
-  <link rel="stylesheet" href="../css/home.css?v=12" />
-  <link rel="stylesheet" href="../css/nav.css?v=3" />
+  <link rel="stylesheet" href="../css/home.css?v=15" />
+  <link rel="stylesheet" href="../css/nav.css?v=4" />
   <link rel="stylesheet" href="../css/extras.css?v=5" />
   <link rel="stylesheet" href="../css/atmosphere.css?v=3" />
   <link rel="stylesheet" href="../css/footer-impact.css?v=7" />
   <link rel="stylesheet" href="../css/sizzle.css?v=2" />
   <link rel="stylesheet" href="../css/forms-lead.css?v=4" />
-  <link rel="stylesheet" href="../css/catering.css?v=1" />
+  <link rel="stylesheet" href="../css/catering.css?v=3" />
   <link rel="stylesheet" href="../css/site-polish.css?v=8" />
 </head>
 <body class="has-phone lead-page cat-page-body">
@@ -136,87 +136,9 @@
       <section class="cat-block" id="cat-packages" aria-labelledby="pkgTitle">
         <div class="cat-block-head">
           <h2 id="pkgTitle">Popular packages</h2>
-          <p>Tap a package to add it to your quote. One package max - add trays below if you need more.</p>
+          <p>Tap a package to add it. Each package is built from the dine-in menu. Add more menu items below.</p>
         </div>
-        <div class="p-card-grid p-card-grid--feature">
-          <label class="p-card p-card--lg bundle-card">
-            <input type="radio" name="bundle" value="Burger bundle for 20" />
-            <div class="p-card-media">
-              <img src="../assets/images/menu-food/burger-classic.png" alt="" width="640" height="640" loading="lazy" decoding="async" />
-            </div>
-            <div class="p-card-body">
-              <span class="p-card-badge">20 people</span>
-              <h3 class="p-card-name cat-item-name">Burger bundle</h3>
-              <p class="p-card-meta">20 burgers · full salad tray · full fries · toppings on the side</p>
-            </div>
-            <span class="p-card-check" aria-hidden="true"></span>
-          </label>
-
-          <label class="p-card p-card--lg bundle-card">
-            <input type="radio" name="bundle" value="Burger box lunch for 10 individual" />
-            <div class="p-card-media">
-              <img src="../assets/images/catering/box-burger.jpg" alt="" width="640" height="640" loading="lazy" decoding="async" />
-            </div>
-            <div class="p-card-body">
-              <span class="p-card-badge">Individual</span>
-              <h3 class="p-card-name cat-item-name">Burger box lunch · 10</h3>
-              <p class="p-card-meta">10 boxed lunches - burger + fries each</p>
-            </div>
-            <span class="p-card-check" aria-hidden="true"></span>
-          </label>
-
-          <label class="p-card p-card--lg bundle-card">
-            <input type="radio" name="bundle" value="Wrap box lunch for 10" />
-            <div class="p-card-media">
-              <img src="../assets/images/menu-food/philly.png" alt="" width="640" height="640" loading="lazy" decoding="async" />
-            </div>
-            <div class="p-card-body">
-              <span class="p-card-badge">10 people</span>
-              <h3 class="p-card-name cat-item-name">Wrap box lunch · 10</h3>
-              <p class="p-card-meta">Individual wrap boxes from the kitchen menu</p>
-            </div>
-            <span class="p-card-check" aria-hidden="true"></span>
-          </label>
-
-          <label class="p-card p-card--lg bundle-card bundle-card--vip">
-            <input type="radio" name="bundle" value="Ribeye VIP lunch for 10" />
-            <div class="p-card-media">
-              <img src="../assets/images/menu-food/ribeye.png" alt="" width="640" height="640" loading="lazy" decoding="async" />
-            </div>
-            <div class="p-card-body">
-              <span class="p-card-badge p-card-badge--vip">VIP</span>
-              <h3 class="p-card-name cat-item-name">Ribeye VIP lunch · 10</h3>
-              <p class="p-card-meta">Ribeye · mac &amp; cheese · mashed potato · half tray churros</p>
-            </div>
-            <span class="p-card-check" aria-hidden="true"></span>
-          </label>
-
-          <label class="p-card p-card--lg bundle-card">
-            <input type="radio" name="bundle" value="Burger bundle for 10" />
-            <div class="p-card-media">
-              <img src="../assets/images/menu-food/burger-bacon.png" alt="" width="640" height="640" loading="lazy" decoding="async" />
-            </div>
-            <div class="p-card-body">
-              <span class="p-card-badge">10 people</span>
-              <h3 class="p-card-name cat-item-name">Burger bundle · 10</h3>
-              <p class="p-card-meta">10 burgers · half salad · half fries · bacon/double add-on available</p>
-            </div>
-            <span class="p-card-check" aria-hidden="true"></span>
-          </label>
-
-          <label class="p-card p-card--lg bundle-card bundle-card--vip">
-            <input type="radio" name="bundle" value="Hamburger steak VIP lunch for 10" />
-            <div class="p-card-media">
-              <img src="../assets/images/menu-food/burger-double.png" alt="" width="640" height="640" loading="lazy" decoding="async" />
-            </div>
-            <div class="p-card-body">
-              <span class="p-card-badge p-card-badge--vip">VIP</span>
-              <h3 class="p-card-name cat-item-name">Hamburger steak VIP · 10</h3>
-              <p class="p-card-meta">Hamburger steak plates for 10 from the kitchen menu</p>
-            </div>
-            <span class="p-card-check" aria-hidden="true"></span>
-          </label>
-        </div>
+        <div class="p-card-grid p-card-grid--feature" id="catPackagesMount"></div>
         <p class="cat-clear-line">
           <button type="button" class="cat-clear-bundle" id="clearBundle">Clear package selection</button>
         </p>
@@ -225,283 +147,10 @@
       <!-- A la carte -->
       <section class="cat-block" id="cat-menu" aria-labelledby="catMenuTitle">
         <div class="cat-block-head">
-          <h2 id="catMenuTitle">Build your tray list</h2>
-          <p>Same kitchen as the dine-in menu. Select as many trays as you need.</p>
+          <h2 id="catMenuTitle">Add from the menu</h2>
+          <p>Tap a product card to add it. Names and recipes match the dine-in menu.</p>
         </div>
-
-        <div class="cat-group">
-          <h3 class="cat-group-title">Wings</h3>
-          <p class="cat-group-note">Bone-in · tossed to order · 10 house sauces</p>
-          <div class="p-card-grid">
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="30 wings" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/wings.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">30 wings</h3>
-                <p class="p-card-meta">Pick your sauce heat</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="60 wings" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/wings.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">60 wings</h3>
-                <p class="p-card-meta">Crowd favorite size</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="90 wings" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/wings.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">90 wings</h3>
-                <p class="p-card-meta">Big party tray</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-          </div>
-        </div>
-
-        <div class="cat-group">
-          <h3 class="cat-group-title">Salads</h3>
-          <p class="cat-group-note">House · Caesar · chicken add-on</p>
-          <div class="p-card-grid">
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="Full tray salad (up to 12)" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/salad.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">Full tray salad</h3>
-                <p class="p-card-meta">Serves up to 12</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="Half tray salad (up to 7)" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/salad.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">Half tray salad</h3>
-                <p class="p-card-meta">Serves up to 7</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="House salad with chicken" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/chicken.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">House salad w/ chicken</h3>
-                <p class="p-card-meta">Menu house salad + grilled chicken</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="Caesar salad with chicken" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/chicken.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">Caesar w/ chicken</h3>
-                <p class="p-card-meta">Romaine · parmesan · grilled chicken</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-          </div>
-        </div>
-
-        <div class="cat-group">
-          <h3 class="cat-group-title">Trays &amp; sides</h3>
-          <p class="cat-group-note">From the sides and starters menu</p>
-          <div class="p-card-grid">
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="Half tray mac and cheese" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/sides.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">Half tray mac &amp; cheese</h3>
-                <p class="p-card-meta">Creamy house mac</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="Full tray mac and cheese" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/sides.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">Full tray mac &amp; cheese</h3>
-                <p class="p-card-meta">Feeds a full table</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="Half tray corn ribs" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/corn-ribs.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">Half tray corn ribs</h3>
-                <p class="p-card-meta">Seasoned street corn ribs</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="Full tray corn ribs" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/corn-ribs.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">Full tray corn ribs</h3>
-                <p class="p-card-meta">Seasoned street corn ribs</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="Half tray nacho grande" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/nachos.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">Half tray nacho grande</h3>
-                <p class="p-card-meta">Menu nachos grande · tray size</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="Full tray nacho grande" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/nachos.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">Full tray nacho grande</h3>
-                <p class="p-card-meta">Menu nachos grande · tray size</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="Half tray fries" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/sides.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">Half tray fries</h3>
-                <p class="p-card-meta">Crispy house fries</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="Full tray fries" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/sides.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">Full tray fries</h3>
-                <p class="p-card-meta">Crispy house fries</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="Half tray churros" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/dessert.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">Half tray churros</h3>
-                <p class="p-card-meta">Dessert tray</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item">
-              <input type="checkbox" name="items" value="Full tray churros" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/dessert.png" alt="" width="480" height="480" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">Full tray churros</h3>
-                <p class="p-card-meta">Dessert tray</p>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-          </div>
-        </div>
-
-        <div class="cat-group">
-          <h3 class="cat-group-title">Drinks</h3>
-          <div class="p-card-grid p-card-grid--compact">
-            <label class="p-card cat-item p-card--compact">
-              <input type="checkbox" name="items" value="Gallon sweet tea" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/drink.png" alt="" width="320" height="320" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">Gallon sweet tea</h3>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item p-card--compact">
-              <input type="checkbox" name="items" value="Gallon unsweet tea" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/drink.png" alt="" width="320" height="320" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">Gallon unsweet tea</h3>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item p-card--compact">
-              <input type="checkbox" name="items" value="12-pack Pepsi" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/drinks-tray.png" alt="" width="320" height="320" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">12-pack Pepsi</h3>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item p-card--compact">
-              <input type="checkbox" name="items" value="12-pack Diet Pepsi" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/drinks-tray.png" alt="" width="320" height="320" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">12-pack Diet Pepsi</h3>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item p-card--compact">
-              <input type="checkbox" name="items" value="12-pack Mountain Dew" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/drinks-tray.png" alt="" width="320" height="320" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">12-pack Mountain Dew</h3>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-            <label class="p-card cat-item p-card--compact">
-              <input type="checkbox" name="items" value="12-pack Sierra Mist" />
-              <div class="p-card-media p-card-media--food">
-                <img src="../assets/images/menu-food/drinks-tray.png" alt="" width="320" height="320" loading="lazy" decoding="async" />
-              </div>
-              <div class="p-card-body">
-                <h3 class="p-card-name cat-item-name">12-pack Sierra Mist</h3>
-              </div>
-              <span class="p-card-check" aria-hidden="true"></span>
-            </label>
-          </div>
-        </div>
+        <div id="catMenuMount"></div>
       </section>
 
       <!-- Quote form -->
@@ -784,6 +433,7 @@
   <script src="../js/contact.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/contact-ui.js"></script>
+  <script src="../js/catering-catalog.js"></script>
   <script src="../js/forms-lead.js"></script>
 </body>
 </html>

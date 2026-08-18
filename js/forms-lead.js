@@ -253,6 +253,11 @@
     const form = $('#cateringLeadForm');
     if (!form) return;
 
+    // Ensure menu product cards are mounted before wiring selection
+    if (window.BOTTOMZ_CATERING && typeof window.BOTTOMZ_CATERING.mount === 'function') {
+      window.BOTTOMZ_CATERING.mount();
+    }
+
     wireLiveClear(form);
     wireChips(form);
     wireSelectableCards(form);
