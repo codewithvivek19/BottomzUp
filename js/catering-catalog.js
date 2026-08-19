@@ -419,6 +419,7 @@
       esc(p.name) +
       '</h3>' +
       (p.meta ? '<p class="p-card-meta">' + esc(p.meta) + '</p>' : '') +
+      '<span class="p-card-action" aria-hidden="true"></span>' +
       '</div>' +
       '<span class="p-card-check" aria-hidden="true"></span>' +
       '</label>'
@@ -433,7 +434,7 @@
       '<label class="p-card p-card--lg bundle-card' +
       vip +
       '">' +
-      '<input type="radio" name="bundle" value="' +
+      '<input type="checkbox" name="bundles" value="' +
       esc(p.value) +
       '" />' +
       '<div class="' +
@@ -455,6 +456,7 @@
       '<p class="p-card-meta">' +
       esc(p.meta) +
       '</p>' +
+      '<span class="p-card-action" aria-hidden="true"></span>' +
       '</div>' +
       '<span class="p-card-check" aria-hidden="true"></span>' +
       '</label>'

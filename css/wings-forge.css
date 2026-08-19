@@ -58,7 +58,7 @@
 
 .wm-vp-meter {
   position: relative;
-  max-height: min(42vh, 340px);
+  max-height: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,13 +70,15 @@
   overflow: visible; /* labels/ticks must not clip */
 }
 
+/* Size by the tighter axis — never squash the nearly-square viewBox */
 .wm-vp-meter .sauce-meter-svg,
 .wm-vp-meter > svg {
-  width: 100%;
-  max-width: 380px;
-  height: auto;
-  max-height: min(40vh, 320px);
   display: block;
+  width: auto;
+  height: auto;
+  max-width: min(100%, 380px);
+  max-height: min(42vh, 360px);
+  aspect-ratio: 777 / 757;
   margin: 0 auto;
   overflow: visible;
 }
@@ -269,13 +271,13 @@
     gap: 0.75rem;
   }
 
-  /* Meter first, full width, no harsh clip */
+  /* Meter first, full width, no harsh clip / no vertical squash */
   .wm-vp-meter {
     order: 1;
     max-height: none;
     min-height: 0;
     width: 100%;
-    padding: 0.35rem 0.15rem 0.5rem;
+    padding: 0.25rem 0.1rem 0.35rem;
     overflow: visible;
     background: transparent;
     border: none;
@@ -284,10 +286,11 @@
 
   .wm-vp-meter .sauce-meter-svg,
   .wm-vp-meter > svg {
-    width: min(100%, 340px);
-    max-width: 100%;
-    max-height: min(46vw, 260px);
+    width: auto;
     height: auto;
+    max-width: min(100%, 300px);
+    max-height: min(58vw, 300px);
+    aspect-ratio: 777 / 757;
     margin-inline: auto;
     overflow: visible;
   }
@@ -295,21 +298,21 @@
   .wm-vp-knob {
     order: 2;
     width: 100%;
-    max-width: 220px;
+    max-width: 200px;
     margin-inline: auto;
-    padding: 0.25rem;
+    padding: 0.15rem;
     background: transparent;
     border: none;
     box-shadow: none;
   }
 
   .wm-vp-knob .hk-wrap {
-    width: min(100%, 150px);
+    width: min(100%, 140px);
     margin-inline: auto;
   }
 
   .wm-vp-knob .hk-stage {
-    padding-bottom: 1.25rem;
+    padding-bottom: 1.15rem;
   }
 
   .wm-vp-readout {
@@ -317,7 +320,8 @@
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    gap: 0.45rem;
+    gap: 0.4rem;
+    padding: 0.5rem 0.75rem;
   }
 
   .wm-vp-link {

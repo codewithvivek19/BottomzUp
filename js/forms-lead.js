@@ -163,29 +163,89 @@
   }
 
   /* ---------- Catering form ---------- */
-  function selectedLabels(form, name) {
+  function selectedEntries(form, name) {
     return $all('input[name="' + name + '"]:checked', form).map((el) => {
       const card = el.closest('.cat-item, .bundle-card, .p-card, .lead-chip');
+      let label = el.value;
       if (card) {
         const n = card.querySelector('.cat-item-name, .p-card-name, h3, .lead-chip-text');
-        if (n) return n.textContent.trim();
+        const badge = card.querySelector('.p-card-badge');
+        if (n) {
+          label = n.textContent.trim();
+          if (badge && badge.textContent.trim()) {
+            label = label + ' (' + badge.textContent.trim() + ')';
+          }
+        }
       }
-      return el.value;
+      return { value: el.value, label: label, input: el };
     });
   }
 
-  function updateCateringSummary(form) {
-    const box = $('#cateringSummary');
-    const items = selectedLabels(form, 'items');
-    const bundles = selectedLabels(form, 'bundle');
-    const guests = String(form.guests?.value || '').trim();
-    const parts = [];
-    if (bundles.length) parts.push('<strong>Package:</strong> ' + bundles.join(', '));
-    if (items.length) parts.push('<strong>Trays:</strong> ' + items.length + ' item' + (items.length === 1 ? '' : 's'));
-    if (guests) parts.push('<strong>Guests:</strong> ' + guests);
-    if (box) box.innerHTML = parts.length ? parts.join(' · ') : '';
+  function selectedLabels(form, name) {
+    return selectedEntries(form, name).map((e) => e.label);
+  }
 
-    const total = items.length + bundles.length;
+  function ensureOrderList(form) {
+    let list = $('#catOrderList');
+    if (list) return list;
+    const summary = $('#cateringSummary');
+    if (!summary || !summary.parentNode) return null;
+    list = document.createElement('div');
+    list.id = 'catOrderList';
+    list.className = 'cat-order-list';
+    list.hidden = true;
+    list.innerHTML =
+      '<div class="cat-order-list-head">' +
+      '<strong>Your order</strong>' +
+      '<button type="button" class="cat-order-clear" id="catOrderClearAll">Clear all</button>' +
+      '</div>' +
+      '<div class="cat-order-chips" id="catOrderChips"></div>' +
+      '<p class="cat-order-empty" id="catOrderEmpty">Tap packages or menu items to add them here.</p>';
+    summary.parentNode.insertBefore(list, summary);
+    return list;
+  }
+
+  function updateCateringSummary(form) {
+    const items = selectedEntries(form, 'items');
+    const bundles = selectedEntries(form, 'bundles').concat(selectedEntries(form, 'bundle'));
+    const guests = String(form.guests?.value || '').trim();
+
+    const list = ensureOrderList(form);
+    const chips = $('#catOrderChips');
+    const empty = $('#catOrderEmpty');
+    const all = bundles.concat(items);
+
+    if (list) {
+      list.hidden = false;
+      if (chips) {
+        chips.innerHTML = all
+          .map((e) => {
+            const safeVal = String(e.value).replace(/"/g, '&quot;');
+            return (
+              '<span class="cat-order-chip" data-value="' +
+              safeVal +
+              '"><span>' +
+              e.label.replace(/</g, '&lt;') +
+              '</span><button type="button" aria-label="Remove ' +
+              e.label.replace(/"/g, '') +
+              '">×</button></span>'
+            );
+          })
+          .join('');
+      }
+      if (empty) empty.hidden = all.length > 0;
+    }
+
+    const box = $('#cateringSummary');
+    if (box) {
+      const parts = [];
+      if (bundles.length) parts.push('<strong>' + bundles.length + ' package' + (bundles.length === 1 ? '' : 's') + '</strong>');
+      if (items.length) parts.push('<strong>' + items.length + ' item' + (items.length === 1 ? '' : 's') + '</strong>');
+      if (guests) parts.push('Guests: ' + guests);
+      box.innerHTML = parts.length ? parts.join(' · ') : '';
+    }
+
+    const total = all.length;
     const sticky = $('#catSticky');
     const countEl = $('#catStickyCount');
     const sumEl = $('#catStickySum');
@@ -194,12 +254,25 @@
     if (sumEl) {
       if (!total) sumEl.textContent = 'Nothing selected yet';
       else {
-        const bits = [];
-        if (bundles.length) bits.push(bundles[0]);
-        if (items.length) bits.push(items.length + ' tray' + (items.length === 1 ? '' : 's'));
-        sumEl.textContent = bits.join(' · ');
+        const preview = all
+          .slice(0, 3)
+          .map((e) => e.label)
+          .join(', ');
+        sumEl.textContent =
+          preview + (all.length > 3 ? ' +' + (all.length - 3) + ' more' : '');
       }
     }
+  }
+
+  function uncheckByValue(form, value) {
+    $all('input[type="checkbox"], input[type="radio"]', form).forEach((inp) => {
+      if (inp.value === value && inp.checked) {
+        inp.checked = false;
+        const c = inp.closest('.cat-item, .bundle-card, .p-card');
+        if (c) c.classList.remove('is-selected');
+        inp.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    });
   }
 
   function wireSelectableCards(form) {
@@ -208,25 +281,15 @@
       if (!input) return;
 
       const sync = () => {
-        if (input.type === 'radio' && input.name) {
-          $all('input[name="' + input.name + '"]', form).forEach((inp) => {
-            const c = inp.closest('.cat-item, .bundle-card, .p-card');
-            if (c) c.classList.toggle('is-selected', inp.checked);
-          });
-        } else {
-          card.classList.toggle('is-selected', input.checked);
-        }
+        card.classList.toggle('is-selected', input.checked);
         updateCateringSummary(form);
       };
 
       card.addEventListener('click', (e) => {
         if (e.target === input) return;
+        if (e.target.closest && e.target.closest('button')) return;
         e.preventDefault();
-        if (input.type === 'checkbox') {
-          input.checked = !input.checked;
-        } else {
-          input.checked = true;
-        }
+        input.checked = !input.checked;
         input.dispatchEvent(new Event('change', { bubbles: true }));
       });
 
@@ -236,17 +299,31 @@
 
     form.addEventListener('input', () => updateCateringSummary(form));
 
+    form.addEventListener('click', (e) => {
+      const btn = e.target.closest('.cat-order-chip button');
+      if (btn) {
+        const chip = btn.closest('.cat-order-chip');
+        if (chip && chip.dataset.value) {
+          uncheckByValue(form, chip.dataset.value);
+          updateCateringSummary(form);
+        }
+      }
+    });
+
     const clearBtn = $('#clearBundle');
-    if (clearBtn) {
-      clearBtn.addEventListener('click', () => {
-        $all('input[name="bundle"]', form).forEach((inp) => {
-          inp.checked = false;
-          const c = inp.closest('.bundle-card, .p-card');
-          if (c) c.classList.remove('is-selected');
-        });
-        updateCateringSummary(form);
+    const clearAll = () => {
+      $all('input[name="bundles"], input[name="bundle"], input[name="items"]', form).forEach((inp) => {
+        inp.checked = false;
+        const c = inp.closest('.bundle-card, .p-card, .cat-item');
+        if (c) c.classList.remove('is-selected');
       });
-    }
+      updateCateringSummary(form);
+    };
+    if (clearBtn) clearBtn.addEventListener('click', clearAll);
+
+    document.addEventListener('click', (e) => {
+      if (e.target && e.target.id === 'catOrderClearAll') clearAll();
+    });
   }
 
   function initCateringForm() {
@@ -271,7 +348,7 @@
       if (!validateRequired(form)) return;
 
       const items = selectedLabels(form, 'items');
-      const bundles = selectedLabels(form, 'bundle');
+      const bundles = selectedLabels(form, 'bundles').concat(selectedLabels(form, 'bundle'));
       if (!items.length && !bundles.length) {
         const hint = $('#cateringSelectHint');
         if (hint) {

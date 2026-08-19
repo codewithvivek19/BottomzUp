@@ -663,11 +663,19 @@
 }
 
 /* ---------- Wings special ---------- */
+/* Class display rules beat UA [hidden]{display:none} — keep SR/search mirrors out of layout */
+.flavor-grid[hidden],
+.flavor-grid.is-sr-mirror,
+.heat-filter[hidden] {
+  display: none !important;
+}
+
 .wings-sizes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-3);
-  margin-bottom: var(--space-6);
+  margin-top: 0.35rem;
+  margin-bottom: var(--space-5);
   max-width: 520px;
 }
 
@@ -1069,30 +1077,98 @@
   margin-bottom: var(--space-5);
 }
 
-/* Sauce meter on menu = same home viewport lab (break out of glass card) */
-.menu-section .wings-meter-section--viewport.wings-meter-section--in-menu {
-  background: #ffffff;
-  margin: 0.5rem calc(50% - 50vw) 1rem;
-  width: 100vw;
-  max-width: 100vw;
-  padding-block: clamp(0.75rem, 2vh, 1.35rem) clamp(1rem, 2.5vh, 1.75rem);
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
-  position: relative;
-  left: 0;
+/* Sauce meter on menu — contained card (no 100vw breakout / clip glitches) */
+.menu-section:has(.wings-meter-section--in-menu) {
   overflow: visible;
 }
 
+.menu-section .wings-meter-section--viewport.wings-meter-section--in-menu {
+  background: #ffffff;
+  width: 100%;
+  max-width: 100%;
+  margin: 0.75rem 0 1.15rem;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  border-radius: 20px;
+  border: 1px solid rgba(46, 44, 44, 0.08);
+  box-shadow: 0 8px 28px rgba(46, 44, 44, 0.05);
+  position: relative;
+  left: auto;
+  /* Must stay visible — clipping the SVG chops bottle labels into a dark slab */
+  overflow: visible;
+  isolation: isolate;
+}
+
 .menu-section .wings-meter-section--in-menu .wm-shell--viewport {
-  max-width: 980px;
+  max-width: 920px;
   margin-inline: auto;
-  padding-inline: clamp(1rem, 4vw, 1.5rem);
+  padding-inline: 0;
+  gap: 0.85rem;
+}
+
+.menu-section .wings-meter-section--in-menu .wm-vp-stage {
+  align-items: center;
+  min-height: 0;
+}
+
+.menu-section .wings-meter-section--in-menu .wm-vp-meter {
+  max-height: min(340px, 44vh);
+  overflow: visible;
+  padding: 0.65rem 0.75rem;
+}
+
+.menu-section .wings-meter-section--in-menu .wm-vp-meter .sauce-meter-svg,
+.menu-section .wings-meter-section--in-menu .wm-vp-meter > svg {
+  width: min(100%, 360px);
+  max-height: min(320px, 40vh);
+  height: auto;
 }
 
 .menu-section .wings-meter-section--in-menu .wm-vp-link {
-  /* keep compact pill from home styles */
   color: #ffffff !important;
+}
+
+#sec-wings .wings-sizes {
+  max-width: 100%;
+  width: 100%;
+  margin: 0.35rem 0 1.35rem;
+  gap: 0.75rem;
+}
+
+#sec-wings .menu-section-head {
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 720px) {
+  .menu-section .wings-meter-section--viewport.wings-meter-section--in-menu {
+    margin-top: 0.5rem;
+    margin-bottom: 0.85rem;
+    padding: 0.85rem 0.75rem 1rem;
+    overflow: visible;
+  }
+
+  .menu-section .wings-meter-section--in-menu .wm-vp-meter {
+    max-height: none;
+    overflow: visible;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .menu-section .wings-meter-section--in-menu .wm-vp-meter .sauce-meter-svg,
+  .menu-section .wings-meter-section--in-menu .wm-vp-meter > svg {
+    width: min(100%, 300px);
+    max-height: min(260px, 58vw);
+  }
+
+  #sec-wings .wings-sizes {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
+
+  .wings-sizes {
+    gap: 0.55rem;
+    margin-bottom: var(--space-4);
+  }
 }
 
 /* Disclaimer — plain text only, no padded “section” */
