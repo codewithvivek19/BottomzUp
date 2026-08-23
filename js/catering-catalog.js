@@ -113,7 +113,7 @@
           {
             name: 'Garbage Burger',
             value: 'Garbage Burger',
-            image: IMG + 'classic-house-burger.jpg',
+            image: IMG + 'garbage-burger.jpg',
             meta: 'Cheese · chili · jalapeños · fries · coleslaw',
           },
           {

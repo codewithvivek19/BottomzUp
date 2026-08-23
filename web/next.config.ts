@@ -16,6 +16,8 @@ const nextConfig: NextConfig = {
       { source: "/menu/", destination: "/legacy/pages/menu.html" },
       { source: "/catering", destination: "/legacy/pages/catering.html" },
       { source: "/catering/", destination: "/legacy/pages/catering.html" },
+      { source: "/events.html", destination: "/events" },
+      { source: "/pages/events.html", destination: "/events" },
     ];
   },
 };
