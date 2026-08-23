@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" version="1.1" viewBox="0 0 776.98 756.62" class="sauce-meter-svg" role="img" aria-label="Sauce heat meter">
+  <!-- Generator: Adobe Illustrator 30.6.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 109)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#linear-gradient2);
+      }
+
+      .st1 {
+        fill: url(#linear-gradient1);
+      }
+
+      .st2 {
+        fill: url(#linear-gradient9);
+      }
+
+      .st3 {
+        fill: url(#linear-gradient3);
+      }
+
+      .st4 {
+        fill: url(#linear-gradient6);
+      }
+
+      .st5 {
+        fill: url(#linear-gradient8);
+      }
+
+      .st6 {
+        fill: url(#linear-gradient7);
+      }
+
+      .st7 {
+        fill: url(#linear-gradient5);
+      }
+
+      .st8 {
+        fill: url(#linear-gradient4);
+      }
+
+      .st9 {
+        fill: url(#linear-gradient18);
+      }
+
+      .st10 {
+        fill: url(#linear-gradient13);
+      }
+
+      .st11 {
+        fill: url(#linear-gradient12);
+      }
+
+      .st12 {
+        fill: url(#linear-gradient15);
+      }
+
+      .st13 {
+        fill: url(#linear-gradient16);
+      }
+
+      .st14 {
+        fill: url(#linear-gradient11);
+      }
+
+      .st15 {
+        fill: url(#linear-gradient10);
+      }
+
+      .st16 {
+        fill: url(#linear-gradient17);
+      }
+
+      .st17 {
+        fill: url(#linear-gradient14);
+      }
+
+      .st18 {
+        fill: url(#linear-gradient19);
+      }
+
+      .st19 {
+        fill: url(#linear-gradient21);
+      }
+
+      .st20 {
+        fill: url(#linear-gradient20);
+      }
+
+      .st21 {
+        fill: url(#linear-gradient);
+      }
+
+      .st22 {
+        fill: #80ab40;
+        font-family: Poppins-ExtraBoldItalic, Poppins;
+        font-size: 33.33px;
+        font-style: italic;
+        font-weight: 700;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="555.17" y1="185.77" x2="718.15" y2="185.77" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000"/>
+      <stop offset="1" stop-color="#231f20"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="551.38" y1="58.69" x2="722.03" y2="58.69" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient2" x1="518.88" y1="312.1" x2="754.6" y2="312.1" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient3" x1="499.08" y1="438.63" x2="774.53" y2="438.63" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient4" x1="496.3" y1="564.38" x2="776.93" y2="564.38" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient5" x1="496.43" y1="694.31" x2="776.98" y2="694.31" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient6" x1="636.66" y1="756.62" x2="636.66" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ab2023"/>
+      <stop offset=".05" stop-color="#bb2c24"/>
+      <stop offset=".17" stop-color="#e14827"/>
+      <stop offset=".24" stop-color="#f05329"/>
+      <stop offset=".44" stop-color="#f8ae1c"/>
+      <stop offset=".65" stop-color="#cdd02b"/>
+      <stop offset=".8" stop-color="#94b93d"/>
+      <stop offset="1" stop-color="#4a8d43"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient7" x1="636.71" x2="636.71" y2="0" xlink:href="#linear-gradient6"/>
+    <linearGradient id="linear-gradient8" x1="636.71" x2="636.71" y2="0" xlink:href="#linear-gradient6"/>
+    <linearGradient id="linear-gradient9" x1="636.71" x2="636.71" y2="0" xlink:href="#linear-gradient6"/>
+    <linearGradient id="linear-gradient10" x1="636.74" x2="636.74" y2="0" xlink:href="#linear-gradient6"/>
+    <linearGradient id="linear-gradient11" x1="636.74" x2="636.74" y2="0" xlink:href="#linear-gradient6"/>
+    <linearGradient id="linear-gradient12" x1="636.74" x2="636.74" y2="0" xlink:href="#linear-gradient6"/>
+    <linearGradient id="linear-gradient13" x1="636.81" y1="756.62" x2="636.81" y2="0" xlink:href="#linear-gradient6"/>
+    <linearGradient id="linear-gradient14" x1="636.81" y1="756.62" x2="636.81" y2="0" xlink:href="#linear-gradient6"/>
+    <linearGradient id="linear-gradient15" x1="636.81" y1="756.62" x2="636.81" y2="0" xlink:href="#linear-gradient6"/>
+    <linearGradient id="linear-gradient16" x1="636.62" y1="756.62" x2="636.62" y2="0" xlink:href="#linear-gradient6"/>
+    <linearGradient id="linear-gradient17" x1="636.62" y1="756.62" x2="636.62" y2="0" xlink:href="#linear-gradient6"/>
+    <linearGradient id="linear-gradient18" x1="636.62" y1="756.62" x2="636.62" y2="0" xlink:href="#linear-gradient6"/>
+    <linearGradient id="linear-gradient19" x1="636.71" y1="756.62" x2="636.71" y2="0" xlink:href="#linear-gradient6"/>
+    <linearGradient id="linear-gradient20" x1="636.71" y1="756.62" x2="636.71" y2="0" xlink:href="#linear-gradient6"/>
+    <linearGradient id="linear-gradient21" x1="636.71" y1="756.62" x2="636.71" y2="0" xlink:href="#linear-gradient6"/>
+  </defs>
+  <g>
+    <g>
+      <g>
+        <path d="M555.17,243.7h162.98c-3.61-38.75-4.62-77.11-4.26-115.87h-154.24c-.17,1.95-.41,3.89-.39,5.63.43,36.14-.12,71.34-3.78,107.2-.1,1.02-.21,2.03-.31,3.04Z"/>
+        <path class="st21" d="M555.17,243.7h162.98c-3.61-38.75-4.62-77.11-4.26-115.87h-154.24c-.17,1.95-.41,3.89-.39,5.63.43,36.14-.12,71.34-3.78,107.2-.1,1.02-.21,2.03-.31,3.04Z"/>
+      </g>
+      <g>
+        <path d="M551.38,66.77l.06,41.21c0,4.49,3.36,6.66,5.81,9.39h158.44c3.14-2.3,6.16-4.96,6.18-8.24l.16-43.59c.02-4.98-3.98-8.23-7.62-10.93,4.31-.87,7.51-3.26,7.51-7.42v-27.93c.01-10.77-8.92-19.15-19.87-19.16L572.84,0c-11.68,0-21.22,7.49-21.24,19.35l-.06,27.85c-.01,4.16,3.2,6.56,8.08,7.43-4.64,2.19-8.25,6.38-8.24,12.14Z"/>
+        <path class="st1" d="M551.38,66.77l.06,41.21c0,4.49,3.36,6.66,5.81,9.39h158.44c3.14-2.3,6.16-4.96,6.18-8.24l.16-43.59c.02-4.98-3.98-8.23-7.62-10.93,4.31-.87,7.51-3.26,7.51-7.42v-27.93c.01-10.77-8.92-19.15-19.87-19.16L572.84,0c-11.68,0-21.22,7.49-21.24,19.35l-.06,27.85c-.01,4.16,3.2,6.56,8.08,7.43-4.64,2.19-8.25,6.38-8.24,12.14Z"/>
+      </g>
+      <g>
+        <path d="M728.72,297.24c-5.07-14.27-7.8-28.11-9.52-43.07h-165.1c-1.01,9.41-2.29,18.6-4.89,27.98-10.41,37.51-21.34,61.13-30.33,87.88h235.72l-25.88-72.79Z"/>
+        <path class="st0" d="M728.72,297.24c-5.07-14.27-7.8-28.11-9.52-43.07h-165.1c-1.01,9.41-2.29,18.6-4.89,27.98-10.41,37.51-21.34,61.13-30.33,87.88h235.72l-25.88-72.79Z"/>
+      </g>
+      <g>
+        <path d="M771.75,451.94c-1.7-24.87-6.04-48.1-13.57-71.44h-242.65c-6.82,22.47-12.16,48.4-14.72,86.76l-1.22,18.29c-.18,3.74-.35,7.48-.51,11.21h275.45c-.8-14.87-1.75-29.76-2.78-44.82Z"/>
+        <path class="st3" d="M771.75,451.94c-1.7-24.87-6.04-48.1-13.57-71.44h-242.65c-6.82,22.47-12.16,48.4-14.72,86.76l-1.22,18.29c-.18,3.74-.35,7.48-.51,11.21h275.45c-.8-14.87-1.75-29.76-2.78-44.82Z"/>
+      </g>
+      <g>
+        <path d="M776.81,571.59c-.05-21.74-.71-43.05-1.75-64.36h-276.43c-1.59,38.21-2.54,76.2-2.3,114.3h280.6l-.12-49.94Z"/>
+        <path class="st8" d="M776.81,571.59c-.05-21.74-.71-43.05-1.75-64.36h-276.43c-1.59,38.21-2.54,76.2-2.3,114.3h280.6l-.12-49.94Z"/>
+      </g>
+      <g>
+        <path d="M776.95,631.99h-280.52c.21,17.31.67,34.64,1.45,52.03.6,13.59,2.28,36.37,7.04,41.9,5.73,6.65,15.01,10.61,23.92,13.48,68.06,21.97,141.08,23.25,210.16,1.95,28.67-8.85,33.83-14.23,35.08-38.95l2.9-57.13-.03-13.28Z"/>
+        <path class="st7" d="M776.95,631.99h-280.52c.21,17.31.67,34.64,1.45,52.03.6,13.59,2.28,36.37,7.04,41.9,5.73,6.65,15.01,10.61,23.92,13.48,68.06,21.97,141.08,23.25,210.16,1.95,28.67-8.85,33.83-14.23,35.08-38.95l2.9-57.13-.03-13.28Z"/>
+      </g>
+    </g>
+    <g>
+      <g>
+        <path class="st4" d="M555.17,243.7h162.98c-3.61-38.75-4.62-77.11-4.26-115.87h-154.24c-.17,1.95-.41,3.89-.39,5.63.43,36.14-.12,71.34-3.78,107.2-.1,1.02-.21,2.03-.31,3.04Z"/>
+        <path class="st4" d="M555.17,243.7h162.98c-3.61-38.75-4.62-77.11-4.26-115.87h-154.24c-.17,1.95-.41,3.89-.39,5.63.43,36.14-.12,71.34-3.78,107.2-.1,1.02-.21,2.03-.31,3.04Z"/>
+        <path class="st4" d="M555.17,243.7h162.98c-3.61-38.75-4.62-77.11-4.26-115.87h-154.24c-.17,1.95-.41,3.89-.39,5.63.43,36.14-.12,71.34-3.78,107.2-.1,1.02-.21,2.03-.31,3.04Z"/>
+      </g>
+      <g>
+        <path class="st6" d="M551.38,66.77l.06,41.21c0,4.49,3.36,6.66,5.81,9.39h158.44c3.14-2.3,6.16-4.96,6.18-8.24l.16-43.59c.02-4.98-3.98-8.23-7.62-10.93,4.31-.87,7.51-3.26,7.51-7.42v-27.93c.01-10.77-8.92-19.15-19.87-19.16L572.84,0c-11.68,0-21.22,7.49-21.24,19.35l-.06,27.85c-.01,4.16,3.2,6.56,8.08,7.43-4.64,2.19-8.25,6.38-8.24,12.14Z"/>
+        <path class="st5" d="M551.38,66.77l.06,41.21c0,4.49,3.36,6.66,5.81,9.39h158.44c3.14-2.3,6.16-4.96,6.18-8.24l.16-43.59c.02-4.98-3.98-8.23-7.62-10.93,4.31-.87,7.51-3.26,7.51-7.42v-27.93c.01-10.77-8.92-19.15-19.87-19.16L572.84,0c-11.68,0-21.22,7.49-21.24,19.35l-.06,27.85c-.01,4.16,3.2,6.56,8.08,7.43-4.64,2.19-8.25,6.38-8.24,12.14Z"/>
+        <path class="st2" d="M551.38,66.77l.06,41.21c0,4.49,3.36,6.66,5.81,9.39h158.44c3.14-2.3,6.16-4.96,6.18-8.24l.16-43.59c.02-4.98-3.98-8.23-7.62-10.93,4.31-.87,7.51-3.26,7.51-7.42v-27.93c.01-10.77-8.92-19.15-19.87-19.16L572.84,0c-11.68,0-21.22,7.49-21.24,19.35l-.06,27.85c-.01,4.16,3.2,6.56,8.08,7.43-4.64,2.19-8.25,6.38-8.24,12.14Z"/>
+      </g>
+      <g>
+        <path class="st15" d="M728.72,297.24c-5.07-14.27-7.8-28.11-9.52-43.07h-165.1c-1.01,9.41-2.29,18.6-4.89,27.98-10.41,37.51-21.34,61.13-30.33,87.88h235.72l-25.88-72.79Z"/>
+        <path class="st14" d="M728.72,297.24c-5.07-14.27-7.8-28.11-9.52-43.07h-165.1c-1.01,9.41-2.29,18.6-4.89,27.98-10.41,37.51-21.34,61.13-30.33,87.88h235.72l-25.88-72.79Z"/>
+        <path class="st11" d="M728.72,297.24c-5.07-14.27-7.8-28.11-9.52-43.07h-165.1c-1.01,9.41-2.29,18.6-4.89,27.98-10.41,37.51-21.34,61.13-30.33,87.88h235.72l-25.88-72.79Z"/>
+      </g>
+      <g>
+        <path class="st10" d="M771.75,451.94c-1.7-24.87-6.04-48.1-13.57-71.44h-242.65c-6.82,22.47-12.16,48.4-14.72,86.76l-1.22,18.29c-.18,3.74-.35,7.48-.51,11.21h275.45c-.8-14.87-1.75-29.76-2.78-44.82Z"/>
+        <path class="st17" d="M771.75,451.94c-1.7-24.87-6.04-48.1-13.57-71.44h-242.65c-6.82,22.47-12.16,48.4-14.72,86.76l-1.22,18.29c-.18,3.74-.35,7.48-.51,11.21h275.45c-.8-14.87-1.75-29.76-2.78-44.82Z"/>
+        <path class="st12" d="M771.75,451.94c-1.7-24.87-6.04-48.1-13.57-71.44h-242.65c-6.82,22.47-12.16,48.4-14.72,86.76l-1.22,18.29c-.18,3.74-.35,7.48-.51,11.21h275.45c-.8-14.87-1.75-29.76-2.78-44.82Z"/>
+      </g>
+      <g>
+        <path class="st13" d="M776.81,571.59c-.05-21.74-.71-43.05-1.75-64.36h-276.43c-1.59,38.21-2.54,76.2-2.3,114.3h280.6l-.12-49.94Z"/>
+        <path class="st16" d="M776.81,571.59c-.05-21.74-.71-43.05-1.75-64.36h-276.43c-1.59,38.21-2.54,76.2-2.3,114.3h280.6l-.12-49.94Z"/>
+        <path class="st9" d="M776.81,571.59c-.05-21.74-.71-43.05-1.75-64.36h-276.43c-1.59,38.21-2.54,76.2-2.3,114.3h280.6l-.12-49.94Z"/>
+      </g>
+      <g>
+        <path class="st18" d="M776.95,631.99h-280.52c.21,17.31.67,34.64,1.45,52.03.6,13.59,2.28,36.37,7.04,41.9,5.73,6.65,15.01,10.61,23.92,13.48,68.06,21.97,141.08,23.25,210.16,1.95,28.67-8.85,33.83-14.23,35.08-38.95l2.9-57.13-.03-13.28Z"/>
+        <path class="st20" d="M776.95,631.99h-280.52c.21,17.31.67,34.64,1.45,52.03.6,13.59,2.28,36.37,7.04,41.9,5.73,6.65,15.01,10.61,23.92,13.48,68.06,21.97,141.08,23.25,210.16,1.95,28.67-8.85,33.83-14.23,35.08-38.95l2.9-57.13-.03-13.28Z"/>
+        <path class="st19" d="M776.95,631.99h-280.52c.21,17.31.67,34.64,1.45,52.03.6,13.59,2.28,36.37,7.04,41.9,5.73,6.65,15.01,10.61,23.92,13.48,68.06,21.97,141.08,23.25,210.16,1.95,28.67-8.85,33.83-14.23,35.08-38.95l2.9-57.13-.03-13.28Z"/>
+      </g>
+    </g>
+  </g>
+  
+  
+
+  <g class="meter-heat-bands" aria-hidden="true">
+    <rect class="meter-band" data-band="0" x="500" y="40" width="220" height="70" fill="transparent" />
+    <rect class="meter-band" data-band="1" x="500" y="110" width="220" height="70" fill="transparent" />
+    <rect class="meter-band" data-band="2" x="500" y="180" width="220" height="70" fill="transparent" />
+    <rect class="meter-band" data-band="3" x="480" y="250" width="260" height="90" fill="transparent" />
+    <rect class="meter-band" data-band="4" x="470" y="340" width="280" height="100" fill="transparent" />
+    <rect class="meter-band" data-band="5" x="470" y="440" width="280" height="90" fill="transparent" />
+    <rect class="meter-band" data-band="6" x="470" y="530" width="280" height="70" fill="transparent" />
+    <rect class="meter-band" data-band="7" x="470" y="600" width="280" height="70" fill="transparent" />
+    <rect class="meter-band" data-band="8" x="470" y="670" width="280" height="50" fill="transparent" />
+    <rect class="meter-band" data-band="9" x="470" y="720" width="280" height="36" fill="transparent" />
+  </g>
+
+    <g class="meter-sauce-btn" data-sauce="bbq" data-index="0" transform="translate(373.2, 45.5)" role="button" tabindex="0" aria-label="BBQ">
+      <rect class="meter-hit" x="-400" y="-30.0" width="700" height="60" fill="transparent" cursor="pointer" />
+      <text class="sauce-label" x="0" y="0" pointer-events="none">BBQ</text>
+    </g>
+
+    <g class="meter-sauce-btn" data-sauce="garlic-parmesan" data-index="1" transform="translate(373.2, 45.5)" role="button" tabindex="0" aria-label="GARLIC PARMESAN">
+      <rect class="meter-hit" x="-400" y="45.0" width="700" height="60" fill="transparent" cursor="pointer" />
+      <text class="sauce-label" x="-249.6" y="75" pointer-events="none">GARLIC PARMESAN</text>
+    </g>
+
+    <g class="meter-sauce-btn" data-sauce="lemon-pepper" data-index="2" transform="translate(373.2, 45.5)" role="button" tabindex="0" aria-label="LEMON PEPPER">
+      <rect class="meter-hit" x="-400" y="120.0" width="700" height="60" fill="transparent" cursor="pointer" />
+      <text class="sauce-label" x="-175.4" y="150" pointer-events="none">LEMON PEPPER</text>
+    </g>
+
+    <g class="meter-sauce-btn" data-sauce="sweet-chilli-buffalo" data-index="3" transform="translate(373.2, 45.5)" role="button" tabindex="0" aria-label="SWEET CHILI BUFFALO">
+      <rect class="meter-hit" x="-400" y="195.0" width="700" height="60" fill="transparent" cursor="pointer" />
+      <text class="sauce-label" x="-310.57" y="225" pointer-events="none">SWEET CHILI BUFFALO</text>
+    </g>
+
+    <g class="meter-sauce-btn" data-sauce="sweet-chilli-gochujang" data-index="4" transform="translate(373.2, 45.5)" role="button" tabindex="0" aria-label="SWEET CHILI GOCHUJANG">
+      <rect class="meter-hit" x="-400" y="270.0" width="700" height="60" fill="transparent" cursor="pointer" />
+      <text class="sauce-label" x="-373.2" y="300" pointer-events="none">SWEET CHILI GOCHUJANG</text>
+    </g>
+
+    <g class="meter-sauce-btn" data-sauce="red-hot-mild" data-index="5" transform="translate(373.2, 45.5)" role="button" tabindex="0" aria-label="RED HOT MILD">
+      <rect class="meter-hit" x="-400" y="345.0" width="700" height="60" fill="transparent" cursor="pointer" />
+      <text class="sauce-label" x="-153.93" y="375" pointer-events="none">RED HOT MILD</text>
+    </g>
+
+    <g class="meter-sauce-btn" data-sauce="mango-habanero" data-index="6" transform="translate(373.2, 45.5)" role="button" tabindex="0" aria-label="MANGO HABANERO">
+      <rect class="meter-hit" x="-400" y="420.0" width="700" height="60" fill="transparent" cursor="pointer" />
+      <text class="sauce-label" x="-251.8" y="450" pointer-events="none">MANGO HABANERO</text>
+    </g>
+
+    <g class="meter-sauce-btn" data-sauce="garlic-buffalo" data-index="7" transform="translate(373.2, 45.5)" role="button" tabindex="0" aria-label="GARLIC BUFFALO">
+      <rect class="meter-hit" x="-400" y="495.0" width="700" height="60" fill="transparent" cursor="pointer" />
+      <text class="sauce-label" x="-211.3" y="525" pointer-events="none">GARLIC BUFFALO</text>
+    </g>
+
+    <g class="meter-sauce-btn" data-sauce="red-hot-buffalo" data-index="8" transform="translate(373.2, 45.5)" role="button" tabindex="0" aria-label="RED HOT BUFFALO">
+      <rect class="meter-hit" x="-400" y="570.0" width="700" height="60" fill="transparent" cursor="pointer" />
+      <text class="sauce-label" x="-222.9" y="600" pointer-events="none">RED HOT BUFFALO</text>
+    </g>
+
+    <g class="meter-sauce-btn" data-sauce="extra-hot-buffalo" data-index="9" transform="translate(373.2, 45.5)" role="button" tabindex="0" aria-label="XTRA HOT BUFFALO">
+      <rect class="meter-hit" x="-400" y="645.0" width="700" height="60" fill="transparent" cursor="pointer" />
+      <text class="sauce-label" x="-250.07" y="675" pointer-events="none">XTRA HOT BUFFALO</text>
+    </g>
+</svg>

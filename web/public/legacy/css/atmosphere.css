@@ -1,0 +1,414 @@
+/* ============================================
+   BOTTOMZ UP — Site Atmosphere
+   Mesh gradients · soft orbs · grain · light
+   Trends: grainy aurora, multi-stop mesh,
+   warm material depth (restaurant-scale, not SaaS neon)
+   ============================================ */
+
+:root {
+  /* Atmosphere palette — #fffdf9 base */
+  --atm-base: #fffdf9;
+  --atm-cream: #fffdf9;
+  --atm-cream-hi: #ffffff;
+  --atm-cream-soft: #fffdf9;
+  --atm-butter: #f8f5ec;
+  --atm-amber-mist: rgba(231, 147, 30, 0.08);
+  --atm-amber-core: rgba(241, 159, 15, 0.10);
+  --atm-amber-deep: rgba(198, 122, 18, 0.06);
+  --atm-char-veil: rgba(46, 44, 44, 0.02);
+  --atm-warm-edge: rgba(246, 243, 234, 0.70);
+}
+
+/* ---------- Page canvas (ONE flow: x32 cream) ---------- */
+html {
+  background: var(--canvas, var(--bg-global-gradient));
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+body {
+  background: transparent;
+  min-height: 100%;
+}
+
+/* Fixed atmospheric layer: drifting orbs + paper grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 32%, rgba(255, 255, 255, 0.50) 0%, transparent 12%),
+    radial-gradient(circle at 78% 22%, rgba(241, 159, 15, 0.05) 0%, transparent 18%),
+    radial-gradient(circle at 62% 68%, rgba(249, 246, 238, 0.45) 0%, transparent 16%),
+    radial-gradient(circle at 30% 78%, rgba(231, 147, 30, 0.03) 0%, transparent 14%),
+    radial-gradient(circle at 88% 88%, rgba(255, 253, 249, 0.40) 0%, transparent 20%);
+  animation: atmDrift 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Soft vignette + depth */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    /* subtle edge vignette */
+    radial-gradient(ellipse 120% 100% at 50% 40%, transparent 40%, rgba(46, 44, 44, 0.045) 100%),
+    /* fine film grain */
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: auto, 180px 180px;
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+}
+
+@keyframes atmDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-1.5%, 1%, 0) scale(1.03);
+  }
+  100% {
+    transform: translate3d(1.2%, -0.8%, 0) scale(1.02);
+  }
+}
+
+/* Existing .grain can stay lighter so we don't double-up too hard */
+.grain {
+  opacity: 0.02;
+  mix-blend-mode: overlay;
+  z-index: 50;
+  pointer-events: none !important;
+}
+
+/* ---------- Section atmospheres ---------- */
+
+/* Marquee / categories strip sits on cream — no extra mesh */
+.fbx-categories,
+.fbx-marquee,
+.marquee-section {
+  position: relative;
+  z-index: 1;
+}
+
+/* House strip: section shell only — component card styled in home.css */
+.house-strip {
+  position: relative;
+}
+
+/* Burgers: white section, no cream wash */
+.burgers {
+  position: relative;
+  background: #ffffff;
+}
+
+/* Lifestyle: smooth photo mosaic section */
+.lifestyle {
+  position: relative;
+}
+
+/* Visit: soft warm lift with smooth entry */
+.visit {
+  position: relative;
+  background: #ffffff;
+}
+
+/* Scratch / promo: smooth neutral */
+.scratch-section {
+  position: relative;
+}
+
+
+.burgers::before,
+.burgers::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+}
+
+/* Legacy wings-beer: transparent so x32 cream canvas shows through */
+.wings-beer {
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+}
+
+.wings-beer-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 55% at 12% 15%, var(--mesh-heat-glow, rgba(231, 147, 30, 0.18)), transparent 55%),
+    radial-gradient(ellipse 50% 60% at 95% 85%, var(--mesh-heat-accent, rgba(241, 159, 15, 0.1)), transparent 50%);
+  transition: background 0.6s var(--ease-out, ease-out);
+  z-index: 0;
+}
+
+.wings-beer.is-heat-mild {
+  --mesh-heat-glow: rgba(166, 202, 29, 0.18);
+  --mesh-heat-accent: rgba(166, 202, 29, 0.1);
+}
+.wings-beer.is-heat-medium {
+  --mesh-heat-glow: rgba(232, 174, 14, 0.2);
+  --mesh-heat-accent: rgba(232, 174, 14, 0.12);
+}
+.wings-beer.is-heat-hot {
+  --mesh-heat-glow: rgba(244, 131, 21, 0.22);
+  --mesh-heat-accent: rgba(244, 131, 21, 0.14);
+}
+.wings-beer.is-heat-xtra {
+  --mesh-heat-glow: rgba(178, 34, 35, 0.28);
+  --mesh-heat-accent: rgba(178, 34, 35, 0.18);
+}
+
+.wings-beer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* Visit: soft cream lift */
+.visit {
+  position: relative;
+  background: #ffffff;
+}
+
+/* Reserve: richer amber mesh (already gradient — deepen) */
+.reserve {
+  background:
+    radial-gradient(ellipse 60% 80% at 20% 20%, rgba(255, 220, 150, 0.35), transparent 50%),
+    radial-gradient(ellipse 50% 60% at 90% 80%, rgba(180, 90, 20, 0.35), transparent 55%),
+    linear-gradient(135deg, var(--color-amber) 0%, var(--color-amber-deep) 55%, #b86a0e 100%);
+}
+
+.reserve-texture {
+  opacity: 0.18;
+}
+
+/* Footer: charcoal with warm edge light (default; impact footer overrides) */
+.site-footer:not(.site-footer--impact) {
+  background:
+    radial-gradient(ellipse 50% 40% at 15% 0%, rgba(231, 147, 30, 0.12), transparent 50%),
+    radial-gradient(ellipse 40% 50% at 90% 100%, rgba(241, 159, 15, 0.06), transparent 45%),
+    linear-gradient(180deg, #323030 0%, #2e2c2c 40%, #1f1e1e 100%);
+}
+
+/* ---------- Hero mesh (legacy cream hero only; fbx-hero is black stage) ---------- */
+.hero:not(.fbx-hero) {
+  isolation: isolate;
+}
+
+/* FreshBox hero: cream stage + dark plate — isolate from body mesh */
+.fbx-hero.hero {
+  isolation: isolate;
+  background-attachment: scroll;
+}
+
+.hero-bg {
+  background:
+    radial-gradient(ellipse 85% 70% at 75% 25%, rgba(241, 159, 15, 0.2), transparent 55%),
+    radial-gradient(ellipse 55% 50% at 15% 85%, rgba(255, 249, 232, 0.85), transparent 55%),
+    radial-gradient(ellipse 40% 35% at 50% 50%, rgba(245, 232, 183, 0.4), transparent 60%),
+    linear-gradient(
+      145deg,
+      rgba(251, 246, 227, 0.5) 0%,
+      rgba(245, 232, 183, 0.25) 45%,
+      rgba(240, 215, 138, 0.2) 100%
+    );
+  z-index: 0;
+}
+
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+}
+
+/* Beer-bubble motif — faint circles like print menu */
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    radial-gradient(circle at 12% 40%, rgba(255, 255, 255, 0.35) 0 2px, transparent 3px),
+    radial-gradient(circle at 28% 70%, rgba(255, 255, 255, 0.25) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 55% 25%, rgba(255, 255, 255, 0.3) 0 2px, transparent 3px),
+    radial-gradient(circle at 72% 60%, rgba(255, 255, 255, 0.2) 0 3px, transparent 4px),
+    radial-gradient(circle at 88% 35%, rgba(255, 255, 255, 0.28) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 40% 48%, rgba(255, 255, 255, 0.18) 0 4px, transparent 5px);
+  background-size: 100% 100%;
+  animation: bubbleFloat 20s ease-in-out infinite alternate;
+}
+
+@keyframes bubbleFloat {
+  from { transform: translateY(0); }
+  to { transform: translateY(-12px); }
+}
+
+/* Stronger amber orbs */
+.hero-glow--amber {
+  width: min(80vw, 640px);
+  height: min(80vw, 640px);
+  top: 5%;
+  right: -12%;
+  background: radial-gradient(
+    circle,
+    rgba(241, 159, 15, 0.32) 0%,
+    rgba(231, 147, 30, 0.12) 40%,
+    transparent 68%
+  );
+  filter: blur(50px);
+  animation: glowPulse 10s ease-in-out infinite alternate;
+}
+
+.hero-glow--cream {
+  width: min(55vw, 460px);
+  height: min(55vw, 460px);
+  bottom: 0;
+  left: -8%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 252, 240, 0.95) 0%,
+    rgba(251, 246, 227, 0.4) 45%,
+    transparent 70%
+  );
+  filter: blur(36px);
+  animation: glowPulse 12s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes glowPulse {
+  from { opacity: 0.75; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.06); }
+}
+
+/* ---------- Menu page ---------- */
+.menu-page {
+  background: transparent;
+}
+
+.menu-hero {
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 0%, rgba(241, 159, 15, 0.14), transparent 55%),
+    radial-gradient(ellipse 50% 50% at 10% 100%, rgba(255, 249, 232, 0.6), transparent 50%),
+    transparent;
+  position: relative;
+}
+
+.menu-controls {
+  background: rgba(255, 247, 232, 0.88);
+  backdrop-filter: blur(16px) saturate(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
+  border-block-color: rgba(46, 44, 44, 0.07);
+}
+
+/* Food sections: slight glass lift */
+.menu-section:not(.menu-section--bar) {
+  position: relative;
+}
+
+.menu-section:not(.menu-section--bar)::before {
+  content: "";
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  top: -8%;
+  bottom: 10%;
+  background: radial-gradient(
+    ellipse 50% 40% at 30% 20%,
+    rgba(255, 249, 232, 0.45),
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.menu-section:not(.menu-section--bar) > * {
+  position: relative;
+  z-index: 1;
+}
+
+.menu-section--bar {
+  background:
+    radial-gradient(ellipse 60% 50% at 10% 20%, rgba(231, 147, 30, 0.16), transparent 55%),
+    radial-gradient(ellipse 45% 55% at 90% 80%, rgba(241, 159, 15, 0.1), transparent 50%),
+    linear-gradient(165deg, #353232 0%, #2e2c2c 45%, #222020 100%) !important;
+}
+
+/* Cards sit on glass so elevated surfaces read clearly */
+.card {
+  background: rgba(254, 253, 249, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Burger cards: white text plate only — image area stays transparent */
+.burger-card {
+  background: #ffffff;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.proof-item {
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Sauce lab on charcoal already styled — add subtle inner light */
+.sauce-lab {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  .hero-bg::before,
+  .hero-glow--amber,
+  .hero-glow--cream {
+    animation: none !important;
+  }
+
+  body {
+    background-attachment: scroll;
+  }
+}
+
+/* Mobile: fixed backgrounds can be heavy — keep mesh but scroll attachment */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  body::before {
+    animation-duration: 40s;
+  }
+}
+
+/* High-contrast / print */
+@media print {
+  body,
+  body::before,
+  body::after,
+  .grain {
+    background: #fff !important;
+    animation: none !important;
+  }
+}

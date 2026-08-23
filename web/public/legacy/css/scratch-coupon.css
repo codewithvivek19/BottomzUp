@@ -1,0 +1,261 @@
+/* ============================================
+   Scratch coupon — ImageScratch-style reveal
+   Brand: cream + amber · Bottomz Up promo
+   ============================================ */
+
+.scratch-section {
+  position: relative;
+  padding-block: clamp(3rem, 7vw, 5rem);
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.scratch-section .container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+  max-width: 520px;
+  text-align: center;
+}
+
+.scratch-head {
+  max-width: 28rem;
+}
+
+.scratch-head .eyebrow {
+  margin-bottom: 0.5rem;
+  color: #b86a0e !important;
+  font-weight: 700;
+}
+
+.scratch-head .display,
+.scratch-head h2 {
+  margin: 0 0 0.5rem;
+  color: #1a1919 !important;
+  text-shadow: none !important;
+}
+
+.scratch-lede {
+  margin: 0;
+  color: #3a3630 !important;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* Card shell */
+.scratch-card {
+  position: relative;
+  width: min(100%, 420px);
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(46, 44, 44, 0.08);
+  box-shadow:
+    0 1px 2px rgba(46, 44, 44, 0.05),
+    0 18px 48px -12px rgba(198, 122, 18, 0.28);
+  background: #fff;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.scratch-card.is-revealed {
+  touch-action: auto;
+}
+
+/* Prize under the foil */
+.scratch-prize {
+  position: relative;
+  z-index: 0;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 1.75rem 1.5rem 1.5rem;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 40%, rgba(241, 159, 15, 0.2), transparent 60%),
+    linear-gradient(160deg, #fff9e8 0%, #f5e8b7 45%, #e8d9a0 100%);
+}
+
+.scratch-prize-kicker {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-amber-deep);
+}
+
+.scratch-prize-off {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 8vw, 3.1rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--color-charcoal);
+  margin: 0.15rem 0 0.35rem;
+}
+
+.scratch-prize-off em {
+  font-style: normal;
+  color: var(--color-amber-deep);
+}
+
+.scratch-code-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.scratch-code {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--color-ink);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1.5px dashed rgba(198, 122, 18, 0.45);
+  border-radius: 10px;
+  padding: 0.45em 0.75em;
+  min-width: 7.5ch;
+  text-align: center;
+}
+
+.scratch-copy {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.55em 0.9em;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: var(--color-amber);
+  color: var(--color-ink);
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.scratch-copy:hover {
+  background: var(--color-amber-bright);
+}
+
+.scratch-copy:active {
+  transform: scale(0.97);
+}
+
+.scratch-copy.is-copied {
+  background: var(--color-charcoal);
+  color: var(--color-cream);
+}
+
+.scratch-prize-note {
+  margin: 0.65rem 0 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  max-width: 28ch;
+  line-height: 1.4;
+}
+
+/* Canvas foil overlay */
+.scratch-foil {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: crosshair;
+  border-radius: inherit;
+  pointer-events: auto;
+}
+
+.scratch-card.is-revealed .scratch-foil {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+/* Hint chip on foil */
+.scratch-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  z-index: 3;
+  margin: 0;
+  padding: 0.4em 0.9em;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 253, 246, 0.92);
+  background: rgba(46, 44, 44, 0.35);
+  border: 1px solid rgba(255, 253, 246, 0.15);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.scratch-card.is-scratching .scratch-hint,
+.scratch-card.is-revealed .scratch-hint {
+  opacity: 0;
+}
+
+/* Ticket notch accents */
+.scratch-card::before,
+.scratch-card::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg-cream-gradient);
+  z-index: 4;
+  transform: translateY(-50%);
+  box-shadow: inset 0 0 0 1px rgba(46, 44, 44, 0.06);
+  pointer-events: none;
+}
+
+.scratch-card::before {
+  left: -9px;
+}
+
+.scratch-card::after {
+  right: -9px;
+}
+
+.scratch-foot {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  max-width: 36ch;
+  line-height: 1.45;
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .scratch-prize {
+    min-height: 200px;
+    padding: 1.5rem 1.15rem 1.25rem;
+  }
+
+  .scratch-code {
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scratch-card.is-revealed .scratch-foil {
+    transition: none;
+  }
+}

@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Supabase Postgres (pooler = DATABASE_URL, direct = DIRECT_URL for migrations)
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime @default(now())
+}
+
+model Event {
+  id          String    @id @default(cuid())
+  title       String
+  description String
+  startsAt    DateTime
+  endsAt      DateTime?
+  imageUrl    String?
+  published   Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+/// Scratch-card promo shown on the home page (#promo).
+model CouponSetting {
+  id            String   @id @default(cuid())
+  code          String
+  discountLabel String   @default("10%")
+  headline      String   @default("In-house only")
+  note          String   @default("Valid on food. Not stackable with other offers. Ask your server.")
+  active        Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+/// Contact + catering form submissions from the public site.
+model Lead {
+  id         String   @id @default(cuid())
+  type       String // contact | catering
+  name       String
+  email      String
+  phone      String
+  /// contact
+  topic      String?
+  preferred  String?
+  message    String?
+  /// catering
+  eventDate  String?
+  guests     String?
+  eventType  String?
+  notes      String?
+  itemsJson  String   @default("[]") // JSON string array
+  bundlesJson String  @default("[]") // JSON string array
+  status     String   @default("new") // new | contacted | closed
+  source     String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}

@@ -1,0 +1,246 @@
+/* Bottomz Up date picker — matches cream/amber admin calendar UI */
+
+.dp-field {
+  position: relative;
+  display: grid;
+  gap: 0.4rem;
+  font-family: var(--font-body, "Poppins", system-ui, sans-serif);
+  min-width: 0;
+}
+
+.dp-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #4a4540;
+}
+
+.dp-trigger {
+  appearance: none;
+  width: 100%;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid rgba(46, 44, 44, 0.12);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--adm-ink, #2e2c2c);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.dp-trigger.is-empty {
+  color: #9a958c;
+}
+
+.dp-trigger.is-open,
+.dp-trigger:focus-visible {
+  outline: none;
+  border-color: rgba(231, 147, 30, 0.65);
+  box-shadow: 0 0 0 4px rgba(231, 147, 30, 0.16);
+}
+
+.dp-trigger svg {
+  flex-shrink: 0;
+  color: #8a847c;
+}
+
+.dp-popover {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 0.45rem);
+  left: 0;
+  width: min(320px, calc(100vw - 2rem));
+}
+
+.dp-cal {
+  background: #fffdf9;
+  border: 1px solid rgba(46, 44, 44, 0.1);
+  border-radius: 18px;
+  padding: 0.9rem 0.85rem 0.85rem;
+  box-shadow: 0 18px 44px rgba(46, 44, 44, 0.14);
+}
+
+.dp-cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.dp-month {
+  margin: 0;
+  font-family: var(--font-display, "Lemon Milk", system-ui);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #2e2c2c;
+}
+
+.dp-nav {
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(46, 44, 44, 0.1);
+  background: #fff;
+  color: #2e2c2c;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.dp-nav:hover {
+  background: #fff8ec;
+  border-color: rgba(231, 147, 30, 0.45);
+}
+
+.dp-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.15rem;
+  margin-bottom: 0.35rem;
+  text-align: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #8a847c;
+}
+
+.dp-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.2rem;
+}
+
+.dp-day {
+  appearance: none;
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #2e2c2c;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.dp-day.is-outside {
+  color: #b5aea4;
+  font-weight: 500;
+}
+
+.dp-day.is-today {
+  box-shadow: inset 0 0 0 1.5px rgba(231, 147, 30, 0.55);
+}
+
+.dp-day.is-selected {
+  background: #e7931e;
+  color: #fffdf9;
+  box-shadow: 0 6px 14px rgba(231, 147, 30, 0.28);
+}
+
+.dp-day:not(.is-selected):not(.is-disabled):hover {
+  background: #fff1d6;
+}
+
+.dp-day:active:not(.is-disabled) {
+  transform: scale(0.94);
+}
+
+.dp-day.is-disabled {
+  color: #c9c3ba;
+  opacity: 0.45;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.dp-hint {
+  margin: 0.55rem 0 0;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #8a847c;
+  line-height: 1.35;
+}
+
+.dp-time {
+  display: grid;
+  gap: 0.3rem;
+  margin-top: 0.75rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(46, 44, 44, 0.08);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4a4540;
+}
+
+.dp-time input {
+  min-height: 42px;
+  border: 1.5px solid rgba(46, 44, 44, 0.12);
+  border-radius: 10px;
+  padding: 0.45rem 0.7rem;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2e2c2c;
+  background: #fff;
+}
+
+.dp-time input:focus {
+  outline: none;
+  border-color: rgba(231, 147, 30, 0.65);
+  box-shadow: 0 0 0 3px rgba(231, 147, 30, 0.14);
+}
+
+.dp-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(46, 44, 44, 0.08);
+}
+
+.dp-today,
+.dp-done,
+.dp-clear {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.35rem 0.2rem;
+}
+
+.dp-today {
+  color: #e7931e;
+}
+
+.dp-done {
+  color: #2e2c2c;
+}
+
+.dp-clear {
+  color: #6b6560;
+}
+
+.dp-today:hover,
+.dp-done:hover,
+.dp-clear:hover {
+  text-decoration: underline;
+}

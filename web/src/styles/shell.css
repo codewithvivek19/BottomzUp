@@ -1,0 +1,240 @@
+:root {
+  --font-display: 'Lemon Milk', 'Poppins', system-ui, sans-serif;
+  --font-body: 'Poppins', system-ui, sans-serif;
+  --color-cream: #f5e8b7;
+  --color-amber: #e7931e;
+  --color-charcoal: #2e2c2c;
+  --header-height: 78px;
+}
+
+@font-face {
+  font-family: 'Lemon Milk';
+  src: url('/assets/fonts/lemon-milk-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-charcoal);
+  background: #fffdf9;
+}
+
+a {
+  color: inherit;
+}
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 500;
+  pointer-events: none;
+}
+
+.nav-shell,
+.nav-panel {
+  pointer-events: auto;
+}
+
+.nav-panel {
+  background: transparent;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.site-header.is-scrolled .nav-panel,
+.site-header.nav-open .nav-panel {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 28px rgba(46, 44, 44, 0.07);
+  border-bottom: 1px solid rgba(46, 44, 44, 0.08);
+}
+
+.nav-bar {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 14px clamp(16px, 4vw, 40px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.nav-logo img {
+  display: block;
+  height: 34px;
+  width: auto;
+}
+
+.nav-links {
+  display: none;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+  position: relative;
+}
+
+.nav-link[aria-current='page'] {
+  color: var(--color-amber);
+}
+
+.nav-link-line {
+  display: none;
+}
+
+.nav-actions {
+  display: none;
+}
+
+.btn-ticket {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  background: linear-gradient(90deg, #e7931e, #f19f0f);
+  color: #1a1510;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 0.7rem 1.1rem;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-ticket-light {
+  background: #fff;
+  border: 1px solid rgba(46, 44, 44, 0.12);
+}
+
+.nav-toggle {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  background: transparent;
+  display: grid;
+  gap: 6px;
+  place-content: center;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #2e2c2c;
+}
+
+.nav-drawer {
+  display: none;
+}
+
+.site-header.nav-open .nav-drawer {
+  display: block;
+  padding: 0 1rem 1rem;
+}
+
+.nav-drawer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.5rem 0 0.75rem;
+}
+
+@media (min-width: 900px) {
+  .nav-links,
+  .nav-actions {
+    display: flex;
+  }
+  .nav-toggle,
+  .nav-drawer {
+    display: none !important;
+  }
+}
+
+.site-footer-simple {
+  border-top: 1px solid rgba(46, 44, 44, 0.08);
+  padding: 1.5rem 1.15rem 2rem;
+  background: #fff;
+}
+
+.site-footer-simple-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-footer-simple p {
+  margin: 0.25rem 0 0;
+  color: #6b6560;
+  font-size: 0.9rem;
+}
+
+.site-footer-simple-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.site-footer-simple-links a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Admin */
+.admin-shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: calc(78px + 1.5rem) 1.15rem 3rem;
+}
+
+.admin-card {
+  background: #fff;
+  border: 1px solid rgba(46, 44, 44, 0.08);
+  border-radius: 16px;
+  padding: 1.25rem;
+}
+
+.admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.9rem;
+}
+
+.admin-field input,
+.admin-field textarea {
+  border: 1px solid rgba(46, 44, 44, 0.14);
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  padding: 0.65rem 0.4rem;
+  border-bottom: 1px solid rgba(46, 44, 44, 0.08);
+  vertical-align: top;
+}
+
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}

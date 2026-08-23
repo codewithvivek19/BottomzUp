@@ -1,0 +1,862 @@
+/* ============================================
+   BOTTOMZ UP — Phase 4 Extras
+   Reserve panel · Tonight's pick · Heat bottle
+   ============================================ */
+
+/* ---------- Logo image in header ---------- */
+.logo-img {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+}
+
+@media (min-width: 900px) {
+  .logo-img {
+    height: 44px;
+    max-width: 180px;
+  }
+}
+
+.logo--text {
+  /* fallback wordmark still available */
+}
+
+/* ---------- Burger cutouts — no plate fill (override legacy dark stage) ---------- */
+.burger-image {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.burger-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  transition: transform 0.55s var(--ease-out);
+}
+
+.burger-card:hover .burger-image img {
+  transform: scale(1.04) translateY(-2px);
+}
+
+.burger-image--photo {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+.hero-card-photo {
+  position: relative;
+  aspect-ratio: 1;
+  margin: var(--space-3) var(--space-5) 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #1a1510;
+}
+
+.hero-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.hero-card:hover .hero-card-photo img {
+  transform: scale(1.05);
+}
+
+.hero-card-visual--legacy {
+  display: none;
+}
+
+/* ---------- Tonight's pick ---------- */
+.tonight-pick {
+  position: relative;
+  margin-block: var(--space-8) 0;
+  padding: var(--space-5) var(--space-6);
+  background: var(--color-charcoal);
+  color: var(--color-cream);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(231, 147, 30, 0.35);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  display: grid;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+@media (min-width: 700px) {
+  .tonight-pick {
+    grid-template-columns: 1fr auto;
+    gap: var(--space-6);
+  }
+}
+
+.tonight-pick::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 80% at 0% 50%, rgba(231, 147, 30, 0.18), transparent 60%);
+  pointer-events: none;
+}
+
+.tonight-pick > * {
+  position: relative;
+}
+
+.tonight-pick-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-amber);
+}
+
+.tonight-pick-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-top: 0.25rem;
+}
+
+.tonight-pick-desc {
+  font-size: 0.875rem;
+  color: rgba(245, 232, 183, 0.65);
+  max-width: 40ch;
+  margin-top: 0.35rem;
+}
+
+.tonight-pick-price {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-amber);
+  white-space: nowrap;
+}
+
+.tonight-pick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.tonight-pick .btn-secondary {
+  border-color: rgba(245, 232, 183, 0.4);
+  color: var(--text-primary);
+}
+
+.tonight-pick .btn-secondary:hover {
+  background: var(--bg-cream-gradient);
+  color: transparent;
+  border-color: var(--text-primary);
+}
+
+.tonight-pick-refresh {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(245, 232, 183, 0.55);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+
+.tonight-pick-refresh:hover {
+  color: var(--color-amber);
+}
+
+/* Menu page tonight pick variant */
+.menu-hero .tonight-pick {
+  margin-top: var(--space-6);
+  max-width: 52rem;
+}
+
+/* ---------- Reserve drawer / panel — cream · amber · charcoal ---------- */
+.reserve-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(26, 25, 25, 0.58);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.28s cubic-bezier(0.25, 0.1, 0.25, 1),
+    visibility 0.28s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.reserve-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reserve-panel {
+  position: fixed;
+  z-index: 210;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 110%);
+  width: min(460px, 100%);
+  max-height: min(92dvh, 720px);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-charcoal, #2e2c2c);
+  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reserve-panel.is-open {
+  transform: translate(-50%, 0);
+}
+
+.reserve-sheet {
+  display: flex;
+  flex-direction: column;
+  max-height: min(92dvh, 640px);
+  background: #fffdf9;
+  color: var(--color-charcoal, #2e2c2c);
+  border-radius: 20px 20px 0 0;
+  box-shadow:
+    0 -10px 32px rgba(26, 25, 25, 0.18),
+    0 0 0 1px rgba(46, 44, 44, 0.06);
+  overflow: hidden;
+}
+
+/* Amber brand rail on top of sheet */
+.reserve-sheet::before {
+  content: "";
+  display: block;
+  height: 3px;
+  flex-shrink: 0;
+  background: var(--color-amber, #e7931e);
+}
+
+.reserve-grab {
+  display: flex;
+  justify-content: center;
+  padding: 0.55rem 0 0.15rem;
+  flex-shrink: 0;
+}
+
+.reserve-grab span {
+  width: 40px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(46, 44, 44, 0.16);
+}
+
+@media (min-width: 700px) {
+  .reserve-panel {
+    top: 50%;
+    bottom: auto;
+    width: min(480px, calc(100% - 2rem));
+    max-height: min(88vh, 700px);
+    transform: translate(-50%, -46%) scale(0.97);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.28s ease,
+      visibility 0.28s ease;
+  }
+
+  .reserve-panel.is-open {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .reserve-sheet {
+    border-radius: 22px;
+    max-height: min(88vh, 700px);
+    box-shadow:
+      0 28px 64px rgba(26, 25, 25, 0.22),
+      0 0 0 1px rgba(46, 44, 44, 0.06);
+  }
+
+  .reserve-grab {
+    display: none;
+  }
+}
+
+/* Header */
+.reserve-panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.35rem 1.25rem 0.85rem;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(46, 44, 44, 0.07);
+}
+
+.reserve-head-text {
+  min-width: 0;
+}
+
+.reserve-kicker {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-amber-deep, #c67a12);
+}
+
+.reserve-panel-head h2,
+.reserve-panel-head #reserveTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3.5vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  color: var(--color-ink, #1a1919);
+}
+
+.reserve-lead {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--text-muted, #5c5850);
+  max-width: 32ch;
+}
+
+.reserve-close {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(46, 44, 44, 0.12);
+  background: #ffffff;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--color-charcoal, #2e2c2c);
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.reserve-close:hover {
+  background: var(--color-amber-soft, rgba(231, 147, 30, 0.12));
+  border-color: var(--color-amber, #e7931e);
+  color: var(--color-amber-deep, #c67a12);
+}
+
+.reserve-close:focus-visible {
+  outline: 2px solid var(--color-amber, #e7931e);
+  outline-offset: 2px;
+}
+
+/* Body — minimal facts */
+.reserve-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.85rem 1.2rem 0.35rem;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.reserve-phone-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(46, 44, 44, 0.1);
+  text-decoration: none;
+  color: inherit;
+}
+
+.reserve-phone-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted, #5c5850);
+}
+
+.reserve-phone-num {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-ink, #1a1919);
+  line-height: 1.15;
+}
+
+.reserve-phone-block:hover .reserve-phone-num {
+  color: var(--color-amber-deep, #c67a12);
+}
+
+.reserve-facts {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.reserve-facts > div {
+  padding: 0.75rem 0.85rem;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(46, 44, 44, 0.08);
+}
+
+.reserve-facts dt {
+  margin: 0 0 0.3rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted, #5c5850);
+}
+
+.reserve-facts dd {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--color-charcoal, #2e2c2c);
+  font-weight: 500;
+}
+
+@media (max-width: 420px) {
+  .reserve-facts {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reserve-honesty {
+  margin: 0;
+  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(46, 44, 44, 0.05);
+  border: 1px solid rgba(46, 44, 44, 0.08);
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--text-muted, #5c5850);
+}
+
+.reserve-honesty strong {
+  color: var(--color-charcoal, #2e2c2c);
+}
+
+.reserve-partners {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.reserve-partners-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted, #5c5850);
+}
+
+.reserve-partners-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.reserve-partner-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 0.85rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(46, 44, 44, 0.12);
+  background: #ffffff;
+  color: var(--color-charcoal, #2e2c2c);
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.reserve-partner-btn:hover {
+  border-color: rgba(196, 95, 10, 0.45);
+  background: #fff8ef;
+}
+
+/* Actions */
+.reserve-actions {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem 1.2rem calc(0.9rem + env(safe-area-inset-bottom, 0px));
+  background: #fffdf9;
+  border-top: 1px solid rgba(46, 44, 44, 0.08);
+}
+
+.reserve-panel .btn-ticket,
+.reserve-panel .btn-ticket.btn-lg,
+.reserve-cta-primary,
+.reserve-cta-maps {
+  width: 100%;
+  justify-content: center;
+}
+
+.reserve-cta-primary {
+  background: var(--theme-gradient, var(--color-amber, #e7931e)) !important;
+  color: #fffef8 !important;
+  border: none;
+  box-shadow: 0 6px 18px rgba(231, 147, 30, 0.28);
+}
+
+.reserve-cta-primary:hover {
+  filter: brightness(1.03);
+}
+
+.reserve-cta-maps {
+  background: #ffffff !important;
+  color: var(--color-charcoal, #2e2c2c) !important;
+  border: 1.5px solid rgba(46, 44, 44, 0.12);
+  box-shadow: none;
+}
+
+.reserve-cta-maps:hover {
+  border-color: rgba(231, 147, 30, 0.4);
+}
+
+.reserve-sms {
+  display: inline-flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-amber-deep, #c67a12);
+  padding: 0.35rem;
+  text-decoration: none;
+}
+
+.reserve-sms:hover {
+  color: var(--color-amber, #e7931e);
+  text-decoration: underline;
+}
+
+.reserve-sms[hidden] {
+  display: none !important;
+}
+
+body.reserve-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reserve-backdrop,
+  .reserve-panel {
+    transition: none;
+  }
+}
+
+/* ---------- Wing heat bottle ---------- */
+.heat-bottle-wrap {
+  display: grid;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+  align-items: start;
+}
+
+@media (min-width: 700px) {
+  .heat-bottle-wrap {
+    grid-template-columns: 120px 1fr;
+    gap: var(--space-8);
+  }
+}
+
+
+.heat-bottle {
+  position: relative;
+  width: 88px;
+  height: 220px;
+  margin-inline: auto;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+}
+
+.heat-bottle-shape {
+  position: absolute;
+  inset: 0;
+  border-radius: 40px 40px 18px 18px;
+  background: linear-gradient(
+    180deg,
+    #a6ca1d 0%,
+    #cecb11 18%,
+    #e8ae0e 36%,
+    #f48315 55%,
+    #f04b22 75%,
+    #b22223 100%
+  );
+  box-shadow:
+    inset 0 0 0 3px rgba(46, 44, 44, 0.12),
+    0 8px 24px rgba(46, 44, 44, 0.15);
+  overflow: hidden;
+}
+
+.heat-bottle-neck {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 28px;
+  background: linear-gradient(180deg, #8fb516, #a6ca1d);
+  border-radius: 8px 8px 0 0;
+  box-shadow: inset 0 0 0 2px rgba(46, 44, 44, 0.1);
+}
+
+.heat-bottle-cap {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 42px;
+  height: 14px;
+  background: transparent;
+  border-radius: 4px;
+}
+
+.heat-bottle-label {
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  transform: translateX(-50%);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.heat-bottle-marker {
+  position: absolute;
+  left: -6px;
+  right: -6px;
+  height: 4px;
+  background: var(--bg-cream-gradient);
+  border-radius: 2px;
+  box-shadow: 0 0 0 2px transparent, 0 2px 8px rgba(0, 0, 0, 0.2);
+  top: 20%;
+  transition: top 0.25s var(--ease-out);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.heat-bottle-marker::after {
+  content: attr(data-label);
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: transparent;
+  background: var(--bg-cream-gradient);
+  padding: 0.2em 0.45em;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(46, 44, 44, 0.1);
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+}
+
+.heat-bottle-hint {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: var(--space-2);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* On charcoal sections reverse marker label */
+.menu-section--bar .heat-bottle-marker::after {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: rgba(245, 232, 183, 0.15);
+}
+
+/* ---------- Ambient bar hover ---------- */
+.menu-section--bar .menu-item {
+  position: relative;
+}
+
+.menu-section--bar .menu-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--color-amber);
+  opacity: 0;
+  transform: scaleY(0.4);
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
+}
+
+.menu-section--bar .menu-item:hover::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.menu-section--bar .menu-item:hover .menu-item-name {
+  color: var(--color-amber);
+}
+
+.drink-group .menu-item {
+  border-radius: var(--radius-sm);
+}
+
+/* Soft glow on featured bar items */
+.menu-item--featured {
+  background: rgba(231, 147, 30, 0.08);
+  border-radius: var(--radius-md);
+  padding-inline: var(--space-3);
+  margin-inline: calc(var(--space-3) * -1);
+  border-bottom-color: transparent !important;
+}
+
+.menu-section--bar .menu-item--featured {
+  box-shadow: inset 0 0 0 1px rgba(231, 147, 30, 0.2);
+}
+
+/* ---------- Map / visit polish with logo ---------- */
+.visit-logo {
+  width: 120px;
+  height: auto;
+  opacity: 0.9;
+  margin-bottom: var(--space-3);
+  filter: brightness(1.1);
+}
+
+/* footer-phone as button */
+button.footer-phone {
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(231, 147, 30, 0.35);
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  margin-top: var(--space-3);
+  font-weight: 600;
+  color: var(--color-amber);
+  font-size: 0.9375rem;
+  width: fit-content;
+  font-family: var(--font-body);
+}
+
+button.footer-phone:hover {
+  border-color: var(--color-amber);
+}
+
+button.menu-float-chip {
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+/* Heat bottle on charcoal homepage wings */
+.wings-beer .heat-bottle-marker::after {
+  background: var(--color-charcoal);
+  color: var(--color-cream);
+  border-color: rgba(245, 232, 183, 0.2);
+}
+
+.wings-beer .heat-bottle-hint {
+  color: rgba(245, 232, 183, 0.5);
+}
+
+.wings-beer .heat-scale .heat-chip {
+  border-color: rgba(245, 232, 183, 0.2);
+  color: rgba(245, 232, 183, 0.85);
+  background: transparent;
+}
+
+.wings-beer .heat-scale .heat-chip.is-active {
+  background: var(--color-amber);
+  border-color: var(--color-amber);
+  color: var(--color-ink);
+}
+
+.home-heat {
+  margin-top: var(--space-5);
+}
+
+/* Logo on dark footer */
+.site-footer .logo-img,
+.site-footer .nav-logo img {
+  filter: none;
+  max-width: 150px;
+  height: 36px;
+  width: auto;
+}
+
+/* Reserve panel ticket CTA */
+.reserve-panel .btn-ticket {
+  width: 100%;
+}
+
+.reserve-panel .btn-ticket.btn-lg {
+  width: 100%;
+}
+
+/* price stamp over photos */
+.burger-image--photo .price-stamp,
+.burger-image--photo .card-badge {
+  z-index: 2;
+}
+
+.burger-image--photo img {
+  position: relative;
+  inset: auto;
+}
+
+.burger-image--photo {
+  position: relative;
+  background: transparent !important;
+}
+
+/* Dark surfaces: lighten logo for contrast */
+.site-footer .logo-img,
+.map-placeholder .visit-logo {
+  filter: brightness(0) invert(1) sepia(0.35) saturate(2) hue-rotate(5deg);
+  opacity: 0.95;
+}
+
+.map-placeholder .visit-logo {
+  filter: brightness(0) invert(0.92) sepia(0.4) saturate(2.2) hue-rotate(5deg);
+}

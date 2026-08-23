@@ -1,0 +1,4 @@
+/* Intentionally minimal.
+   Existing marketing pages are served as exact vanilla HTML via rewrites
+   and do not use this file. /events and /admin load legacy CSS from
+   (app)/layout.tsx — do not introduce a competing design system here. */
