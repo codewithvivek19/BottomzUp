@@ -11,31 +11,40 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-dynamic';
 
-export default async function EventsPage() {
-  const rows = await prisma.event.findMany({
-    where: { published: true },
-    orderBy: { startsAt: 'asc' },
-  });
+async function loadPublishedEvents(): Promise<RestaurantEvent[]> {
+  try {
+    const rows = await prisma.event.findMany({
+      where: { published: true },
+      orderBy: { startsAt: 'asc' },
+    });
+    return rows.map((e) => ({
+      id: e.id,
+      title: e.title,
+      description: e.description,
+      startsAt: e.startsAt.toISOString(),
+      endsAt: e.endsAt ? e.endsAt.toISOString() : null,
+      imageUrl: e.imageUrl,
+      published: e.published,
+    }));
+  } catch (err) {
+    console.error('[events] failed to load published events', err);
+    return [];
+  }
+}
 
-  const initialEvents: RestaurantEvent[] = rows.map((e) => ({
-    id: e.id,
-    title: e.title,
-    description: e.description,
-    startsAt: e.startsAt.toISOString(),
-    endsAt: e.endsAt ? e.endsAt.toISOString() : null,
-    imageUrl: e.imageUrl,
-    published: e.published,
-  }));
+export default async function EventsPage() {
+  const initialEvents = await loadPublishedEvents();
 
   return (
-    <section className="ev-page">
+    <main className="ev-page" id="main">
       <header className="ev-hero">
-        <p className="ev-hero-kicker">Live calendar</p>
         <h1>What&apos;s on at the house</h1>
-        <p>Highlighted nights are booked. Tap a date for times, details, and directions.</p>
+        <p>
+          Highlighted nights are live. Tap a date for times and details, or request a private date below.
+        </p>
       </header>
       <EventsCalendar initialEvents={initialEvents} />
       <EventsHostCta />
-    </section>
+    </main>
   );
 }

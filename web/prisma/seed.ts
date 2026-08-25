@@ -42,7 +42,7 @@ async function main() {
             'Bone-in wings, 10 house sauces. Half-price baskets 5-7pm. Full bar.',
           startsAt: mk(now.getDate() + 1, 17),
           endsAt: new Date(mk(now.getDate() + 1, 17).getTime() + 3 * 60 * 60 * 1000),
-          imageUrl: '/assets/images/venue/venue-9.jpg',
+          imageUrl: '/legacy/assets/images/venue/venue-9.jpg',
           published: true,
         },
         {
@@ -51,7 +51,7 @@ async function main() {
             'Teams of up to 6. Prizes for top scores. Full bar and wing specials all night. Walk-ins welcome - grab a table early.',
           startsAt: mk(now.getDate() + 3, 19),
           endsAt: new Date(mk(now.getDate() + 3, 19).getTime() + 2 * 60 * 60 * 1000),
-          imageUrl: '/assets/images/venue/venue-6.jpg',
+          imageUrl: '/legacy/assets/images/venue/venue-6.jpg',
           published: true,
         },
         {
@@ -60,7 +60,7 @@ async function main() {
             'Back Alley Burgers flying off the grill. Walk-ins welcome. Patio open weather permitting.',
           startsAt: mk(now.getDate() + 5, 18),
           endsAt: new Date(mk(now.getDate() + 5, 18).getTime() + 4 * 60 * 60 * 1000),
-          imageUrl: '/assets/images/venue/venue-4.jpg',
+          imageUrl: '/legacy/assets/images/venue/venue-4.jpg',
           published: true,
         },
         {
@@ -69,7 +69,7 @@ async function main() {
             'Acoustic sets on the floor, smash burgers on the grill. No cover. Call ahead for larger groups.',
           startsAt: mk(now.getDate() + 10, 17),
           endsAt: new Date(mk(now.getDate() + 10, 17).getTime() + 3 * 60 * 60 * 1000),
-          imageUrl: '/assets/images/venue/venue-2.jpg',
+          imageUrl: '/legacy/assets/images/venue/venue-2.jpg',
           published: true,
         },
       ],

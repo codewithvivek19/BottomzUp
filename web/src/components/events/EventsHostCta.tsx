@@ -96,12 +96,12 @@ export function EventsHostCta() {
         <div className="ev-host-copy">
           <h2 id={`${formId}-title`}>Host a birthday or private event</h2>
           <p>
-            Birthdays, dinners, and closed gatherings. Tell us the date and headcount. We will follow up with options that fit the room.
+            Birthdays, dinners, and closed gatherings. Pick a date and headcount. We follow up with options that fit the room.
           </p>
           <ul className="ev-host-points">
             <li>Private and semi-private setups</li>
             <li>House menu or catering packages</li>
-            <li>South Boston, VA. Easy to find.</li>
+            <li>2001 Seymour Dr, South Boston, VA</li>
           </ul>
         </div>
 
@@ -166,11 +166,24 @@ export function EventsHostCta() {
               <div className="ev-host-row">
                 <label className="ev-host-field">
                   <span>Phone</span>
-                  <input type="tel" name="phone" autoComplete="tel" required />
+                  <input
+                    type="tel"
+                    name="phone"
+                    autoComplete="tel"
+                    inputMode="tel"
+                    placeholder="(434) 555-0123"
+                    required
+                  />
                 </label>
                 <label className="ev-host-field">
                   <span>Email</span>
-                  <input type="email" name="email" autoComplete="email" required />
+                  <input
+                    type="email"
+                    name="email"
+                    autoComplete="email"
+                    placeholder="you@email.com"
+                    required
+                  />
                 </label>
               </div>
 

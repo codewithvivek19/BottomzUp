@@ -17,13 +17,13 @@ export default function AppSurfaceLayout({ children }: { children: React.ReactNo
         rel="stylesheet"
       />
       <link rel="stylesheet" href="/legacy/css/base.css" />
-      <link rel="stylesheet" href="/legacy/css/home.css?v=15" />
-      <link rel="stylesheet" href="/legacy/css/nav.css?v=4" />
+      <link rel="stylesheet" href="/legacy/css/home.css?v=18" />
+      <link rel="stylesheet" href="/legacy/css/nav.css?v=18" />
       <link rel="stylesheet" href="/legacy/css/extras.css?v=5" />
       <link rel="stylesheet" href="/legacy/css/atmosphere.css?v=3" />
       <link rel="stylesheet" href="/legacy/css/footer-impact.css?v=7" />
       <link rel="stylesheet" href="/legacy/css/sizzle.css?v=2" />
-      <link rel="stylesheet" href="/legacy/css/site-polish.css?v=8" />
+      <link rel="stylesheet" href="/legacy/css/site-polish.css?v=18" />
       <link rel="stylesheet" href="/legacy/css/forms-lead.css?v=7" />
       <LegacyChrome>{children}</LegacyChrome>
     </>

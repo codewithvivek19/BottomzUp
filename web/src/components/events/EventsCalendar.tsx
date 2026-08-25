@@ -30,6 +30,8 @@ export function EventsCalendar({ initialEvents }: { initialEvents: RestaurantEve
   const [cursor, setCursor] = useState(() => startOfMonth(new Date()));
   const [events, setEvents] = useState(initialEvents);
   const [loading, setLoading] = useState(false);
+  const [loadError, setLoadError] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
   const [peekDay, setPeekDay] = useState<string | null>(null);
   const [activeDay, setActiveDay] = useState<string | null>(null);
   const [activeEventId, setActiveEventId] = useState<string | null>(null);
@@ -40,12 +42,18 @@ export function EventsCalendar({ initialEvents }: { initialEvents: RestaurantEve
   useEffect(() => {
     const from = startOfWeek(startOfMonth(cursor)).toISOString();
     const to = endOfWeek(endOfMonth(cursor)).toISOString();
-    let cancelled = false;
+    const controller = new AbortController();
     setLoading(true);
-    fetch(`/api/events?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`)
-      .then((r) => r.json())
+    setLoadError(false);
+    fetch(`/api/events?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`, {
+      signal: controller.signal,
+    })
+      .then(async (r) => {
+        if (!r.ok) throw new Error('bad status');
+        return r.json();
+      })
       .then((data) => {
-        if (cancelled || !Array.isArray(data.events)) return;
+        if (!Array.isArray(data.events)) throw new Error('bad payload');
         setEvents(
           data.events.map((e: RestaurantEvent & { startsAt: string | Date }) => ({
             ...e,
@@ -53,15 +61,19 @@ export function EventsCalendar({ initialEvents }: { initialEvents: RestaurantEve
             endsAt: e.endsAt ? new Date(e.endsAt).toISOString() : null,
           }))
         );
+        setLoadError(false);
       })
-      .catch(() => {})
+      .catch((err) => {
+        if (err?.name === 'AbortError') return;
+        setLoadError(true);
+      })
       .finally(() => {
-        if (!cancelled) setLoading(false);
+        if (!controller.signal.aborted) setLoading(false);
       });
     return () => {
-      cancelled = true;
+      controller.abort();
     };
-  }, [cursor]);
+  }, [cursor, reloadKey]);
 
   const deepLinked = useRef(false);
   useEffect(() => {
@@ -184,11 +196,7 @@ export function EventsCalendar({ initialEvents }: { initialEvents: RestaurantEve
               <button type="button" className="ev-today-btn" onClick={goToday}>
                 Today
               </button>
-            ) : (
-              <span className="ev-today-pill" aria-hidden="true">
-                This month
-              </span>
-            )}
+            ) : null}
           </div>
           <div className="ev-cal-toolbar-nav">
             <button
@@ -213,6 +221,19 @@ export function EventsCalendar({ initialEvents }: { initialEvents: RestaurantEve
             </button>
           </div>
         </div>
+
+        {loadError ? (
+          <div className="ev-cal-banner" role="alert">
+            <p>Couldn&apos;t refresh this month. Showing what we already have.</p>
+            <button
+              type="button"
+              className="ev-today-btn"
+              onClick={() => setReloadKey((k) => k + 1)}
+            >
+              Try again
+            </button>
+          </div>
+        ) : null}
 
         <div className="ev-cal-weekdays" aria-hidden="true">
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d) => (
@@ -344,12 +365,19 @@ export function EventsCalendar({ initialEvents }: { initialEvents: RestaurantEve
           </ul>
         ) : (
           <div className="ev-upcoming-empty">
-            <p>No published nights in this window yet.</p>
-            <p>Check back soon, or call the house.</p>
-            <a className="btn-ticket" href="tel:+14345755753">
-              <span className="btn-hover-fill" aria-hidden="true" />
-              <span className="btn-label">Call (434) 575-5753</span>
-            </a>
+            <p className="ev-upcoming-empty-title">Quiet stretch</p>
+            <p>No published nights in this window yet. Check another month, or call the house.</p>
+            <div className="ev-upcoming-empty-actions">
+              {!isCurrentMonth ? (
+                <button type="button" className="ev-today-btn" onClick={goToday}>
+                  Jump to today
+                </button>
+              ) : null}
+              <a className="btn-ticket" href="tel:+14345755753">
+                <span className="btn-hover-fill" aria-hidden="true" />
+                <span className="btn-label">Call (434) 575-5753</span>
+              </a>
+            </div>
           </div>
         )}
       </aside>

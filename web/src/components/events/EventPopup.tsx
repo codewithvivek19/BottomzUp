@@ -144,22 +144,28 @@ export function EventPopup({ events, selected, onSelect, onClose }: Props) {
           </div>
         ) : null}
 
-        <div className={`ev-modal-media${selected.imageUrl ? '' : ' is-empty'}`}>
-          {selected.imageUrl ? (
+        {selected.imageUrl ? (
+          <div className="ev-modal-media">
             <img src={selected.imageUrl} alt="" width={800} height={450} />
-          ) : (
-            <div className="ev-modal-media-fallback" aria-hidden="true">
-              <span>Bottomz Up</span>
-            </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="ev-modal-banner" aria-hidden="true">
+            <span className="ev-modal-banner-mark">Bottomz Up</span>
+          </div>
+        )}
 
         <div className="ev-modal-body">
           <p className="ev-modal-when">{whenLabel}</p>
           <h3 id={titleId} className="ev-modal-title">
             {selected.title}
           </h3>
-          <p className="ev-modal-desc">{selected.description}</p>
+          {selected.description?.trim() ? (
+            <p className="ev-modal-desc">{selected.description}</p>
+          ) : (
+            <p className="ev-modal-desc ev-modal-desc--soft">
+              Details at the house. Call ahead for timing, seating, and specials.
+            </p>
+          )}
           <div className="ev-modal-actions">
             <a className="btn-ticket" href="tel:+14345755753">
               <span className="btn-hover-fill" aria-hidden="true" />
@@ -168,7 +174,11 @@ export function EventPopup({ events, selected, onSelect, onClose }: Props) {
                 ↗
               </span>
             </a>
-            <a className="btn-ticket btn-ticket-light" href={buildIcs(selected)} download={`${selected.title}.ics`}>
+            <a
+              className="btn-ticket btn-ticket-light"
+              href={buildIcs(selected)}
+              download={`${selected.title.replace(/[^\w\-]+/g, '-')}.ics`}
+            >
               <span className="btn-hover-fill" aria-hidden="true" />
               <span className="btn-label">Add to calendar</span>
             </a>

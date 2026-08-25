@@ -21,40 +21,31 @@
   padding:
     calc(var(--header-height, 78px) + clamp(1.25rem, 3vw, 2rem))
     clamp(1rem, 3.5vw, 1.75rem)
-    calc(5.75rem + env(safe-area-inset-bottom, 0px));
+    clamp(2.5rem, 5vw, 3.5rem);
   max-width: 1120px;
   margin: 0 auto;
 }
 
 .ev-hero {
-  margin-bottom: clamp(1.5rem, 3.5vw, 2.25rem);
-  max-width: 34rem;
-}
-
-.ev-hero-kicker {
-  margin: 0 0 0.55rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ev-amber-deep);
+  margin-bottom: clamp(1.35rem, 3.2vw, 2rem);
+  max-width: 36rem;
 }
 
 .ev-hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  font-size: clamp(2rem, 4.5vw, 2.85rem);
   letter-spacing: -0.03em;
-  margin: 0 0 0.65rem;
+  margin: 0 0 0.7rem;
   color: var(--ev-ink);
-  line-height: 1.05;
+  line-height: 1.06;
 }
 
 .ev-hero p {
   margin: 0;
   color: var(--ev-muted);
   line-height: 1.55;
-  font-size: 1rem;
-  max-width: 40ch;
+  font-size: 1.02rem;
+  max-width: 42ch;
 }
 
 .ev-shell {
@@ -163,17 +154,30 @@
   transform: scale(0.96);
 }
 
-.ev-today-pill {
-  cursor: default;
-  opacity: 0.85;
-  border-color: transparent;
-  background: rgba(46, 44, 44, 0.05);
-  color: var(--ev-muted);
-}
-
 .ev-cal-toolbar-nav {
   display: flex;
   gap: 0.4rem;
+}
+
+.ev-cal-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  margin: 0 0 0.85rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 14px;
+  border: 1px solid rgba(231, 147, 30, 0.28);
+  background: #fff8ec;
+}
+
+.ev-cal-banner p {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ev-ink);
+  line-height: 1.35;
 }
 
 .ev-nav-btn {
@@ -551,10 +555,26 @@
   gap: 0.55rem;
 }
 
+.ev-upcoming-empty-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  color: var(--ev-ink);
+}
+
 .ev-upcoming-empty p {
   margin: 0;
   font-size: 0.92rem;
   line-height: 1.45;
+}
+
+.ev-upcoming-empty-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+  margin-top: 0.25rem;
 }
 
 /* Modal */
@@ -702,32 +722,42 @@
   overflow: hidden;
 }
 
-.ev-modal-media.is-empty {
-  margin-top: 0;
-}
-
-.ev-modal-media img,
-.ev-modal-media-fallback {
+.ev-modal-media img {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
+  object-position: center 35%;
   display: block;
+  background: #f4f0e6;
 }
 
-.ev-modal-media-fallback {
+.ev-modal-banner {
+  margin-top: 0.75rem;
+  min-height: 72px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
   background:
-    linear-gradient(135deg, #fff8ec, #f4f0e6),
-    radial-gradient(circle at 80% 20%, rgba(231, 147, 30, 0.35), transparent 45%);
-  display: grid;
-  place-items: center;
-  color: var(--ev-amber-deep);
+    linear-gradient(120deg, #fff8ec 0%, #fffdf9 55%, #f7f3ea 100%);
+  border-bottom: 1px solid var(--ev-line);
+}
+
+.ev-modal-banner-mark {
   font-family: var(--font-display, "Lemon Milk", system-ui);
+  font-size: 0.95rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ev-amber-deep);
 }
 
 .ev-modal-body {
   padding: 1.05rem 1.2rem 1.45rem;
+}
+
+.ev-modal-desc--soft {
+  color: #7a746c;
+  font-style: normal;
 }
 
 .ev-modal-when {

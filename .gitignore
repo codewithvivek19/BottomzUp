@@ -39,3 +39,6 @@ web/prisma/*.db-journal
 web/public/uploads/*
 !web/public/uploads/events/
 !web/public/uploads/events/.gitkeep
+
+# Temporary / Quarantine
+_quarantine/
