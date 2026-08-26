@@ -6,32 +6,44 @@ import { eventCreateSchema, normalizeImageUrl } from '@/lib/event-schema';
 import { requireAdmin } from '@/lib/require-admin';
 
 export async function GET(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  const from = searchParams.get('from');
-  const to = searchParams.get('to');
-  const all = searchParams.get('all') === '1';
+  try {
+    const { searchParams } = new URL(req.url);
+    const from = searchParams.get('from');
+    const to = searchParams.get('to');
+    const all = searchParams.get('all') === '1';
 
-  const session = await getServerSession(authOptions);
-  const isAdmin = Boolean(session?.user);
+    let isAdmin = false;
+    try {
+      const session = await getServerSession(authOptions);
+      isAdmin = Boolean(session?.user);
+    } catch (err) {
+      // Public calendar must still work if auth session lookup fails.
+      console.error('[api/events] session lookup failed', err);
+    }
 
-  const where: {
-    published?: boolean;
-    startsAt?: { gte?: Date; lte?: Date };
-  } = {};
+    const where: {
+      published?: boolean;
+      startsAt?: { gte?: Date; lte?: Date };
+    } = {};
 
-  if (!isAdmin || !all) where.published = true;
-  if (from || to) {
-    where.startsAt = {};
-    if (from) where.startsAt.gte = new Date(from);
-    if (to) where.startsAt.lte = new Date(to);
+    if (!isAdmin || !all) where.published = true;
+    if (from || to) {
+      where.startsAt = {};
+      if (from) where.startsAt.gte = new Date(from);
+      if (to) where.startsAt.lte = new Date(to);
+    }
+
+    const events = await prisma.event.findMany({
+      where,
+      orderBy: { startsAt: 'asc' },
+    });
+
+    return NextResponse.json({ events });
+  } catch (err) {
+    console.error('[api/events] GET failed', err);
+    // Soft-fail for the public calendar: empty list beats a hard 500.
+    return NextResponse.json({ events: [], error: 'unavailable' }, { status: 200 });
   }
-
-  const events = await prisma.event.findMany({
-    where,
-    orderBy: { startsAt: 'asc' },
-  });
-
-  return NextResponse.json({ events });
 }
 
 export async function POST(req: NextRequest) {

@@ -2,8 +2,10 @@ import { withAuth } from 'next-auth/middleware';
 import { NextResponse } from 'next/server';
 
 /**
- * Protect manager surfaces. Login stays public.
- * No public-site links — managers open /admin/login by URL.
+ * Auth gate for manager surfaces only.
+ *
+ * Public /events is NOT matched here — it must stay open.
+ * Login stays public. Managers open /admin/login by URL.
  */
 export default withAuth(
   function middleware() {

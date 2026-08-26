@@ -1,15 +1,17 @@
 import type { NextConfig } from "next";
 
 /**
- * Exact design: vanilla HTML/CSS/JS for existing pages.
- * React only for /events and /admin.
+ * Architecture:
+ * - Vanilla HTML in /public/legacy for most marketing pages (rewritten).
+ * - React App Router ONLY for /events (public calendar) and /admin/*.
  *
- * Events routing rule: every legacy/static Events URL must land on the
- * React calendar. Use redirects (run before public/) so the Antigravity
- * static clone in public/legacy cannot win.
+ * Events source of truth: web/src/app/(app)/events/page.tsx
+ * Legacy static Events HTML under public/legacy is redirect stubs only.
+ * Do not reintroduce a second calendar implementation.
  */
 const nextConfig: NextConfig = {
   async redirects() {
+    // Redirects run before public/ files, so stubs cannot win.
     return [
       { source: "/events.html", destination: "/events", permanent: true },
       { source: "/pages/events.html", destination: "/events", permanent: true },
@@ -30,6 +32,7 @@ const nextConfig: NextConfig = {
       { source: "/menu/", destination: "/legacy/pages/menu.html" },
       { source: "/catering", destination: "/legacy/pages/catering.html" },
       { source: "/catering/", destination: "/legacy/pages/catering.html" },
+      // Normalize trailing slash to the App Router page (no second calendar).
       { source: "/events/", destination: "/events" },
     ];
   },
