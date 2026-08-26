@@ -2,7 +2,18 @@ import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import { prisma } from './prisma';
+import { getSiteUrl } from './site-url';
 
+/**
+ * NextAuth config for local + Vercel.
+ *
+ * Production requirements (Vercel project env):
+ * - NEXTAUTH_SECRET
+ * - NEXTAUTH_URL = https://YOUR_REAL_DOMAIN  (or omit; we fall back to VERCEL_URL)
+ * - DATABASE_URL / DIRECT_URL
+ *
+ * Do NOT set NEXTAUTH_URL=http://localhost:3000 in Vercel.
+ */
 export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt',
@@ -42,6 +53,21 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
+    async redirect({ url, baseUrl }) {
+      // Keep admin redirects on the current host (prod or local), never localhost-only.
+      const site = getSiteUrl() || baseUrl;
+      if (url.startsWith('/')) return `${site}${url}`;
+      try {
+        const next = new URL(url);
+        const allowed = new URL(site);
+        if (next.origin === allowed.origin) return url;
+      } catch {
+        /* ignore bad url */
+      }
+      return site;
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
+  // Secure cookies automatically on HTTPS production hosts.
+  useSecureCookies: process.env.NODE_ENV === 'production',
 };
