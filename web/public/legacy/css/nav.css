@@ -543,7 +543,8 @@ body.nav-open::after {
   }
 }
 
-/* ---------- Sticky CTA / floating dock (appears past hero) ---------- */
+/* ---------- Sticky dock — Apple-style floating bar ---------- */
+/* Layout: [icon Menu] [Order Online text] [icon Call] — no side labels */
 .sticky-cta {
   position: fixed;
   left: 0;
@@ -553,16 +554,16 @@ body.nav-open::after {
   pointer-events: none;
   padding:
     0
-    max(0.75rem, env(safe-area-inset-left, 0px))
-    calc(0.65rem + env(safe-area-inset-bottom, 0px))
-    max(0.75rem, env(safe-area-inset-right, 0px));
+    max(1rem, env(safe-area-inset-left, 0px))
+    calc(0.9rem + env(safe-area-inset-bottom, 0px))
+    max(1rem, env(safe-area-inset-right, 0px));
   transform: translateY(120%);
   opacity: 0;
   visibility: hidden;
   transition:
-    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.3s ease,
-    visibility 0.3s ease;
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.28s ease,
+    visibility 0.28s ease;
 }
 
 .sticky-cta.is-visible {
@@ -574,90 +575,136 @@ body.nav-open::after {
 
 .sticky-cta-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr) minmax(0, 1fr);
+  grid-template-columns: 52px minmax(0, 1fr) 52px;
   align-items: center;
   gap: 0.45rem;
   width: 100%;
-  max-width: min(560px, 100%);
+  max-width: min(360px, 100%);
   margin: 0 auto;
-  padding: 0.5rem;
-  background: rgba(30, 28, 27, 0.96);
-  color: #fff7e8;
+  padding: 0.35rem;
   border-radius: 999px;
+  /* Frosted glass capsule (web approximation of system materials) */
+  background: rgba(28, 28, 30, 0.78);
+  border: 0.5px solid rgba(255, 255, 255, 0.18);
   box-shadow:
-    0 1px 0 rgba(255, 253, 249, 0.08) inset,
-    0 14px 36px rgba(0, 0, 0, 0.28);
-  border: 1px solid rgba(245, 232, 183, 0.12);
-  backdrop-filter: blur(16px) saturate(1.15);
-  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
 }
 
 .sticky-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
-  padding: 0.55rem 0.75rem;
-  font-size: 0.82rem;
-  font-weight: 650;
-  font-family: var(--font-body);
-  border-radius: 99px;
+  margin: 0;
+  font-family: var(--font-body, system-ui, -apple-system, sans-serif);
   text-decoration: none;
   white-space: nowrap;
-  text-align: center;
+  -webkit-tap-highlight-color: transparent;
   transition:
     background 0.2s ease,
-    border-color 0.2s ease,
     color 0.2s ease,
     transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.2s ease;
-  -webkit-tap-highlight-color: transparent;
+    filter 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
+/* Side icon hits — circles, SVG only */
 .sticky-btn-menu,
 .sticky-btn-call {
-  color: #fff7e8;
-  border: 1.5px solid rgba(245, 232, 183, 0.28);
-  background: transparent;
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  min-height: 52px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: #f5f5f7;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+  font-size: 0; /* belt-and-suspenders: never show accidental text */
+  line-height: 0;
+  overflow: hidden;
+}
+
+.sticky-btn-call {
+  color: #fff;
+  background: linear-gradient(180deg, #f2a53a 0%, #e7931e 100%);
+  box-shadow: 0 4px 14px rgba(231, 147, 30, 0.35);
+}
+
+.sticky-btn-menu .sticky-ico,
+.sticky-btn-call .sticky-ico,
+.sticky-btn-menu svg.sticky-ico,
+.sticky-btn-call svg.sticky-ico {
+  display: block;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* Kill any leftover label nodes if an old build injects them */
+.sticky-btn-menu .sticky-btn-text,
+.sticky-btn-call .sticky-btn-text,
+.sticky-btn-menu [data-contact="call-label"],
+.sticky-btn-call [data-contact="call-label"],
+.sticky-btn-menu::after,
+.sticky-btn-call::after,
+.sticky-btn-menu::before,
+.sticky-btn-call::before {
+  content: none !important;
+  display: none !important;
+  font-size: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .sticky-btn-menu:hover,
+  .sticky-btn-menu:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.04);
+  }
+
   .sticky-btn-call:hover {
-    background: rgba(245, 232, 183, 0.1);
-    border-color: rgba(245, 232, 183, 0.55);
-    color: #ffffff;
-    transform: translateY(-1px);
+    filter: brightness(1.06);
+    transform: scale(1.04);
   }
 }
 
 .sticky-btn-menu:active,
 .sticky-btn-call:active {
-  transform: scale(0.97);
+  transform: scale(0.92);
 }
 
-/* Primary center CTA — Order Online */
+/* Center — Order Online text only */
 .sticky-cta .sticky-btn-order {
-  min-height: 48px;
-  padding: 0.7rem 1rem;
-  justify-content: center;
-  background: linear-gradient(135deg, #e7931e, #c67a12);
-  color: #1a1510;
+  min-height: 52px;
+  width: 100%;
+  padding: 0 1rem;
   border: 0;
-  box-shadow:
-    0 1px 0 rgba(255, 253, 249, 0.35) inset,
-    0 6px 18px rgba(198, 122, 18, 0.35);
-  font-size: 0.88rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f4b445 0%, #e7931e 55%, #d48416 100%);
+  color: #1c1c1e;
+  font-size: 0.94rem;
   font-weight: 700;
+  letter-spacing: -0.02em;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 6px 18px rgba(231, 147, 30, 0.4);
 }
 
-.sticky-cta .sticky-btn-order .btn-hover-fill {
-  background: linear-gradient(180deg, #fff7e8 0%, #ffe0a3 100%);
+.sticky-cta .sticky-btn-order .btn-hover-fill,
+.sticky-cta .sticky-btn-order .btn-arrow,
+.sticky-cta .sticky-btn-order .sticky-order-ico {
+  display: none !important;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .sticky-cta .sticky-btn-order:hover {
-    color: #1a1510;
     filter: brightness(1.04);
     transform: translateY(-1px);
   }
@@ -667,50 +714,40 @@ body.nav-open::after {
   transform: scale(0.98);
 }
 
-/* Compact phones: keep 3 equal-ish actions, shorter call label via CSS */
 @media (max-width: 720px) {
   .sticky-cta-inner {
     max-width: 100%;
-    gap: 0.35rem;
-    padding: 0.45rem;
+    grid-template-columns: 48px minmax(0, 1fr) 48px;
+    gap: 0.4rem;
+    padding: 0.3rem;
   }
 
-  .sticky-btn {
-    min-height: 44px;
-    padding: 0.5rem 0.45rem;
-    font-size: 0.78rem;
+  .sticky-btn-menu,
+  .sticky-btn-call {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
   }
 
   .sticky-cta .sticky-btn-order {
-    min-height: 46px;
-    padding: 0.55rem 0.55rem;
-    font-size: 0.82rem;
-  }
-
-  .sticky-cta .sticky-btn-order .btn-arrow {
-    display: none;
+    min-height: 48px;
+    font-size: 0.9rem;
+    padding: 0 0.85rem;
   }
 }
 
-@media (max-width: 380px) {
-  .sticky-btn-call [data-contact="call-label"] {
-    font-size: 0;
+@media (min-width: 721px) {
+  .sticky-cta-inner {
+    max-width: min(400px, 100%);
   }
+}
 
-  .sticky-btn-call [data-contact="call-label"]::after {
-    content: "Call";
-    font-size: 0.78rem;
-    font-weight: 650;
-  }
-
-  .sticky-cta .sticky-btn-order .btn-label {
-    font-size: 0;
-  }
-
-  .sticky-cta .sticky-btn-order .btn-label::after {
-    content: "Order";
-    font-size: 0.82rem;
-    font-weight: 700;
+@media (prefers-reduced-transparency: reduce) {
+  .sticky-cta-inner {
+    background: #1c1c1e;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 }
 
@@ -749,6 +786,8 @@ body.reserve-open .sticky-cta {
 .nav-link:focus-visible,
 .btn-ticket:focus-visible,
 .sticky-btn-menu:focus-visible,
+.sticky-btn-call:focus-visible,
+.sticky-cta .sticky-btn-order:focus-visible,
 .nav-toggle:focus-visible {
   outline: 2px solid var(--nav-active, #e7931e);
   outline-offset: 3px;

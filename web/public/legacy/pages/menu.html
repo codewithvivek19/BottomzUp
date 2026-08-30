@@ -168,24 +168,30 @@
     </div>
   </main>
 
-  <!-- Sticky dock — same pattern as home (hide when footer enters) -->
-  <!-- Sticky conversion dock -->
+  <!-- Sticky dock: icon Menu · text Order Online · icon Call (no side text) -->
   <aside class="sticky-cta" id="stickyCta" aria-label="Quick actions" aria-hidden="true">
-    <div class="container sticky-cta-inner">
-      <a href="/menu" class="sticky-btn sticky-btn-menu">Menu</a>
+    <div class="sticky-cta-inner">
+      <a href="/menu" class="sticky-btn sticky-btn-menu" aria-label="Menu">
+        <svg class="sticky-ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M16 6v8h2.5v8H21V2c-2.76 0-5 2.24-5 4zM11 9H9V2H7v7H5V2H3v7c0 2.21 1.79 4 4 4v9h2v-9c2.21 0 4-1.79 4-4V2h-2v7z"/>
+        </svg>
+      </a>
       <a
-        class="btn-ticket sticky-btn-order"
+        class="sticky-btn sticky-btn-order"
         data-contact="order"
         href="https://order.toasttab.com/online/bottomz-up-2001-seymour-dr"
         target="_blank"
         rel="noopener noreferrer"
+      >Order Online</a>
+      <a
+        class="sticky-btn sticky-btn-call"
+        data-contact="call"
+        href="tel:+14345755753"
+        aria-label="Call for Order"
       >
-        <span class="btn-hover-fill" aria-hidden="true"></span>
-        <span class="btn-label">Order Online</span>
-        <span class="btn-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="sticky-btn sticky-btn-call" data-contact="call" href="tel:+14345755753">
-        <span data-contact="call-label">Call for Order</span>
+        <svg class="sticky-ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.28-.27.67-.36 1.02-.24 1.12.37 2.32.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
       </a>
     </div>
   </aside>

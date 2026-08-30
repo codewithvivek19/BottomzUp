@@ -436,13 +436,40 @@
   .scroll-line { animation: none; opacity: 0.6; }
 }
 
-/* ---------- Marquee — Explore Popular Dishes ---------- */
+/* ---------- Marquee — What we're known for ---------- */
+/*
+  Soft handoff: sits UNDER the hero so plates/glow overlay this section.
+  Background MUST stay transparent — no cream/white section fill.
+*/
 .fbx-marquee,
-.marquee-section {
+.marquee-section,
+section.fbx-marquee,
+section.marquee-section,
+#menu-preview {
   position: relative;
-  padding-block: clamp(1.1rem, 3vw, 2rem) clamp(1.85rem, 4vw, 3rem);
-  overflow: hidden;
-  background: #ffffff;
+  z-index: 1;
+  margin-top: clamp(-140px, -20vh, -88px);
+  padding-top: clamp(6.5rem, 15vh, 10.5rem);
+  padding-bottom: clamp(1.85rem, 4vw, 3rem);
+  overflow-x: clip;
+  overflow-y: visible;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* No section color wash / deco blobs */
+.fbx-marquee::before,
+.marquee-section::before,
+.fbx-marquee::after,
+.marquee-section::after {
+  content: none !important;
+  display: none !important;
+}
+
+.fbx-marquee .fbx-deco,
+.marquee-section .fbx-deco {
+  display: none !important;
 }
 
 .marquee-head {
@@ -535,12 +562,12 @@
 
 .marquee-fade--left {
   left: 0;
-  background: linear-gradient(90deg, #fffdf9, transparent);
+  background: linear-gradient(90deg, rgba(255, 253, 249, 0.97), transparent);
 }
 
 .marquee-fade--right {
   right: 0;
-  background: linear-gradient(270deg, #fffdf9, transparent);
+  background: linear-gradient(270deg, rgba(255, 253, 249, 0.97), transparent);
 }
 
 /* ---------- Enhanced dish cards ---------- */

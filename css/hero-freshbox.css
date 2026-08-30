@@ -33,7 +33,8 @@
   --fbx-wave-line: 58dvh;
   --hero-art-height: calc(var(--fbx-wave-line) * 1.14);
   /* Plates hang below the wave line after translateY — keep them inside the hero */
-  --fbx-hero-tail: clamp(200px, 28vh, 280px);
+  /* Shorter tail — next section pulls under plates for the soft overlay */
+  --fbx-hero-tail: clamp(120px, 16vh, 180px);
   /* Solid center presence, increased size */
   --fbx-center-w: min(720px, 72vw);
   --fbx-center-h: min(480px, 54vw, 48vh);
@@ -56,34 +57,54 @@
   padding: 0 !important;
   margin: 0;
   display: block;
-  /* Allow plate glow / food blur to bleed into the next section */
+  /* Allow plate glow / food blur to overlay the next section */
   overflow: visible;
   isolation: isolate;
-  z-index: 0;
-  /* Solid cream only — artwork comes from <picture.hero__art>, not CSS background */
-  background-color: #fffdf9;
-  background-image: none;
+  /* Above "What we're known for" so lighting + plates sit on top of it */
+  z-index: 3;
+  /*
+    Cream dissolves at the bottom edge so the hero box does not paint a hard
+    rectangle over the known-for section it overlays.
+  */
+  background-color: transparent;
+  background-image: linear-gradient(
+    180deg,
+    #fffdf9 0%,
+    #fffdf9 calc(100% - clamp(100px, 16vh, 160px)),
+    rgba(255, 253, 249, 0.72) calc(100% - clamp(48px, 8vh, 80px)),
+    rgba(255, 253, 249, 0) 100%
+  );
 }
 
-/* Soft cream veil so glow dissolves into the following section instead of a hard cut */
+/*
+  Soft lighting veil: amber glow dissolves downward into the known-for section
+  (which sits underneath via z-index). No opaque cream band at the end.
+*/
 .fbx-hero.hero::after,
 .fbx-hero.fbx-hero--clean.hero::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  bottom: calc(var(--fbx-hero-tail) * -0.35);
-  height: clamp(140px, 22vh, 260px);
+  bottom: calc(var(--fbx-hero-tail) * -1.1);
+  height: clamp(240px, 38vh, 420px);
   pointer-events: none;
   z-index: 6;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 253, 249, 0) 0%,
-    rgba(255, 253, 249, 0.28) 28%,
-    rgba(255, 253, 249, 0.72) 58%,
-    rgba(255, 253, 249, 0.94) 82%,
-    #fffdf9 100%
-  );
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 50% 28%,
+      rgba(231, 147, 30, 0.22) 0%,
+      rgba(241, 159, 15, 0.1) 38%,
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 253, 249, 0) 0%,
+      rgba(255, 253, 249, 0.12) 30%,
+      rgba(255, 253, 249, 0.28) 55%,
+      rgba(255, 253, 249, 0.12) 78%,
+      transparent 100%
+    );
 }
 
 /*
@@ -577,7 +598,7 @@
     --fbx-right-w: min(360px, 36vw);
     --fbx-right-h: min(260px, 28vw);
     --fbx-wave-line: 56dvh;
-    --fbx-hero-tail: clamp(180px, 26vh, 240px);
+    --fbx-hero-tail: clamp(110px, 14vh, 160px);
   }
 
   .fbx-hero-content {
@@ -603,7 +624,7 @@
     --fbx-center-w: min(460px, 80vw);
     --fbx-center-h: min(310px, 54vw, 36vh);
     --fbx-wave-line: 54dvh;
-    --fbx-hero-tail: clamp(160px, 24vh, 220px);
+    --fbx-hero-tail: clamp(100px, 13vh, 150px);
     --fbx-h1-size: clamp(2rem, 6.5vw, 2.75rem);
   }
 
@@ -638,7 +659,7 @@
 @media (max-width: 767px) {
   :root {
     --fbx-wave-line: 52dvh;
-    --fbx-hero-tail: clamp(140px, 22vh, 200px);
+    --fbx-hero-tail: clamp(90px, 12vh, 140px);
     --fbx-center-w: min(88vw, 360px);
     --fbx-center-h: min(66vw, 270px);
     --fbx-content-gap: 10px;
@@ -700,7 +721,7 @@
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
   :root {
     --fbx-wave-line: 50dvh;
-    --fbx-hero-tail: clamp(150px, 22vh, 210px);
+    --fbx-hero-tail: clamp(100px, 13vh, 150px);
     --fbx-h1-size: clamp(2.1rem, 4.8vw, 2.85rem);
   }
 
@@ -716,7 +737,7 @@
 @media (max-height: 720px) and (min-width: 768px) {
   :root {
     --fbx-wave-line: 55dvh;
-    --fbx-hero-tail: clamp(150px, 22vh, 210px);
+    --fbx-hero-tail: clamp(90px, 12vh, 140px);
     --fbx-center-h: min(280px, 34vh);
     --fbx-center-w: min(480px, 54vw);
     --fbx-content-top: calc(var(--header-height, 78px) + 8px);

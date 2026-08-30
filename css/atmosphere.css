@@ -87,12 +87,20 @@ body::after {
 
 /* ---------- Section atmospheres ---------- */
 
-/* Marquee / categories strip sits on cream — no extra mesh */
+/* Marquee / known-for: transparent shell — hero light overlays it */
 .fbx-categories,
 .fbx-marquee,
 .marquee-section {
   position: relative;
   z-index: 1;
+}
+
+.fbx-marquee,
+.marquee-section,
+#menu-preview {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
 /* House strip: section shell only — component card styled in home.css */

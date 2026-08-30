@@ -87,15 +87,23 @@
 }
 
 /* ---------- Categories / marquee strip ---------- */
+/* Marquee stays open vertically so hero glow/plates can overlay it */
 .fbx-categories,
 .fbx-marquee,
 .marquee-section {
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
-.fbx-categories .fbx-deco--cat-left,
+/* No colored deco blobs on the known-for handoff zone */
 .fbx-marquee .fbx-deco--cat-left,
-.marquee-section .fbx-deco--cat-left {
+.marquee-section .fbx-deco--cat-left,
+.fbx-marquee .fbx-deco--cat-right,
+.marquee-section .fbx-deco--cat-right {
+  display: none !important;
+}
+
+.fbx-categories .fbx-deco--cat-left {
   left: -8%;
   top: -10%;
   width: min(280px, 30vw);
@@ -105,9 +113,7 @@
   animation: fbxDecoDriftB 18s var(--deco-float-ease) infinite;
 }
 
-.fbx-categories .fbx-deco--cat-right,
-.fbx-marquee .fbx-deco--cat-right,
-.marquee-section .fbx-deco--cat-right {
+.fbx-categories .fbx-deco--cat-right {
   right: -6%;
   bottom: -12%;
   width: min(300px, 32vw);
