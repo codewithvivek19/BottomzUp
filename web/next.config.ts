@@ -32,6 +32,12 @@ const nextConfig: NextConfig = {
       { source: "/menu/", destination: "/legacy/pages/menu.html" },
       { source: "/catering", destination: "/legacy/pages/catering.html" },
       { source: "/catering/", destination: "/legacy/pages/catering.html" },
+      // Legacy HTML uses ./css ./js (→ /css /js). Files live under /legacy/*.
+      // Symlinks in public/ cover static serving; these rewrites are the fallback.
+      { source: "/css/:path*", destination: "/legacy/css/:path*" },
+      { source: "/js/:path*", destination: "/legacy/js/:path*" },
+      { source: "/assets/:path*", destination: "/legacy/assets/:path*" },
+      { source: "/pages/:path*", destination: "/legacy/pages/:path*" },
       // Normalize trailing slash to the App Router page (no second calendar).
       { source: "/events/", destination: "/events" },
     ];

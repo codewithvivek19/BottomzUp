@@ -68,9 +68,21 @@ Create the manager user under Authentication → Users, then match `ADMIN_EMAILS
 - `https://www.bottomzupbarandgrill.com/admin/login` → manager login
 - `https://www.bottomzupbarandgrill.com/menu` → menu
 
+## Asset paths (important)
+
+Legacy HTML references `./css/...` and `./js/...` (browser requests `/css/...`, `/js/...`).
+
+Those files live under `web/public/legacy/`. Production ships:
+
+- Symlinks: `public/css` → `legacy/css`, `public/js` → `legacy/js`, `public/pages` → `legacy/pages`
+- Next rewrites as fallback for the same paths
+
+If CSS/JS 404 in the browser after deploy, confirm the Hostinger build includes those symlinks (Linux) and that Application type is **`next`**.
+
 ## Common mistakes
 
 1. Deploying as **Parcel** / Vite static instead of **Next**
 2. Root directory left as repo root instead of **`web`**
-3. Domain still on old/wrong nameservers (current breakage)
+3. Domain still on old/wrong nameservers
 4. Missing Supabase env vars on Hostinger
+5. Expecting `/css/*.css` without the public symlinks/rewrites above
