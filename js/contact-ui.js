@@ -103,7 +103,7 @@
 
     // Call CTA labels when no phone
     document.querySelectorAll('[data-contact="call-label"]').forEach((el) => {
-      el.textContent = 'Call for delivery';
+      el.textContent = 'Call for Order';
     });
 
     // Reserve panel honesty block
@@ -117,7 +117,7 @@
         callBtn.href = C.telHref();
         callBtn.classList.remove('is-disabled');
         const label = callBtn.querySelector('.btn-label, [data-contact="call-label"]');
-        if (label) label.textContent = 'Call for delivery';
+        if (label) label.textContent = 'Call for Order';
       } else {
         callBtn.removeAttribute('href');
         callBtn.classList.add('is-disabled');

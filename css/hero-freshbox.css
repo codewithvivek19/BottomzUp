@@ -56,12 +56,34 @@
   padding: 0 !important;
   margin: 0;
   display: block;
-  overflow: clip;
+  /* Allow plate glow / food blur to bleed into the next section */
+  overflow: visible;
   isolation: isolate;
   z-index: 0;
   /* Solid cream only — artwork comes from <picture.hero__art>, not CSS background */
   background-color: #fffdf9;
   background-image: none;
+}
+
+/* Soft cream veil so glow dissolves into the following section instead of a hard cut */
+.fbx-hero.hero::after,
+.fbx-hero.fbx-hero--clean.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--fbx-hero-tail) * -0.35);
+  height: clamp(140px, 22vh, 260px);
+  pointer-events: none;
+  z-index: 6;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 253, 249, 0) 0%,
+    rgba(255, 253, 249, 0.28) 28%,
+    rgba(255, 253, 249, 0.72) 58%,
+    rgba(255, 253, 249, 0.94) 82%,
+    #fffdf9 100%
+  );
 }
 
 /*
@@ -106,7 +128,7 @@
   min-height: calc(var(--fbx-wave-line) + var(--fbx-hero-tail));
   display: flex;
   flex-direction: column;
-  overflow: clip;
+  overflow: visible;
   background: transparent;
   pointer-events: none; /* stage shell doesn't steal clicks; content/food re-enable */
 }

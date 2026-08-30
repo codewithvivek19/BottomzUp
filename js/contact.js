@@ -13,7 +13,7 @@ window.BOTTOMZ_CONTACT = {
   addressLine2: 'South Boston, VA 24592',
   delivery: 'Delivery available via Grubhub & DoorDash',
   /** Primary order-online URL (DoorDash / Grubhub store link when available) */
-  orderOnline: 'https://www.doordash.com',
+  orderOnline: 'https://order.toasttab.com/online/bottomz-up-2001-seymour-dr',
   orderOnlineLabel: 'Order Online',
   hoursNote:
     'Mon-Thu 11:00 AM - 10:00 PM · Fri-Sat 11:00 AM - 12:30 AM · Sun 11:00 AM - 8:00 PM',

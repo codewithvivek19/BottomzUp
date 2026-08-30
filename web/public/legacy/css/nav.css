@@ -573,15 +573,15 @@ body.nav-open::after {
 }
 
 .sticky-cta-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr) minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.45rem;
   width: 100%;
-  max-width: min(720px, 100%);
+  max-width: min(560px, 100%);
   margin: 0 auto;
-  padding: 0.7rem 0.75rem 0.7rem 1rem;
-  background: rgba(30, 28, 27, 0.94);
+  padding: 0.5rem;
+  background: rgba(30, 28, 27, 0.96);
   color: #fff7e8;
   border-radius: 999px;
   box-shadow:
@@ -592,64 +592,38 @@ body.nav-open::after {
   -webkit-backdrop-filter: blur(16px) saturate(1.15);
 }
 
-.sticky-cta-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin: 0;
-  min-width: 0;
-  flex: 1 1 auto;
-}
-
-.sticky-cta-mark {
-  font-family: var(--font-body);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-amber, #e7931e);
-}
-
-.sticky-cta-text {
-  font-size: 0.84rem;
-  font-weight: 500;
-  color: rgba(255, 247, 232, 0.88);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.sticky-cta-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  flex-shrink: 0;
-}
-
-.sticky-btn-menu {
+.sticky-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
-  padding: 0.55rem 1rem;
-  color: #fff7e8;
-  border: 1.5px solid rgba(245, 232, 183, 0.28);
-  background: transparent;
-  font-size: 0.84rem;
+  min-height: 46px;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.82rem;
   font-weight: 650;
   font-family: var(--font-body);
   border-radius: 99px;
   text-decoration: none;
   white-space: nowrap;
+  text-align: center;
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
     color 0.2s ease,
-    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sticky-btn-menu,
+.sticky-btn-call {
+  color: #fff7e8;
+  border: 1.5px solid rgba(245, 232, 183, 0.28);
+  background: transparent;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .sticky-btn-menu:hover {
+  .sticky-btn-menu:hover,
+  .sticky-btn-call:hover {
     background: rgba(245, 232, 183, 0.1);
     border-color: rgba(245, 232, 183, 0.55);
     color: #ffffff;
@@ -657,80 +631,86 @@ body.nav-open::after {
   }
 }
 
-.sticky-btn-menu:active {
+.sticky-btn-menu:active,
+.sticky-btn-call:active {
   transform: scale(0.97);
 }
 
-.sticky-cta .btn-ticket {
-  min-height: 44px;
-  padding: 0.65rem 1.05rem;
+/* Primary center CTA — Order Online */
+.sticky-cta .sticky-btn-order {
+  min-height: 48px;
+  padding: 0.7rem 1rem;
+  justify-content: center;
   background: linear-gradient(135deg, #e7931e, #c67a12);
   color: #1a1510;
+  border: 0;
   box-shadow:
     0 1px 0 rgba(255, 253, 249, 0.35) inset,
-    0 4px 12px rgba(0, 0, 0, 0.18);
+    0 6px 18px rgba(198, 122, 18, 0.35);
+  font-size: 0.88rem;
+  font-weight: 700;
 }
 
-.sticky-cta .btn-ticket .btn-hover-fill {
+.sticky-cta .sticky-btn-order .btn-hover-fill {
   background: linear-gradient(180deg, #fff7e8 0%, #ffe0a3 100%);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .sticky-cta .btn-ticket:hover {
+  .sticky-cta .sticky-btn-order:hover {
     color: #1a1510;
+    filter: brightness(1.04);
+    transform: translateY(-1px);
   }
 }
 
-/* Compact mobile dock: mark + Menu + Call — no wrapping, safe areas */
+.sticky-cta .sticky-btn-order:active {
+  transform: scale(0.98);
+}
+
+/* Compact phones: keep 3 equal-ish actions, shorter call label via CSS */
 @media (max-width: 720px) {
-  .sticky-cta-text {
-    display: none;
-  }
-
   .sticky-cta-inner {
-    gap: 0.55rem;
-    padding: 0.55rem 0.55rem 0.55rem 0.9rem;
+    max-width: 100%;
+    gap: 0.35rem;
+    padding: 0.45rem;
   }
 
-  .sticky-cta-mark {
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
-  }
-
-  .sticky-btn-menu {
+  .sticky-btn {
     min-height: 44px;
-    min-width: 72px;
-    padding: 0.55rem 0.85rem;
+    padding: 0.5rem 0.45rem;
+    font-size: 0.78rem;
   }
 
-  .sticky-cta .btn-ticket {
-    min-height: 44px;
-    padding: 0.65rem 0.95rem;
-    font-size: 0.84rem;
+  .sticky-cta .sticky-btn-order {
+    min-height: 46px;
+    padding: 0.55rem 0.55rem;
+    font-size: 0.82rem;
   }
 
-  .sticky-cta .btn-ticket .btn-arrow {
+  .sticky-cta .sticky-btn-order .btn-arrow {
     display: none;
   }
 }
 
 @media (max-width: 380px) {
-  .sticky-cta-copy {
-    display: none;
+  .sticky-btn-call [data-contact="call-label"] {
+    font-size: 0;
   }
 
-  .sticky-cta-inner {
-    justify-content: stretch;
-    padding: 0.5rem;
+  .sticky-btn-call [data-contact="call-label"]::after {
+    content: "Call";
+    font-size: 0.78rem;
+    font-weight: 650;
   }
 
-  .sticky-cta-actions {
-    width: 100%;
+  .sticky-cta .sticky-btn-order .btn-label {
+    font-size: 0;
   }
 
-  .sticky-btn-menu,
-  .sticky-cta .btn-ticket {
-    flex: 1 1 0;
+  .sticky-cta .sticky-btn-order .btn-label::after {
+    content: "Order";
+    font-size: 0.82rem;
+    font-weight: 700;
   }
 }
 

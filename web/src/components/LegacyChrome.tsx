@@ -149,9 +149,14 @@ export function LegacyChrome({ children }: { children: React.ReactNode }) {
               </nav>
 
               <div className="nav-actions">
-                <a href="tel:+14345755753" className="btn-ticket btn-nav-cta">
+                <a
+                  href="https://order.toasttab.com/online/bottomz-up-2001-seymour-dr"
+                  className="btn-ticket btn-nav-cta"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <span className="btn-hover-fill" aria-hidden="true" />
-                  <span className="btn-label">Call for delivery</span>
+                  <span className="btn-label">Order Online</span>
                   <span className="btn-arrow" aria-hidden="true">
                     ↗
                   </span>
@@ -189,12 +194,20 @@ export function LegacyChrome({ children }: { children: React.ReactNode }) {
                 <Link href="/contact" className="nav-link">
                   Contact Us
                 </Link>
-                <a href="tel:+14345755753" className="btn-ticket">
+                <a
+                  href="https://order.toasttab.com/online/bottomz-up-2001-seymour-dr"
+                  className="btn-ticket"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <span className="btn-hover-fill" aria-hidden="true" />
-                  <span className="btn-label">Call for delivery</span>
+                  <span className="btn-label">Order Online</span>
                   <span className="btn-arrow" aria-hidden="true">
                     ↗
                   </span>
+                </a>
+                <a href="tel:+14345755753" className="nav-link">
+                  Call for Order
                 </a>
               </div>
             </nav>
