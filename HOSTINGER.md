@@ -44,9 +44,20 @@ Full checklist: [`web/DEPLOY_HOSTINGER.md`](web/DEPLOY_HOSTINGER.md)
 ## After every client change
 
 1. Edit **repo root** files only (`index.html`, `css/`, `js/`, `pages/`).
-2. Commit + push `main`.
-3. Let Hostinger rebuild (auto or manual Redeploy).
-4. Hard-refresh the phone (cache can keep old CSS for a few minutes).
+2. If you changed CSS/JS, bump the `?v=` query on those `<link>` / `<script>` tags in the HTML (so hCDN cannot keep serving yesterday’s file).
+3. Commit + push `main`.
+4. Let Hostinger rebuild (auto or manual Redeploy).
+5. Hard-refresh the phone once after deploy finishes.
+
+### Why designs used to “roll back” after ~5 minutes
+
+Hostinger’s CDN (`hCDN`) was caching `/css/*.css` while HTML updated sooner.  
+Browsers then mixed **new HTML + old CSS** (or the reverse) — it looked like the dock/hero reverted.  
+
+Mitigations now in place:
+- `web/public/legacy/` is **generated only** (not a second editable copy in git)
+- `Cache-Control: max-age=0, must-revalidate` on `/css` and `/js`
+- HTML cache-bust `?v=30` on stylesheets/scripts
 
 ## Routes that must work after deploy
 

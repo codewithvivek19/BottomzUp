@@ -170,7 +170,7 @@
   z-index: 0;
   pointer-events: none;
   line-height: 0;
-  filter: drop-shadow(0 20px 48px rgba(198, 122, 18, 0.28));
+  filter: none; /* no orange glow / drop-shadow */
 }
 
 .fbx-plate-svg {
@@ -179,26 +179,13 @@
   height: 100%;
 }
 
-.fbx-plate-glow {
-  mix-blend-mode: soft-light;
-  opacity: 0.95;
-  animation: fbxGlowBreathe 10s ease-in-out infinite alternate;
-}
-
+/* Glow / sheen layers disabled — keep nodes harmless if present in art */
+.fbx-plate-glow,
 .fbx-plate-sheen {
-  mix-blend-mode: soft-light;
-  opacity: 0.85;
-  animation: fbxSheenDrift 14s ease-in-out infinite alternate;
-}
-
-@keyframes fbxGlowBreathe {
-  0% { opacity: 0.75; }
-  100% { opacity: 1; }
-}
-
-@keyframes fbxSheenDrift {
-  0% { opacity: 0.7; }
-  100% { opacity: 0.95; }
+  display: none !important;
+  animation: none !important;
+  opacity: 0 !important;
+  mix-blend-mode: normal !important;
 }
 
 /* ---------- Type — sits just below the nav bar ---------- */
@@ -468,7 +455,7 @@
 .fbx-food.is-center.is-appear {
   opacity: 0;
   transform: translate3d(0, 56px, 0) scale(0.98);
-  filter: blur(5px);
+  filter: none; /* no blur on appear */
 }
 
 /* Stage 2 (adjacent left/right): full opacity — do not fade here */

@@ -53,3 +53,6 @@ next-env.d.ts
 /public/css/
 /public/js/
 /public/pages/
+
+# Generated from repo root by sync-public-assets — NEVER edit / commit
+/public/legacy/

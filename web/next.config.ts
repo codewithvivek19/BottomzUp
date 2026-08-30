@@ -2,15 +2,42 @@ import type { NextConfig } from "next";
 
 /**
  * Architecture (Hostinger Node.js / Next standalone):
- * - Marketing pages: vanilla HTML in public/legacy, exposed as clean routes
- * - React App Router: /events (public) + /admin/*
+ * - Single source of truth: repo-root index.html / css / js / pages / assets
+ * - sync-public-assets copies root → public/legacy → public/{css,js,pages}
+ * - React App Router: /events + /admin/*
  *
- * HTML nav must use absolute paths (/menu, /about, …). Relative "about.html"
- * breaks when the browser URL is /menu (resolves to /about.html → 404).
- *
- * CSS/JS: HTML requests /css and /js. sync-public-assets copies legacy → public.
+ * Cache: HTML/CSS/JS must not stick on hCDN for minutes (that caused
+ * "new design for 5 minutes then rollback" when HTML/CSS versions mixed).
  */
 const nextConfig: NextConfig = {
+  async headers() {
+    return [
+      {
+        source: "/legacy/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=0, must-revalidate" },
+        ],
+      },
+      {
+        source: "/css/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=0, must-revalidate" },
+        ],
+      },
+      {
+        source: "/js/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=0, must-revalidate" },
+        ],
+      },
+      {
+        source: "/assets/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=86400" },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       // Old / broken relative targets when landing on clean routes
