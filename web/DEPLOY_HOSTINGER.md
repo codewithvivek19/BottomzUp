@@ -74,8 +74,11 @@ Create the manager user under Authentication → Users, then match `ADMIN_EMAILS
    Relative links like `about.html` break when the URL is `/menu` (browser goes to `/about.html` → 404).
 
 2. **CSS/JS:** HTML requests `/css/...` and `/js/...`.  
-   `npm run sync:public` (runs on `postinstall` / `prebuild`) copies `public/legacy/{css,js,pages}` → `public/{css,js,pages}`.  
-   Next rewrites remain as fallback.
+   **Single source of truth = repo root** (`../index.html`, `../css`, `../js`, `../pages`).  
+   `npm run sync:public` (runs on `postinstall` / `prebuild`) copies:
+   - repo root → `public/legacy/`
+   - then `public/legacy/{css,js,pages}` → `public/{css,js,pages}`  
+   Never hand-edit `public/legacy` — it is generated.
 
 If CSS/JS 404 after deploy, check build logs for `[sync-public-assets] done` and Application type **`next`**.
 
