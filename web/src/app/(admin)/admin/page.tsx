@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import { getServerSession } from 'next-auth';
 import { format } from 'date-fns';
-import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { parseJsonArray } from '@/lib/lead-schema';
+import { getAdminUser } from '@/lib/admin-auth';
 
 export const metadata: Metadata = {
   title: 'Admin dashboard',
@@ -15,8 +14,8 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic';
 
 export default async function AdminDashboardPage() {
-  const session = await getServerSession(authOptions);
-  if (!session?.user) redirect('/admin/login');
+  const admin = await getAdminUser();
+  if (!admin) redirect('/admin/login');
 
   const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
   const now = new Date();

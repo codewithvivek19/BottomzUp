@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { AdminCouponClient } from '@/components/admin/AdminCouponClient';
+import { getAdminUser } from '@/lib/admin-auth';
 
 export const metadata: Metadata = {
   title: 'Coupon admin',
@@ -13,8 +12,8 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic';
 
 export default async function AdminCouponPage() {
-  const session = await getServerSession(authOptions);
-  if (!session?.user) redirect('/admin/login');
+  const admin = await getAdminUser();
+  if (!admin) redirect('/admin/login');
 
   let coupon = await prisma.couponSetting.findFirst({ orderBy: { updatedAt: 'desc' } });
   if (!coupon) {

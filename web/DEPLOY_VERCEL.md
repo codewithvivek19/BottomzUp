@@ -1,36 +1,40 @@
-# Deploy Bottomz Up (`web/`) on Vercel
+# Deploy Bottomz Up (`web/`) on Vercel + Supabase Auth
 
 ## Project settings
 
 1. Import the GitHub repo in Vercel.
-2. Set **Root Directory** to `web` (critical — the Next app lives here, not the repo root).
-3. Framework preset: **Next.js**.
+2. Set **Root Directory** to `web`.
+3. Framework: **Next.js**.
 
-If Root Directory is wrong, Vercel may serve static HTML and `/events` / `/admin` will break.
-
-## Environment variables (Production + Preview)
+## Environment variables
 
 | Name | Value |
 |------|--------|
 | `DATABASE_URL` | Supabase pooled Postgres URI |
 | `DIRECT_URL` | Supabase direct Postgres URI |
-| `NEXTAUTH_SECRET` | `openssl rand -base64 32` |
-| `NEXTAUTH_URL` | `https://YOUR_LIVE_DOMAIN` (**never** `http://localhost:3000`) |
-| `ADMIN_EMAIL` / `ADMIN_PASSWORD` | only needed for seeding, not runtime |
+| `NEXT_PUBLIC_SUPABASE_URL` | Project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` or `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Public key |
+| `ADMIN_EMAILS` | Manager email(s), comma-separated |
 
-Optional: omit `NEXTAUTH_URL` on Vercel — the app falls back to `https://$VERCEL_URL`.
+## Create the manager user (Supabase Auth)
 
-## After first deploy
+1. Supabase Dashboard → **Authentication** → **Users** → **Add user**
+2. Email + password (confirm email if your project requires it)
+3. Optional but recommended: set **App Metadata**:
+   ```json
+   { "role": "manager" }
+   ```
+4. Put the same email in `ADMIN_EMAILS` on Vercel and local `.env`
 
-```bash
-cd web
-# with production DATABASE_URL in env:
-npx prisma migrate deploy
-npm run seed
-```
+Site URL / redirect allow list in Supabase Auth settings should include:
+
+- `http://localhost:3000`
+- `https://YOUR_VERCEL_DOMAIN`
+- your custom domain
 
 ## Smoke check
 
-- `https://YOUR_DOMAIN/events` — React calendar
-- `https://YOUR_DOMAIN/admin/login` — manager sign-in
-- `https://YOUR_DOMAIN/admin` — redirects to login when signed out
+- `/events` — public calendar (no login)
+- `/admin/login` — Supabase email/password
+- `/admin` — dashboard after sign-in
+- Sign out returns to `/admin/login`

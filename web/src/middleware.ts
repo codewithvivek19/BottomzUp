@@ -1,31 +1,53 @@
-import { withAuth } from 'next-auth/middleware';
-import { NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
+import { isManager } from '@/lib/admin-policy';
+import { updateSession } from '@/lib/supabase/middleware';
 
 /**
- * Auth gate for manager surfaces only.
- *
- * Public /events is NOT matched — stays open on local and Vercel.
- * /admin/login stays reachable; everything else under /admin needs a session.
+ * Supabase session refresh + manager gate.
+ * Public /events is not matched — stays open.
  */
-export default withAuth(
-  function middleware() {
-    return NextResponse.next();
-  },
-  {
-    pages: { signIn: '/admin/login' },
-    callbacks: {
-      authorized: ({ token, req }) => {
-        const { pathname } = req.nextUrl;
-        if (pathname === '/admin/login' || pathname.startsWith('/admin/login/')) {
-          return true;
-        }
-        return Boolean(token);
-      },
-    },
+export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+  const { supabaseResponse, email, role } = await updateSession(request);
+
+  const isLogin = pathname === '/admin/login' || pathname.startsWith('/admin/login/');
+  const isAdminArea = pathname === '/admin' || pathname.startsWith('/admin/');
+
+  if (!isAdminArea) {
+    return supabaseResponse;
   }
-);
+
+  const allowed = isManager(email, role);
+
+  if (isLogin) {
+    if (allowed) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/admin';
+      return NextResponse.redirect(url);
+    }
+    return supabaseResponse;
+  }
+
+  if (!allowed) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/admin/login';
+    url.searchParams.set('next', pathname);
+    return NextResponse.redirect(url);
+  }
+
+  return supabaseResponse;
+}
 
 export const config = {
-  // Cover /admin and every nested manager route (events, coupon, leads, …).
-  matcher: ['/admin', '/admin/:path*'],
+  matcher: [
+    '/admin',
+    '/admin/:path*',
+    // Keep session fresh when hitting auth-aware APIs from the browser.
+    '/api/admin/:path*',
+    '/api/events',
+    '/api/events/:path*',
+    '/api/leads',
+    '/api/leads/:path*',
+    '/api/upload',
+  ],
 };

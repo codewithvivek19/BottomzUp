@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { redirect } from 'next/navigation';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { parseJsonArray } from '@/lib/lead-schema';
 import { AdminLeadsClient } from '@/components/admin/AdminLeadsClient';
+import { getAdminUser } from '@/lib/admin-auth';
 
 export const metadata: Metadata = {
   title: 'Leads admin',
@@ -15,8 +14,8 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic';
 
 export default async function AdminLeadsPage() {
-  const session = await getServerSession(authOptions);
-  if (!session?.user) redirect('/admin/login');
+  const admin = await getAdminUser();
+  if (!admin) redirect('/admin/login');
 
   const rows = await prisma.lead.findMany({ orderBy: { createdAt: 'desc' }, take: 200 });
   const initialLeads = rows.map((l) => ({

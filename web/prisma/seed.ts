@@ -1,18 +1,20 @@
 import { PrismaClient } from '@prisma/client';
-import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
 async function main() {
-  const email = (process.env.ADMIN_EMAIL || 'manager@bottomzup.local').toLowerCase();
-  const password = process.env.ADMIN_PASSWORD || 'BottomzUp2026!';
-  const passwordHash = await bcrypt.hash(password, 10);
-
-  await prisma.user.upsert({
-    where: { email },
-    update: { passwordHash, name: 'Restaurant Manager' },
-    create: { email, passwordHash, name: 'Restaurant Manager' },
-  });
+  /**
+   * Auth is Supabase Auth (not Prisma User passwords).
+   * Create the manager in Supabase Dashboard → Authentication → Users,
+   * then set ADMIN_EMAILS to that email (and optionally app_metadata.role=manager).
+   */
+  const adminEmail = (process.env.ADMIN_EMAIL || process.env.ADMIN_EMAILS || '').split(',')[0]?.trim();
+  if (adminEmail) {
+    console.log('Manager email allowlist expects:', adminEmail.toLowerCase());
+    console.log('Create this user in Supabase Auth if it does not exist yet.');
+  } else {
+    console.log('Set ADMIN_EMAIL or ADMIN_EMAILS for the manager allowlist.');
+  }
 
   const couponCount = await prisma.couponSetting.count();
   if (couponCount === 0) {
@@ -76,8 +78,10 @@ async function main() {
     });
   }
 
-  console.log('Seeded admin:', email);
-  console.log('Active coupon:', (await prisma.couponSetting.findFirst({ where: { active: true } }))?.code);
+  console.log(
+    'Active coupon:',
+    (await prisma.couponSetting.findFirst({ where: { active: true } }))?.code
+  );
 }
 
 main()

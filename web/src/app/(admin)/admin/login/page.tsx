@@ -1,36 +1,49 @@
 'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
-import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-
-const isDev = process.env.NODE_ENV === 'development';
+import { createClient } from '@/lib/supabase/client';
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const { status } = useSession();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const isDev = process.env.NODE_ENV === 'development';
 
   useEffect(() => {
-    if (status === 'authenticated') router.replace('/admin');
-  }, [status, router]);
+    let cancelled = false;
+    (async () => {
+      const supabase = createClient();
+      const { data } = await supabase.auth.getUser();
+      if (!cancelled && data.user) {
+        router.replace('/admin');
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [router]);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
     setError('');
     const fd = new FormData(e.currentTarget);
-    const res = await signIn('credentials', {
-      email: String(fd.get('email') || '').trim().toLowerCase(),
-      password: String(fd.get('password') || ''),
-      redirect: false,
+    const email = String(fd.get('email') || '').trim().toLowerCase();
+    const password = String(fd.get('password') || '');
+
+    const supabase = createClient();
+    const { error: signError } = await supabase.auth.signInWithPassword({
+      email,
+      password,
     });
+
     setLoading(false);
-    if (res?.error) {
+    if (signError) {
       setError('Login failed. Check email and password.');
       return;
     }
+
     router.push('/admin');
     router.refresh();
   }
@@ -61,7 +74,7 @@ export default function AdminLoginPage() {
             <li>Contact & catering leads</li>
           </ul>
 
-          <p className="adm-signin-brand-foot">South Boston, VA · Not linked from the public site</p>
+          <p className="adm-signin-brand-foot">South Boston, VA · Secured with Supabase Auth</p>
         </aside>
 
         <div className="adm-signin-panel">
@@ -88,8 +101,8 @@ export default function AdminLoginPage() {
                 type="email"
                 required
                 autoComplete="username"
-                placeholder="manager@bottomzup.local"
-                defaultValue={isDev ? 'manager@bottomzup.local' : ''}
+                placeholder="manager@yourdomain.com"
+                defaultValue={isDev ? process.env.NEXT_PUBLIC_ADMIN_EMAIL_HINT || '' : ''}
               />
             </label>
 
@@ -116,7 +129,10 @@ export default function AdminLoginPage() {
             </button>
           </form>
 
-          <p className="adm-signin-note">Staff access only. Ask the house manager if you need an account.</p>
+          <p className="adm-signin-note">
+            Staff access only. Create the manager in the Supabase Auth dashboard, then add the email
+            to <code>ADMIN_EMAILS</code>.
+          </p>
         </div>
       </div>
     </div>

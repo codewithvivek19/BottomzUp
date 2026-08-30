@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
-  "regions": ["iad1"]
+  "regions": ["iad1"],
+  "_comment": "Primary production host is Hostinger (see DEPLOY_HOSTINGER.md). Keep Root Directory = web if using Vercel."
 }

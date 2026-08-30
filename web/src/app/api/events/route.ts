@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
 import { prisma } from '@/lib/prisma';
-import { authOptions } from '@/lib/auth';
 import { eventCreateSchema, normalizeImageUrl } from '@/lib/event-schema';
-import { requireAdmin } from '@/lib/require-admin';
+import { getAdminUser, requireAdmin } from '@/lib/require-admin';
 
 export async function GET(req: NextRequest) {
   try {
@@ -14,11 +12,10 @@ export async function GET(req: NextRequest) {
 
     let isAdmin = false;
     try {
-      const session = await getServerSession(authOptions);
-      isAdmin = Boolean(session?.user);
+      const admin = await getAdminUser();
+      isAdmin = Boolean(admin);
     } catch (err) {
-      // Public calendar must still work if auth session lookup fails.
-      console.error('[api/events] session lookup failed', err);
+      console.error('[api/events] admin lookup failed', err);
     }
 
     const where: {

@@ -9,6 +9,8 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+/// Legacy table from next-auth era. Auth now lives in Supabase Auth (auth.users).
+/// Kept so existing DBs do not break; unused by the app.
 model User {
   id           String   @id @default(cuid())
   email        String   @unique

@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { signOut, useSession } from 'next-auth/react';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useId, useState } from 'react';
+import { createClient } from '@/lib/supabase/client';
 
 const NAV = [
   { href: '/admin', label: 'Dashboard', exact: true },
@@ -20,10 +20,23 @@ export function AdminShell({
   title?: string;
 }) {
   const pathname = usePathname();
-  const { data } = useSession();
+  const router = useRouter();
   const isLogin = pathname.startsWith('/admin/login');
   const [navOpen, setNavOpen] = useState(false);
+  const [email, setEmail] = useState<string>('Manager');
   const navId = useId();
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const supabase = createClient();
+      const { data } = await supabase.auth.getUser();
+      if (!cancelled && data.user?.email) setEmail(data.user.email);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     setNavOpen(false);
@@ -104,7 +117,12 @@ export function AdminShell({
         <button
           type="button"
           className="adm-signout"
-          onClick={() => signOut({ callbackUrl: '/admin/login' })}
+          onClick={async () => {
+            const supabase = createClient();
+            await supabase.auth.signOut();
+            router.replace('/admin/login');
+            router.refresh();
+          }}
         >
           Sign out
         </button>
@@ -113,7 +131,7 @@ export function AdminShell({
       <div className="adm-main">
         <header className="adm-topbar">
           <h1>{pageTitle}</h1>
-          <p className="adm-user">{data?.user?.email || 'Manager'}</p>
+          <p className="adm-user">{email}</p>
         </header>
         <div className="adm-content">{children}</div>
       </div>

@@ -6,7 +6,7 @@ import '@/styles/datepicker.css';
 /**
  * Manager surfaces only — no public LegacyChrome / marketing nav.
  * Access by URL: /admin/login (no public site link).
- * SessionProvider comes from root layout.
+ * Auth: Supabase cookie sessions (see middleware + lib/admin-auth).
  */
 export default function AdminRootLayout({ children }: { children: React.ReactNode }) {
   return (

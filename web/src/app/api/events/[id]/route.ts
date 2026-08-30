@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
-import { authOptions } from '@/lib/auth';
 import { eventUpdateSchema, normalizeImageUrl } from '@/lib/event-schema';
-import { requireAdmin } from '@/lib/require-admin';
+import { getAdminUser, requireAdmin } from '@/lib/require-admin';
 
 type Ctx = { params: Promise<{ id: string }> };
 
@@ -15,8 +13,8 @@ export async function GET(_req: NextRequest, ctx: Ctx) {
     return NextResponse.json({ error: 'Not found' }, { status: 404 });
   }
   if (!event.published) {
-    const session = await getServerSession(authOptions);
-    if (!session?.user) {
+    const admin = await getAdminUser();
+    if (!admin) {
       return NextResponse.json({ error: 'Not found' }, { status: 404 });
     }
   }
