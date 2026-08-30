@@ -410,23 +410,9 @@
   pointer-events: auto;
 }
 
+/* Carousel glow removed */
 .fbx-food-floor {
-  position: absolute;
-  left: 50%;
-  bottom: 10%;
-  width: min(560px, 68vw);
-  height: min(80px, 10vh);
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(198, 122, 18, 0.28) 0%,
-    rgba(241, 159, 15, 0.12) 45%,
-    transparent 70%
-  );
-  filter: blur(14px);
-  z-index: 0;
-  pointer-events: none;
+  display: none !important;
 }
 
 .fbx-food {
@@ -461,9 +447,7 @@
   user-select: none;
   -webkit-user-drag: none;
   pointer-events: none;
-  filter:
-    drop-shadow(0 22px 36px rgba(198, 122, 18, 0.32))
-    drop-shadow(0 8px 16px rgba(231, 147, 30, 0.2));
+  filter: none; /* no amber carousel glow */
 }
 
 .fbx-food.is-center {
@@ -478,9 +462,7 @@
 }
 
 .fbx-food.is-center img {
-  filter:
-    drop-shadow(0 28px 48px rgba(198, 122, 18, 0.38))
-    drop-shadow(0 8px 22px rgba(241, 159, 15, 0.28));
+  filter: none;
 }
 
 .fbx-food.is-center.is-appear {
