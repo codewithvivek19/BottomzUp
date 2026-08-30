@@ -1,25 +1,34 @@
-# Hostinger deployment (bottomzupbarandgrill.com)
+# Hostinger production — bottomzupbargrill.com
 
-This repo is a **monorepo**. The Next.js app that must run in production is:
+## Deploy settings (hPanel → Node.js Web App)
 
-```text
-web/
-```
-
-## Required hPanel Node.js Web App settings
-
-| Field | Value |
-|-------|--------|
-| Application type | **next** (do **not** choose Parcel) |
-| Root directory | **web** |
+| Field | Required value |
+|-------|----------------|
+| Application type | **`next`** (never Parcel) |
+| Root directory | **`web`** |
+| Branch | `main` |
+| Node.js | **20** or **22** |
 | Build script | `build` |
 | Output directory | `.next` |
-| Node.js | 20 or 22 |
 
-Full guide: [`web/DEPLOY_HOSTINGER.md`](web/DEPLOY_HOSTINGER.md)
+Full checklist: [`web/DEPLOY_HOSTINGER.md`](web/DEPLOY_HOSTINGER.md)
 
-## Critical: DNS
+## Routes that must work after deploy
 
-`bottomzupbarandgrill.com` must use **Hostinger nameservers** (or A/CNAME records Hostinger provides for this website).
+| URL | Serves |
+|-----|--------|
+| `/` | Home |
+| `/menu` | Menu |
+| `/about` | About |
+| `/contact` | Contact |
+| `/catering` | Catering |
+| `/events` | React events calendar |
+| `/admin/login` | Manager login (Supabase Auth) |
+| `/css/base.css` | Styles |
+| `/js/main.js` | Scripts |
 
-If nameservers still show `domainnamedns.com` (or any non-Hostinger DNS), the domain will **not** serve this app — it can even show an unrelated site.
+Nav links are absolute (`/menu`, `/about`, …) so they work from every page.
+
+## Env vars
+
+See `web/.env.example`. Minimum: Supabase URL/key, `DATABASE_URL`, `DIRECT_URL`, `ADMIN_EMAILS`.

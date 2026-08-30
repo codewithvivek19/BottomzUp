@@ -68,16 +68,16 @@ Create the manager user under Authentication → Users, then match `ADMIN_EMAILS
 - `https://www.bottomzupbarandgrill.com/admin/login` → manager login
 - `https://www.bottomzupbarandgrill.com/menu` → menu
 
-## Asset paths (important)
+## Asset paths + navigation (important)
 
-Legacy HTML references `./css/...` and `./js/...` (browser requests `/css/...`, `/js/...`).
+1. **Nav links are absolute:** `/menu`, `/about`, `/contact`, `/catering`, `/events`  
+   Relative links like `about.html` break when the URL is `/menu` (browser goes to `/about.html` → 404).
 
-Those files live under `web/public/legacy/`. Production ships:
+2. **CSS/JS:** HTML requests `/css/...` and `/js/...`.  
+   `npm run sync:public` (runs on `postinstall` / `prebuild`) copies `public/legacy/{css,js,pages}` → `public/{css,js,pages}`.  
+   Next rewrites remain as fallback.
 
-- Symlinks: `public/css` → `legacy/css`, `public/js` → `legacy/js`, `public/pages` → `legacy/pages`
-- Next rewrites as fallback for the same paths
-
-If CSS/JS 404 in the browser after deploy, confirm the Hostinger build includes those symlinks (Linux) and that Application type is **`next`**.
+If CSS/JS 404 after deploy, check build logs for `[sync-public-assets] done` and Application type **`next`**.
 
 ## Common mistakes
 

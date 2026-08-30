@@ -6,11 +6,14 @@
     "node": ">=20"
   },
   "scripts": {
+    "sync:public": "node scripts/sync-public-assets.mjs",
+    "predev": "npm run sync:public",
     "dev": "next dev --turbopack",
+    "prebuild": "npm run sync:public",
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate && npm run sync:public",
     "seed": "tsx prisma/seed.ts",
     "db:migrate": "prisma migrate dev"
   },

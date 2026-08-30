@@ -48,3 +48,8 @@ next-env.d.ts
 !/public/uploads/events/.gitignore
 /prisma/dev.db
 /prisma/dev.db-journal
+
+# Generated Hostinger asset mirrors (npm run sync:public)
+/public/css/
+/public/js/
+/public/pages/
