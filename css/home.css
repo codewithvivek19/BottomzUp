@@ -1186,23 +1186,10 @@ a.house-fact:focus-visible .house-fact-value {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* All burger cards share the same cutout treatment (no lifestyle specials) */
+/* All burger cards share the same cutout treatment */
 .burger-card:hover .burger-image img,
 .burger-card--featured:hover .burger-image img {
   transform: scale(1.03) translateY(-1px);
-}
-
-/* Garbage product shot: same contain treatment, crop a bit more from bottom */
-.burgers .burger-image img[src*="burger-garbage"] {
-  object-fit: cover;
-  object-position: center 35%;
-  padding: 0;
-  transform: scale(1.08);
-  transform-origin: center top;
-}
-
-.burger-card:hover .burger-image img[src*="burger-garbage"] {
-  transform: scale(1.12) translateY(-1px);
 }
 
 /* Card chrome only on text block */
