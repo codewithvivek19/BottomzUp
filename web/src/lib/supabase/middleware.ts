@@ -9,7 +9,20 @@ import { getSupabaseAnonKey, getSupabaseUrl } from './env';
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
-  const supabase = createServerClient(getSupabaseUrl(), getSupabaseAnonKey(), {
+  let email: string | null = null;
+  let role: string | null = null;
+
+  let url: string;
+  let key: string;
+  try {
+    url = getSupabaseUrl();
+    key = getSupabaseAnonKey();
+  } catch (err) {
+    console.error('[updateSession] missing Supabase env', err);
+    return { supabaseResponse, email, role, supabase: null };
+  }
+
+  const supabase = createServerClient(url, key, {
     cookies: {
       getAll() {
         return request.cookies.getAll();
@@ -27,9 +40,6 @@ export async function updateSession(request: NextRequest) {
   });
 
   // Validates JWT (getClaims) or falls back to Auth server lookup (getUser).
-  let email: string | null = null;
-  let role: string | null = null;
-
   try {
     const { data, error } = await supabase.auth.getClaims();
     if (!error && data?.claims) {
@@ -42,10 +52,14 @@ export async function updateSession(request: NextRequest) {
   }
 
   if (!email) {
-    const { data } = await supabase.auth.getUser();
-    email = data.user?.email ?? null;
-    const appMeta = (data.user?.app_metadata || {}) as Record<string, unknown>;
-    role = typeof appMeta.role === 'string' ? appMeta.role : role;
+    try {
+      const { data } = await supabase.auth.getUser();
+      email = data.user?.email ?? null;
+      const appMeta = (data.user?.app_metadata || {}) as Record<string, unknown>;
+      role = typeof appMeta.role === 'string' ? appMeta.role : role;
+    } catch (err) {
+      console.error('[updateSession] getUser failed', err);
+    }
   }
 
   return { supabaseResponse, email, role, supabase };

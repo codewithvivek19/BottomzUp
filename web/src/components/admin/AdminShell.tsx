@@ -29,9 +29,13 @@ export function AdminShell({
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const supabase = createClient();
-      const { data } = await supabase.auth.getUser();
-      if (!cancelled && data.user?.email) setEmail(data.user.email);
+      try {
+        const supabase = createClient();
+        const { data } = await supabase.auth.getUser();
+        if (!cancelled && data.user?.email) setEmail(data.user.email);
+      } catch {
+        /* missing env — keep placeholder */
+      }
     })();
     return () => {
       cancelled = true;

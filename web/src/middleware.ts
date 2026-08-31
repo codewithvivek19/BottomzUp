@@ -8,10 +8,29 @@ import { updateSession } from '@/lib/supabase/middleware';
  */
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const { supabaseResponse, email, role } = await updateSession(request);
-
   const isLogin = pathname === '/admin/login' || pathname.startsWith('/admin/login/');
   const isAdminArea = pathname === '/admin' || pathname.startsWith('/admin/');
+
+  let supabaseResponse = NextResponse.next({ request });
+  let email: string | null = null;
+  let role: string | null = null;
+
+  try {
+    const session = await updateSession(request);
+    supabaseResponse = session.supabaseResponse;
+    email = session.email;
+    role = session.role;
+  } catch (err) {
+    console.error('[middleware] session update failed', err);
+    // Never 500 the whole admin surface from auth/env failures.
+    if (isAdminArea && !isLogin) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/admin/login';
+      url.searchParams.set('next', pathname);
+      return NextResponse.redirect(url);
+    }
+    return supabaseResponse;
+  }
 
   if (!isAdminArea) {
     return supabaseResponse;

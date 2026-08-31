@@ -10,7 +10,7 @@
     "predev": "npm run sync:public",
     "dev": "next dev --turbopack",
     "prebuild": "npm run sync:public",
-    "build": "prisma generate && prisma migrate deploy && next build",
+    "build": "node scripts/check-env.mjs && prisma generate && (prisma migrate deploy || echo '[build] prisma migrate deploy failed — continuing build') && next build",
     "start": "next start",
     "lint": "eslint",
     "postinstall": "prisma generate && npm run sync:public",

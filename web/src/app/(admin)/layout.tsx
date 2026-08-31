@@ -9,18 +9,10 @@ import '@/styles/datepicker.css';
  * Auth: Supabase cookie sessions (see middleware + lib/admin-auth).
  */
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default function AdminRootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-      />
-      <link rel="stylesheet" href="/legacy/css/fonts.css" />
-      <AdminShell>{children}</AdminShell>
-    </>
-  );
+  // Avoid raw <link> tags in the RSC tree (can break Hostinger/Next production renders).
+  // Fonts + admin styles come from imported CSS above + AdminShell.
+  return <AdminShell>{children}</AdminShell>;
 }
