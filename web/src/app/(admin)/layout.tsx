@@ -8,6 +8,8 @@ import '@/styles/datepicker.css';
  * Access by URL: /admin/login (no public site link).
  * Auth: Supabase cookie sessions (see middleware + lib/admin-auth).
  */
+export const dynamic = 'force-dynamic';
+
 export default function AdminRootLayout({ children }: { children: React.ReactNode }) {
   return (
     <>

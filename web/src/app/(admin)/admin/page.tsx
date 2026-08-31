@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { format } from 'date-fns';
-import { prisma } from '@/lib/prisma';
 import { parseJsonArray } from '@/lib/lead-schema';
 import { getAdminUser } from '@/lib/admin-auth';
+import { prisma, safeAdminQuery } from '@/lib/admin-data';
 
 export const metadata: Metadata = {
   title: 'Admin dashboard',
@@ -19,21 +19,47 @@ export default async function AdminDashboardPage() {
 
   const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
   const now = new Date();
-  const [newLeads, weekLeads, liveEvents, upcoming, recentLeads, coupon] = await Promise.all([
-    prisma.lead.count({ where: { status: 'new' } }),
-    prisma.lead.count({ where: { createdAt: { gte: weekAgo } } }),
-    prisma.event.count({ where: { published: true } }),
-    prisma.event.findMany({
-      where: { published: true, startsAt: { gte: now } },
-      orderBy: { startsAt: 'asc' },
-      take: 5,
-    }),
-    prisma.lead.findMany({ orderBy: { createdAt: 'desc' }, take: 8 }),
-    prisma.couponSetting.findFirst({ where: { active: true }, orderBy: { updatedAt: 'desc' } }),
-  ]);
+  const bundle = await safeAdminQuery(
+    'dashboard',
+    async () => {
+      const [newLeads, weekLeads, liveEvents, upcoming, recentLeads, coupon] = await Promise.all([
+        prisma.lead.count({ where: { status: 'new' } }),
+        prisma.lead.count({ where: { createdAt: { gte: weekAgo } } }),
+        prisma.event.count({ where: { published: true } }),
+        prisma.event.findMany({
+          where: { published: true, startsAt: { gte: now } },
+          orderBy: { startsAt: 'asc' },
+          take: 5,
+        }),
+        prisma.lead.findMany({ orderBy: { createdAt: 'desc' }, take: 8 }),
+        prisma.couponSetting.findFirst({ where: { active: true }, orderBy: { updatedAt: 'desc' } }),
+      ]);
+      return { newLeads, weekLeads, liveEvents, upcoming, recentLeads, coupon };
+    },
+    {
+      newLeads: 0,
+      weekLeads: 0,
+      liveEvents: 0,
+      upcoming: [] as Awaited<ReturnType<typeof prisma.event.findMany>>,
+      recentLeads: [] as Awaited<ReturnType<typeof prisma.lead.findMany>>,
+      coupon: null as Awaited<ReturnType<typeof prisma.couponSetting.findFirst>>,
+    }
+  );
+
+  const { newLeads, weekLeads, liveEvents, upcoming, recentLeads, coupon } = bundle.data;
+  const dbError = bundle.error;
 
   return (
     <div className="adm-dash">
+      {dbError ? (
+        <div className="adm-panel" style={{ marginBottom: '1rem', borderColor: 'rgba(180,60,40,0.35)' }}>
+          <h2 style={{ marginBottom: '0.35rem' }}>Database unavailable</h2>
+          <p style={{ color: '#5c5650', lineHeight: 1.45 }}>{dbError}</p>
+          <p style={{ color: '#5c5650', lineHeight: 1.45, marginTop: '0.5rem' }}>
+            Signed in as <strong>{admin.email}</strong>. Fix Hostinger env + redeploy, then refresh.
+          </p>
+        </div>
+      ) : null}
       <div className="adm-stats">
         <Link href="/admin/leads?status=new" className="adm-stat adm-stat-link">
           <span className="adm-stat-label">New leads</span>

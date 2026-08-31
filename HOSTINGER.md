@@ -77,4 +77,15 @@ Nav links are absolute (`/menu`, `/about`, …) so they work from every page.
 
 ## Env vars
 
-See `web/.env.example`. Minimum: Supabase URL/key, `DATABASE_URL`, `DIRECT_URL`, `ADMIN_EMAILS`.
+See `web/.env.example`. Minimum:
+
+| Name | Example |
+|------|---------|
+| `DATABASE_URL` | Supabase pooled Postgres URI |
+| `DIRECT_URL` | Supabase direct Postgres URI |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | anon/publishable key |
+| `ADMIN_EMAILS` | `Manager@bottomzupbargrill.com` |
+| `NEXT_PUBLIC_SITE_URL` | `https://bottomzupbargrill.com` |
+
+If `/api/events` returns `"error":"unavailable"`, the database env/migration is wrong — admin will fail until that is fixed. Build now runs `prisma migrate deploy`.

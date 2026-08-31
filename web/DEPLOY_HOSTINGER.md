@@ -46,27 +46,32 @@ hPanel → Websites → **Node.js Apps** (or Web Apps) → Deploy from GitHub.
 | `DIRECT_URL` | Supabase direct Postgres URI |
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon/publishable key |
-| `ADMIN_EMAILS` | Manager email(s), comma-separated |
-| `NEXT_PUBLIC_SITE_URL` | `https://www.bottomzupbarandgrill.com` |
+| `ADMIN_EMAILS` | `Manager@bottomzupbargrill.com` (comma-separated if multiple) |
+| `NEXT_PUBLIC_SITE_URL` | `https://bottomzupbargrill.com` |
+
+Build runs `prisma migrate deploy` — `DATABASE_URL` + `DIRECT_URL` must be valid or the deploy fails (better than a blank admin crash).
 
 ## Supabase Auth URLs
 
 Authentication → URL configuration:
 
-- Site URL: `https://www.bottomzupbarandgrill.com`
+- Site URL: `https://bottomzupbargrill.com`
 - Redirect allow list:
-  - `https://www.bottomzupbarandgrill.com/**`
-  - `https://bottomzupbarandgrill.com/**`
+  - `https://bottomzupbargrill.com/**`
+  - `https://www.bottomzupbargrill.com/**`
   - `http://localhost:3000/**`
 
-Create the manager user under Authentication → Users, then match `ADMIN_EMAILS`.
+Create the manager user under Authentication → Users with email
+`Manager@bottomzupbargrill.com`, then set the same value on Hostinger as
+`ADMIN_EMAILS` (case-insensitive match).
 
 ## After deploy smoke check
 
-- `https://www.bottomzupbarandgrill.com/` → Bottomz Up home
-- `https://www.bottomzupbarandgrill.com/events` → React calendar
-- `https://www.bottomzupbarandgrill.com/admin/login` → manager login
-- `https://www.bottomzupbarandgrill.com/menu` → menu
+- `https://bottomzupbargrill.com/` → Bottomz Up home
+- `https://bottomzupbargrill.com/events` → React calendar
+- `https://bottomzupbargrill.com/admin/login` → manager login
+- `https://bottomzupbargrill.com/api/events` → JSON `{ "events": [...] }` **without** `"error":"unavailable"`
+- `https://bottomzupbargrill.com/menu` → menu
 
 ## Asset paths + navigation (important)
 

@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { redirect } from 'next/navigation';
-import { prisma } from '@/lib/prisma';
 import { parseJsonArray } from '@/lib/lead-schema';
 import { AdminLeadsClient } from '@/components/admin/AdminLeadsClient';
 import { getAdminUser } from '@/lib/admin-auth';
+import { prisma, safeAdminQuery } from '@/lib/admin-data';
 
 export const metadata: Metadata = {
   title: 'Leads admin',
@@ -17,7 +17,11 @@ export default async function AdminLeadsPage() {
   const admin = await getAdminUser();
   if (!admin) redirect('/admin/login');
 
-  const rows = await prisma.lead.findMany({ orderBy: { createdAt: 'desc' }, take: 200 });
+  const { data: rows, error } = await safeAdminQuery(
+    'leads',
+    () => prisma.lead.findMany({ orderBy: { createdAt: 'desc' }, take: 200 }),
+    []
+  );
   const initialLeads = rows.map((l) => ({
     id: l.id,
     type: l.type,
@@ -39,8 +43,16 @@ export default async function AdminLeadsPage() {
   }));
 
   return (
-    <Suspense fallback={<p className="adm-empty">Loading leads…</p>}>
-      <AdminLeadsClient initialLeads={initialLeads} />
-    </Suspense>
+    <>
+      {error ? (
+        <div className="adm-panel" style={{ marginBottom: '1rem' }}>
+          <h2>Database unavailable</h2>
+          <p>{error}</p>
+        </div>
+      ) : null}
+      <Suspense fallback={<p className="adm-empty">Loading leads…</p>}>
+        <AdminLeadsClient initialLeads={initialLeads} />
+      </Suspense>
+    </>
   );
 }

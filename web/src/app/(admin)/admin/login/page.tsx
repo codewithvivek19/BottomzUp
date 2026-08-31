@@ -13,10 +13,20 @@ export default function AdminLoginPage() {
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const supabase = createClient();
-      const { data } = await supabase.auth.getUser();
-      if (!cancelled && data.user) {
-        router.replace('/admin');
+      try {
+        const supabase = createClient();
+        const { data } = await supabase.auth.getUser();
+        if (!cancelled && data.user) {
+          router.replace('/admin');
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setError(
+            err instanceof Error && /Missing NEXT_PUBLIC_SUPABASE/i.test(err.message)
+              ? 'Supabase env vars are missing on this deploy. Set NEXT_PUBLIC_SUPABASE_URL and the anon/publishable key on Hostinger, then redeploy.'
+              : 'Could not start auth client. Check Supabase env on Hostinger.'
+          );
+        }
       }
     })();
     return () => {
@@ -32,20 +42,29 @@ export default function AdminLoginPage() {
     const email = String(fd.get('email') || '').trim().toLowerCase();
     const password = String(fd.get('password') || '');
 
-    const supabase = createClient();
-    const { error: signError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const supabase = createClient();
+      const { error: signError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    setLoading(false);
-    if (signError) {
-      setError('Login failed. Check email and password.');
-      return;
+      setLoading(false);
+      if (signError) {
+        setError('Login failed. Check email and password.');
+        return;
+      }
+
+      router.push('/admin');
+      router.refresh();
+    } catch (err) {
+      setLoading(false);
+      setError(
+        err instanceof Error && /Missing NEXT_PUBLIC_SUPABASE/i.test(err.message)
+          ? 'Supabase env vars are missing on this deploy. Set them on Hostinger and redeploy.'
+          : 'Login could not start. Check Hostinger env + Supabase Auth user.'
+      );
     }
-
-    router.push('/admin');
-    router.refresh();
   }
 
   return (
@@ -101,7 +120,7 @@ export default function AdminLoginPage() {
                 type="email"
                 required
                 autoComplete="username"
-                placeholder="manager@yourdomain.com"
+                placeholder="Manager@bottomzupbargrill.com"
                 defaultValue={isDev ? process.env.NEXT_PUBLIC_ADMIN_EMAIL_HINT || '' : ''}
               />
             </label>
@@ -131,7 +150,7 @@ export default function AdminLoginPage() {
 
           <p className="adm-signin-note">
             Staff access only. Create the manager in the Supabase Auth dashboard, then add the email
-            to <code>ADMIN_EMAILS</code>.
+            to <code>ADMIN_EMAILS</code> (e.g. <code>Manager@bottomzupbargrill.com</code>).
           </p>
         </div>
       </div>
