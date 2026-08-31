@@ -59,7 +59,8 @@
   display: block;
   overflow: visible;
   isolation: isolate;
-  z-index: 1;
+  /* Above known-for so the food carousel can hang into that section */
+  z-index: 2;
   /* Solid hero cream — no dissolve veil over the next section */
   background-color: #fffdf9;
   background-image: none;

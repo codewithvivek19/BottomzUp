@@ -437,7 +437,11 @@
 }
 
 /* ---------- Marquee — What we're known for ---------- */
-/* Clean light section — white surface, no cream overlay from hero handoff */
+/*
+  White section. overflow must be visible on BOTH axes so the hero carousel
+  can hang into this section (setting overflow-x:clip forces overflow-y to
+  compute as auto and clips the food). Horizontal clip lives on .marquee-viewport.
+*/
 .fbx-marquee,
 .marquee-section,
 section.fbx-marquee,
@@ -446,12 +450,21 @@ section.marquee-section,
   position: relative;
   z-index: 1;
   margin-top: 0;
-  padding-block: clamp(2rem, 5vw, 3.25rem) clamp(1.85rem, 4vw, 3rem);
-  overflow-x: clip;
-  overflow-y: visible;
+  /* Extra top padding so eyebrow + H1 clear the overlapping hero food */
+  padding-top: clamp(5.5rem, 18vw, 9rem);
+  padding-bottom: clamp(1.85rem, 4vw, 3rem);
+  overflow: visible;
   background: #ffffff !important;
   background-color: #ffffff !important;
   background-image: none !important;
+}
+
+@media (min-width: 768px) {
+  .fbx-marquee,
+  .marquee-section,
+  #menu-preview {
+    padding-top: clamp(4rem, 8vw, 6.5rem);
+  }
 }
 
 .fbx-marquee::before,
@@ -1173,33 +1186,23 @@ a.house-fact:focus-visible .house-fact-value {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Lifestyle photos (Garbage Burger etc.): full-bleed cover, no cutout padding */
-.burgers .burger-image--lifestyle,
-.burger-image--lifestyle {
-  overflow: hidden;
-  border-radius: 18px 18px 0 0;
-  background: #1a1410 !important;
-}
-
-.burgers .burger-image--lifestyle img,
-.burger-image--lifestyle img {
-  object-fit: cover;
-  object-position: center 48%;
-  transform: scale(1.1);
-  transform-origin: center center;
-  padding: 0 !important;
-  filter: none;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
+/* All burger cards share the same cutout treatment (no lifestyle specials) */
 .burger-card:hover .burger-image img,
 .burger-card--featured:hover .burger-image img {
   transform: scale(1.03) translateY(-1px);
 }
 
-.burger-card:hover .burger-image--lifestyle img,
-.burger-card--featured:hover .burger-image--lifestyle img {
-  transform: scale(1.18);
+/* Garbage product shot: same contain treatment, crop a bit more from bottom */
+.burgers .burger-image img[src*="burger-garbage"] {
+  object-fit: cover;
+  object-position: center 35%;
+  padding: 0;
+  transform: scale(1.08);
+  transform-origin: center top;
+}
+
+.burger-card:hover .burger-image img[src*="burger-garbage"] {
+  transform: scale(1.12) translateY(-1px);
 }
 
 /* Card chrome only on text block */
