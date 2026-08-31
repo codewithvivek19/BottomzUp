@@ -29,6 +29,22 @@ export function LegacyChrome({ children }: { children: React.ReactNode }) {
     return () => document.body.classList.remove('nav-open');
   }, [open]);
 
+  // Match vanilla js/main.js: close on Escape + desktop resize
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    const onResize = () => {
+      if (window.innerWidth >= 900) setOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    window.addEventListener('resize', onResize, { passive: true });
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
+
   useEffect(() => setOpen(false), [pathname]);
 
   // Mirror js/main.js footerScrollReveal so sizzle.css animations actually fire.
@@ -118,7 +134,7 @@ export function LegacyChrome({ children }: { children: React.ReactNode }) {
       <div className="grain" aria-hidden="true" />
       <header className={`site-header ${scrolled ? 'is-scrolled' : ''} ${open ? 'nav-open' : ''}`} id="header">
         <div className="nav-shell">
-          <div className="nav-panel" id="navPanel">
+          <div className={`nav-panel${open ? ' is-open' : ''}`} id="navPanel">
             <div className="nav-bar">
               <Link href="/" className="nav-logo" aria-label="Bottomz Up Bar & Grill">
                 <img
@@ -170,28 +186,37 @@ export function LegacyChrome({ children }: { children: React.ReactNode }) {
                 aria-label={open ? 'Close menu' : 'Open menu'}
                 aria-expanded={open}
                 aria-controls="navMobile"
-                onClick={() => setOpen((v) => !v)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpen((v) => !v);
+                }}
               >
                 <span />
                 <span />
               </button>
             </div>
 
-            <nav className="nav-drawer" id="navMobile" aria-hidden={!open} aria-label="Mobile">
+            {/* is-open is required by nav.css (.nav-drawer.is-open) — same as js/main.js */}
+            <nav
+              className={`nav-drawer${open ? ' is-open' : ''}`}
+              id="navMobile"
+              aria-hidden={!open}
+              aria-label="Mobile"
+            >
               <div className="nav-drawer-inner">
-                <Link href="/menu" className="nav-link">
+                <Link href="/menu" className="nav-link" onClick={() => setOpen(false)}>
                   Menu
                 </Link>
-                <Link href="/catering" className="nav-link">
+                <Link href="/catering" className="nav-link" onClick={() => setOpen(false)}>
                   Catering
                 </Link>
-                <Link href="/events" className="nav-link">
+                <Link href="/events" className="nav-link" onClick={() => setOpen(false)}>
                   Events
                 </Link>
-                <Link href="/about" className="nav-link">
+                <Link href="/about" className="nav-link" onClick={() => setOpen(false)}>
                   About Us
                 </Link>
-                <Link href="/contact" className="nav-link">
+                <Link href="/contact" className="nav-link" onClick={() => setOpen(false)}>
                   Contact Us
                 </Link>
                 <a
@@ -199,6 +224,7 @@ export function LegacyChrome({ children }: { children: React.ReactNode }) {
                   className="btn-ticket"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
                 >
                   <span className="btn-hover-fill" aria-hidden="true" />
                   <span className="btn-label">Order Online</span>
@@ -206,7 +232,7 @@ export function LegacyChrome({ children }: { children: React.ReactNode }) {
                     ↗
                   </span>
                 </a>
-                <a href="tel:+14345755753" className="nav-link">
+                <a href="tel:+14345755753" className="nav-link" onClick={() => setOpen(false)}>
                   Call for Order
                 </a>
               </div>

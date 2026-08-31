@@ -76,7 +76,8 @@
 .about-page .site-header .nav-panel,
 .lead-page .site-header .nav-panel,
 .menu-page .site-header .nav-panel,
-.cat-page-body .site-header .nav-panel {
+.cat-page-body .site-header .nav-panel,
+body:has(main.ev-page) .site-header .nav-panel {
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(18px) saturate(1.15);
   -webkit-backdrop-filter: blur(18px) saturate(1.15);
