@@ -52,59 +52,24 @@
 .fbx-hero.hero,
 .fbx-hero.fbx-hero--clean.hero {
   position: relative;
-  /* End just under the food carousel — no empty cream slab before marquee */
+  /* End just under the food carousel — keep existing spacing tokens */
   min-height: calc(var(--fbx-wave-line) + var(--fbx-hero-tail));
   padding: 0 !important;
   margin: 0;
   display: block;
-  /* Allow plate glow / food blur to overlay the next section */
   overflow: visible;
   isolation: isolate;
-  /* Above "What we're known for" so lighting + plates sit on top of it */
-  z-index: 3;
-  /*
-    Cream dissolves at the bottom edge so the hero box does not paint a hard
-    rectangle over the known-for section it overlays.
-  */
-  background-color: transparent;
-  background-image: linear-gradient(
-    180deg,
-    #fffdf9 0%,
-    #fffdf9 calc(100% - clamp(100px, 16vh, 160px)),
-    rgba(255, 253, 249, 0.72) calc(100% - clamp(48px, 8vh, 80px)),
-    rgba(255, 253, 249, 0) 100%
-  );
+  z-index: 1;
+  /* Solid hero cream — no dissolve veil over the next section */
+  background-color: #fffdf9;
+  background-image: none;
 }
 
-/*
-  Soft lighting veil: amber glow dissolves downward into the known-for section
-  (which sits underneath via z-index). No opaque cream band at the end.
-*/
+/* Remove cream/amber overlay that was bleeding onto "What we're known for" */
 .fbx-hero.hero::after,
 .fbx-hero.fbx-hero--clean.hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: calc(var(--fbx-hero-tail) * -1.1);
-  height: clamp(240px, 38vh, 420px);
-  pointer-events: none;
-  z-index: 6;
-  background:
-    radial-gradient(
-      ellipse 80% 60% at 50% 28%,
-      rgba(231, 147, 30, 0.22) 0%,
-      rgba(241, 159, 15, 0.1) 38%,
-      transparent 70%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(255, 253, 249, 0) 0%,
-      rgba(255, 253, 249, 0.12) 30%,
-      rgba(255, 253, 249, 0.28) 55%,
-      rgba(255, 253, 249, 0.12) 78%,
-      transparent 100%
-    );
+  content: none !important;
+  display: none !important;
 }
 
 /*

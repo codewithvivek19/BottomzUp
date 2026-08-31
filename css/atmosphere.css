@@ -87,7 +87,7 @@ body::after {
 
 /* ---------- Section atmospheres ---------- */
 
-/* Marquee / known-for: transparent shell — hero light overlays it */
+/* Marquee / known-for: white section (see home.css for full rules) */
 .fbx-categories,
 .fbx-marquee,
 .marquee-section {
@@ -98,8 +98,8 @@ body::after {
 .fbx-marquee,
 .marquee-section,
 #menu-preview {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   background-image: none !important;
 }
 
