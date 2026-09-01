@@ -13,7 +13,7 @@
     "build": "node scripts/check-env.mjs && prisma generate && (prisma migrate deploy || echo '[build] prisma migrate deploy failed — continuing build') && next build",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma generate && npm run sync:public",
+    "postinstall": "prisma generate && (node scripts/sync-public-assets.mjs || echo '[postinstall] sync-public-assets skipped')",
     "seed": "tsx prisma/seed.ts",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy"

@@ -1,0 +1,42 @@
+/* ============================================
+   BOTTOMZ UP — Font Faces
+   Display: Lemon Milk (local)
+   Body/UI: Poppins (Google Fonts)
+   ============================================ */
+
+/* Lemon Milk — Display / Headlines */
+@font-face {
+  font-family: "Lemon Milk";
+  src: url("../assets/fonts/lemon-milk-light.woff2") format("woff2"),
+       url("../assets/fonts/lemon-milk-light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lemon Milk";
+  src: url("../assets/fonts/lemon-milk-regular.woff2") format("woff2"),
+       url("../assets/fonts/lemon-milk-regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lemon Milk";
+  src: url("../assets/fonts/lemon-milk-medium.woff2") format("woff2"),
+       url("../assets/fonts/lemon-milk-medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lemon Milk";
+  src: url("../assets/fonts/lemon-milk-bold.woff2") format("woff2"),
+       url("../assets/fonts/lemon-milk-bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

@@ -53,6 +53,8 @@ next-env.d.ts
 /public/css/
 /public/js/
 /public/pages/
+# NOTE: /public/legacy/ is committed on purpose — Hostinger Root Directory=web
+# often cannot see ../css; legacy is the deploy fallback.
 
 # Generated from repo root by sync-public-assets — NEVER edit / commit
 /public/legacy/

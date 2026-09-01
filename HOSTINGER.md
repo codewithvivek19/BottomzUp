@@ -12,9 +12,10 @@ There is **no separate “local design” vs “production design”.**
 | Repo root `pages/` | `/menu`, `/about`, `/contact`, `/catering` |
 | Repo root `assets/` | `/assets/*` |
 
-`web/public/legacy/` and `web/public/{css,js,pages}` are **generated copies**.  
-They are overwritten by `npm run sync:public` on every `predev` / `prebuild` / `postinstall`.  
-**Do not hand-edit them.**
+`web/public/{css,js,pages}` are generated on every sync.  
+`web/public/legacy/` is a **committed deploy fallback** (Hostinger Root Directory=`web` often cannot see `../css`).  
+When repo-root `css/` exists locally, `npm run sync:public` refreshes legacy from the monorepo parent.  
+**Do not hand-edit legacy for long** — edit repo-root sources, then sync.
 
 Flow:
 

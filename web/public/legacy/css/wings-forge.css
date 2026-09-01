@@ -1,0 +1,1200 @@
+/* ============================================================
+   BOTTOMZ UP — SVG Sauce Meter (home + menu)
+   Heat rainbow gauge · mobile chips · detail card
+   On x32 cream canvas · accent via --wm-color
+   ============================================================ */
+
+.wings-meter-section {
+  position: relative;
+  background: #ffffff;
+  padding-block: clamp(1.75rem, 4vw, 2.75rem);
+  overflow: hidden;
+  isolation: isolate;
+  --wm-color: #4a8d43;
+}
+
+/* ============================================================
+   Single-viewport sauce lab — SVG + knob only
+   Fits ~one screen · no beer cards / size stacks / long copy
+   ============================================================ */
+.wings-meter-section--viewport {
+  /* Less top pad after lifestyle bento — closes the dead gap */
+  padding-block: clamp(0.75rem, 2vh, 1.35rem) clamp(1.65rem, 3.5vh, 2.5rem);
+  min-height: unset;
+  background: #ffffff;
+}
+
+.wm-shell--viewport {
+  max-width: 980px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 2vh, 1.15rem);
+}
+
+.wm-vp-head {
+  text-align: center;
+  margin: 0;
+}
+
+.wm-vp-head .wm-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin: 0.2rem 0 0;
+  line-height: 1.08;
+}
+
+.wm-vp-head .wm-eyebrow {
+  margin-bottom: 0.25rem;
+}
+
+/* Main instruments — one row, constrained height */
+.wm-vp-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(180px, 0.75fr);
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  align-items: center;
+  min-height: 0;
+}
+
+.wm-vp-meter {
+  position: relative;
+  max-height: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 0.75rem;
+  border-radius: 20px;
+  background: rgba(255, 253, 249, 0.9);
+  border: 1px solid rgba(46, 44, 44, 0.08);
+  box-shadow: 0 8px 24px rgba(46, 44, 44, 0.06);
+  overflow: visible; /* labels/ticks must not clip */
+}
+
+/* Size by the tighter axis — never squash the nearly-square viewBox */
+.wm-vp-meter .sauce-meter-svg,
+.wm-vp-meter > svg {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(100%, 380px);
+  max-height: min(42vh, 360px);
+  aspect-ratio: 777 / 757;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.wm-vp-knob {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
+  border-radius: 20px;
+  background: rgba(255, 253, 249, 0.9);
+  border: 1px solid rgba(46, 44, 44, 0.08);
+  box-shadow: 0 8px 24px rgba(46, 44, 44, 0.06);
+  min-height: 0;
+}
+
+.wm-vp-knob .hk-stage {
+  max-width: 220px;
+  padding: 0.15rem 0 1.85rem;
+  margin: 0;
+}
+
+.wm-vp-knob .hk-wrap {
+  width: min(100%, 180px);
+}
+
+.wm-vp-knob .hk-kicker {
+  font-size: 0.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.wm-vp-knob .hk-readout {
+  bottom: -0.1rem;
+}
+
+.wm-vp-knob .hk-readout-value {
+  font-size: 1.35rem;
+}
+
+/* Compact selection strip */
+.wm-vp-readout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.85rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 14px;
+  background: rgba(255, 253, 249, 0.92);
+  border: 1px solid rgba(46, 44, 44, 0.08);
+}
+
+.wm-vp-readout .wm-heat-badge {
+  margin: 0;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.65rem;
+}
+
+.wm-vp-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-ink, #1a1510);
+  line-height: 1.15;
+}
+
+.wm-vp-link {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff !important;
+  background: var(--color-charcoal, #2e2c2c);
+  text-decoration: none;
+  white-space: nowrap;
+  border: none;
+  box-shadow: 0 4px 14px rgba(46, 44, 44, 0.18);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.wm-vp-link:hover {
+  color: #ffffff !important;
+  background: #1a1510;
+  transform: translateY(-1px);
+}
+
+/* Full-width ticket CTA in sauce section — white label */
+.wings-meter-section .btn-ticket,
+.wings-meter-section .btn-ticket .btn-label,
+.wings-meter-section .btn-ticket .btn-arrow {
+  color: #ffffff !important;
+}
+
+.wings-meter-section .btn-ticket {
+  background: var(--accent-flow, var(--theme-gradient, var(--color-amber)));
+}
+
+.wm-vp-chips {
+  display: flex;
+  gap: 0.55rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.35rem 0.15rem 0.5rem;
+  align-items: stretch;
+  mask-image: linear-gradient(90deg, transparent, #000 10px, #000 calc(100% - 14px), transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10px, #000 calc(100% - 14px), transparent);
+}
+
+.wm-vp-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.wm-vp-chips .wm-chip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.65rem 0.9rem;
+  min-height: 3.1rem;
+  max-width: none;
+  font-size: 0.82rem;
+  line-height: 1.2;
+  border-radius: 14px;
+  border: 1.5px solid rgba(46, 44, 44, 0.1);
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(46, 44, 44, 0.05);
+}
+
+.wm-vp-chips .wm-chip-dot {
+  display: none; /* cleaner chips — heat color via border/active */
+}
+
+.wm-vp-chips .wm-chip-label {
+  display: block;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-ink, #1a1510);
+  white-space: nowrap;
+  margin: 0;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.wm-vp-chips .wm-chip-heat {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--chip-color, var(--wm-color));
+  line-height: 1;
+  opacity: 0.95;
+}
+
+.wm-vp-chips .wm-chip.is-active {
+  background: color-mix(in srgb, var(--chip-color, var(--wm-color)) 14%, #ffffff);
+  border-color: var(--chip-color, var(--wm-color));
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--chip-color, var(--wm-color)) 35%, transparent),
+    0 6px 16px color-mix(in srgb, var(--chip-color, var(--wm-color)) 22%, transparent);
+}
+
+.wm-vp-chips .wm-chip.is-active .wm-chip-label {
+  color: var(--color-ink, #1a1510);
+}
+
+@media (max-width: 720px) {
+  .wings-meter-section--viewport {
+    padding-block: 1rem 1.35rem;
+    overflow: visible;
+  }
+
+  .wm-shell--viewport {
+    gap: 0.65rem;
+    padding-inline: 0.15rem;
+  }
+
+  .wm-vp-stage {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  /* Meter first, full width, no harsh clip / no vertical squash */
+  .wm-vp-meter {
+    order: 1;
+    max-height: none;
+    min-height: 0;
+    width: 100%;
+    padding: 0.25rem 0.1rem 0.35rem;
+    overflow: visible;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .wm-vp-meter .sauce-meter-svg,
+  .wm-vp-meter > svg {
+    width: auto;
+    height: auto;
+    max-width: min(100%, 300px);
+    max-height: min(58vw, 300px);
+    aspect-ratio: 777 / 757;
+    margin-inline: auto;
+    overflow: visible;
+  }
+
+  .wm-vp-knob {
+    order: 2;
+    width: 100%;
+    max-width: 200px;
+    margin-inline: auto;
+    padding: 0.15rem;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .wm-vp-knob .hk-wrap {
+    width: min(100%, 140px);
+    margin-inline: auto;
+  }
+
+  .wm-vp-knob .hk-stage {
+    padding-bottom: 1.15rem;
+  }
+
+  .wm-vp-readout {
+    order: 3;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .wm-vp-link {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .wm-vp-chips {
+    order: 4;
+    padding-inline: 0.1rem;
+  }
+}
+
+/* ---------- Bento layout: SVG + knob + detail + chips ---------- */
+.wings-meter-section--bento {
+  padding-block: clamp(3rem, 6.5vw, 5.5rem);
+}
+
+.wings-meter-section--bento .wm-header {
+  margin-bottom: clamp(1.5rem, 3.5vw, 2.25rem);
+}
+
+.wm-bento {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
+  grid-template-areas:
+    "meter knob"
+    "detail detail"
+    "chips chips";
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  align-items: stretch;
+}
+
+.wm-bento-meter { grid-area: meter; }
+.wm-bento-knob { grid-area: knob; }
+.wm-bento-detail { grid-area: detail; }
+.wm-bento-chips { grid-area: chips; }
+
+.wm-bento-meter {
+  background: var(--bg-glass-solid, rgba(255, 253, 249, 0.94));
+  border: 1px solid var(--glass-border, rgba(46, 44, 44, 0.08));
+  border-radius: 24px;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+}
+
+.wm-bento-meter .wm-meter-col {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  filter: drop-shadow(0 12px 28px rgba(46, 44, 44, 0.1));
+}
+
+.wm-bento-knob {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wm-bento-knob .wm-instrument-card {
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wm-bento-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: var(--bg-glass-solid, rgba(255, 253, 249, 0.94));
+  border: 1px solid var(--glass-border, rgba(46, 44, 44, 0.08));
+  border-radius: 24px;
+  padding: clamp(1.15rem, 2.5vw, 1.75rem);
+  box-shadow: var(--shadow-sm);
+}
+
+.wm-bento-detail .wm-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  min-height: 0;
+}
+
+.wm-bento-detail .wm-card::before,
+.wm-bento-detail .wm-card::after {
+  display: none;
+}
+
+.wm-bento-chips {
+  padding-top: 0.25rem;
+}
+
+.wm-bento-chips .wm-chip-label {
+  text-align: left;
+  margin-bottom: 0.65rem;
+}
+
+.wm-foot--full {
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.wm-foot--full .btn-ticket {
+  width: 100%;
+  justify-content: center;
+  min-height: 52px;
+  padding-inline: 1.5rem;
+}
+
+.wm-bento-detail .wm-size-grid {
+  width: 100%;
+}
+
+.wm-bento-detail .wm-size-box {
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .wm-bento {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "knob"
+      "meter"
+      "detail"
+      "chips";
+  }
+
+  .wm-bento-meter {
+    min-height: 240px;
+  }
+
+  .wm-bento-meter .wm-meter-col {
+    max-width: 320px;
+  }
+}
+
+/* Minimal home layout — one dial, one result, chips secondary */
+.wings-meter-section--minimal {
+  padding-block: clamp(2.75rem, 6vw, 5rem);
+}
+
+.wings-meter-section--minimal .wm-header--minimal {
+  margin-bottom: clamp(1.5rem, 3.5vw, 2.25rem);
+}
+
+.wings-meter-section--minimal .wm-title {
+  font-size: clamp(2rem, 5vw, 3.15rem);
+}
+
+.wings-meter-section--minimal .wm-desc {
+  max-width: 34ch;
+}
+
+.wm-minimal-grid {
+  display: grid;
+  grid-template-columns: minmax(200px, 280px) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 2.75rem);
+  align-items: start;
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.wings-meter-section--minimal .wm-knob-col {
+  padding-top: 0;
+}
+
+.wings-meter-section--minimal .wm-instrument-card {
+  max-width: 280px;
+  padding: 1rem 0.75rem 0.25rem;
+}
+
+.wm-card--minimal {
+  min-height: 0;
+  padding: clamp(1.15rem, 2.5vw, 1.65rem);
+}
+
+.wm-card--minimal .wm-sauce-name {
+  font-size: clamp(1.65rem, 3.5vw, 2.35rem);
+  margin-bottom: 0.5rem;
+}
+
+.wm-card--minimal .wm-sauce-desc {
+  margin-bottom: 1.1rem;
+  font-size: 0.95rem;
+  max-width: 32ch;
+}
+
+.wm-sizes--inline {
+  margin-top: 0.15rem;
+}
+
+.wm-sizes--inline .wm-sizes-title {
+  margin-bottom: 0.55rem;
+}
+
+.wm-chip-block {
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.wm-chip-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 0.55rem;
+  text-align: center;
+}
+
+.wings-meter-section--minimal .wm-chip-rail {
+  justify-content: flex-start;
+  margin-bottom: 0;
+  padding-bottom: 0.35rem;
+}
+
+.wings-meter-section--minimal .wm-foot {
+  margin-top: 0.35rem;
+}
+
+@media (max-width: 720px) {
+  .wm-minimal-grid {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+    justify-items: center;
+  }
+
+  .wings-meter-section--minimal .wm-details-col {
+    width: 100%;
+  }
+
+  .wings-meter-section--minimal .wm-foot {
+    justify-content: center;
+  }
+
+  .wm-chip-label {
+    text-align: left;
+  }
+}
+
+/* Soft heat glow sits on solid white — keep subtle so section stays white */
+.wings-meter-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 28% 42%,
+    color-mix(in srgb, var(--wm-color) 28%, transparent),
+    transparent 58%
+  );
+  opacity: 0.08;
+  transition: background 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.wings-meter-section.is-pulse::before {
+  opacity: 0.14;
+}
+
+/* Title block on white — readable charcoal / amber */
+.wings-meter-section .wm-title {
+  color: #1a1919 !important;
+}
+
+.wings-meter-section .wm-eyebrow {
+  color: #b86a0e;
+}
+
+.wings-meter-section > .container,
+.wings-meter-section .wm-shell {
+  position: relative;
+  z-index: 1;
+}
+
+/* Instrument frame for heat motor — light glass, not dark tech */
+.wm-instrument-card {
+  width: 100%;
+  max-width: 300px;
+  margin-inline: auto;
+  padding: 1.1rem 0.85rem 0.35rem;
+  border-radius: 28px;
+  background:
+    linear-gradient(165deg, rgba(255, 253, 249, 0.95) 0%, rgba(251, 246, 227, 0.88) 100%);
+  border: 1px solid rgba(46, 44, 44, 0.08);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.85) inset,
+    0 16px 40px rgba(46, 44, 44, 0.08);
+}
+
+/* Compact variant for menu wings section */
+.wings-meter-section--menu {
+  padding-block: clamp(1.25rem, 3vw, 2rem);
+  margin-bottom: 1.25rem;
+  border-radius: 22px;
+  background: var(--bg-glass-solid, rgba(255, 253, 249, 0.94));
+  border: 1px solid var(--glass-border, rgba(46, 44, 44, 0.08));
+  box-shadow: var(--shadow-sm);
+}
+
+.wings-meter-section--menu::before {
+  opacity: 0.08;
+  border-radius: inherit;
+}
+
+/* ---- Header ---- */
+.wm-header {
+  text-align: center;
+  margin-bottom: clamp(1.15rem, 3vw, 2rem);
+}
+
+.wings-meter-section--menu .wm-header {
+  margin-bottom: 0.85rem;
+  text-align: left;
+}
+
+.wm-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--wm-color);
+  margin-bottom: 0.75rem;
+  transition: color 0.45s ease;
+}
+
+.wm-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  color: var(--color-ink, #111010);
+  line-height: 1.08; /* descender clearance */
+  letter-spacing: -0.03em;
+  margin: 0 0 0.75rem;
+  text-wrap: balance;
+}
+
+.wings-meter-section--menu .wm-title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.wm-desc {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: rgba(17, 16, 16, 0.68);
+  max-width: 40ch;
+  margin: 0 auto;
+}
+
+.wings-meter-section--menu .wm-desc {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Heat progress strip */
+.wm-heat-bar {
+  --wm-heat-p: 0.15;
+  height: 6px;
+  max-width: 280px;
+  margin: 1.25rem auto 0;
+  border-radius: 99px;
+  background: rgba(46, 44, 44, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.wings-meter-section--menu .wm-heat-bar {
+  margin-left: 0;
+}
+
+.wm-heat-bar::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: calc(var(--wm-heat-p) * 100%);
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #4a8d43 0%,
+    #cdd02b 25%,
+    #f8ae1c 50%,
+    #e14827 75%,
+    #7a0b12 100%
+  );
+  background-size: 280px 100%;
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--wm-color) 50%, transparent);
+}
+
+/* ---- Mobile chip rail (primary on small screens) ---- */
+.wm-chip-rail {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.15rem 0.15rem 0.75rem;
+  margin-bottom: 0.35rem;
+  scroll-snap-type: x mandatory;
+  mask-image: linear-gradient(90deg, transparent, #000 12px, #000 calc(100% - 18px), transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12px, #000 calc(100% - 18px), transparent);
+}
+
+.wm-chip-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.wm-chip {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.85rem 0.55rem 0.65rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(46, 44, 44, 0.1);
+  background: #ffffff;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition:
+    transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
+  max-width: 220px;
+  text-align: left;
+}
+
+.wm-chip:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--chip-color, var(--wm-color)) 55%, transparent);
+}
+
+.wm-chip.is-active {
+  border-color: transparent;
+  background: color-mix(in srgb, var(--chip-color, var(--wm-color)) 18%, #fffdf9);
+  box-shadow:
+    0 0 0 2px var(--chip-color, var(--wm-color)),
+    0 8px 20px color-mix(in srgb, var(--chip-color, var(--wm-color)) 28%, transparent);
+}
+
+.wm-chip-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--chip-color, var(--wm-color));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--chip-color, var(--wm-color)) 25%, transparent);
+  flex-shrink: 0;
+}
+
+.wm-chip-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-charcoal);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wm-chip-heat {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--chip-color, var(--wm-color));
+  opacity: 0.9;
+}
+
+/* ---- Grid Layout ---- */
+.wm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(1.35rem, 3.5vw, 2.75rem);
+  align-items: center;
+}
+
+/* Home: SVG meter · heat motor · details */
+.wm-grid--with-knob {
+  grid-template-columns: minmax(0, 1.05fr) minmax(200px, 0.85fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+.wm-knob-col {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: clamp(0.25rem, 1.5vw, 1rem);
+  min-width: 0;
+}
+
+@media (max-width: 1100px) {
+  .wm-grid--with-knob {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 1.25rem;
+  }
+
+  .wm-grid--with-knob .wm-meter-col {
+    grid-column: 1;
+  }
+
+  .wm-grid--with-knob .wm-knob-col {
+    grid-column: 2;
+    padding-top: 0.5rem;
+  }
+
+  .wm-grid--with-knob .wm-details-col {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 900px) {
+  .wm-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .wm-grid--with-knob {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+  }
+
+  .wm-grid--with-knob .wm-meter-col,
+  .wm-grid--with-knob .wm-knob-col,
+  .wm-grid--with-knob .wm-details-col {
+    grid-column: auto;
+  }
+
+  /* Mobile order: knob (thumb) → chips already above → meter → details */
+  .wm-grid--with-knob .wm-knob-col {
+    order: -1;
+    padding-top: 0;
+  }
+}
+
+/* ---- Left: SVG Meter ---- */
+.wm-meter-col {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  filter: drop-shadow(0 18px 40px rgba(46, 44, 44, 0.12));
+}
+
+.sauce-meter-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+/* On mobile, SVG is showcase — chips do the heavy lifting */
+@media (max-width: 700px) {
+  .wm-meter-col {
+    max-width: 340px;
+    transform: scale(1.02);
+  }
+
+  .wings-meter-section--menu .wm-meter-col {
+    max-width: 280px;
+  }
+}
+
+.meter-sauce-btn {
+  cursor: pointer;
+  outline: none;
+}
+
+.meter-sauce-btn .meter-hit {
+  opacity: 0;
+}
+
+.meter-band {
+  pointer-events: none;
+  fill: transparent;
+  transition: fill 0.35s ease;
+}
+
+.meter-band.is-lit {
+  fill: color-mix(in srgb, var(--wm-color) 14%, transparent);
+}
+
+.sauce-label {
+  fill: #1a1919 !important;
+  font-family: var(--font-display), "Arial Black", sans-serif !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  opacity: 0.38;
+  transition:
+    opacity 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    fill 0.3s ease,
+    filter 0.3s ease,
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.meter-sauce-btn:hover .sauce-label,
+.meter-sauce-btn:focus-visible .sauce-label {
+  opacity: 0.85;
+  transform: translateX(12px);
+}
+
+.meter-sauce-btn.is-active .sauce-label {
+  opacity: 1 !important;
+  fill: var(--wm-color) !important;
+  transform: translateX(22px);
+  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--wm-color) 55%, transparent));
+}
+
+.meter-sauce-btn:focus-visible .meter-hit {
+  opacity: 0.08;
+  fill: var(--wm-color);
+}
+
+/* ---- Right: Details ---- */
+.wm-details-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  min-width: 0;
+}
+
+.wm-card {
+  background: rgba(255, 253, 249, 0.94);
+  border: 1px solid rgba(46, 44, 44, 0.06);
+  border-radius: 22px;
+  padding: clamp(1.25rem, 3vw, 2.15rem);
+  box-shadow: var(--shadow-float, 0 12px 30px rgba(46, 44, 44, 0.08));
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.wm-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--wm-color);
+  transition: background 0.45s ease;
+}
+
+.wm-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -40% auto;
+  width: 55%;
+  height: 55%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--wm-color) 22%, transparent), transparent 70%);
+  pointer-events: none;
+  transition: background 0.5s ease;
+}
+
+.wm-card-inner {
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.22s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wm-card-inner.is-changing {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.wm-heat-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.95rem;
+  border: 1.5px solid var(--wm-color);
+  border-radius: 999px;
+  color: var(--wm-color);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1.15rem;
+  transition: border-color 0.4s, color 0.4s, box-shadow 0.4s;
+  box-shadow: 0 0 0 0 transparent;
+}
+
+.wings-meter-section.is-pulse .wm-heat-badge {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--wm-color) 22%, transparent);
+}
+
+.wm-sauce-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 4vw, 3rem);
+  color: var(--color-ink, #111010);
+  line-height: 1.02;
+  margin: 0 0 0.85rem;
+  letter-spacing: -0.02em;
+}
+
+.wm-sauce-desc {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: rgba(17, 16, 16, 0.68);
+  margin: 0 0 1.5rem;
+  max-width: 36ch;
+}
+
+.wm-pairing {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  background: rgba(255, 253, 249, 0.72);
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(46, 44, 44, 0.06);
+  border-left: 3px solid var(--wm-color);
+  transition: border-color 0.4s ease, background 0.3s ease;
+}
+
+.wm-pairing-icon,
+.wm-pairing-mark {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 10px;
+  color: var(--wm-color);
+  background: color-mix(in srgb, var(--wm-color) 12%, #fffdf9);
+  line-height: 1;
+}
+
+.wm-pairing-mark svg {
+  display: block;
+}
+
+.wm-pairing-text strong {
+  display: block;
+  font-family: var(--font-body);
+  color: var(--wm-color);
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+  transition: color 0.4s ease;
+}
+
+.wm-pairing-text span {
+  font-family: var(--font-body);
+  color: rgba(17, 16, 16, 0.65);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* ---- Wing sizes ---- */
+.wm-sizes-title {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(17, 16, 16, 0.5);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.wm-size-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+}
+
+.wm-size-box {
+  background: rgba(255, 253, 249, 0.9);
+  border: 1.5px solid rgba(46, 44, 44, 0.1);
+  border-radius: 16px;
+  padding: 1rem 0.65rem;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.2s ease,
+    box-shadow 0.22s ease,
+    background 0.2s ease;
+}
+
+.wm-size-box:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--wm-color) 50%, transparent);
+}
+
+.wm-size-box.is-active {
+  border-color: transparent;
+  background: var(--accent-flow, var(--theme-gradient, linear-gradient(90deg, #ff931e, #eb9d2f, #ff931e)));
+  box-shadow: 0 8px 20px rgba(255, 147, 30, 0.32);
+}
+
+.wm-size-name {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(17, 16, 16, 0.5);
+  margin-bottom: 0.2rem;
+}
+
+.wm-size-box.is-active .wm-size-name {
+  color: rgba(26, 21, 16, 0.75);
+}
+
+.wm-size-qty {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(17, 16, 16, 0.8);
+  margin-bottom: 0.35rem;
+}
+
+.wm-size-box.is-active .wm-size-qty {
+  color: #1a1510;
+}
+
+.wm-size-price {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--color-amber-deep, #c67a12);
+}
+
+.wm-size-box.is-active .wm-size-price {
+  color: #1a1510;
+}
+
+.wm-foot {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 901px) {
+  .wm-foot {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 900px) {
+  .wm-foot {
+    justify-content: center;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .wm-card-inner,
+  .sauce-label,
+  .wm-heat-bar::after,
+  .wings-meter-section::before {
+    transition: none !important;
+  }
+}

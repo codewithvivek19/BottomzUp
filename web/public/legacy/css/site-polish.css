@@ -1,0 +1,276 @@
+/* ============================================================
+   Bottomz Up — Full-site craft layer (design-taste pass)
+   Brand-locked cream/amber · no AI-purple · static HTML
+   Dials: variance 7 · motion 6 · density 4
+   ============================================================ */
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 1000;
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  background: var(--color-charcoal);
+  color: var(--color-cream);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+  outline: 2px solid var(--color-amber);
+  outline-offset: 3px;
+}
+
+/* Page rhythm — airy, not cockpit */
+main > section,
+main > .section {
+  scroll-margin-top: calc(var(--header-height) + 12px);
+}
+
+/* Hash targets without layout */
+.anchor-alias {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  scroll-margin-top: calc(var(--header-height, 78px) + 12px);
+}
+
+#visit,
+#story,
+#catering,
+#contact {
+  scroll-margin-top: calc(var(--header-height, 78px) + 12px);
+}
+
+/* Home main must hug last section — no phantom bottom band before footer */
+main#main:not(.page-lead) {
+  display: block;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  min-height: 0;
+  overflow-x: clip;
+}
+
+main#main.page-lead {
+  display: block;
+  padding-bottom: clamp(5rem, 10vw, 8.5rem) !important;
+  margin-bottom: 0 !important;
+  overflow-x: clip;
+}
+
+main#main > section:last-child {
+  margin-bottom: 0;
+  padding-bottom: clamp(1.1rem, 2.5vw, 1.75rem);
+}
+
+.section {
+  padding-block: clamp(2rem, 4.5vw, 3.25rem);
+}
+
+/* Display type: descender safety + less hard text-shadow */
+.display {
+  line-height: 1.08;
+  text-shadow: 1px 1px 0 rgba(46, 44, 44, 0.05);
+}
+
+.heading-xl,
+.heading-lg {
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+/* Body measure */
+.marquee-lede,
+.burgers-lede,
+.wm-desc,
+.scratch-lede,
+.menu-hero-lede {
+  max-width: 42ch;
+  line-height: 1.6;
+}
+
+/* Focus visible — sitewide */
+:where(a, button, input, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 3px;
+}
+
+/* Soft glass card utility (food surfaces) */
+.surface-card {
+  background: var(--bg-glass-solid, rgba(255, 253, 249, 0.94));
+  border: 1px solid var(--glass-border, rgba(46, 44, 44, 0.08));
+  border-radius: var(--radius-xl, 24px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Marquee head spacing */
+.marquee-head {
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.marquee-title {
+  letter-spacing: -0.02em;
+}
+
+/* Burgers section breathing room */
+.burgers {
+  padding-block: clamp(2rem, 4.5vw, 3.25rem);
+}
+
+.burgers-header {
+  margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+/* Visit */
+.visit {
+  padding-block: clamp(2rem, 4.5vw, 3.25rem);
+  background: #ffffff;
+}
+
+.visit-address {
+  font-style: normal;
+  line-height: 1.5;
+}
+
+/* Scratch — keep light, less nested gradient noise */
+.scratch-section {
+  padding-block: clamp(2rem, 4.5vw, 3.25rem);
+}
+
+/* Footer credit — no emoji */
+.footer-credit {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
+/* Menu page shell — keep tight into footer */
+.menu-page .menu-night {
+  padding-bottom: 0;
+}
+
+.menu-page .menu-main-wrap {
+  padding-bottom: 0.25rem;
+}
+
+.menu-page .bar-conversion {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.menu-page .menu-hero-compact {
+  padding-bottom: 0.5rem;
+}
+
+.menu-page .menu-hero-title {
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.menu-page .menu-jump-rail {
+  padding-block: 0.85rem 0.35rem;
+}
+
+.menu-page .menu-sticky-deck {
+  box-shadow: 0 10px 28px rgba(46, 44, 44, 0.05);
+}
+
+
+
+/* Lifestyle editorial — charcoal on white; head always visible */
+.lifestyle-head {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.lifestyle-head .display,
+.lifestyle-head h2 {
+  line-height: 1.08;
+  color: #1a1919 !important;
+  -webkit-text-fill-color: #1a1919 !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+.lifestyle-head .eyebrow {
+  color: #b86a0e !important;
+  -webkit-text-fill-color: #b86a0e !important;
+  opacity: 1 !important;
+}
+
+.lifestyle-lede {
+  color: #3a3630 !important;
+  -webkit-text-fill-color: #3a3630 !important;
+  opacity: 1 !important;
+}
+
+/* Sauce meter + scratch — solid white sections */
+.wings-meter-section,
+.wings-meter-section--viewport,
+.scratch-section {
+  background: #ffffff;
+}
+
+/* Footer contact row always centered */
+.site-footer.site-footer--impact .footer-contact-bar {
+  justify-content: center;
+  text-align: center;
+}
+
+.site-footer.site-footer--impact .footer-phone,
+.site-footer.site-footer--impact .footer-delivery-block {
+  align-items: center;
+  text-align: center;
+}
+
+/* Hero: no carousel chrome */
+.fbx-food-dots,
+.fbx-food-progress {
+  display: none !important;
+}
+
+/* Footer marquee slightly calmer */
+.footer-marquee-group span {
+  letter-spacing: 0.18em;
+}
+
+/* Reduced motion: kill infinite marquees sitewide */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track,
+  .footer-marquee-track,
+  .reviews-rail-inner,
+  .reviews-rail--fwd .reviews-rail-inner,
+  .reviews-rail--rev .reviews-rail-inner,
+  .fbx-food,
+  .footer-burger img {
+    animation: none !important;
+  }
+
+}
+
+/* Prefer reduced transparency: solid surfaces */
+@media (prefers-reduced-transparency: reduce) {
+  .nav-panel,
+  .menu-sticky-deck,
+  .wm-card,
+  .wm-instrument-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #fffdf9 !important;
+  }
+
+  /* Dock stays charcoal — cream override made it unreadable */
+  .sticky-cta-inner {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #1e1c1b !important;
+  }
+}

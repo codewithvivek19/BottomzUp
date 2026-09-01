@@ -1,0 +1,636 @@
+/* ============================================
+   Lifestyle / house energy — editorial grid
+   Cream ground · tall process + stacked people
+   ============================================ */
+
+.lifestyle {
+  position: relative;
+  padding-block: clamp(1.5rem, 3.5vw, 2.5rem);
+  padding-top: clamp(1.25rem, 3vw, 2rem);
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* Bento: tight bottom so gap into wings isn’t a dead band */
+.lifestyle.lifestyle--bento {
+  padding-top: clamp(1.25rem, 3vw, 2rem);
+  padding-bottom: clamp(0.5rem, 1.5vw, 1rem);
+  background: #ffffff;
+}
+
+.lifestyle-shell {
+  position: relative;
+  max-width: var(--container-max, 1280px);
+  margin-inline: auto;
+  padding-inline: clamp(1.15rem, 4vw, 2rem);
+}
+
+/* ---------- 3-column bento: Burgers · Kitchen · Bar ---------- */
+.lifestyle-bento {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.85rem, 2vw, 1.25rem);
+  align-items: stretch;
+}
+
+.lifestyle-bento-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(380px, 48vw, 520px);
+  border-radius: 24px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fffef8;
+  background: var(--color-charcoal, #2e2c2c);
+  box-shadow: var(--shadow-md, 0 8px 28px rgba(46, 44, 44, 0.1));
+  border: 1px solid rgba(46, 44, 44, 0.08);
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease;
+}
+
+.lifestyle-bento-card:hover,
+.lifestyle-bento-card:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 44px rgba(46, 44, 44, 0.16);
+  outline: none;
+}
+
+.lifestyle-bento-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.lifestyle-bento-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lifestyle-bento-card:hover .lifestyle-bento-media img {
+  transform: scale(1.05);
+}
+
+/* Deep scrim so cream/white type stays readable on bright plates (e.g. light wood) */
+.lifestyle-bento-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(18, 16, 14, 0.96) 0%,
+    rgba(18, 16, 14, 0.82) 28%,
+    rgba(26, 25, 25, 0.45) 55%,
+    rgba(26, 25, 25, 0.12) 100%
+  );
+  pointer-events: none;
+}
+
+.lifestyle-bento-body {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  /* Extra panel behind type for contrast on light photos */
+  background: linear-gradient(
+    to top,
+    rgba(18, 16, 14, 0.55) 0%,
+    rgba(18, 16, 14, 0.2) 70%,
+    transparent 100%
+  );
+}
+
+.lifestyle-bento-kicker {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  /* Bright amber on dark scrim — not washed cream */
+  color: #f5b942;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+}
+
+.lifestyle-bento-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #ffffff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+.lifestyle-bento-text {
+  margin: 0.15rem 0 0.35rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 30ch;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+}
+
+.lifestyle-bento-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: fit-content;
+  margin-top: 0.25rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #1a1510;
+  background: var(--theme-gradient, linear-gradient(90deg, #ff931e, #eb9d2f, #ff931e));
+  box-shadow: 0 4px 14px rgba(231, 147, 30, 0.35);
+  opacity: 1;
+}
+
+.lifestyle-bento-card:hover .lifestyle-bento-cta,
+.lifestyle-bento-card:focus-visible .lifestyle-bento-cta {
+  filter: brightness(1.05);
+}
+
+/* Bar card — differentiated charcoal + amber rim */
+.lifestyle-bento-card--bar {
+  border: 1.5px solid rgba(231, 147, 30, 0.55);
+  box-shadow:
+    0 8px 28px rgba(46, 44, 44, 0.12),
+    inset 0 0 0 1px rgba(231, 147, 30, 0.12);
+}
+
+.lifestyle-bento-card--bar .lifestyle-bento-media::after {
+  background: linear-gradient(
+    to top,
+    rgba(12, 10, 8, 0.96) 0%,
+    rgba(28, 18, 8, 0.78) 32%,
+    rgba(46, 30, 12, 0.4) 60%,
+    rgba(26, 25, 25, 0.15) 100%
+  );
+}
+
+.lifestyle-bento-card--bar .lifestyle-bento-kicker {
+  color: #ffc857;
+}
+
+@media (max-width: 900px) {
+  .lifestyle-bento {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .lifestyle-bento-card {
+    min-height: 320px;
+  }
+}
+
+.lifestyle-head {
+  max-width: 36rem;
+  margin: 0 auto clamp(1.75rem, 4vw, 2.5rem);
+  text-align: center;
+}
+
+/*
+ * Section head on white — high contrast only
+ * (cream / soft amber disappears on #fff)
+ */
+.lifestyle .lifestyle-head .eyebrow,
+.lifestyle-head .eyebrow {
+  margin-bottom: 0.55rem;
+  color: #b86a0e !important;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.lifestyle .lifestyle-head .display,
+.lifestyle .lifestyle-head h2,
+.lifestyle-head .display,
+.lifestyle-head h2 {
+  margin: 0 0 0.55rem;
+  letter-spacing: -0.02em;
+  color: #1a1919 !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #1a1919;
+}
+
+.lifestyle .lifestyle-head .lifestyle-lede,
+.lifestyle-lede {
+  margin: 0 auto;
+  max-width: 42ch;
+  color: #3a3630 !important;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-text-fill-color: #3a3630;
+}
+
+/* Asymmetric grid: tall left · two stacked right */
+.lifestyle-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: clamp(12px, 1.6vw, 18px);
+  min-height: clamp(520px, 62vw, 680px);
+}
+
+.lifestyle-card {
+  position: relative;
+  display: block;
+  border-radius: 22px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  isolation: isolate;
+  box-shadow:
+    0 2px 4px rgba(46, 44, 44, 0.06),
+    0 16px 40px -12px rgba(46, 44, 44, 0.18);
+  /* D: staggered entrance */
+  opacity: 0;
+  transform: translateY(36px) scale(0.97);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.45s ease;
+  transition-delay: var(--life-delay, 0ms);
+}
+
+.lifestyle.is-inview .lifestyle-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.lifestyle-card:focus-visible {
+  outline: 3px solid var(--color-amber, #e7931e);
+  outline-offset: 3px;
+}
+
+.lifestyle-card:hover {
+  transform: translateY(-5px) scale(1);
+  box-shadow:
+    0 8px 16px rgba(46, 44, 44, 0.08),
+    0 24px 48px -12px rgba(46, 44, 44, 0.22);
+}
+
+.lifestyle.is-inview .lifestyle-card:hover {
+  transform: translateY(-5px) scale(1);
+}
+
+.lifestyle-card--tall {
+  grid-row: 1 / -1;
+  grid-column: 1;
+  min-height: 100%;
+}
+
+.lifestyle-card--top {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.lifestyle-card--bottom {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.lifestyle-card-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.lifestyle-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  /* C: subtle parallax via --pz; ken burns when in view */
+  transform: scale(1.08) translate3d(0, calc(var(--pz, 0) * 1px), 0);
+  will-change: transform;
+  transition: transform 0.15s linear;
+}
+
+/* C: slow zoom (Ken Burns) while section is in view */
+.lifestyle.is-inview .lifestyle-card-media img {
+  animation: lifeKenBurns 18s ease-in-out infinite alternate;
+  animation-delay: var(--kb-delay, 0s);
+}
+
+.lifestyle-card--top .lifestyle-card-media img {
+  --kb-delay: -4s;
+}
+
+.lifestyle-card--bottom .lifestyle-card-media img {
+  --kb-delay: -9s;
+}
+
+@keyframes lifeKenBurns {
+  0% {
+    transform: scale(1.06) translate3d(0, calc(var(--pz, 0) * 1px), 0);
+  }
+  100% {
+    transform: scale(1.14) translate3d(0, calc(var(--pz, 0) * 1px - 8px), 0);
+  }
+}
+
+.lifestyle-card:hover .lifestyle-card-media img {
+  animation-play-state: paused;
+  transform: scale(1.12) translate3d(0, calc(var(--pz, 0) * 1px), 0);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dark gradient for text legibility */
+.lifestyle-card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 25, 25, 0.05) 0%,
+    rgba(26, 25, 25, 0.15) 40%,
+    rgba(26, 25, 25, 0.72) 78%,
+    rgba(26, 25, 25, 0.88) 100%
+  );
+  pointer-events: none;
+}
+
+.lifestyle-card-body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: clamp(1.15rem, 2.5vw, 1.65rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  max-width: 36rem;
+}
+
+.lifestyle-card-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: #fffef8;
+  margin: 0;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.lifestyle-card-text {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+  line-height: 1.5;
+  color: rgba(255, 254, 248, 0.88);
+  margin: 0;
+  max-width: 38ch;
+}
+
+.lifestyle-card--tall .lifestyle-card-body {
+  padding: clamp(1.35rem, 3vw, 2rem);
+}
+
+.lifestyle-card--tall .lifestyle-card-title {
+  font-size: clamp(1.55rem, 2.8vw, 2.15rem);
+}
+
+/* Circular MENU badges — terracotta */
+.lifestyle-badge {
+  position: absolute;
+  z-index: 3;
+  width: clamp(72px, 9vw, 96px);
+  height: clamp(72px, 9vw, 96px);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  color: #c45a2a;
+  background: transparent;
+  border: 1.5px dashed rgba(196, 90, 42, 0.85);
+  box-shadow: 0 0 0 6px rgba(245, 232, 183, 0.55);
+  /* D: badge pop after cards */
+  opacity: 0;
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+  transition-delay: var(--badge-delay, 0.55s);
+}
+
+.lifestyle.is-inview .lifestyle-badge {
+  opacity: 1;
+}
+
+.lifestyle-badge span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.72rem, 1.1vw, 0.82rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.lifestyle-badge:hover,
+.lifestyle-badge:focus-visible {
+  background: #c45a2a;
+  color: #fffef8;
+  border-style: solid;
+  border-color: #c45a2a;
+  transform: scale(1.06) rotate(-6deg);
+  outline: none;
+}
+
+.lifestyle-badge:focus-visible {
+  outline: 3px solid var(--color-amber, #e7931e);
+  outline-offset: 3px;
+}
+
+.lifestyle-badge--tl {
+  top: clamp(-12px, -1.2vw, -6px);
+  left: clamp(-8px, -0.5vw, 8px);
+  transform: rotate(-8deg) scale(0.85);
+  --badge-delay: 0.55s;
+}
+
+.lifestyle.is-inview .lifestyle-badge--tl {
+  transform: rotate(-8deg) scale(1);
+}
+
+.lifestyle-badge--tl:hover,
+.lifestyle-badge--tl:focus-visible {
+  transform: scale(1.06) rotate(-12deg);
+}
+
+.lifestyle-badge--br {
+  bottom: clamp(-14px, -1.4vw, -8px);
+  right: clamp(-8px, -0.5vw, 8px);
+  transform: rotate(10deg) scale(0.85);
+  --badge-delay: 0.75s;
+}
+
+.lifestyle.is-inview .lifestyle-badge--br {
+  transform: rotate(10deg) scale(1);
+}
+
+.lifestyle-badge--br:hover,
+.lifestyle-badge--br:focus-visible {
+  transform: scale(1.06) rotate(14deg);
+}
+
+/*
+ * Head type must stay visible — never gate critical eyebrow/h2/lede on is-inview.
+ * (Previous opacity:0 + missing data-lifestyle left the head invisible.)
+ */
+.lifestyle-head {
+  opacity: 1;
+  transform: none;
+}
+
+/* Optional soft settle when inview (cards still animate) */
+.lifestyle.lifestyle--bento .lifestyle-head {
+  opacity: 1 !important;
+  transform: none !important;
+  color: #1a1919;
+}
+
+.lifestyle.lifestyle--bento .lifestyle-head .eyebrow {
+  color: #b86a0e !important;
+}
+
+.lifestyle.lifestyle--bento .lifestyle-head .display,
+.lifestyle.lifestyle--bento .lifestyle-head h2 {
+  color: #1a1919 !important;
+  -webkit-text-fill-color: #1a1919 !important;
+  text-shadow: none !important;
+}
+
+.lifestyle.lifestyle--bento .lifestyle-head .lifestyle-lede {
+  color: #3a3630 !important;
+  -webkit-text-fill-color: #3a3630 !important;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 900px) {
+  .lifestyle-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    min-height: 0;
+  }
+
+  .lifestyle-card--tall {
+    grid-row: 1;
+    grid-column: 1 / -1;
+    min-height: clamp(300px, 52vw, 380px);
+  }
+
+  .lifestyle-card--top {
+    grid-row: 2;
+    grid-column: 1;
+    min-height: clamp(220px, 36vw, 280px);
+  }
+
+  .lifestyle-card--bottom {
+    grid-row: 2;
+    grid-column: 2;
+    min-height: clamp(220px, 36vw, 280px);
+  }
+
+  .lifestyle-badge--tl {
+    top: 12px;
+    left: 12px;
+  }
+
+  .lifestyle-badge--br {
+    bottom: 12px;
+    right: 12px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .lifestyle {
+    padding-block: clamp(1.5rem, 5vw, 2.25rem);
+  }
+
+  .lifestyle.lifestyle--bento {
+    padding-top: clamp(1.15rem, 4vw, 1.75rem);
+    padding-bottom: clamp(0.35rem, 2vw, 0.75rem);
+  }
+
+  .lifestyle-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .lifestyle-card--tall,
+  .lifestyle-card--top,
+  .lifestyle-card--bottom {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 280px;
+  }
+
+  .lifestyle-card--tall {
+    min-height: 340px;
+  }
+
+  .lifestyle-badge {
+    width: 68px;
+    height: 68px;
+  }
+
+  .lifestyle-badge--tl {
+    top: 10px;
+    left: 10px;
+  }
+
+  .lifestyle-badge--br {
+    bottom: auto;
+    top: auto;
+    right: 10px;
+    /* pin to last card area via grid shell bottom */
+    bottom: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lifestyle-card,
+  .lifestyle-card-media img,
+  .lifestyle-badge,
+  .lifestyle-head {
+    transition: none;
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
+
+  .lifestyle.is-inview .lifestyle-card,
+  .lifestyle.is-inview .lifestyle-badge,
+  .lifestyle.is-inview .lifestyle-head {
+    opacity: 1;
+    transform: none;
+  }
+
+  .lifestyle.is-inview .lifestyle-card-media img {
+    animation: none !important;
+    transform: scale(1.02);
+  }
+
+  .lifestyle-card:hover .lifestyle-card-media img {
+    transform: scale(1.02);
+  }
+}

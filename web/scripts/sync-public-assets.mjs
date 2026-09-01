@@ -1,30 +1,24 @@
 #!/usr/bin/env node
 /**
- * Single source of truth sync for Hostinger / Next.
+ * Hostinger-safe public asset sync.
  *
- * CANONICAL marketing site (edit ONLY these):
- *   <repo>/index.html
- *   <repo>/css/
- *   <repo>/js/
- *   <repo>/pages/
- *   <repo>/assets/
+ * Canonical marketing sources (local monorepo):
+ *   <repo>/index.html, <repo>/css, <repo>/js, <repo>/pages, <repo>/assets
  *
- * Next serves from web/public. This script always:
- *   1) Copies repo-root → web/public/legacy/  (what rewrites point at)
- *   2) Copies legacy/{css,js,pages} → web/public/{css,js,pages}
- *      so /css and /js work without relying on rewrites alone
+ * On Hostinger (Root Directory = web), sibling ../css is often unavailable.
+ * Fallback: reuse committed web/public/legacy/* then copy to public/{css,js,pages}.
  *
- * NEVER hand-edit web/public/legacy or web/public/{css,js,pages}.
- * They are overwritten on every predev / prebuild / postinstall.
+ * NEVER hand-edit public/legacy or public/{css,js,pages} locally for long —
+ * when ../css exists, this script overwrites legacy from the repo root.
  */
 import { cpSync, existsSync, lstatSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const webRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
-const repoRoot = join(webRoot, '..');
 const pub = join(webRoot, 'public');
 const legacy = join(pub, 'legacy');
+const parentRoot = join(webRoot, '..');
 
 function wipe(target) {
   if (!existsSync(target)) return;
@@ -53,38 +47,56 @@ function copyFile(src, dest, label) {
   console.log(`[sync-public-assets] ${label} (file)`);
 }
 
+function hasMarketingRoot(root) {
+  return existsSync(join(root, 'css')) && existsSync(join(root, 'index.html'));
+}
+
+function hasLegacyFallback() {
+  return existsSync(join(legacy, 'css')) && existsSync(join(legacy, 'index.html'));
+}
+
 mkdirSync(legacy, { recursive: true });
 
-// 1) Repo root → public/legacy (canonical → what Next rewrites serve)
-copyDir(join(repoRoot, 'css'), join(legacy, 'css'), 'legacy/css <- ../../css');
-copyDir(join(repoRoot, 'js'), join(legacy, 'js'), 'legacy/js <- ../../js');
-copyDir(join(repoRoot, 'pages'), join(legacy, 'pages'), 'legacy/pages <- ../../pages');
-if (existsSync(join(repoRoot, 'assets'))) {
-  copyDir(join(repoRoot, 'assets'), join(legacy, 'assets'), 'legacy/assets <- ../../assets');
+const monorepoRoot = hasMarketingRoot(parentRoot) ? parentRoot : null;
+
+if (monorepoRoot) {
+  // Local / full-repo Hostinger checkout: refresh legacy from repo root
+  copyDir(join(monorepoRoot, 'css'), join(legacy, 'css'), 'legacy/css <- ../css');
+  copyDir(join(monorepoRoot, 'js'), join(legacy, 'js'), 'legacy/js <- ../js');
+  copyDir(join(monorepoRoot, 'pages'), join(legacy, 'pages'), 'legacy/pages <- ../pages');
+  if (existsSync(join(monorepoRoot, 'assets'))) {
+    copyDir(join(monorepoRoot, 'assets'), join(legacy, 'assets'), 'legacy/assets <- ../assets');
+  }
+  copyFile(join(monorepoRoot, 'index.html'), join(legacy, 'index.html'), 'legacy/index.html <- ../index.html');
+} else if (hasLegacyFallback()) {
+  // Hostinger web-only tree: keep committed public/legacy
+  console.warn(
+    `[sync-public-assets] ../css not found (looked in ${join(parentRoot, 'css')}). ` +
+      'Using committed public/legacy fallback.'
+  );
+} else {
+  console.error('[sync-public-assets] No marketing sources found.');
+  console.error(`  missing monorepo: ${join(parentRoot, 'css')}`);
+  console.error(`  missing fallback: ${join(legacy, 'css')}`);
+  console.error('  Fix: ensure repo-root css/ exists, or commit web/public/legacy/.');
+  process.exit(1);
 }
-copyFile(join(repoRoot, 'index.html'), join(legacy, 'index.html'), 'legacy/index.html <- ../../index.html');
 
 writeFileSync(
   join(legacy, 'DO-NOT-EDIT.md'),
   [
-    '# Generated — do not edit',
+    '# Generated / deploy fallback — do not hand-edit',
     '',
-    'This folder is overwritten from the **repo root** on every',
-    '`npm run sync:public` / `predev` / `prebuild` / `postinstall`.',
+    'Prefer editing repo-root `css/`, `js/`, `pages/`, `assets/`, `index.html`.',
+    'When those exist, `npm run sync:public` overwrites this folder.',
+    'On Hostinger (Root Directory = web), this committed snapshot is the fallback.',
     '',
-    'Edit only:',
-    '- `/index.html`',
-    '- `/css/`',
-    '- `/js/`',
-    '- `/pages/`',
-    '- `/assets/`',
-    '',
-  ].join('\n'),
+  ].join('\n')
 );
 
-// 2) legacy → public top-level copies (Hostinger-safe /css /js /pages)
+// legacy → public top-level copies (Hostinger-safe /css /js /pages)
 for (const name of ['css', 'js', 'pages']) {
   copyDir(join(legacy, name), join(pub, name), `${name} <- legacy/${name}`);
 }
 
-console.log('[sync-public-assets] done — single source: repo root');
+console.log('[sync-public-assets] done');
