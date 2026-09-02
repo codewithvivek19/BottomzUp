@@ -56,10 +56,16 @@ export default async function AdminDashboardPage() {
           <h2 style={{ marginBottom: '0.35rem' }}>Database unavailable</h2>
           <p style={{ color: '#5c5650', lineHeight: 1.45 }}>{dbError}</p>
           <p style={{ color: '#5c5650', lineHeight: 1.45, marginTop: '0.5rem' }}>
-            Signed in as <strong>{admin.email}</strong>. Fix Hostinger env + redeploy, then refresh.
+            Signed in as <strong>{admin.email}</strong>. Auth can work while Postgres/Prisma fails —
+            check Hostinger <code>DATABASE_URL</code> / <code>DIRECT_URL</code>, then redeploy.
+            Public probe: <code>/api/health</code>.
           </p>
         </div>
-      ) : null}
+      ) : (
+        <p className="adm-db-ok" style={{ marginBottom: '0.85rem', color: '#5c5650', fontSize: '0.9rem' }}>
+          Database connected · signed in as <strong>{admin.email}</strong>
+        </p>
+      )}
       <div className="adm-stats">
         <Link href="/admin/leads?status=new" className="adm-stat adm-stat-link">
           <span className="adm-stat-label">New leads</span>
