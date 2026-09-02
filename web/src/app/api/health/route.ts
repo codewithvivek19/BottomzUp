@@ -109,7 +109,13 @@ export async function GET() {
   const ok = database === 'ok' && env.SUPABASE_URL && env.SUPABASE_KEY;
 
   let hint: string | null = null;
-  if (db.parseError === 'not_postgres_uri' || db.parseError === 'invalid_url' || db.parseError === 'empty_after_clean') {
+  if (db.passwordRepaired && db.host) {
+    hint =
+      'Password special characters were auto-encoded (# → %23, etc.). Prefer pasting the URI from Supabase Connect (already encoded). If still failing after redeploy, reset the DB password and copy fresh pooler URIs.';
+  } else if (db.parseError === 'invalid_url') {
+    hint =
+      'DATABASE_URL looks like postgres:// but failed to parse — usually an unencoded # @ % in the password. In Supabase → Connect, copy the Transaction pooler URI (encoded password), or replace # with %23.';
+  } else if (db.parseError === 'not_postgres_uri' || db.parseError === 'empty_after_clean') {
     hint =
       'DATABASE_URL is set but is not a usable Postgres URI (often wrapped in quotes, includes DATABASE_URL=, or is a flag like true). Paste the raw Transaction pooler URI only — no quotes.';
   } else if (db.quoteWrapped || db.hadKeyPrefix) {
@@ -145,6 +151,7 @@ export async function GET() {
     databaseQuoteWrapped: db.quoteWrapped,
     databaseHadKeyPrefix: db.hadKeyPrefix,
     databaseParseError: db.parseError,
+    databasePasswordRepaired: db.passwordRepaired,
     directHost: direct.host,
     directPort: direct.port,
     directUsesPooler: direct.usesPooler,
