@@ -84,13 +84,41 @@ function basicClean(raw: string): string {
   return s;
 }
 
-/** Return a cleaned (+ password-repaired) Postgres URI, or undefined if empty. */
+function appendQueryParam(url: string, key: string, value: string): string {
+  if (new RegExp(`(?:^|[?&])${key}=`, 'i').test(url)) return url;
+  return url.includes('?') ? `${url}&${key}=${value}` : `${url}?${key}=${value}`;
+}
+
+/**
+ * Supabase transaction pooler (:6543) rejects Prisma prepared statements unless
+ * `pgbouncer=true` is present. Hostinger/Supabase "URI" copies sometimes omit it.
+ */
+export function ensurePrismaPoolerParams(url: string): string {
+  let out = url;
+  try {
+    const u = new URL(out.replace(/^postgresql:/i, 'http:').replace(/^postgres:/i, 'http:'));
+    const isPooler = /pooler\.supabase\.com$/i.test(u.hostname);
+    const isTransactionPort = u.port === '6543';
+    if (isPooler && isTransactionPort) {
+      out = appendQueryParam(out, 'pgbouncer', 'true');
+    }
+    if (isPooler || /\.supabase\.co$/i.test(u.hostname)) {
+      out = appendQueryParam(out, 'sslmode', 'require');
+    }
+  } catch {
+    // If URL still can't parse, leave as-is; caller may have repaired already.
+  }
+  return out;
+}
+
+/** Return a cleaned (+ password-repaired + pooler flags) Postgres URI, or undefined if empty. */
 export function cleanDatabaseUrl(raw: string | undefined | null): string | undefined {
   if (raw == null) return undefined;
   const s = basicClean(raw);
   if (!s) return undefined;
   if (!/^(postgresql|postgres):\/\//i.test(s)) return s;
-  return repairPostgresUrl(s).url;
+  const repaired = repairPostgresUrl(s).url;
+  return ensurePrismaPoolerParams(repaired);
 }
 
 export function inspectDatabaseUrl(raw: string | undefined | null): NormalizedDbUrl {
@@ -137,13 +165,15 @@ export function inspectDatabaseUrl(raw: string | undefined | null): NormalizedDb
 
   const repaired = repairPostgresUrl(preliminary);
   base.passwordRepaired = repaired.repaired;
-  base.cleaned = repaired.url;
-  base.length = repaired.url.length;
-  base.hasPgBouncerFlag = /(?:^|[?&])pgbouncer=true(?:&|$)/i.test(repaired.url);
+  const cleaned = ensurePrismaPoolerParams(repaired.url);
+  base.cleaned = cleaned;
+  base.length = cleaned.length;
+  base.hasPgBouncerFlag = /(?:^|[?&])pgbouncer=true(?:&|$)/i.test(cleaned);
+  base.hasSslMode = /(?:^|[?&])sslmode=/i.test(cleaned);
 
   try {
     const u = new URL(
-      repaired.url.replace(/^postgresql:/i, 'http:').replace(/^postgres:/i, 'http:')
+      cleaned.replace(/^postgresql:/i, 'http:').replace(/^postgres:/i, 'http:')
     );
     base.host = u.hostname || null;
     base.port = u.port || null;

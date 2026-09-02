@@ -74,22 +74,33 @@ export async function GET() {
     database = 'ok';
   } catch (err) {
     const message = err instanceof Error ? err.message : 'unknown';
+    const errObj = err && typeof err === 'object' ? (err as Record<string, unknown>) : null;
     const code =
-      err && typeof err === 'object' && 'code' in err && typeof (err as { code: unknown }).code === 'string'
-        ? (err as { code: string }).code
-        : null;
-    prismaCode = code || (message.match(/\bP\d{4}\b/)?.[0] ?? null);
+      (typeof errObj?.errorCode === 'string' && errObj.errorCode) ||
+      (typeof errObj?.code === 'string' && errObj.code) ||
+      message.match(/\bP\d{4}\b/)?.[0] ||
+      null;
+    prismaCode = code;
 
     const scrubbed = message
       .replace(/postgresql:\/\/[^\s'"]+/gi, 'postgresql://[redacted]')
       .replace(/postgres:\/\/[^\s'"]+/gi, 'postgres://[redacted]')
       .replace(/:[^:@/\s]+@/g, ':[redacted]@')
-      .split('\n')[0]
-      .slice(0, 180);
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(
+        (line) =>
+          Boolean(line) &&
+          !/TURBOPACK|__dirname|node_modules|\.next\//i.test(line) &&
+          !/^Invalid\s+`/.test(line)
+      )
+      .slice(0, 2)
+      .join(' | ')
+      .slice(0, 220);
 
-    if (/P1001|Can't reach|ECONNREFUSED|ENOTFOUND|timeout/i.test(message)) {
-      databaseError = 'unreachable';
-    } else if (/P1000|Authentication failed|credentials|Tenant or user not found/i.test(message)) {
+    // IMPORTANT: Supabase pooler often reports WRONG PASSWORD as
+    // "Can't reach database server" (PrismaClientInitializationError) — not P1000.
+    if (/P1000|Authentication failed|credentials|Tenant or user not found/i.test(message)) {
       databaseError = 'auth_failed';
     } else if (/P1011|SSL|TLS/i.test(message)) {
       databaseError = 'ssl_error';
@@ -97,11 +108,13 @@ export async function GET() {
       databaseError = 'missing_tables';
     } else if (/prepared statement|PgBouncer|42P05/i.test(message)) {
       databaseError = 'pooler_prepared_statements';
+    } else if (/P1001|Can't reach|ECONNREFUSED|ENOTFOUND|timeout/i.test(message)) {
+      databaseError = 'unreachable';
     } else {
       databaseError = 'query_failed';
     }
 
-    if (scrubbed && databaseError !== 'unreachable') {
+    if (scrubbed) {
       databaseError = `${databaseError}:${scrubbed}`;
     }
   }
@@ -129,13 +142,20 @@ export async function GET() {
       'DATABASE_URL host is not the Supabase shared pooler — on Hostinger use Transaction pooler :6543?pgbouncer=true.';
   } else if (tcpDatabase === 'timeout' || tcpDatabase === 'closed' || tcpDatabase === 'error') {
     hint =
-      'Hostinger cannot open TCP to the pooler port. Use hPanel → Node app → Database → Connect → Supabase, or ask Hostinger to allow outbound 6543/5432.';
+      'Hostinger cannot open TCP to the pooler port. Ask Hostinger support about outbound 6543/5432, or use Shared pooler (IPv4). This is NOT fixed by more app code.';
+  } else if (db.usesPooler && db.port === '6543' && !db.hasPgBouncerFlag) {
+    hint =
+      'DATABASE_URL uses transaction pooler :6543 but is missing ?pgbouncer=true (required for Prisma). Redeploy after this fix auto-adds it, or append ?pgbouncer=true in Hostinger.';
   } else if (db.usesPooler && db.usernameLooksLikePoolerTenant === false) {
     hint =
       'Pooler username must be postgres.<project-ref> (not plain postgres). Copy Transaction pooler URI from Supabase → Connect.';
-  } else if (tcpDatabase === 'open' && databaseError === 'unreachable') {
+  } else if (
+    tcpDatabase === 'open' &&
+    typeof databaseError === 'string' &&
+    databaseError.startsWith('unreachable')
+  ) {
     hint =
-      'TCP to pooler works, but Prisma still fails — usually bad password encoding, missing ?pgbouncer=true, or circuit-breaker after bad auth. Re-copy URIs from Supabase Connect and redeploy.';
+      'TCP to the pooler is OPEN, so this is NOT an IPv4/IPv6 block. On Supabase pooler, Prisma reports a wrong DB password as "Can\'t reach database server". Copy DATABASE_URL + DIRECT_URL exactly from the working local web/.env (or reset the DB password in Supabase and paste fresh Transaction/Session pooler URIs into Hostinger). Hostinger\'s Database→Connect wizard only sets SUPABASE_URL + ANON_KEY — it does NOT set Prisma DATABASE_URL.';
   }
 
   const connection = {
