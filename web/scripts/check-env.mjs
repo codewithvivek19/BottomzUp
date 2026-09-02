@@ -19,6 +19,16 @@ console.log('[check-env]', JSON.stringify(report));
 
 if (!report.DATABASE_URL) {
   console.warn('[check-env] WARNING: DATABASE_URL missing — admin/events will fail at runtime.');
+} else {
+  const raw = process.env.DATABASE_URL.trim();
+  const looksUri = /^(?:DATABASE_URL\s*=\s*)?["']?(postgres|postgresql):\/\//i.test(raw);
+  if (!looksUri) {
+    console.warn(
+      '[check-env] WARNING: DATABASE_URL does not look like a postgres:// URI (length=' +
+        raw.length +
+        '). Paste the Transaction pooler URI only — no quotes.'
+    );
+  }
 }
 if (!report.NEXT_PUBLIC_SUPABASE_URL || !(report.NEXT_PUBLIC_SUPABASE_ANON_KEY || report.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY)) {
   console.warn('[check-env] WARNING: Supabase public env missing — auth will fail.');

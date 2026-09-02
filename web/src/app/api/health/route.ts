@@ -1,5 +1,6 @@
 import net from 'node:net';
 import { NextResponse } from 'next/server';
+import { inspectDatabaseUrl } from '@/lib/db-url';
 import { prisma } from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
@@ -8,46 +9,6 @@ export const dynamic = 'force-dynamic';
  * Public health probe for Hostinger debugging.
  * Does not expose secrets — only booleans + short status.
  */
-function parseDbTarget(raw: string | undefined): {
-  host: string | null;
-  port: string | null;
-  usesPooler: boolean;
-  usesDirectHost: boolean;
-  hasPgBouncerFlag: boolean;
-  /** Pooler needs postgres.<projectRef>; never returns the actual username. */
-  usernameLooksLikePoolerTenant: boolean | null;
-  hasSslMode: boolean;
-} {
-  const empty = {
-    host: null,
-    port: null,
-    usesPooler: false,
-    usesDirectHost: false,
-    hasPgBouncerFlag: false,
-    usernameLooksLikePoolerTenant: null as boolean | null,
-    hasSslMode: false,
-  };
-  if (!raw?.trim()) return empty;
-  try {
-    // Normalize postgres:// → http:// so URL() can parse host/port without leaking userinfo.
-    const u = new URL(raw.trim().replace(/^postgresql:/i, 'http:').replace(/^postgres:/i, 'http:'));
-    const host = u.hostname || null;
-    const port = u.port || null;
-    const user = decodeURIComponent(u.username || '');
-    return {
-      host,
-      port,
-      usesPooler: Boolean(host && /pooler\.supabase\.com$/i.test(host)),
-      usesDirectHost: Boolean(host && /^db\.[a-z0-9]+\.supabase\.co$/i.test(host)),
-      hasPgBouncerFlag: /(?:^|[?&])pgbouncer=true(?:&|$)/i.test(raw),
-      usernameLooksLikePoolerTenant: user ? /^postgres\.[a-z0-9]+$/i.test(user) : null,
-      hasSslMode: /(?:^|[?&])sslmode=/i.test(raw),
-    };
-  } catch {
-    return empty;
-  }
-}
-
 function tcpProbe(
   host: string | null,
   port: string | null,
@@ -81,14 +42,12 @@ function tcpProbe(
 }
 
 export async function GET() {
-  const databaseUrl = process.env.DATABASE_URL;
-  const directUrl = process.env.DIRECT_URL;
-  const dbTarget = parseDbTarget(databaseUrl);
-  const directTarget = parseDbTarget(directUrl);
+  const db = inspectDatabaseUrl(process.env.DATABASE_URL);
+  const direct = inspectDatabaseUrl(process.env.DIRECT_URL);
 
   const env = {
-    DATABASE_URL: Boolean(databaseUrl?.trim()),
-    DIRECT_URL: Boolean(directUrl?.trim()),
+    DATABASE_URL: Boolean(process.env.DATABASE_URL?.trim()),
+    DIRECT_URL: Boolean(process.env.DIRECT_URL?.trim()),
     SUPABASE_URL: Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL?.trim()),
     SUPABASE_KEY: Boolean(
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim() ||
@@ -101,8 +60,8 @@ export async function GET() {
   };
 
   const [tcpDatabase, tcpDirect] = await Promise.all([
-    tcpProbe(dbTarget.host, dbTarget.port),
-    tcpProbe(directTarget.host, directTarget.port),
+    tcpProbe(db.host, db.port),
+    tcpProbe(direct.host, direct.port),
   ]);
 
   let database: 'ok' | 'error' = 'error';
@@ -121,7 +80,6 @@ export async function GET() {
         : null;
     prismaCode = code || (message.match(/\bP\d{4}\b/)?.[0] ?? null);
 
-    // Sanitize: never return connection strings / passwords.
     const scrubbed = message
       .replace(/postgresql:\/\/[^\s'"]+/gi, 'postgresql://[redacted]')
       .replace(/postgres:\/\/[^\s'"]+/gi, 'postgres://[redacted]')
@@ -143,7 +101,6 @@ export async function GET() {
       databaseError = 'query_failed';
     }
 
-    // Attach short scrubbed detail for Hostinger debugging (still no secrets).
     if (scrubbed && databaseError !== 'unreachable') {
       databaseError = `${databaseError}:${scrubbed}`;
     }
@@ -152,19 +109,22 @@ export async function GET() {
   const ok = database === 'ok' && env.SUPABASE_URL && env.SUPABASE_KEY;
 
   let hint: string | null = null;
-  if (dbTarget.usesDirectHost || directTarget.usesDirectHost) {
+  if (db.parseError === 'not_postgres_uri' || db.parseError === 'invalid_url' || db.parseError === 'empty_after_clean') {
     hint =
-      'Hostinger is usually IPv4-only. Prefer aws-*.pooler.supabase.com (not db.*.supabase.co) for both DATABASE_URL and DIRECT_URL.';
-  } else if (!dbTarget.usesPooler && dbTarget.host) {
+      'DATABASE_URL is set but is not a usable Postgres URI (often wrapped in quotes, includes DATABASE_URL=, or is a flag like true). Paste the raw Transaction pooler URI only — no quotes.';
+  } else if (db.quoteWrapped || db.hadKeyPrefix) {
+    hint =
+      'DATABASE_URL looks quote-wrapped or includes a KEY= prefix. In Hostinger, set the value to the URI only (no quotes, no DATABASE_URL=).';
+  } else if (db.usesDirectHost || direct.usesDirectHost) {
+    hint =
+      'Direct/dedicated endpoints are IPv6-only by default. On Hostinger use Shared pooler: Transaction :6543?pgbouncer=true for DATABASE_URL and Session :5432 for DIRECT_URL (aws-*.pooler.supabase.com).';
+  } else if (!db.usesPooler && db.host) {
     hint =
       'DATABASE_URL host is not the Supabase shared pooler — on Hostinger use Transaction pooler :6543?pgbouncer=true.';
   } else if (tcpDatabase === 'timeout' || tcpDatabase === 'closed' || tcpDatabase === 'error') {
     hint =
-      'Hostinger cannot open TCP to the pooler port. Use hPanel → Node app → Database → Connect → Supabase (auto env), or ask Hostinger support to allow outbound 6543/5432.';
-  } else if (
-    dbTarget.usesPooler &&
-    dbTarget.usernameLooksLikePoolerTenant === false
-  ) {
+      'Hostinger cannot open TCP to the pooler port. Use hPanel → Node app → Database → Connect → Supabase, or ask Hostinger to allow outbound 6543/5432.';
+  } else if (db.usesPooler && db.usernameLooksLikePoolerTenant === false) {
     hint =
       'Pooler username must be postgres.<project-ref> (not plain postgres). Copy Transaction pooler URI from Supabase → Connect.';
   } else if (tcpDatabase === 'open' && databaseError === 'unreachable') {
@@ -172,20 +132,26 @@ export async function GET() {
       'TCP to pooler works, but Prisma still fails — usually bad password encoding, missing ?pgbouncer=true, or circuit-breaker after bad auth. Re-copy URIs from Supabase Connect and redeploy.';
   }
 
-  // Hint only — host/port, never user/password.
   const connection = {
-    databaseHost: dbTarget.host,
-    databasePort: dbTarget.port,
-    databaseUsesPooler: dbTarget.usesPooler,
-    databaseUsesDirectHost: dbTarget.usesDirectHost,
-    databaseHasPgBouncer: dbTarget.hasPgBouncerFlag,
-    databaseUserLooksLikePoolerTenant: dbTarget.usernameLooksLikePoolerTenant,
+    databaseHost: db.host,
+    databasePort: db.port,
+    databaseUsesPooler: db.usesPooler,
+    databaseUsesDirectHost: db.usesDirectHost,
+    databaseHasPgBouncer: db.hasPgBouncerFlag,
+    databaseUserLooksLikePoolerTenant: db.usernameLooksLikePoolerTenant,
     databaseTcp: tcpDatabase,
-    directHost: directTarget.host,
-    directPort: directTarget.port,
-    directUsesPooler: directTarget.usesPooler,
-    directUsesDirectHost: directTarget.usesDirectHost,
+    databaseUrlLength: db.length,
+    databaseLooksLikePostgresUri: db.looksLikePostgresUri,
+    databaseQuoteWrapped: db.quoteWrapped,
+    databaseHadKeyPrefix: db.hadKeyPrefix,
+    databaseParseError: db.parseError,
+    directHost: direct.host,
+    directPort: direct.port,
+    directUsesPooler: direct.usesPooler,
+    directUsesDirectHost: direct.usesDirectHost,
     directTcp: tcpDirect,
+    directParseError: direct.parseError,
+    directLooksLikePostgresUri: direct.looksLikePostgresUri,
     hint,
   };
 
