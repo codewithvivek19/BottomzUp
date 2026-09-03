@@ -1,6 +1,7 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
+import { formatDiscountLabel } from '@/lib/coupon-schema';
 
 type Coupon = {
   id: string;
@@ -15,7 +16,11 @@ export function AdminCouponClient({ initial }: { initial: Coupon }) {
   const [coupon, setCoupon] = useState(initial);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<{ type: 'ok' | 'err'; text: string } | null>(null);
-  const [draft, setDraft] = useState(initial);
+  const [draft, setDraft] = useState({
+    ...initial,
+    discountLabel: formatDiscountLabel(initial.discountLabel),
+  });
+  const discountPreview = formatDiscountLabel(draft.discountLabel);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -41,7 +46,10 @@ export function AdminCouponClient({ initial }: { initial: Coupon }) {
         throw new Error(typeof err === 'string' ? err : 'Save failed');
       }
       setCoupon(data.coupon);
-      setDraft(data.coupon);
+      setDraft({
+        ...data.coupon,
+        discountLabel: formatDiscountLabel(data.coupon.discountLabel),
+      });
       setMessage({ type: 'ok', text: 'Coupon updated. Home scratch card will use this code.' });
     } catch (err) {
       setMessage({ type: 'err', text: err instanceof Error ? err.message : 'Error' });
@@ -101,14 +109,27 @@ export function AdminCouponClient({ initial }: { initial: Coupon }) {
               maxLength={240}
             />
           </label>
-          <label className="adm-check">
-            <input
-              type="checkbox"
-              checked={draft.active}
-              onChange={(e) => setDraft({ ...draft, active: e.target.checked })}
-            />
-            Active on home page
-          </label>
+
+          <button
+            type="button"
+            className={`adm-toggle${draft.active ? ' is-on' : ''}`}
+            role="switch"
+            aria-checked={draft.active}
+            onClick={() => setDraft({ ...draft, active: !draft.active })}
+          >
+            <span className="adm-toggle-track" aria-hidden="true">
+              <span className="adm-toggle-knob" />
+            </span>
+            <span className="adm-toggle-copy">
+              <strong>{draft.active ? 'Active on home page' : 'Hidden on home page'}</strong>
+              <span>
+                {draft.active
+                  ? 'Scratch card is live for guests'
+                  : 'Scratch card stays off until you turn this on'}
+              </span>
+            </span>
+          </button>
+
           <button className="adm-btn-primary" type="submit" disabled={busy}>
             {busy ? 'Saving…' : 'Save coupon'}
           </button>
@@ -119,10 +140,10 @@ export function AdminCouponClient({ initial }: { initial: Coupon }) {
           <div className={`adm-scratch-preview${!draft.active ? ' is-off' : ''}`}>
             <span className="adm-scratch-kicker">{draft.headline}</span>
             <p className="adm-scratch-off">
-              <em>{String(draft.discountLabel || '10').replace(/%/gi, '').replace(/off/gi, '').trim() || '10'}%</em> OFF
+              <em>{discountPreview}</em> OFF
             </p>
             <p className="adm-hint" style={{ marginTop: '0.35rem' }}>
-              Home heading becomes: Scratch. Save {String(draft.discountLabel || '10').replace(/%/gi, '').replace(/off/gi, '').trim() || '10'}%.
+              Home heading becomes: Scratch. Save {discountPreview}.
             </p>
             <code>{draft.code || 'CODE'}</code>
             <p className="adm-scratch-note">{draft.note}</p>

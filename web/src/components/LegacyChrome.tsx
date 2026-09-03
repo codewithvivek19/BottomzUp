@@ -204,6 +204,7 @@ export function LegacyChrome({ children }: { children: React.ReactNode }) {
               aria-label="Mobile"
             >
               <div className="nav-drawer-inner">
+                {/* Same mobile drawer as index.html / menu / about */}
                 <Link href="/menu" className="nav-link" onClick={() => setOpen(false)}>
                   Menu
                 </Link>
@@ -220,20 +221,15 @@ export function LegacyChrome({ children }: { children: React.ReactNode }) {
                   Contact Us
                 </Link>
                 <a
-                  href="https://order.toasttab.com/online/bottomz-up-2001-seymour-dr"
+                  href="tel:+14345755753"
                   className="btn-ticket"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
                 >
                   <span className="btn-hover-fill" aria-hidden="true" />
-                  <span className="btn-label">Order Online</span>
+                  <span className="btn-label">Call for Order</span>
                   <span className="btn-arrow" aria-hidden="true">
                     ↗
                   </span>
-                </a>
-                <a href="tel:+14345755753" className="nav-link" onClick={() => setOpen(false)}>
-                  Call for Order
                 </a>
               </div>
             </nav>

@@ -16,15 +16,15 @@ export default function AppSurfaceLayout({ children }: { children: React.ReactNo
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet"
       />
-      <link rel="stylesheet" href="/legacy/css/base.css?v=34" />
-      <link rel="stylesheet" href="/legacy/css/home.css?v=34" />
-      <link rel="stylesheet" href="/legacy/css/nav.css?v=34" />
-      <link rel="stylesheet" href="/legacy/css/extras.css?v=34" />
-      <link rel="stylesheet" href="/legacy/css/atmosphere.css?v=34" />
-      <link rel="stylesheet" href="/legacy/css/footer-impact.css?v=34" />
-      <link rel="stylesheet" href="/legacy/css/sizzle.css?v=34" />
-      <link rel="stylesheet" href="/legacy/css/site-polish.css?v=34" />
-      <link rel="stylesheet" href="/legacy/css/forms-lead.css?v=34" />
+      <link rel="stylesheet" href="/legacy/css/base.css?v=36" />
+      <link rel="stylesheet" href="/legacy/css/home.css?v=36" />
+      <link rel="stylesheet" href="/legacy/css/nav.css?v=36" />
+      <link rel="stylesheet" href="/legacy/css/extras.css?v=36" />
+      <link rel="stylesheet" href="/legacy/css/atmosphere.css?v=36" />
+      <link rel="stylesheet" href="/legacy/css/footer-impact.css?v=36" />
+      <link rel="stylesheet" href="/legacy/css/sizzle.css?v=36" />
+      <link rel="stylesheet" href="/legacy/css/site-polish.css?v=36" />
+      <link rel="stylesheet" href="/legacy/css/forms-lead.css?v=36" />
       <LegacyChrome>{children}</LegacyChrome>
     </>
   );

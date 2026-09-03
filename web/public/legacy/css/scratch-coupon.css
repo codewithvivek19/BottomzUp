@@ -111,6 +111,17 @@
   align-items: center;
   gap: 0.5rem;
   margin-top: 0.35rem;
+  /* Real code only after foil is cleared — avoid peeking through thin scratches */
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.scratch-card.is-revealed .scratch-code-row {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
 }
 
 .scratch-code {

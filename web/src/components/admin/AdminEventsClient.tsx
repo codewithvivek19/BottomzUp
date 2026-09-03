@@ -291,7 +291,7 @@ export function AdminEventsClient({ initialEvents }: { initialEvents: Restaurant
             />
           </label>
           <p className="adm-hint">
-            Upload below for local hosting, or paste an https image URL for production deploys.
+            Upload stores the poster in Supabase Storage (survives redeploys). You can also paste an https image URL.
           </p>
           <label className="adm-field">
             Upload image
@@ -370,89 +370,66 @@ export function AdminEventsClient({ initialEvents }: { initialEvents: Restaurant
             <p>No events match this filter.</p>
           </div>
         ) : (
-          <div className="adm-table-wrap">
-            <table className="adm-table">
-              <thead>
-                <tr>
-                  <th>Event</th>
-                  <th>When</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.map((e) => (
-                  <tr key={e.id}>
-                    <td>
-                      <div className="adm-event-cell">
-                        {e.imageUrl ? (
-                          <img className="adm-thumb" src={e.imageUrl} alt="" />
-                        ) : (
-                          <span className="adm-thumb is-empty">No img</span>
-                        )}
-                        <span>
-                          <span className="adm-event-title">{e.title}</span>
-                          <span className="adm-event-desc">{e.description}</span>
-                        </span>
-                      </div>
-                    </td>
-                    <td>
-                      {format(new Date(e.startsAt), 'MMM d, yyyy · h:mm a')}
-                      {e.endsAt ? (
-                        <>
-                          <br />
-                          <span style={{ color: '#6b6560', fontSize: '0.8rem' }}>
-                            to {format(new Date(e.endsAt), 'h:mm a')}
-                          </span>
-                        </>
-                      ) : null}
-                    </td>
-                    <td>
+          <ul className="adm-event-list">
+            {filtered.map((e) => (
+              <li key={e.id} className="adm-event-card">
+                <div className="adm-event-card-main">
+                  {e.imageUrl ? (
+                    <img className="adm-thumb" src={e.imageUrl} alt="" />
+                  ) : (
+                    <span className="adm-thumb is-empty">No img</span>
+                  )}
+                  <div className="adm-event-card-body">
+                    <div className="adm-event-card-top">
+                      <strong className="adm-event-title">{e.title}</strong>
                       <span className={`adm-badge ${e.published ? 'is-live' : 'is-draft'}`}>
                         {e.published ? 'Live' : 'Draft'}
                       </span>
-                    </td>
-                    <td>
-                      <div className="adm-actions">
-                        <button
-                          type="button"
-                          className="adm-btn-ghost"
-                          onClick={() => startEdit(e)}
-                          disabled={busy}
-                        >
-                          <span className="btn-label">Edit</span>
-                        </button>
-                        <button
-                          type="button"
-                          className="adm-btn-ghost"
-                          onClick={() => togglePublished(e)}
-                          disabled={busy}
-                        >
-                          <span className="btn-label">{e.published ? 'Unpublish' : 'Publish'}</span>
-                        </button>
-                        <button
-                          type="button"
-                          className="adm-btn-ghost"
-                          onClick={() => duplicateEvent(e)}
-                          disabled={busy}
-                        >
-                          <span className="btn-label">Duplicate</span>
-                        </button>
-                        <button
-                          type="button"
-                          className="adm-btn-ghost"
-                          onClick={() => onDelete(e.id, e.title)}
-                          disabled={busy}
-                        >
-                          <span className="btn-label">Delete</span>
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                    </div>
+                    <p className="adm-event-when">
+                      {format(new Date(e.startsAt), 'MMM d · h:mm a')}
+                      {e.endsAt ? ` – ${format(new Date(e.endsAt), 'h:mm a')}` : ''}
+                    </p>
+                    <p className="adm-event-desc">{e.description}</p>
+                  </div>
+                </div>
+                <div className="adm-event-card-actions">
+                  <button
+                    type="button"
+                    className="adm-btn-ghost"
+                    onClick={() => startEdit(e)}
+                    disabled={busy}
+                  >
+                    <span className="btn-label">Edit</span>
+                  </button>
+                  <button
+                    type="button"
+                    className="adm-btn-ghost"
+                    onClick={() => togglePublished(e)}
+                    disabled={busy}
+                  >
+                    <span className="btn-label">{e.published ? 'Unpublish' : 'Publish'}</span>
+                  </button>
+                  <button
+                    type="button"
+                    className="adm-btn-ghost"
+                    onClick={() => duplicateEvent(e)}
+                    disabled={busy}
+                  >
+                    <span className="btn-label">Duplicate</span>
+                  </button>
+                  <button
+                    type="button"
+                    className="adm-btn-ghost"
+                    onClick={() => onDelete(e.id, e.title)}
+                    disabled={busy}
+                  >
+                    <span className="btn-label">Delete</span>
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
         )}
       </div>
     </div>

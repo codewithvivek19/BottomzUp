@@ -74,7 +74,7 @@
       ctx.fillRect(x, y, 1.2, 1.2);
     }
 
-    // Center label
+    // Center label only — never paint the real coupon code on the foil
     ctx.fillStyle = 'rgba(26,25,25,0.22)';
     ctx.font = '600 13px Poppins, system-ui, sans-serif';
     ctx.textAlign = 'center';
@@ -82,7 +82,7 @@
     ctx.fillText('SCRATCH TO REVEAL', w / 2, h / 2 - 10);
     ctx.font = '700 22px "Lemon Milk", Impact, system-ui, sans-serif';
     ctx.fillStyle = 'rgba(255,253,246,0.88)';
-    ctx.fillText(String(CODE || 'ZUP').slice(0, 10), w / 2, h / 2 + 16);
+    ctx.fillText('••••••', w / 2, h / 2 + 16);
   }
 
   function resetFoil() {
@@ -139,12 +139,35 @@
     }
   }
 
+  function updateFoot(showCode) {
+    const foot = section && section.querySelector('.scratch-foot');
+    if (!foot) return;
+    const pct = discountPercent(
+      (root.querySelector('.scratch-prize-off em') || {}).textContent || '10'
+    );
+    if (showCode) {
+      foot.innerHTML =
+        'Code <strong>' +
+        CODE +
+        '</strong> · ' +
+        pct +
+        '% off food · show staff · not with other offers';
+    } else {
+      foot.textContent =
+        'Scratch the foil to reveal your code · ' +
+        pct +
+        '% off food · show staff · not with other offers';
+    }
+  }
+
   function completeReveal() {
     if (revealed) return;
     revealed = true;
     root.classList.add('is-revealed');
     root.classList.remove('is-scratching');
     if (hint) hint.hidden = true;
+    if (codeEl) codeEl.textContent = CODE;
+    updateFoot(true);
     try {
       localStorage.setItem(STORAGE_KEY, '1');
     } catch (_) {}
@@ -222,7 +245,8 @@
     STORAGE_KEY = 'bottomz-scratch-' + CODE.toLowerCase();
     const pct = discountPercent(coupon.discountLabel);
 
-    if (codeEl) codeEl.textContent = CODE;
+    // Keep real code out of the DOM until the foil is cleared
+    if (codeEl) codeEl.textContent = '••••••';
 
     // Prize amount on the card (always show "N% OFF")
     const off = root.querySelector('.scratch-prize-off');
@@ -253,15 +277,7 @@
         '% code. Show it when you order.';
     }
 
-    const foot = section && section.querySelector('.scratch-foot');
-    if (foot) {
-      foot.innerHTML =
-        'Code <strong>' +
-        CODE +
-        '</strong> · ' +
-        pct +
-        '% off food · show staff · not with other offers';
-    }
+    updateFoot(false);
   }
 
   function startScratch() {

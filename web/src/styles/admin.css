@@ -792,6 +792,80 @@
   margin-bottom: 1rem;
 }
 
+/* Large creative active toggle (coupon admin) */
+.adm-toggle {
+  appearance: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 0 1.15rem;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  border: 1.5px solid rgba(46, 44, 44, 0.1);
+  background: #f7f3ea;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.adm-toggle.is-on {
+  background: linear-gradient(135deg, #fff8ec, #ffefd2);
+  border-color: rgba(231, 147, 30, 0.45);
+  box-shadow: 0 10px 28px rgba(231, 147, 30, 0.12);
+}
+
+.adm-toggle-track {
+  position: relative;
+  width: 64px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: #d9d2c4;
+  transition: background 0.22s ease;
+}
+
+.adm-toggle.is-on .adm-toggle-track {
+  background: linear-gradient(135deg, #e7931e, #c67a12);
+}
+
+.adm-toggle-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(46, 44, 44, 0.18);
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.adm-toggle.is-on .adm-toggle-knob {
+  transform: translateX(28px);
+}
+
+.adm-toggle-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.adm-toggle-copy strong {
+  font-size: 1rem;
+  color: var(--adm-ink);
+}
+
+.adm-toggle-copy span {
+  font-size: 0.82rem;
+  color: var(--adm-muted);
+  line-height: 1.35;
+}
+
 .adm-btn-primary,
 .adm-btn-ghost {
   appearance: none;
@@ -1484,35 +1558,38 @@ a.adm-feed-row:hover {
   padding: 0.85rem;
 }
 
-/* ---------- Events table leftovers ---------- */
-.adm-table-wrap { overflow-x: auto; }
-.adm-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-  min-width: 640px;
+/* ---------- Events list (mobile-first cards, no wide empty table) ---------- */
+.adm-event-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
-.adm-table th, .adm-table td {
-  text-align: left;
-  padding: 0.7rem 0.45rem;
-  border-bottom: 1px solid var(--adm-line);
-  vertical-align: middle;
+
+.adm-event-card {
+  border: 1px solid var(--adm-line);
+  border-radius: 16px;
+  background: #fff;
+  padding: 0.85rem;
 }
-.adm-table th {
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--adm-muted);
+
+.adm-event-card-main {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
 }
-.adm-event-cell { display: flex; gap: 0.65rem; align-items: center; }
+
 .adm-thumb {
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
   object-fit: cover;
   background: #f4f0e6;
   flex-shrink: 0;
 }
+
 .adm-thumb.is-empty {
   display: grid;
   place-items: center;
@@ -1520,15 +1597,84 @@ a.adm-feed-row:hover {
   font-weight: 700;
   color: var(--adm-muted);
 }
-.adm-event-title { display: block; font-weight: 700; }
-.adm-event-desc {
+
+.adm-event-card-body {
+  min-width: 0;
+  flex: 1;
+}
+
+.adm-event-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.adm-event-title {
   display: block;
+  font-weight: 700;
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+.adm-event-when {
+  margin: 0 0 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--adm-amber-deep);
+}
+
+.adm-event-desc {
+  margin: 0;
   color: var(--adm-muted);
-  font-size: 0.78rem;
-  max-width: 34ch;
-  white-space: nowrap;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
+}
+
+.adm-event-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--adm-line);
+}
+
+.adm-event-card-actions .adm-btn-ghost {
+  padding: 0.45rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+@media (min-width: 900px) {
+  .adm-event-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .adm-event-card-main {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .adm-event-card-actions {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+    flex-shrink: 0;
+    justify-content: flex-end;
+  }
+
+  .adm-event-desc {
+    -webkit-line-clamp: 1;
+  }
 }
 .adm-badge {
   display: inline-flex;

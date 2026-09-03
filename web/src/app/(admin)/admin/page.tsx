@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { format } from 'date-fns';
 import { parseJsonArray } from '@/lib/lead-schema';
+import { formatDiscountLabel } from '@/lib/coupon-schema';
 import { getAdminUser } from '@/lib/admin-auth';
 import { safeAdminQuery } from '@/lib/admin-data';
 import {
@@ -88,7 +89,9 @@ export default async function AdminDashboardPage() {
         <Link href="/admin/coupon" className="adm-stat adm-stat-link">
           <span className="adm-stat-label">Scratch code</span>
           <strong className="adm-stat-value adm-stat-code">{coupon?.code || 'Off'}</strong>
-          <span className="adm-stat-hint">{coupon?.active ? coupon.discountLabel + ' off' : 'Hidden on home'}</span>
+          <span className="adm-stat-hint">
+            {coupon?.active ? `${formatDiscountLabel(coupon.discountLabel)} off` : 'Hidden on home'}
+          </span>
         </Link>
       </div>
 
