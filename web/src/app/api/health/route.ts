@@ -109,6 +109,7 @@ export async function GET() {
         ok: supabaseProbe.ok,
         eventCount: supabaseProbe.eventCount,
         error: supabaseProbe.error,
+        tables: 'tables' in supabaseProbe ? supabaseProbe.tables : undefined,
       },
       // Prisma/TCP diagnostics kept for debugging only — not required for ok.
       prismaTcp: {

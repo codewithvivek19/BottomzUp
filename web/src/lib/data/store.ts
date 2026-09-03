@@ -31,6 +31,13 @@ async function userSb(): Promise<Sb> {
   return createUserClient();
 }
 
+/** Admin CRUD: prefer service role (bypasses RLS); else logged-in user JWT. */
+async function adminSb(): Promise<Sb | ReturnType<typeof createDataClient>> {
+  const { getSupabaseServiceRoleKey } = await import('@/lib/supabase/env');
+  if (getSupabaseServiceRoleKey()) return createDataClient();
+  return createUserClient();
+}
+
 function throwSb(error: { message?: string } | null, label: string): never {
   throw new Error(`[data/${label}] ${error?.message || 'Supabase request failed'}`);
 }
@@ -39,23 +46,39 @@ export async function probeSupabaseData(): Promise<{
   ok: boolean;
   eventCount: number | null;
   error: string | null;
+  tables?: { Event: boolean; CouponSetting: boolean; Lead: boolean };
 }> {
   try {
-    const { count, error } = await (await publicSb())
-      .from(EVENT)
-      .select('id', { count: 'exact', head: true });
-    if (error) {
-      // Published-only probe if full count blocked by RLS
-      const published = await (await publicSb())
-        .from(EVENT)
-        .select('id', { count: 'exact', head: true })
-        .eq('published', true);
-      if (published.error) {
-        return { ok: false, eventCount: null, error: error.message };
-      }
-      return { ok: true, eventCount: published.count ?? 0, error: null };
+    const client = await publicSb();
+    const [events, coupons, leads] = await Promise.all([
+      client.from(EVENT).select('id', { count: 'exact', head: true }).eq('published', true),
+      client.from(COUPON).select('id', { count: 'exact', head: true }).eq('active', true),
+      client.from(LEAD).select('id', { count: 'exact', head: true }).limit(1),
+    ]);
+
+    const tables = {
+      Event: !events.error,
+      CouponSetting: !coupons.error,
+      // Anon often cannot SELECT leads (insert-only) — that is OK.
+      Lead: !leads.error,
+    };
+    if (events.error) {
+      return { ok: false, eventCount: null, error: events.error.message, tables };
     }
-    return { ok: true, eventCount: count ?? 0, error: null };
+    if (coupons.error) {
+      return {
+        ok: false,
+        eventCount: events.count ?? 0,
+        error: `CouponSetting: ${coupons.error.message}`,
+        tables,
+      };
+    }
+    return {
+      ok: true,
+      eventCount: events.count ?? 0,
+      error: null,
+      tables,
+    };
   } catch (err) {
     return {
       ok: false,
@@ -71,7 +94,7 @@ export async function listEvents(opts: {
   to?: Date;
   asAdmin?: boolean;
 }): Promise<EventRow[]> {
-  const client = opts.asAdmin ? await userSb() : await publicSb();
+  const client = opts.asAdmin ? await adminSb() : await publicSb();
   let q = client.from(EVENT).select('*').order('startsAt', { ascending: true });
   if (opts.publishedOnly) q = q.eq('published', true);
   if (opts.from) q = q.gte('startsAt', opts.from.toISOString());
@@ -111,7 +134,7 @@ export async function createEvent(input: {
     createdAt: now,
     updatedAt: now,
   };
-  const { data, error } = await (await userSb())
+  const { data, error } = await (await adminSb())
     .from(EVENT)
     .insert(row)
     .select('*')
@@ -141,7 +164,7 @@ export async function updateEvent(
   if (input.imageUrl !== undefined) patch.imageUrl = input.imageUrl;
   if (input.published !== undefined) patch.published = input.published;
 
-  const { data, error } = await (await userSb())
+  const { data, error } = await (await adminSb())
     .from(EVENT)
     .update(patch)
     .eq('id', id)
@@ -152,7 +175,7 @@ export async function updateEvent(
 }
 
 export async function deleteEvent(id: string): Promise<void> {
-  const { error } = await (await userSb()).from(EVENT).delete().eq('id', id);
+  const { error } = await (await adminSb()).from(EVENT).delete().eq('id', id);
   if (error) throwSb(error, 'deleteEvent');
 }
 
@@ -190,7 +213,7 @@ export async function getActiveCoupon(): Promise<CouponRow | null> {
 }
 
 export async function getLatestCoupon(): Promise<CouponRow | null> {
-  const { data, error } = await (await userSb())
+  const { data, error } = await (await adminSb())
     .from(COUPON)
     .select('*')
     .order('updatedAt', { ascending: false })
@@ -220,7 +243,7 @@ export async function createCoupon(input: {
     createdAt: now,
     updatedAt: now,
   };
-  const { data, error } = await (await userSb())
+  const { data, error } = await (await adminSb())
     .from(COUPON)
     .insert(row)
     .select('*')
@@ -243,7 +266,7 @@ export async function updateCoupon(
     ...input,
     updatedAt: new Date().toISOString(),
   };
-  const { data, error } = await (await userSb())
+  const { data, error } = await (await adminSb())
     .from(COUPON)
     .update(patch)
     .eq('id', id)
@@ -254,7 +277,7 @@ export async function updateCoupon(
 }
 
 export async function deactivateOtherCoupons(exceptId: string): Promise<void> {
-  const { error } = await (await userSb())
+  const { error } = await (await adminSb())
     .from(COUPON)
     .update({ active: false, updatedAt: new Date().toISOString() })
     .neq('id', exceptId);
@@ -262,7 +285,7 @@ export async function deactivateOtherCoupons(exceptId: string): Promise<void> {
 }
 
 export async function listLeads(take = 200): Promise<LeadRow[]> {
-  const { data, error } = await (await userSb())
+  const { data, error } = await (await adminSb())
     .from(LEAD)
     .select('*')
     .order('createdAt', { ascending: false })
@@ -275,7 +298,7 @@ export async function countLeads(where?: {
   status?: string;
   createdAtGte?: Date;
 }): Promise<number> {
-  let q = (await userSb()).from(LEAD).select('id', { count: 'exact', head: true });
+  let q = (await adminSb()).from(LEAD).select('id', { count: 'exact', head: true });
   if (where?.status) q = q.eq('status', where.status);
   if (where?.createdAtGte) q = q.gte('createdAt', where.createdAtGte.toISOString());
   const { count, error } = await q;
@@ -321,7 +344,7 @@ export async function createLead(
 }
 
 export async function updateLeadStatus(id: string, status: string): Promise<LeadRow> {
-  const { data, error } = await (await userSb())
+  const { data, error } = await (await adminSb())
     .from(LEAD)
     .update({ status, updatedAt: new Date().toISOString() })
     .eq('id', id)
