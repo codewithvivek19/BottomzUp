@@ -84,31 +84,43 @@ function basicClean(raw: string): string {
   return s;
 }
 
-function appendQueryParam(url: string, key: string, value: string): string {
-  if (new RegExp(`(?:^|[?&])${key}=`, 'i').test(url)) return url;
-  return url.includes('?') ? `${url}&${key}=${value}` : `${url}?${key}=${value}`;
-}
-
 /**
- * Supabase transaction pooler (:6543) rejects Prisma prepared statements unless
- * `pgbouncer=true` is present. Hostinger/Supabase "URI" copies sometimes omit it.
+ * Rebuild query string with ONLY Prisma-supported params.
+ * Hostinger/Supabase pastes often include unsupported args →
+ * "The provided arguments are not supported in database URL".
+ *
+ * Transaction pooler (:6543) must have pgbouncer=true for Prisma.
  */
 export function ensurePrismaPoolerParams(url: string): string {
-  let out = url;
   try {
-    const u = new URL(out.replace(/^postgresql:/i, 'http:').replace(/^postgres:/i, 'http:'));
+    const u = new URL(url.replace(/^postgresql:/i, 'http:').replace(/^postgres:/i, 'http:'));
     const isPooler = /pooler\.supabase\.com$/i.test(u.hostname);
     const isTransactionPort = u.port === '6543';
+
+    const allowed = new URLSearchParams();
+    // Force Prisma-safe flags; drop everything else.
     if (isPooler && isTransactionPort) {
-      out = appendQueryParam(out, 'pgbouncer', 'true');
+      allowed.set('pgbouncer', 'true');
     }
-    if (isPooler || /\.supabase\.co$/i.test(u.hostname)) {
-      out = appendQueryParam(out, 'sslmode', 'require');
+    const existingSsl = u.searchParams.get('sslmode');
+    if (existingSsl) allowed.set('sslmode', existingSsl);
+    else if (isPooler || /\.supabase\.co$/i.test(u.hostname)) {
+      allowed.set('sslmode', 'require');
     }
+    const connectTimeout = u.searchParams.get('connect_timeout');
+    if (connectTimeout) allowed.set('connect_timeout', connectTimeout);
+
+    const scheme = url.match(/^(postgres(?:ql)?)/i)?.[1] || 'postgresql';
+    const auth = u.username
+      ? `${u.username}${u.password ? `:${u.password}` : ''}@`
+      : '';
+    const hostPort = u.port ? `${u.hostname}:${u.port}` : u.hostname;
+    const path = u.pathname || '/postgres';
+    const qs = allowed.toString();
+    return `${scheme}://${auth}${hostPort}${path}${qs ? `?${qs}` : ''}`;
   } catch {
-    // If URL still can't parse, leave as-is; caller may have repaired already.
+    return url;
   }
-  return out;
 }
 
 /** Return a cleaned (+ password-repaired + pooler flags) Postgres URI, or undefined if empty. */

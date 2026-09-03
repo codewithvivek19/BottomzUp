@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import { createLead, listLeads } from '@/lib/data/store';
 import { leadCreateSchema, parseJsonArray } from '@/lib/lead-schema';
 import { requireAdmin } from '@/lib/require-admin';
 
@@ -54,17 +54,22 @@ export async function GET(req: NextRequest) {
   const type = searchParams.get('type');
   const status = searchParams.get('status');
 
-  const where: { type?: string; status?: string } = {};
-  if (type === 'contact' || type === 'catering') where.type = type;
-  if (status === 'new' || status === 'contacted' || status === 'closed') where.status = status;
-
-  const leads = await prisma.lead.findMany({
-    where,
-    orderBy: { createdAt: 'desc' },
-    take: 200,
-  });
-
-  return NextResponse.json({ leads: leads.map(serializeLead) });
+  try {
+    let leads = await listLeads(200);
+    if (type === 'contact' || type === 'catering') {
+      leads = leads.filter((l) => l.type === type);
+    }
+    if (status === 'new' || status === 'contacted' || status === 'closed') {
+      leads = leads.filter((l) => l.status === status);
+    }
+    return NextResponse.json({ leads: leads.map(serializeLead) });
+  } catch (err) {
+    console.error('[api/leads] GET failed', err);
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : 'unavailable' },
+      { status: 503 }
+    );
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -75,9 +80,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
   }
 
-  // Honeypot: bots fill "website"
-  if (body && typeof body === 'object' && 'website' in body && String((body as { website?: string }).website || '')) {
-    return NextResponse.json({ ok: true }); // silent success
+  if (
+    body &&
+    typeof body === 'object' &&
+    'website' in body &&
+    String((body as { website?: string }).website || '')
+  ) {
+    return NextResponse.json({ ok: true });
   }
 
   const parsed = leadCreateSchema.safeParse(body);
@@ -86,23 +95,27 @@ export async function POST(req: NextRequest) {
   }
 
   const data = parsed.data;
+  const ua = req.headers.get('user-agent')?.slice(0, 300) || null;
 
-  if (data.type === 'catering') {
-    const items = data.items || [];
-    const bundles = data.bundles || [];
-    if (!items.length && !bundles.length) {
-      return NextResponse.json(
-        { error: 'Select at least one package or menu item' },
-        { status: 400 }
-      );
-    }
+  try {
+    if (data.type === 'catering') {
+      const items = data.items || [];
+      const bundles = data.bundles || [];
+      if (!items.length && !bundles.length) {
+        return NextResponse.json(
+          { error: 'Select at least one package or menu item' },
+          { status: 400 }
+        );
+      }
 
-    const lead = await prisma.lead.create({
-      data: {
+      const lead = await createLead({
         type: 'catering',
         name: data.name,
         email: data.email,
         phone: data.phone,
+        topic: null,
+        preferred: null,
+        message: null,
         eventDate: data.eventDate || null,
         guests: data.guests || null,
         eventType: data.eventType || null,
@@ -111,29 +124,36 @@ export async function POST(req: NextRequest) {
         bundlesJson: JSON.stringify(bundles),
         status: 'new',
         source: 'catering',
-        userAgent: req.headers.get('user-agent')?.slice(0, 300) || null,
-      },
-    });
-    return NextResponse.json({ ok: true, id: lead.id }, { status: 201 });
-  }
+        userAgent: ua,
+      });
+      return NextResponse.json({ ok: true, id: lead.id }, { status: 201 });
+    }
 
-  const lead = await prisma.lead.create({
-    data: {
+    const lead = await createLead({
       type: 'contact',
       name: data.name,
       email: data.email,
       phone: data.phone,
       topic: data.topic || null,
       preferred: data.preferred || null,
-      message: data.message,
+      message: data.message || null,
       eventDate: data.eventDate || null,
       guests: data.guests || null,
       eventType: data.eventType || null,
+      notes: null,
+      itemsJson: '[]',
+      bundlesJson: '[]',
       status: 'new',
       source: data.source || 'contact',
-      userAgent: req.headers.get('user-agent')?.slice(0, 300) || null,
-    },
-  });
+      userAgent: ua,
+    });
 
-  return NextResponse.json({ ok: true, id: lead.id }, { status: 201 });
+    return NextResponse.json({ ok: true, id: lead.id }, { status: 201 });
+  } catch (err) {
+    console.error('[api/leads] POST failed', err);
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : 'unavailable' },
+      { status: 503 }
+    );
+  }
 }

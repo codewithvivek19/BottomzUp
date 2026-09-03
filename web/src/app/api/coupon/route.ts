@@ -1,13 +1,10 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import { getActiveCoupon } from '@/lib/data/store';
 
 /** Public: active scratch coupon for the home page. */
 export async function GET() {
   try {
-    const coupon = await prisma.couponSetting.findFirst({
-      where: { active: true },
-      orderBy: { updatedAt: 'desc' },
-    });
+    const coupon = await getActiveCoupon();
 
     if (!coupon) {
       return NextResponse.json({ coupon: null });

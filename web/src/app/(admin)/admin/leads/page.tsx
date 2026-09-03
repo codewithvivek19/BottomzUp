@@ -4,7 +4,8 @@ import { redirect } from 'next/navigation';
 import { parseJsonArray } from '@/lib/lead-schema';
 import { AdminLeadsClient } from '@/components/admin/AdminLeadsClient';
 import { getAdminUser } from '@/lib/admin-auth';
-import { prisma, safeAdminQuery } from '@/lib/admin-data';
+import { safeAdminQuery } from '@/lib/admin-data';
+import { listLeads } from '@/lib/data/store';
 
 export const metadata: Metadata = {
   title: 'Leads admin',
@@ -19,7 +20,7 @@ export default async function AdminLeadsPage() {
 
   const { data: rows, error } = await safeAdminQuery(
     'leads',
-    () => prisma.lead.findMany({ orderBy: { createdAt: 'desc' }, take: 200 }),
+    () => listLeads(200),
     []
   );
   const initialLeads = rows.map((l) => ({

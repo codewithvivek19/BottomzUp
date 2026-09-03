@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { prisma } from '@/lib/prisma';
+import { listEvents } from '@/lib/data/store';
 import { EventsCalendar } from '@/components/events/EventsCalendar';
 import { EventsHostCta } from '@/components/events/EventsHostCta';
 import type { RestaurantEvent } from '@/types/event';
@@ -13,10 +13,7 @@ export const dynamic = 'force-dynamic';
 
 async function loadPublishedEvents(): Promise<RestaurantEvent[]> {
   try {
-    const rows = await prisma.event.findMany({
-      where: { published: true },
-      orderBy: { startsAt: 'asc' },
-    });
+    const rows = await listEvents({ publishedOnly: true });
     return rows.map((e) => ({
       id: e.id,
       title: e.title,

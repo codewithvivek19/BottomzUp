@@ -76,24 +76,35 @@ Mitigations now in place:
 
 Nav links are absolute (`/menu`, `/about`, …) so they work from every page.
 
-## Env vars
+## Env vars + database (Hostinger-supported path)
 
-See `web/.env.example`. Minimum:
+**App data now uses Supabase HTTPS** (`@supabase/supabase-js` → PostgREST), which is what Hostinger’s **Database → Connect → Supabase** wizard is built for. It sets:
+
+| Hostinger injects | Also accepted |
+|-------------------|---------------|
+| `SUPABASE_URL` | `NEXT_PUBLIC_SUPABASE_URL` |
+| `SUPABASE_API_KEY` | `NEXT_PUBLIC_SUPABASE_ANON_KEY` / `PUBLISHABLE_KEY` |
+
+Also set:
 
 | Name | Example |
 |------|---------|
-| `DATABASE_URL` | Supabase **Transaction** pooler URI (`…pooler.supabase.com:6543/postgres?pgbouncer=true`) |
-| `DIRECT_URL` | Supabase **Session** pooler URI (`…pooler.supabase.com:5432/postgres`) — avoid `db.*.supabase.co` on Hostinger (IPv6-only) |
-| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | anon/publishable key |
 | `ADMIN_EMAILS` | `Manager@bottomzupbargrill.com` |
 | `NEXT_PUBLIC_SITE_URL` | `https://bottomzupbargrill.com` |
 
-### Critical Hostinger facts
+`DATABASE_URL` / `DIRECT_URL` (Prisma TCP) are **optional** on Hostinger now — kept for local migrate/seed only.
 
-1. **hPanel → Database → Connect → Supabase** only injects `SUPABASE_URL` + `SUPABASE_ANON_KEY` (Auth). It does **not** configure Prisma’s `DATABASE_URL` / `DIRECT_URL`. You must paste those yourself.
-2. Paste the **raw URI only** — no wrapping quotes, no `DATABASE_URL=` prefix. Password special chars must be URL-encoded (`#` → `%23`). Easiest: copy the two URLs from a working `web/.env`.
-3. **IPv4 vs IPv6:** Direct `db.*.supabase.co` is IPv6-only; Hostinger is typically IPv4. Use the **shared pooler** host. If `/api/health` shows `databaseTcp: "open"` and still fails, it is **not** an IP-version block — on the pooler Prisma often reports a **wrong password** as “Can’t reach database server”.
-4. **`DATABASE_URL` must include `?pgbouncer=true`** when using port **6543** (transaction pooler). Without it Prisma prepared statements fail. The app now auto-appends this flag if missing.
-5. If you **reset the Supabase DB password**, update **both** Hostinger env **and** local `web/.env` — otherwise local “stops working” while production uses the new password.
-6. Smoke test: `https://bottomzupbargrill.com/api/health` must return `"ok": true` and a numeric `eventCount`. If `/api/events` returns `"error":"unavailable"`, Postgres is still wrong.
+### One-time Supabase SQL (required for HTTPS data)
+
+Prisma created tables `"Event"`, `"CouponSetting"`, `"Lead"`. The anon key needs grants/RLS policies:
+
+1. Open Supabase → **SQL Editor**
+2. Run `web/supabase/hostinger-grants.sql`
+3. Redeploy Hostinger
+
+### Connect wizard checklist (matches Hostinger docs)
+
+1. `@supabase/supabase-js` is already in `web/package.json` (^2.112)
+2. `web/db.js` exists for Hostinger’s sample connection test
+3. Push → Hostinger redeploys → wizard env vars apply
+4. Smoke test: `/api/health` → `"ok": true`, `"dataPath": "supabase_https"`

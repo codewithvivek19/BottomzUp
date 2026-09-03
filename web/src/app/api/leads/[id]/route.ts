@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Prisma } from '@prisma/client';
-import { prisma } from '@/lib/prisma';
+import { updateLeadStatus } from '@/lib/data/store';
 import { requireAdmin } from '@/lib/require-admin';
 import { leadStatusSchema, parseJsonArray } from '@/lib/lead-schema';
 
@@ -24,10 +23,7 @@ export async function PATCH(req: NextRequest, ctx: Ctx) {
   }
 
   try {
-    const lead = await prisma.lead.update({
-      where: { id },
-      data: { status: parsed.data.status },
-    });
+    const lead = await updateLeadStatus(id, parsed.data.status);
     return NextResponse.json({
       lead: {
         ...lead,
@@ -40,9 +36,11 @@ export async function PATCH(req: NextRequest, ctx: Ctx) {
       },
     });
   } catch (err) {
-    if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === 'P2025') {
+    const message = err instanceof Error ? err.message : 'Update failed';
+    if (/0 rows|not found|PGRST116/i.test(message)) {
       return NextResponse.json({ error: 'Not found' }, { status: 404 });
     }
-    throw err;
+    console.error('[api/leads/id] PATCH failed', err);
+    return NextResponse.json({ error: message }, { status: 503 });
   }
 }

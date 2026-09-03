@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { AdminCouponClient } from '@/components/admin/AdminCouponClient';
 import { getAdminUser } from '@/lib/admin-auth';
-import { prisma, safeAdminQuery } from '@/lib/admin-data';
+import { safeAdminQuery } from '@/lib/admin-data';
+import { createCoupon, getLatestCoupon } from '@/lib/data/store';
 
 export const metadata: Metadata = {
   title: 'Coupon admin',
@@ -18,16 +19,14 @@ export default async function AdminCouponPage() {
   const { data: coupon, error } = await safeAdminQuery(
     'coupon',
     async () => {
-      let row = await prisma.couponSetting.findFirst({ orderBy: { updatedAt: 'desc' } });
+      let row = await getLatestCoupon();
       if (!row) {
-        row = await prisma.couponSetting.create({
-          data: {
-            code: 'ZUP10',
-            discountLabel: '10%',
-            headline: 'In-house only',
-            note: 'Valid on food. Not stackable with other offers. Ask your server.',
-            active: true,
-          },
+        row = await createCoupon({
+          code: 'ZUP10',
+          discountLabel: '10%',
+          headline: 'In-house only',
+          note: 'Valid on food. Not stackable with other offers. Ask your server.',
+          active: true,
         });
       }
       return row;

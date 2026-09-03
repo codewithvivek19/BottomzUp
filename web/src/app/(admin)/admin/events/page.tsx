@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { AdminEventsClient } from '@/components/admin/AdminEventsClient';
 import { getAdminUser } from '@/lib/admin-auth';
-import { prisma, safeAdminQuery } from '@/lib/admin-data';
+import { safeAdminQuery } from '@/lib/admin-data';
+import { listEvents } from '@/lib/data/store';
 
 export const metadata: Metadata = {
   title: 'Events admin',
@@ -17,7 +18,10 @@ export default async function AdminEventsPage() {
 
   const { data: events, error } = await safeAdminQuery(
     'events',
-    () => prisma.event.findMany({ orderBy: { startsAt: 'desc' } }),
+    async () => {
+      const rows = await listEvents({ asAdmin: true });
+      return rows.sort((a, b) => b.startsAt.getTime() - a.startsAt.getTime());
+    },
     []
   );
 

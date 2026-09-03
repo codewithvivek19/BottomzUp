@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import {
+  createCoupon,
+  deactivateOtherCoupons,
+  getLatestCoupon,
+  updateCoupon,
+} from '@/lib/data/store';
 import { requireAdmin } from '@/lib/require-admin';
 import { couponUpdateSchema } from '@/lib/coupon-schema';
 
@@ -7,20 +12,25 @@ export async function GET() {
   const { error } = await requireAdmin();
   if (error) return error;
 
-  let coupon = await prisma.couponSetting.findFirst({ orderBy: { updatedAt: 'desc' } });
-  if (!coupon) {
-    coupon = await prisma.couponSetting.create({
-      data: {
+  try {
+    let coupon = await getLatestCoupon();
+    if (!coupon) {
+      coupon = await createCoupon({
         code: 'ZUP10',
         discountLabel: '10%',
         headline: 'In-house only',
         note: 'Valid on food. Not stackable with other offers. Ask your server.',
         active: true,
-      },
-    });
+      });
+    }
+    return NextResponse.json({ coupon });
+  } catch (err) {
+    console.error('[api/admin/coupon] GET failed', err);
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : 'unavailable' },
+      { status: 503 }
+    );
   }
-
-  return NextResponse.json({ coupon });
 }
 
 export async function PATCH(req: NextRequest) {
@@ -40,29 +50,36 @@ export async function PATCH(req: NextRequest) {
   }
 
   const data = parsed.data;
-  let coupon = await prisma.couponSetting.findFirst({ orderBy: { updatedAt: 'desc' } });
+  try {
+    let coupon = await getLatestCoupon();
 
-  if (!coupon) {
-    coupon = await prisma.couponSetting.create({ data });
-  } else {
-    // Only one active promo for the scratch card: deactivate siblings when activating
-    if (data.active) {
-      await prisma.couponSetting.updateMany({
-        where: { id: { not: coupon.id } },
-        data: { active: false },
-      });
-    }
-    coupon = await prisma.couponSetting.update({
-      where: { id: coupon.id },
-      data: {
+    if (!coupon) {
+      coupon = await createCoupon({
         code: data.code.toUpperCase(),
         discountLabel: data.discountLabel,
         headline: data.headline,
         note: data.note,
         active: data.active,
-      },
-    });
-  }
+      });
+    } else {
+      if (data.active) {
+        await deactivateOtherCoupons(coupon.id);
+      }
+      coupon = await updateCoupon(coupon.id, {
+        code: data.code.toUpperCase(),
+        discountLabel: data.discountLabel,
+        headline: data.headline,
+        note: data.note,
+        active: data.active,
+      });
+    }
 
-  return NextResponse.json({ coupon });
+    return NextResponse.json({ coupon });
+  } catch (err) {
+    console.error('[api/admin/coupon] PATCH failed', err);
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : 'unavailable' },
+      { status: 503 }
+    );
+  }
 }

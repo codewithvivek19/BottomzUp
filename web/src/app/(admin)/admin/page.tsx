@@ -4,7 +4,15 @@ import { redirect } from 'next/navigation';
 import { format } from 'date-fns';
 import { parseJsonArray } from '@/lib/lead-schema';
 import { getAdminUser } from '@/lib/admin-auth';
-import { prisma, safeAdminQuery } from '@/lib/admin-data';
+import { safeAdminQuery } from '@/lib/admin-data';
+import {
+  countLeads,
+  countPublishedEvents,
+  getActiveCoupon,
+  listLeads,
+  listUpcomingPublished,
+} from '@/lib/data/store';
+import type { CouponRow, EventRow, LeadRow } from '@/lib/data/types';
 
 export const metadata: Metadata = {
   title: 'Admin dashboard',
@@ -18,21 +26,16 @@ export default async function AdminDashboardPage() {
   if (!admin) redirect('/admin/login');
 
   const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-  const now = new Date();
   const bundle = await safeAdminQuery(
     'dashboard',
     async () => {
       const [newLeads, weekLeads, liveEvents, upcoming, recentLeads, coupon] = await Promise.all([
-        prisma.lead.count({ where: { status: 'new' } }),
-        prisma.lead.count({ where: { createdAt: { gte: weekAgo } } }),
-        prisma.event.count({ where: { published: true } }),
-        prisma.event.findMany({
-          where: { published: true, startsAt: { gte: now } },
-          orderBy: { startsAt: 'asc' },
-          take: 5,
-        }),
-        prisma.lead.findMany({ orderBy: { createdAt: 'desc' }, take: 8 }),
-        prisma.couponSetting.findFirst({ where: { active: true }, orderBy: { updatedAt: 'desc' } }),
+        countLeads({ status: 'new' }),
+        countLeads({ createdAtGte: weekAgo }),
+        countPublishedEvents(),
+        listUpcomingPublished(5),
+        listLeads(8),
+        getActiveCoupon(),
       ]);
       return { newLeads, weekLeads, liveEvents, upcoming, recentLeads, coupon };
     },
@@ -40,9 +43,9 @@ export default async function AdminDashboardPage() {
       newLeads: 0,
       weekLeads: 0,
       liveEvents: 0,
-      upcoming: [] as Awaited<ReturnType<typeof prisma.event.findMany>>,
-      recentLeads: [] as Awaited<ReturnType<typeof prisma.lead.findMany>>,
-      coupon: null as Awaited<ReturnType<typeof prisma.couponSetting.findFirst>>,
+      upcoming: [] as EventRow[],
+      recentLeads: [] as LeadRow[],
+      coupon: null as CouponRow | null,
     }
   );
 
@@ -56,9 +59,9 @@ export default async function AdminDashboardPage() {
           <h2 style={{ marginBottom: '0.35rem' }}>Database unavailable</h2>
           <p style={{ color: '#5c5650', lineHeight: 1.45 }}>{dbError}</p>
           <p style={{ color: '#5c5650', lineHeight: 1.45, marginTop: '0.5rem' }}>
-            Signed in as <strong>{admin.email}</strong>. Auth can work while Postgres/Prisma fails —
-            check Hostinger <code>DATABASE_URL</code> / <code>DIRECT_URL</code>, then redeploy.
-            Public probe: <code>/api/health</code>.
+            Signed in as <strong>{admin.email}</strong>. Data uses Supabase HTTPS
+            (Hostinger Database→Connect). If this persists, run
+            <code>web/supabase/hostinger-grants.sql</code> and check <code>/api/health</code>.
           </p>
         </div>
       ) : (
