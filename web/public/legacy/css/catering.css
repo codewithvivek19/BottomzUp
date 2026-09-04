@@ -454,6 +454,16 @@
   aspect-ratio: 1;
 }
 
+/* Drink cards: zoom in so edge watermarks crop out of the frame */
+.p-card--compact .p-card-media img {
+  transform: scale(1.28);
+  transform-origin: center center;
+}
+
+.p-card--compact:hover .p-card-media img {
+  transform: scale(1.34);
+}
+
 .p-card--compact .p-card-body {
   padding: 0.75rem 0.8rem 0.95rem;
 }
