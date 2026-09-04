@@ -50,11 +50,10 @@ next-env.d.ts
 /prisma/dev.db-journal
 
 # Generated Hostinger asset mirrors (npm run sync:public)
+# css/js/pages are copied from legacy on every build — safe to ignore
 /public/css/
 /public/js/
 /public/pages/
-# NOTE: /public/legacy/ is committed on purpose — Hostinger Root Directory=web
-# often cannot see ../css; legacy is the deploy fallback.
-
-# Generated from repo root by sync-public-assets — NEVER edit / commit
-/public/legacy/
+# NOTE: public/legacy/ MUST stay tracked — Hostinger Root Directory=web
+# often cannot see ../css; the committed legacy snapshot is the deploy fallback.
+# Do NOT add /public/legacy/ here.

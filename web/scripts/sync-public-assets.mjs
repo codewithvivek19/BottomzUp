@@ -99,4 +99,11 @@ for (const name of ['css', 'js', 'pages']) {
   copyDir(join(legacy, name), join(pub, name), `${name} <- legacy/${name}`);
 }
 
+// Also mirror assets into public/assets.
+// Next serves public/assets/* before the /assets → /legacy/assets rewrite,
+// so without this copy, production keeps serving stale images.
+if (existsSync(join(legacy, 'assets'))) {
+  copyDir(join(legacy, 'assets'), join(pub, 'assets'), 'assets <- legacy/assets');
+}
+
 console.log('[sync-public-assets] done');
