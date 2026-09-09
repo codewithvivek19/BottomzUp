@@ -467,12 +467,32 @@
   function renderMenu(root) {
     if (!root) return;
     var groups = window.BOTTOMZ_CATERING.groups;
+    var requestedId = window.location.hash.replace(/^#/, '');
+    var validRequestedId = groups.some(function (g) {
+      return 'cat-menu-' + slugify(g.title) === requestedId;
+    });
+    var hasKnownSectionHash =
+      validRequestedId || requestedId === 'cat-menu' || requestedId === 'cat-quote';
+    var activeId = validRequestedId
+      ? requestedId
+      : 'cat-menu-' + slugify(groups[0].title);
     var nav =
       '<nav class="cat-menu-jump" aria-label="Catering menu categories">' +
       groups
         .map(function (g) {
           var id = 'cat-menu-' + slugify(g.title);
-          return '<a href="#' + id + '">' + esc(g.title) + '</a>';
+          var pressed = id === activeId ? 'true' : 'false';
+          return (
+            '<button type="button" class="cat-menu-jump-button" data-cat-menu-target="' +
+            id +
+            '" aria-controls="' +
+            id +
+            '" aria-pressed="' +
+            pressed +
+            '">' +
+            esc(g.title) +
+            '</button>'
+          );
         })
         .join('') +
       '</nav>';
@@ -483,8 +503,11 @@
       .map(function (g) {
         var gridCls = 'cat-menu-list' + (g.compact ? ' cat-menu-list--compact' : '');
         var id = 'cat-menu-' + slugify(g.title);
+        var activeCls = id === activeId ? ' is-active' : '';
         return (
-          '<section class="cat-group cat-menu-section" id="' +
+          '<section class="cat-group cat-menu-section' +
+          activeCls +
+          '" id="' +
           id +
           '">' +
           '<div class="cat-group-head">' +
@@ -507,11 +530,89 @@
         );
       })
       .join('');
+
+    wireMenuNavigation(root, activeId, hasKnownSectionHash);
+  }
+
+  function wireMenuNavigation(root, initialId, hadKnownSectionHash) {
+    var buttons = Array.from(root.querySelectorAll('.cat-menu-jump-button'));
+    var sections = Array.from(root.querySelectorAll('.cat-menu-section'));
+    var mobileQuery = window.matchMedia('(max-width: 620px)');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function activate(id, shouldScroll) {
+      var target = document.getElementById(id);
+      if (!target) return;
+
+      buttons.forEach(function (button) {
+        var isActive = button.dataset.catMenuTarget === id;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-pressed', String(isActive));
+      });
+      sections.forEach(function (section) {
+        section.classList.toggle('is-active', section.id === id);
+      });
+
+      if (shouldScroll) {
+        target.scrollIntoView({
+          behavior: reduceMotion ? 'auto' : 'smooth',
+          block: 'start',
+        });
+        var activeButton = root.querySelector('[data-cat-menu-target="' + id + '"]');
+        if (activeButton) {
+          activeButton.scrollIntoView({
+            behavior: reduceMotion ? 'auto' : 'smooth',
+            block: 'nearest',
+            inline: 'center',
+          });
+        }
+      }
+    }
+
+    function cleanLegacyHash() {
+      if (!window.location.hash || !window.history || !window.history.replaceState) return;
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+
+    buttons.forEach(function (button, index) {
+      button.addEventListener('click', function () {
+        activate(button.dataset.catMenuTarget, true);
+      });
+      button.addEventListener('keydown', function (event) {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        event.preventDefault();
+        var direction = event.key === 'ArrowRight' ? 1 : -1;
+        var nextIndex = (index + direction + buttons.length) % buttons.length;
+        buttons[nextIndex].focus();
+        activate(buttons[nextIndex].dataset.catMenuTarget, mobileQuery.matches);
+      });
+    });
+
+    activate(initialId, false);
+    if (hadKnownSectionHash) cleanLegacyHash();
+
+    window.addEventListener('hashchange', function () {
+      var requestedId = window.location.hash.replace(/^#/, '');
+      if (requestedId === 'cat-menu' || requestedId === 'cat-quote') {
+        cleanLegacyHash();
+        return;
+      }
+      var requestedSection = document.getElementById(requestedId);
+      if (!requestedSection || !requestedSection.classList.contains('cat-menu-section')) return;
+      activate(requestedId, mobileQuery.matches);
+      cleanLegacyHash();
+    });
   }
 
   function mount() {
-    renderPackages(document.getElementById('catPackagesMount'));
-    renderMenu(document.getElementById('catMenuMount'));
+    if (window.BOTTOMZ_CATERING.isMounted) return;
+    var packagesRoot = document.getElementById('catPackagesMount');
+    var menuRoot = document.getElementById('catMenuMount');
+    if (!packagesRoot || !menuRoot) return;
+
+    window.BOTTOMZ_CATERING.isMounted = true;
+    renderPackages(packagesRoot);
+    renderMenu(menuRoot);
   }
 
   window.BOTTOMZ_CATERING.mount = mount;
