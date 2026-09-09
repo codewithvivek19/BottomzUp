@@ -82,6 +82,23 @@
       if (C.delivery) el.textContent = C.delivery;
     });
 
+    // Keep every delivery surface on the direct restaurant storefronts.
+    const partners = C.deliveryPartners || {};
+    document.querySelectorAll('.reserve-partner-btn, .footer-partner').forEach((el) => {
+      const isDoorDash = el.classList.contains('footer-partner--doordash') || /doordash/i.test(el.textContent);
+      const partner = isDoorDash ? partners.doorDash : partners.uberEats;
+      if (!partner) return;
+      el.href = partner.url;
+      el.target = '_blank';
+      el.rel = 'noopener noreferrer';
+      el.setAttribute('aria-label', 'Order on ' + partner.label);
+      const logo = el.querySelector('.footer-partner-logo');
+      const name = el.querySelector('.footer-partner-name');
+      if (logo) logo.textContent = partner.shortLabel;
+      if (name) name.textContent = partner.label;
+      if (!name && el.classList.contains('reserve-partner-btn')) el.textContent = partner.label;
+    });
+
     // Order online CTAs
     document.querySelectorAll('[data-contact="order"]').forEach((el) => {
       if (!C.orderOnline || el.tagName !== 'A') return;

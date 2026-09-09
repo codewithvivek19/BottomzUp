@@ -511,12 +511,20 @@ body .site-footer.site-footer--impact {
   background: #ff8000;
 }
 
+.footer-partner--ubereats .footer-partner-logo {
+  background: #06c167;
+}
+
 .footer-partner--doordash .footer-partner-logo {
   background: #ff3008;
 }
 
 .footer-partner--grubhub:hover {
   border-color: rgba(255, 128, 0, 0.65);
+}
+
+.footer-partner--ubereats:hover {
+  border-color: rgba(6, 193, 103, 0.65);
 }
 
 .footer-partner--doordash:hover {

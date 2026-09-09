@@ -1,5 +1,5 @@
 /**
- * Bottomz Up — interactive lead forms (Contact + Catering)
+ * Bottomz Up - interactive lead forms (Contact + Catering)
  * Client-side validation, selection UX, mailto + localStorage capture
  */
 (function () {
@@ -229,7 +229,7 @@
       '<button type="button" class="cat-order-clear" id="catOrderClearAll">Clear all</button>' +
       '</div>' +
       '<div class="cat-order-chips" id="catOrderChips"></div>' +
-      '<p class="cat-order-empty" id="catOrderEmpty">Tap packages or menu items to add them here.</p>';
+      '<p class="cat-order-empty" id="catOrderEmpty">Select packages or menu items to add them here.</p>';
     summary.parentNode.insertBefore(list, summary);
     return list;
   }
@@ -271,7 +271,7 @@
       if (bundles.length) parts.push('<strong>' + bundles.length + ' package' + (bundles.length === 1 ? '' : 's') + '</strong>');
       if (items.length) parts.push('<strong>' + items.length + ' item' + (items.length === 1 ? '' : 's') + '</strong>');
       if (guests) parts.push('Guests: ' + guests);
-      box.innerHTML = parts.length ? parts.join(' · ') : '';
+      box.innerHTML = parts.length ? parts.join(' / ') : '';
     }
 
     const total = all.length;

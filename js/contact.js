@@ -11,8 +11,20 @@ window.BOTTOMZ_CONTACT = {
   mapsLabel: 'Get Directions',
   addressLine1: '2001 Seymour Dr',
   addressLine2: 'South Boston, VA 24592',
-  delivery: 'Delivery available via Grubhub & DoorDash',
-  /** Primary order-online URL (DoorDash / Grubhub store link when available) */
+  delivery: 'Delivery available via Uber Eats & DoorDash',
+  deliveryPartners: {
+    uberEats: {
+      label: 'Uber Eats',
+      shortLabel: 'UE',
+      url: 'https://www.ubereats.com/store/bottomz-up-bar-%26-grill/37oYu5OAU3aDD_CX18pwxQ?surfaceName=',
+    },
+    doorDash: {
+      label: 'DoorDash',
+      shortLabel: 'DD',
+      url: 'https://www.doordash.com/store/bottomz-up-bar-%26-grill-south-boston-49345802/114391956/?rwg_token=AE37R_hH6wLD41DzatENa5KCKjVFQzvwQB7G9iYTvQK9B3mTUqZylO3a-mYwx1yfTBgW62nELH2NV8uhDW4Awblt_ZDNmXlYsw==&utm_campaign=gpa',
+    },
+  },
+  /** Primary order-online URL for the site's main Order Online CTAs. */
   orderOnline: 'https://order.toasttab.com/online/bottomz-up-2001-seymour-dr',
   orderOnlineLabel: 'Order Online',
   hoursNote:

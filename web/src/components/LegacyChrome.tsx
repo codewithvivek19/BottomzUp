@@ -306,20 +306,20 @@ export function LegacyChrome({ children }: { children: React.ReactNode }) {
             <span className="footer-delivery-label">Delivery</span>
             <div className="footer-partners" aria-label="Delivery partners">
               <a
-                className="footer-partner footer-partner--grubhub"
-                href="https://www.grubhub.com"
+                className="footer-partner footer-partner--ubereats"
+                href="https://www.ubereats.com/store/bottomz-up-bar-%26-grill/37oYu5OAU3aDD_CX18pwxQ?surfaceName="
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Order on Grubhub"
+                aria-label="Order on Uber Eats"
               >
                 <span className="footer-partner-logo" aria-hidden="true">
-                  GH
+                  UE
                 </span>
-                <span className="footer-partner-name">Grubhub</span>
+                <span className="footer-partner-name">Uber Eats</span>
               </a>
               <a
                 className="footer-partner footer-partner--doordash"
-                href="https://www.doordash.com"
+                href="https://www.doordash.com/store/bottomz-up-bar-%26-grill-south-boston-49345802/114391956/?rwg_token=AE37R_hH6wLD41DzatENa5KCKjVFQzvwQB7G9iYTvQK9B3mTUqZylO3a-mYwx1yfTBgW62nELH2NV8uhDW4Awblt_ZDNmXlYsw==&utm_campaign=gpa"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Order on DoorDash"

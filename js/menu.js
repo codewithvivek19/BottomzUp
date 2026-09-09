@@ -279,7 +279,7 @@
           <div>
             <p class="eyebrow">The bar is open</p>
             <h3 class="display heading-md">Ready for a round?</h3>
-            <p class="body-md bar-conversion-copy">Walk-ins welcome. Large crew? Give us a heads up — or order delivery via DoorDash &amp; Grubhub.</p>
+            <p class="body-md bar-conversion-copy">Walk-ins welcome. Large crew? Give us a heads up — or order delivery via DoorDash &amp; Uber Eats.</p>
           </div>
           <div class="bar-conversion-actions">
             <button type="button" class="btn-ticket js-open-reserve">
