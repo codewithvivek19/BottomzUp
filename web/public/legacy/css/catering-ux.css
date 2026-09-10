@@ -114,7 +114,15 @@
   display: none;
 }
 
+.cat-form {
+  width: 100%;
+  min-width: 0;
+}
+
 .cat-block {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
   padding-block: clamp(1.9rem, 4vw, 3.1rem);
 }
 
@@ -415,6 +423,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.62rem;
+  width: 100%;
   max-width: 100%;
   min-width: 0;
 }
@@ -655,21 +664,33 @@
   }
 
   .cat-menu-jump {
-    top: calc(var(--header-height, 64px) + 0.35rem);
-    margin-inline: -0.35rem;
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
     margin-bottom: 1rem;
+    padding: 0.4rem;
+    overflow: visible;
     border-radius: 14px;
-    scroll-padding-inline: 0.45rem;
   }
 
   .cat-menu-jump-button {
-    min-height: 46px;
-    padding-inline: 0.9rem;
-    font-size: 0.8rem;
+    width: 100%;
+    min-width: 0;
+    min-height: 50px;
+    padding: 0.62rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    white-space: normal;
   }
 
   .cat-menu-section {
     display: none;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     padding-top: 0.45rem;
     border-top: 0;
   }
@@ -709,10 +730,18 @@
 
   .cat-package-row,
   .cat-menu-row {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 0.75rem;
     min-height: 0;
     padding: 0.85rem;
+  }
+
+  .cat-menu-row .p-card-name,
+  .cat-menu-row .p-card-meta {
+    overflow-wrap: anywhere;
   }
 
   .cat-package-row .p-card-action,
