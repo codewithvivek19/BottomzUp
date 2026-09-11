@@ -498,9 +498,9 @@
 .cat-order-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.45rem;
   max-width: 100%;
-  padding: 0.35rem 0.55rem 0.35rem 0.65rem;
+  padding: 0.4rem 0.6rem 0.4rem 0.75rem;
   border-radius: var(--radius-full, 999px);
   background: #fff;
   border: 1px solid rgba(46, 44, 44, 0.11);
@@ -517,6 +517,7 @@
 }
 
 .cat-order-chip button {
+  position: relative;
   appearance: none;
   border: 0;
   background: rgba(46, 44, 44, 0.08);
@@ -594,9 +595,20 @@
 @media (pointer: coarse) {
   .cat-menu-jump-button,
   .cat-clear-bundle,
-  .cat-order-clear,
-  .cat-order-chip button {
+  .cat-order-clear {
     min-height: 44px;
+  }
+
+  .cat-order-chip button {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+  }
+
+  .cat-order-chip button::after {
+    content: "";
+    position: absolute;
+    inset: -12px;
   }
 
   .cat-package-row,
