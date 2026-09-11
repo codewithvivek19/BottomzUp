@@ -431,10 +431,12 @@
         '<label class="tray-option tray-option--half is-on">' +
         '<input type="radio" name="' + radioName + '" value="half" checked />' +
         '<span class="tray-option-text">Half Tray</span>' +
+        '<span class="tray-option-serves">up to 7</span>' +
         '</label>' +
         '<label class="tray-option tray-option--full">' +
         '<input type="radio" name="' + radioName + '" value="full" />' +
         '<span class="tray-option-text">Full Tray</span>' +
+        '<span class="tray-option-serves">up to 12</span>' +
         '</label>' +
         '</div>';
     }
