@@ -205,6 +205,12 @@
             label = label + ' (' + badge.textContent.trim() + ')';
           }
         }
+        // Append tray size if this card has a tray toggle
+        const trayRadio = card.querySelector('.tray-toggle input[type="radio"]:checked');
+        if (trayRadio) {
+          const sizeLabel = trayRadio.value === 'full' ? 'Full Tray' : 'Half Tray';
+          label = label + ' — ' + sizeLabel;
+        }
       }
       return { value: el.value, label: label, input: el };
     });

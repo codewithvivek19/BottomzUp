@@ -799,3 +799,96 @@
     transform: none;
   }
 }
+
+/* ── Tray-size toggle ──────────────────────────────────── */
+.tray-toggle {
+  display: flex;
+  gap: 0;
+  margin-top: 0.45rem;
+  border: 1.5px solid rgba(46, 44, 44, 0.13);
+  border-radius: var(--radius-full, 999px);
+  background: rgba(46, 44, 44, 0.04);
+  overflow: hidden;
+  width: max-content;
+}
+
+.tray-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.32rem 0.72rem;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tray-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tray-option-text {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: #6a635b;
+  line-height: 1;
+  transition: color 160ms ease;
+}
+
+.tray-option.is-on {
+  background: var(--color-amber, #e7931e);
+  border-color: transparent;
+}
+
+.tray-option.is-on .tray-option-text {
+  color: #fff;
+}
+
+.tray-option:not(.is-on):hover {
+  background: rgba(231, 147, 30, 0.1);
+}
+
+.tray-option:not(.is-on):hover .tray-option-text {
+  color: #2e2c2c;
+}
+
+/* When card is NOT selected, dim the toggle slightly */
+.cat-menu-row:not(.is-selected) .tray-toggle {
+  opacity: 0.55;
+}
+
+.cat-menu-row.is-selected .tray-toggle {
+  opacity: 1;
+}
+
+@media (pointer: coarse) {
+  .tray-option {
+    min-height: 36px;
+    padding: 0.38rem 0.82rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .tray-toggle {
+    margin-top: 0.35rem;
+  }
+
+  .tray-option {
+    padding: 0.34rem 0.62rem;
+  }
+
+  .tray-option-text {
+    font-size: 0.68rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tray-option {
+    transition: none;
+  }
+}

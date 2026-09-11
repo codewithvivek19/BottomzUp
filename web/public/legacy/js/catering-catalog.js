@@ -97,18 +97,21 @@
             value: 'Classic House Burger',
             image: IMG + 'classic-house-burger.jpg',
             meta: 'Lettuce, tomato, onion, pickles, mayo, fries',
+            traySize: true,
           },
           {
             name: 'Bacon Cheeseburger',
             value: 'Bacon Cheeseburger',
             image: IMG + 'bacon-cheeseburger.jpg',
             meta: 'Cheddar, bacon, lettuce, tomato, onion, fries',
+            traySize: true,
           },
           {
             name: 'Double Decker Burger',
             value: 'Double Decker Burger',
             image: IMG + 'double-decker.jpg',
             meta: 'Two patties, cheddar, pulled pork BBQ, slaw, fries',
+            traySize: true,
           },
           {
             name: 'Garbage Burger',
@@ -121,12 +124,14 @@
             value: 'Buffalo Chicken Burger',
             image: IMG + 'buffalo-chicken-burger.jpg',
             meta: 'Buffalo tossed chicken, ranch, onion rings or fries',
+            traySize: true,
           },
           {
             name: 'Plantastic Burger',
             value: 'Plantastic Burger',
             image: IMG + 'classic-house-burger.jpg',
             meta: 'Plant-based, jalapeño cheddar sauce, fries',
+            traySize: true,
           },
         ],
       },
@@ -139,42 +144,49 @@
             value: 'Philly Cheesesteak',
             image: IMG + 'philly-cheesesteak.jpg',
             meta: 'Steak, peppers, onions, mushrooms, white cheese, fries',
+            traySize: true,
           },
           {
             name: 'Chicken Philly',
             value: 'Chicken Philly',
             image: IMG + 'chicken-wrap.jpg',
             meta: 'Grilled chicken, peppers, onions, mushrooms, fries',
+            traySize: true,
           },
           {
             name: 'Chicken Wrap',
             value: 'Chicken Wrap',
             image: IMG + 'chicken-wrap.jpg',
             meta: 'Chicken tenders, lettuce, tomato, onion, mayo, fries',
+            traySize: true,
           },
           {
             name: 'Cheese Steak Wrap',
             value: 'Cheese Steak Wrap',
             image: IMG + 'philly-cheesesteak.jpg',
             meta: 'Philly steak, peppers, onions, mushrooms, fries',
+            traySize: true,
           },
           {
             name: 'BBQ Pork Wrap',
             value: 'BBQ Pork Wrap',
             image: IMG + 'philly-cheesesteak.jpg',
             meta: 'Pulled pork BBQ, lettuce, tomato, onion, fries',
+            traySize: true,
           },
           {
             name: 'Ribeye Steak',
             value: 'Ribeye Steak',
             image: IMG + 'ribeye-steak.jpg',
             meta: 'Mesquite grilled, Mash Potatoes, side salad',
+            traySize: true,
           },
           {
             name: 'Hamburger Steak',
             value: 'Hamburger Steak',
             image: IMG + 'hamburger-steak.jpg',
             meta: 'Brown gravy, onions, mushrooms, Mash Potatoes',
+            traySize: true,
           },
         ],
       },
@@ -409,19 +421,36 @@
   }
 
   function productCard(p, compact) {
-    var cls = 'p-card cat-item cat-menu-row' + (compact ? ' p-card--compact' : '');
+    var cls = 'p-card cat-item cat-menu-row' + (compact ? ' p-card--compact' : '') + (p.traySize ? ' has-tray-size' : '');
+    var slug = slugify(p.value);
+    var trayHtml = '';
+    if (p.traySize) {
+      var radioName = 'tray_' + slug;
+      trayHtml =
+        '<div class="tray-toggle" role="group" aria-label="Tray size for ' + esc(p.name) + '">' +
+        '<label class="tray-option tray-option--half is-on">' +
+        '<input type="radio" name="' + radioName + '" value="half" checked />' +
+        '<span class="tray-option-text">Half Tray</span>' +
+        '</label>' +
+        '<label class="tray-option tray-option--full">' +
+        '<input type="radio" name="' + radioName + '" value="full" />' +
+        '<span class="tray-option-text">Full Tray</span>' +
+        '</label>' +
+        '</div>';
+    }
     return (
       '<label class="' +
       cls +
-      '">' +
+      '" data-base-value="' + esc(p.value) + '">' +
       '<input type="checkbox" name="items" value="' +
-      esc(p.value) +
+      esc(p.traySize ? 'Half tray ' + p.value : p.value) +
       '" />' +
       '<div class="p-card-body">' +
       '<h4 class="p-card-name cat-item-name">' +
       esc(p.name) +
       '</h4>' +
       (p.meta ? '<p class="p-card-meta">' + esc(p.meta) + '</p>' : '') +
+      trayHtml +
       '</div>' +
       '<span class="p-card-action" aria-hidden="true"></span>' +
       '<span class="p-card-check" aria-hidden="true"></span>' +
@@ -604,6 +633,52 @@
     });
   }
 
+  function wireTrayToggles(root) {
+    var toggles = root.querySelectorAll('.tray-toggle');
+    for (var i = 0; i < toggles.length; i++) {
+      (function (toggle) {
+        var card = toggle.closest('.has-tray-size');
+        if (!card) return;
+        var checkbox = card.querySelector('input[type="checkbox"]');
+        var baseValue = card.getAttribute('data-base-value') || '';
+        var radios = toggle.querySelectorAll('input[type="radio"]');
+        var options = toggle.querySelectorAll('.tray-option');
+
+        function syncValue() {
+          var selected = toggle.querySelector('input[type="radio"]:checked');
+          var size = selected ? selected.value : 'half';
+          var prefix = size === 'full' ? 'Full tray ' : 'Half tray ';
+          checkbox.value = prefix + baseValue;
+          // Sync visual state
+          for (var j = 0; j < options.length; j++) {
+            var radio = options[j].querySelector('input[type="radio"]');
+            options[j].classList.toggle('is-on', radio && radio.checked);
+          }
+        }
+
+        // Prevent radio clicks from toggling the parent label's checkbox
+        toggle.addEventListener('click', function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          var option = e.target.closest('.tray-option');
+          if (!option) return;
+          var radio = option.querySelector('input[type="radio"]');
+          if (!radio) return;
+          radio.checked = true;
+          syncValue();
+          // Auto-select the item when a tray size is clicked
+          if (!checkbox.checked) {
+            checkbox.checked = true;
+            card.classList.add('is-selected');
+            checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+        });
+
+        syncValue();
+      })(toggles[i]);
+    }
+  }
+
   function mount() {
     if (window.BOTTOMZ_CATERING.isMounted) return;
     var packagesRoot = document.getElementById('catPackagesMount');
@@ -613,6 +688,7 @@
     window.BOTTOMZ_CATERING.isMounted = true;
     renderPackages(packagesRoot);
     renderMenu(menuRoot);
+    wireTrayToggles(menuRoot);
   }
 
   window.BOTTOMZ_CATERING.mount = mount;
