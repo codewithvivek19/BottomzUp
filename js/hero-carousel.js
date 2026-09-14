@@ -25,8 +25,7 @@
       'is-left',
       'is-far-right',
       'is-far-left',
-      'is-hidden',
-      'is-appear'
+      'is-hidden'
     );
   }
 
@@ -61,22 +60,9 @@
     stage.setAttribute('aria-label', 'Featured dishes');
   }
 
-  function appearCenter() {
-    const center = foods[index];
-    if (!center || reduceMotion) return;
-    center.classList.add('is-appear');
-    void center.offsetWidth;
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        center.classList.remove('is-appear');
-      });
-    });
-  }
-
   function goTo(i) {
     index = ((i % n) + n) % n;
     applySlots();
-    appearCenter();
     restartTimer();
   }
 
@@ -94,6 +80,21 @@
     }
   }
 
+  let rebaseTimer = null;
+  function rebaseAfterViewportChange() {
+    stage.classList.add('is-rebasing');
+    window.clearTimeout(rebaseTimer);
+    requestAnimationFrame(() => {
+      applySlots();
+      rebaseTimer = window.setTimeout(() => {
+        stage.classList.remove('is-rebasing');
+      }, 140);
+    });
+  }
+
+  window.addEventListener('resize', rebaseAfterViewportChange, { passive: true });
+  window.addEventListener('orientationchange', rebaseAfterViewportChange, { passive: true });
+
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) stopTimer();
     else if (!reduceMotion) restartTimer();
@@ -109,7 +110,6 @@
 
   applySlots();
   window.setTimeout(() => {
-    appearCenter();
     if (!reduceMotion) restartTimer();
   }, 400);
 })();
